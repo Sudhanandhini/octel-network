@@ -1,0 +1,12 @@
+<?php
+require_once __DIR__ . '/includes/solutions.php';
+
+$slug = 'ip-telephony';
+$item = get_solution($slug);
+$allItems = get_published_solutions();
+$fileMap = solution_file_map();
+$sidebarTitle = 'Our Solutions';
+$breadcrumbParentLabel = 'Solutions';
+$breadcrumbParentHref = 'services.html';
+
+require __DIR__ . '/templates/content-detail.php';

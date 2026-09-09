@@ -1,0 +1,18 @@
+<?php
+require_once __DIR__ . '/includes/partners.php';
+
+$slug = trim($_GET['slug'] ?? '');
+$item = get_partner($slug);
+
+if (!$item || empty($item['published'])) {
+    http_response_code(404);
+    exit('Not found.');
+}
+
+$allItems = get_published_partners();
+$fileMap = partner_file_map();
+$sidebarTitle = 'Our Partners';
+$breadcrumbParentLabel = 'Our Partners';
+$breadcrumbParentHref = 'partners.html';
+
+require __DIR__ . '/templates/content-detail.php';

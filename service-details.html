@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Link of CSS files -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets/css/scrollcue.min.css">
+        <link rel="stylesheet" href="assets/css/remixicon.css">
+        <link rel="stylesheet" href="assets/css/header.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/footer.css">
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        <link rel="stylesheet" href="assets/css/dark-theme.css">
+        
+        <title>Exrox – Accounting & Management Consulting HTML Template</title>
+        <link rel="icon" type="image/png" href="assets/img/new/favicon.png">
+        <style>
+            a.navbar-brand {
+                position: relative;
+                display: inline-block;
+            }
+            a.navbar-brand .logo-default,
+            a.navbar-brand .logo-hover {
+                transition: opacity 0.4s ease, transform 0.4s ease;
+            }
+            a.navbar-brand .logo-hover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-default,
+            .navbar-area.sticky a.navbar-brand .logo-default {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-hover,
+            .navbar-area.sticky a.navbar-brand .logo-hover {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            .cloud-service-card {
+                position: relative;
+                height: 100%;
+                background-color: var(--whiteColor);
+                border: 1px solid #e2e2e2;
+                border-radius: 10px;
+                overflow: hidden;
+                transition: var(--transition);
+                border-radius: 20px;
+                display: flex;
+                flex-direction: column;
+            }
+            .cloud-service-card:hover {
+                box-shadow: 0 15px 40px rgba(0, 37, 44, 0.12);
+                transform: translateY(-5px);
+            }
+            .cloud-service-card .csc-media {
+                position: relative;
+                height: 30px;
+                display: flex;
+             margin-top: 30px;
+    left: 20px;
+                /* background: linear-gradient(135deg, #e30016 0%, #1b1918 100%); */
+            }
+            .cloud-service-card .csc-number {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: var(--secondaryColor);
+                color: var(--whiteColor);
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 1;
+                padding: 10px 16px;
+                border-radius: 0 0 8px 0;
+            }
+            .cloud-service-card .csc-icon {
+                font-size: 40px;
+                color: rgba(255, 0, 0, 0.85);
+            }
+            .cloud-service-card .csc-body {
+                padding: 24px 26px 22px;
+            }
+            .cloud-service-card .csc-media h3 {
+                color: #000;
+                font-size: 18px;
+                font-weight: 700;
+                letter-spacing: .2px;
+                text-transform: uppercase;
+                margin-bottom: 12px;
+            }
+            .cloud-service-card .csc-body p {
+                color: var(--paraColor);
+                margin-bottom: 18px;
+            }
+            .cloud-service-card .csc-tagline {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding-top: 16px;
+                border-top: 1px solid #ececec;
+                color: var(--secondaryColor);
+                font-weight: 600;
+                font-size: 14px;
+            }
+            .cloud-service-card .csc-tagline i {
+                font-size: 18px;
+            }
+
+            .cloud-journey-section {
+                padding: 70px 0 60px;
+                background-color: #f8f9fa;
+            }
+            .cloud-journey-title {
+                position: relative;
+                text-align: center;
+                margin-bottom: 60px;
+            }
+            .cloud-journey-title::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background-color: #ddd;
+            }
+            .cloud-journey-title h3 {
+                position: relative;
+                display: inline-block;
+                background-color: #f8f9fa;
+                padding: 0 25px;
+                margin: 0;
+                font-size: 24px;
+                font-weight: 800;
+                letter-spacing: .5px;
+                text-transform: uppercase;
+                color: var(--titleColor);
+            }
+            .cloud-journey-title h3::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: -14px;
+                transform: translateX(-50%);
+                width: 40px;
+                height: 3px;
+                background-color: var(--secondaryColor);
+            }
+            .cloud-journey-track {
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 10px;
+            }
+            .cloud-journey-step {
+                flex: 0 0 120px;
+                width: 120px;
+                text-align: center;
+                padding: 0 6px;
+            }
+            .cloud-journey-step .cj-icon {
+                position: relative;
+                width: 92px;
+                height: 92px;
+                margin: 0 auto 18px;
+                border-radius: 50%;
+                border: 1px solid #e2e2e2;
+                background-color: var(--whiteColor);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+            }
+            .cloud-journey-step:hover .cj-icon {
+                border-color: var(--secondaryColor);
+                box-shadow: 0 10px 25px rgba(227, 0, 22, 0.15);
+            }
+            .cloud-journey-step .cj-icon i {
+                font-size: 34px;
+                color: var(--secondaryColor);
+            }
+            .cloud-journey-step .cj-loop {
+                position: absolute;
+                top: -4px;
+                right: -4px;
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                border: 2px solid var(--secondaryColor);
+                background-color: var(--whiteColor);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .cloud-journey-step .cj-loop i {
+                font-size: 13px;
+                color: var(--secondaryColor);
+            }
+            .cloud-journey-step h4 {
+                font-size: 15px;
+                font-weight: 700;
+                color: var(--titleColor);
+                margin-bottom: 8px;
+            }
+            .cloud-journey-step p {
+                font-size: 12px;
+                line-height: 1.5;
+                color: var(--paraColor);
+                margin: 0;
+            }
+            .cloud-journey-connector {
+                position: relative;
+                flex: 1 1 auto;
+                min-width: 24px;
+                max-width: 60px;
+                height: 2px;
+                margin-top: 45px;
+                border-top: 2px dashed var(--secondaryColor);
+            }
+            .cloud-journey-connector::before,
+            .cloud-journey-connector::after {
+                content: '';
+                position: absolute;
+                top: -4px;
+                border-style: solid;
+                border-width: 4px 6px;
+            }
+            .cloud-journey-connector::before {
+                left: -2px;
+                border-color: transparent var(--secondaryColor) transparent transparent;
+            }
+            .cloud-journey-connector::after {
+                right: -2px;
+                border-color: transparent transparent transparent var(--secondaryColor);
+            }
+            @media (max-width: 575.98px) {
+                .cloud-journey-track {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .cloud-journey-step {
+                    width: 100%;
+                    max-width: 220px;
+                }
+                .cloud-journey-connector {
+                    width: 2px;
+                    height: 30px;
+                    max-width: none;
+                    margin: 0 auto;
+                    border-top: none;
+                    border-left: 2px dashed var(--secondaryColor);
+                }
+                .cloud-journey-connector::before,
+                .cloud-journey-connector::after {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+       <!--  Preloader Start -->
+        <div class="preloader-area" id="preloader">
+            <div class="spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!--  Preloader End -->
+
+        <!-- Theme Switcher Start -->
+        <div class="switch-theme-mode">
+            <label id="switch" class="switch">
+                <input type="checkbox" onchange="toggleTheme()" id="slider">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <!-- Theme Switcher End -->
+
+        <!-- Custom Cursor -->
+        <div class="cursor">
+            <span class="cursor-text d-flex flex-column align-items-center justify-content-center rounded-circle bg-white text-title fs-14 fw-semibold"></span>
+        </div>
+        <div class="cursor-inner"></div>
+
+        <div id="smooth-wrapper">
+            <div id="smooth-content">
+
+                <div class="bg-albastor position-relative z-1">
+
+                    <!-- Navbar Area Start -->
+                    <div class="navbar-area style-one position-relative z-2" id="navbar">
+                        <div class="container style-two">
+                            <div class="navbar-wrapper d-flex justify-content-between align-items-center">
+                                <a href="index.html" class="navbar-brand">
+                                    <img src="assets/img/logo-white.png" alt="Logo" class="logo-default">
+                                    <img src="assets/img/new/logo-white.png" alt="Logo" class="logo-hover">
+                                </a>
+                                <div class="menu-area mx-auto">
+                                    <div class="overlay"></div>
+                                    <nav class="menu">
+                                        <div class="menu-mobile-header">
+                                            <button type="button" class="menu-mobile-arrow bg-transparent border-0"><i class="ri-arrow-left-s-line"></i></button>
+                                            <div class="menu-mobile-title"></div>
+                                            <button type="button" class="menu-mobile-close bg-transparent border-0"><i class="ri-close-line"></i></button>
+                                        </div>
+                                        <ul class="menu-section p-0 mb-0 lh-1">
+                                          
+
+                                            <!-- <li class="menu-item-has-children">
+                                                <a href="javascript:void(0)">Pages<i class="ri-arrow-down-s-line"></i></a>
+                                                <ul class="menu-subs menu-column-1">
+                                                    <li><a href="about-us.html">About Us</a></li>
+                                                    <li class="menu-item-has-children">
+                                                        <a href="javascript:void(0)">Leaders<i class="ri-arrow-right-s-line"></i></a>
+                                                        <ul class="menu-subs menu-column-1">
+                                                            <li><a href="our-leaders.html">Our Leaders</a></li>
+                                                            <li><a href="leader-details.html">Leader Details</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="menu-item-has-children">
+                                                        <a href="javascript:void(0)">Careers<i class="ri-arrow-right-s-line"></i></a>
+                                                        <ul class="menu-subs menu-column-1">
+                                                            <li><a href="careers.html">Careers</a></li>
+                                                            <li><a href="career-details.html">Career Details</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="appointment.html">Appointment</a></li>
+                                                    <li><a href="pricing-plan.html">Pricing Plan</a></li>
+                                                    <li><a href="faq.html">FAQ</a></li>
+                                                    <li><a href="testimonials.html">Testimonials</a></li>
+                                                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                                    <li><a href="error-404.html">Error 404</a></li>
+                                                </ul>
+                                            </li> -->
+                                            <li class="menu-item-has-children">
+                                                <a href="services.html">SOLUTIONS</a>                                
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="distribution.html">DISTRIBUTION</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="partners.html">OUR PARTNERS</a>                                
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="javascript:void(0)">WHY OCTEL?<i class="ri-arrow-down-s-line"></i></a>
+                                                <ul class="menu-subs menu-column-1">
+                                                    <li><a href="why-octel.html">Why Octel</a></li>
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="our-leaders.html">Our Leaders</a></li>
+                                                    <li><a href="case-studies.html">Case Studies</a></li>
+                                                    <li><a href="careers.html">Careers</a></li>
+                                                    <li><a href="contact.html">Contact Us</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <!-- <li class="menu-item-has-children">
+                                                <a href="javascript:void(0)">Case Studies<i class="ri-arrow-down-s-line"></i></a>
+                                                <ul class="menu-subs menu-column-1">
+                                                    <li><a href="case-studies.html">Case Studies</a></li>
+                                                    <li><a href="case-details.html">Case Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="javascript:void(0)">Blog<i class="ri-arrow-down-s-line"></i></a>
+                                                <ul class="menu-subs menu-column-1">
+                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Blog Layout<i class="ri-arrow-right-s-line"></i></a>
+                                                        <ul class="menu-subs menu-column-1">
+                                                            <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+                                                            <li><a href="blog-standard.html">Blog Standard</a></li>
+                                                            <li><a href="blog-columns.html">Blog Columns</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Blog Details Layout<i class="ri-arrow-right-s-line"></i></a>
+                                                        <ul class="menu-subs menu-column-1">
+                                                            <li><a href="blog-details-left-sidebar.html">Blog Details Left Sidebar</a></li>
+                                                            <li><a href="blog-details-right-sidebar.html">Blog Details Right Sidebar</a></li>
+                                                            <li><a href="blog-details-no-sidebar.html">Blog Details No Sidebar</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Others<i class="ri-arrow-right-s-line"></i></a>
+                                                        <ul class="menu-subs menu-column-1">
+                                                            <li><a href="posts-by-author.html">Posts By Author</a></li>
+                                                            <li><a href="posts-by-date.html">Posts By Date</a></li>
+                                                            <li><a href="posts-by-category.html">Posts By Category</a></li>
+                                                            <li><a href="posts-by-tag.html">Posts By Tag</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li> -->
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="other-options d-flex flex-wrap align-items-center justify-content-end">
+                                    <div class="option-item position-relative d-flex align-items-center">
+                                        <div class="mobile-options position-relative d-lg-none me-3">
+                                            <button class="dropdown-toggle  text-center bg-transparent border-0 p-0 transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                                <i class="ri-more-fill"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-centered mobile-option-list top-1 border-0" data-bs-popper="static">
+                                                <a href="appointment.html" class="btn style-one d-inline-flex align-items-center">
+                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                    <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Get A Free Consultation</span>
+                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <button class="search-btn bg_gradient border-0 rounded-circle d-flex flex-column align-items-center justify-content-center dropdown-toggle transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                            <i class="ri-search-line"></i>
+                                            <i class="ri-close-line"></i>
+                                        </button>
+                                        <div class="search-dropdown dropdown-menu dropdown-menu-right top-1 border-0" data-bs-popper="static">
+                                            <form class="search-popup position-relative" action="#">
+                                                <input type="search" class="form-control text-para" placeholder="Search Here">
+                                                <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent d-flex flex-column align-items-center justify-content-center"><i class="ri-search-2-line"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="option-item d-lg-block d-none">
+                                        <a href="appointment.html" class="btn style-one d-inline-flex align-items-center">
+                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Get A Free Consultation</span>
+                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                        </a>
+                                    </div>
+                                    <div class="option-item d-lg-none">
+                                        <button type="button" class="menu-mobile-trigger">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Navbar Area End -->
+
+                    <!-- Breadcrumb Area Start -->
+                    <div class="breadcrumb-area style-one position-relative z-1">
+                        <div class="br-bg img-container position-absolute top-0 start-0 w-100">
+                            <img src="assets/img/breadcrumb/img2.jpg" alt="Image" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <div class="container style-one">
+                            <div class="row">
+                                <div class="col-xxl-10 col-lg-8">
+                                    <h2 class="section-title style-three text-white fw-bold mb-20 reveal-text">Cloud Solutions</h2>
+                                    <ul class="br-menu list-unstyled mb-0">
+                                        <li class="fs-xxl-18"><a href="index.html">Home</a></li>
+                                        <li class="fs-xxl-18"><a href="services.html">Services</a></li>
+                                        <li class="fs-xxl-18">Cloud Solutions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Breadcrumb Area End -->
+
+                    <!-- Service Details Section Start -->
+                    <div class="bg-albastor">
+                        <div class="container style-two ptb-120">
+                            <div class="row">
+                                <div class="col-xxl-8 col-xl-8 pe-xxl-1">
+                                    <div class="case-desc mb-30">
+                                        <div class="single-para">
+                                            <h1>Engineer the Cloud. Accelerate the business.</h1>
+                                            <p>Transform cloud complexity into business agility with secure, scalable, intelligent and resilient cloud environments across AWS, Microsoft Azure and Google Cloud Platform.</p>
+                                        </div>
+                                        <div class="single-img img-container overflow-hidden round-20 mb-35" data-cue="anim-top" data-duration="800">
+                                            <img src="assets/img/services/img1.jpg" alt="Image" class="w-100 h-100 object-fit-cover round-20">
+                                        </div>
+                                        <!-- <div class="single-para">
+                                            <h5>Our Accounting & Compliance Solutions</h5>
+                                            <p>End-to-end services designed to maintain accurate records while meeting all regulatory requirements</p>
+                                        </div> -->
+                                        <div class="single-para">
+                                            <h5>Our Cloud Services</h5>
+                                        </div>
+                                        <div class="row mb-15">
+                                            <div class="col-md-6 col-lg-6 mb-25">
+                                                <div class="cloud-service-card">
+                                                    <div class="csc-media">
+                                                        <!-- <span class="csc-number">01</span> -->
+                                                        <i class="ri-compass-3-line csc-icon"></i>
+                                                         <h3>Cloud Consulting & Assessment</h3>
+                                                    </div>
+                                                    <div class="csc-body">
+                                                       
+                                                        <p class="mb-0">Turn complexity into a clear transformation strategy. Assess workloads, applications, dependencies and readiness to create a practical roadmap.</p>
+                                                        <div class="csc-tagline"><i class="ri-focus-3-line"></i>Clarity. Direction. Confidence.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6 mb-25">
+                                                <div class="cloud-service-card">
+                                                    <div class="csc-media">
+                                                        <!-- <span class="csc-number">02</span> -->
+                                                        <i class="ri-stack-line csc-icon"></i>
+                                                        <h3>Cloud Architecture</h3>
+                                                    </div>
+                                                    <div class="csc-body">
+                                                        
+                                                        <p class="mb-0">Engineer a secure, scalable and resilient foundation across infrastructure, connectivity, identity, governance and business continuity.</p>
+                                                        <div class="csc-tagline"><i class="ri-shield-check-line"></i>Built for Scale. Designed for Resilience.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6 mb-25">
+                                                <div class="cloud-service-card">
+                                                    <div class="csc-media">
+                                                        <!-- <span class="csc-number">03</span> -->
+                                                        <i class="ri-upload-cloud-2-line csc-icon"></i>
+                                                         <h3>Cloud Migration & Modernization</h3>
+                                                    </div>
+                                                    <div class="csc-body">
+                                                       
+                                                        <p class="mb-0">Move with control and modernize with purpose through rehost, replatform, refactor, application modernization, containers and Kubernetes.</p>
+                                                        <div class="csc-tagline"><i class="ri-route-line"></i>Move with Control. Modernize for Value.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6 mb-25">
+                                                <div class="cloud-service-card">
+                                                    <div class="csc-media">
+                                                        <!-- <span class="csc-number">04</span> -->
+                                                        <i class="ri-infinity-line csc-icon"></i>
+                                                        <h3>DevOps & Process Automation</h3>
+                                                    </div>
+                                                    <div class="csc-body">
+                                                        
+                                                        <p class="mb-0">Accelerate delivery through DevOps, CI/CD, Infrastructure as Code, automated testing and intelligent provisioning.</p>
+                                                        <div class="csc-tagline"><i class="ri-rocket-2-line"></i>Automate. Accelerate. Innovate.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6 mb-25">
+                                                <div class="cloud-service-card">
+                                                    <div class="csc-media">
+                                                        <!-- <span class="csc-number">05</span> -->
+                                                        <i class="ri-shield-keyhole-line csc-icon"></i>
+                                                        <h3>Cloud Security</h3>
+                                                    </div>
+                                                    <div class="csc-body">
+                                                        
+                                                        <p class="mb-0">Build security into every layer through identity, privileged access, network protection, encryption, visibility, posture management and governance.</p>
+                                                        <div class="csc-tagline"><i class="ri-lock-2-line"></i>Secure by Design. Protected Always.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6 mb-25">
+                                                <div class="cloud-service-card">
+                                                   
+                                                    <div class="csc-media">
+                                                        <!-- <span class="csc-number">06</span> -->
+                                                         <i class="ri-global-line csc-icon"></i>
+                                                         <h3>Managed Cloud Services</h3>
+                                                    </div>
+                                                    <div class="csc-body">
+                                                      
+                                                        <p class="mb-0">Extend IT capability with 24×7 monitoring, infrastructure and application management, security operations, backup, DR readiness and optimization.</p>
+                                                        <div class="csc-tagline"><i class="ri-settings-3-line"></i>Monitor. Manage. Optimize. Evolve.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                          <!-- Cloud Journey Section Start -->
+                    <div class="cloud-journey-section position-relative z-1">
+                        <div class="container style-two">
+                            <div class="cloud-journey-title">
+                                <h3>Our Cloud Journey</h3>
+                            </div>
+                            <div class="cloud-journey-track">
+                                <div class="cloud-journey-step">
+                                    <div class="cj-icon"><i class="ri-search-eye-line"></i></div>
+                                    <h4>Discover</h4>
+                                    <p>Understand your current landscape</p>
+                                </div>
+                                <div class="cloud-journey-connector"></div>
+                                <div class="cloud-journey-step">
+                                    <div class="cj-icon"><i class="ri-clipboard-line"></i></div>
+                                    <h4>Assess</h4>
+                                    <p>Evaluate readiness, risks & opportunities</p>
+                                </div>
+                                <div class="cloud-journey-connector"></div>
+                                <div class="cloud-journey-step">
+                                    <div class="cj-icon"><i class="ri-pencil-line"></i></div>
+                                    <h4>Architect</h4>
+                                    <p>Design the target cloud foundation</p>
+                                </div>
+                                <div class="cloud-journey-connector"></div>
+                                <div class="cloud-journey-step">
+                                    <div class="cj-icon"><i class="ri-upload-cloud-2-line"></i></div>
+                                    <h4>Migrate</h4>
+                                    <p>Move workloads with confidence</p>
+                                </div>
+                                <div class="cloud-journey-connector"></div>
+                                <div class="cloud-journey-step">
+                                    <div class="cj-icon"><i class="ri-code-s-slash-line"></i></div>
+                                    <h4>Modernize</h4>
+                                    <p>Transform apps for the future</p>
+                                </div>
+                                <div class="cloud-journey-connector"></div>
+                                <div class="cloud-journey-step">
+                                    <div class="cj-icon"><i class="ri-settings-3-line"></i></div>
+                                    <h4>Automate</h4>
+                                    <p>Enable DevOps & process automation</p>
+                                </div>
+                                <div class="cloud-journey-connector"></div>
+                                <div class="cloud-journey-step">
+                                    <div class="cj-icon"><i class="ri-shield-check-line"></i></div>
+                                    <h4>Secure</h4>
+                                    <p>Protect every layer of your cloud</p>
+                                </div>
+                                <div class="cloud-journey-connector"></div>
+                                <div class="cloud-journey-step">
+                                    <div class="cj-icon"><i class="ri-computer-line"></i></div>
+                                    <h4>Operate</h4>
+                                    <p>Manage, monitor & support 24x7</p>
+                                </div>
+                                <div class="cloud-journey-connector"></div>
+                                <div class="cloud-journey-step">
+                                    <div class="cj-icon">
+                                        <i class="ri-line-chart-line"></i>
+                                        <span class="cj-loop"><i class="ri-refresh-line"></i></span>
+                                    </div>
+                                    <h4>Optimize</h4>
+                                    <p>Continuously improve performance & cost</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Cloud Journey Section End -->
+                                        <!-- <div class="single-para">
+                                            <h5>Regulatory Compliance Expertise</h5>
+                                            <p>We stay current on evolving regulations to ensure your financial practices meet all requirements:</p>
+                                            <ul class="features-list style-three list-unstyled">
+                                                <li class="position-relative"><b class="text-title fw-semibold">GAAP Compliance:</b>Full adherence to Generally Accepted Accounting Principles</li>
+                                                <li class="position-relative"><b class="text-title fw-semibold">Tax Readiness:</b>Books maintained for seamless tax preparation</li>
+                                                <li class="position-relative"><b class="text-title fw-semibold">Industry Standards:</b>Healthcare (HIPAA), Nonprofits (FASB 117), etc.</li>
+                                                <li class="position-relative"><b class="text-title fw-semibold">Audit Preparedness:</b>Documentation organized for smooth audits</li>
+                                                <li class="position-relative"><b class="text-title fw-semibold">Internal Controls:</b>Fraud prevention and detection systems</li>
+                                            </ul>
+                                        </div>
+                                        <div class="single-para">
+                                            <h5>Service Packages</h5>
+                                            <div class="row justify-content-center mt-4">
+                                                <div class="col-md-6">
+                                                    <div class="pricing-card style-one position-relative z-1 overflow-hidden round-20 mb-25 move-top" data-cue="slideInLeft" data-delay="300">
+                                                        <h5 class="fw-bold">Starter</h5>
+                                                        <h2 class="fw-semibold">$750 <span class="font-primary fw-normal position-relative">/month</span></h2>
+                                                        <p class="fs-xxl-18">For small businesses with basic needs</p>
+                                                        <h4>What's Included</h4>
+                                                        <ul class="pricing-features list-unstyled">
+                                                            <li class="position-relative fs-xxl-18"><img src="assets/img/icons/check.svg" alt="Icon">Monthly bookkeeping</li>
+                                                            <li class="position-relative fs-xxl-18"><img src="assets/img/icons/check.svg" alt="Icon">Account reconciliations</li>
+                                                            <li class="position-relative fs-xxl-18"><img src="assets/img/icons/check.svg" alt="Icon">Basic financial statements</li>
+                                                            <li class="position-relative fs-xxl-18"><img src="assets/img/icons/check.svg" alt="Icon">Quarterly compliance review</li>
+                                                            <li class="position-relative fs-xxl-18"><img src="assets/img/icons/check.svg" alt="Icon">Up to 100 transactions/month</li>
+                                                        </ul>
+                                                        <a href="appointment.html" class="btn style-one d-inline-flex align-items-center">
+                                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Get Started</span>
+                                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="pricing-card style-one position-relative z-1 overflow-hidden round-20 mb-25" data-cue="slideInLeft" data-delay="400">
+                                                        <h5 class="fw-bold">Professional</h5>
+                                                        <h2 class="fw-semibold">$1,800<span class="font-primary fw-normal position-relative">/month</span></h2>
+                                                        <p class="fs-xxl-18">For growing businesses</p>
+                                                        <h4>What's Included</h4>
+                                                        <ul class="pricing-features list-unstyled">
+                                                        <li class="position-relative fs-xxl-18"><img src="assets/img/icons/check.svg" alt="Icon">Everything in Starter, plus:</li>
+                                                            <li class="position-relative fs-xxl-18"><img src="assets/img/icons/check.svg" alt="Icon">AP/AR management</li>
+                                                            <li class="position-relative fs-xxl-18"><img src="assets/img/icons/check.svg" alt="Icon">Custom management reports</li>
+                                                            <li class="position-relative fs-xxl-18"><img src="assets/img/icons/check.svg" alt="Icon">Monthly compliance review</li>
+                                                            <li class="position-relative fs-xxl-18"><img src="assets/img/icons/check.svg" alt="Icon">Cash flow forecasting</li>
+                                                            <li class="position-relative fs-xxl-18"><img src="assets/img/icons/check.svg" alt="Icon">Up to 500 transactions/month</li>
+                                                        </ul>
+                                                        <a href="appointment.html" class="btn style-one d-inline-flex align-items-center">
+                                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Get Started</span>
+                                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <div class="post-pagination d-flex flex-wrap justify-content-between">
+                                        <a href="service-details.html" class="prev-post fs-16 fw-bold text-title hover-text-primary transition"><img src="assets/img/icons/left-arrow-black.svg" alt="Icon" class="me-2 transition">Previous</a>
+                                        <a href="service-details.html" class="next-post fs-16 fw-bold text-title hover-text-primary transition">Next <img src="assets/img/icons/right-arrow-black.svg" alt="Icon" class="ms-2 transition"></a>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 offset-xxl-1 col-xl-3 ps-xxl-3">
+                                    <aside class="sidebar mt-lg-50">
+                                        <div class="sidebar-widget round-20">
+                                            <h3 class="sidebar-widget-title fs-24 fw-semibold text-title mb-20">Quick Services</h3>
+                                            <ul class="service-list list-unstyled mb-0">
+                                                <li class="fs-xxl-18"><a href="services.html">Accounting & Compliance<img src="assets/img/icons/right-arrow-black.svg" alt="Icon"></a></li>
+                                                <li class="fs-xxl-18"><a href="services.html">Audit & Assurance<img src="assets/img/icons/right-arrow-black.svg" alt="Icon"></a></li>
+                                                <li class="fs-xxl-18"><a href="services.html">Tax Advisory<img src="assets/img/icons/right-arrow-black.svg" alt="Icon"></a></li>
+                                                <li class="fs-xxl-18"><a href="services.html">Business Consulting<img src="assets/img/icons/right-arrow-black.svg" alt="Icon"></a></li>
+                                                <li class="fs-xxl-18"><a href="services.html">Payroll Management<img src="assets/img/icons/right-arrow-black.svg" alt="Icon"></a></li>
+                                                <li class="fs-xxl-18"><a href="services.html">Startup & SME Support<img src="assets/img/icons/right-arrow-black.svg" alt="Icon"></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="sidebar-widget round-20">
+                                            <h3 class="sidebar-widget-title fs-24 fw-semibold text-title mb-25">Working Hours</h3>
+                                            <ul class="service-list list-unstyled mb-0">
+                                                <li class="fs-xxl-18 d-flex flex-wrap align-items-center justify-content-between">
+                                                    <span class="fw-semibold text-title">Monday - Thursday:</span>
+                                                    <span class="text-end">09am - 08pm</span>
+                                                </li>
+                                                <li class="fs-xxl-18 d-flex flex-wrap align-items-center justify-content-between">
+                                                    <span class="fw-semibold text-title">Friday - Saturday:</span>
+                                                    <span class="text-end">09am - 08pm</span>
+                                                </li>
+                                                 <li class="fs-xxl-18 d-flex flex-wrap align-items-center justify-content-between">
+                                                    <span class="fw-semibold text-title">Sunday:</span>
+                                                    <span class="text-end">Closed</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="sidebar-widget tags-widget round-20">
+                                            <h3 class="sidebar-widget-title fs-24 fw-semibold text-title mb-20">READY TO ENGINEER YOUR CLOUD FUTURE?</h3>
+                                            <p>Talk to Our Cloud Experts </p>
+                                            <form action="#" class="contact-form style-two">
+                                                <div class="form-group mb-45">
+                                                    <input type="text" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Full Name*" required>
+                                                </div>
+                                                <div class="form-group mb-45">
+                                                    <input type="email" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Email*" required>
+                                                </div>
+                                                <div class="form-group mb-22">
+                                                    <textarea class="w-100 bg-transparent fs-xxl-18 text-title outline-0 resize-0" placeholder="Comment*" required></textarea>
+                                                </div>
+                                                <button class="btn style-one d-flex align-items-center">
+                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                                    <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Make An Appointment</span>
+                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </aside>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Details Section End -->
+
+                  
+                </div>
+
+                <!-- Footer Section Start -->
+                <footer class="footer-area style-one">
+                    <div class="container style-one">
+                        <div class="footer-top pt-115">
+                            <div class="row mb-65">
+                                <div class="col-xxl-5 col-lg-4 col-md-5">
+                                    <div class="footer-widget mb-30" data-cue="slideInLeft">
+                                        <a href="index.html" class="logo d-block mb-50">
+                                            <img src="assets/img/logo-white.png" alt="Image">
+                                        </a>
+                                        <a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary mb-18">+1 (808) 360-9282</a>
+                                        <a href="/cdn-cgi/l/email-protection#c1a9a4adadae81a4b9b3aeb9efa2aeac" class="contact-mail fs-xxl-18 fw-bold text-white hover-text-secondary"><span class="__cf_email__" data-cfemail="5038353c3c3f103528223f287e333f3d">[email&#160;protected]</span></a>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-4 col-lg-4 col-md-7 ps-xxl-4">
+                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="100">
+                                        <h3 class="footer-widget-title fs-24 text-white mb-20">Quick Links</h3>
+                                        <ul class="footer-menu style-one list-unstyled mb-0">
+                                            <li class="d-block fs-xxl-18"><a href="index.html">Home</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="about-us.html">About Us</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="services.html">Services</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="case-studies.html">Case Studies</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="blog-left-sidebar.html">Blog </a></li>
+                                            <li class="d-block fs-xxl-18"><a href="contact.html">Contact</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="faq.html">FAQs</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-lg-4 col-md-6">
+                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="200">
+                                        <h3 class="footer-widget-title fs-24 text-white mb-20">Stay Connected</h3>
+                                        <p class="text-gray fs-xxl-18 mb-25">Join our newsletter and stay updated on the latest news</p>
+                                        <form action="#" class="newsletter-form style-one position-relative">
+                                             <input type="email" class="w-100 fs-xxl-18 text-white border-0 round-5 outline-0" placeholder="Type your email" required>
+                                             <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent"><i class="ri-send-plane-fill"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-7 pe-xxl-0">
+                                    <a href="index.html" class="logo-text text-white reveal-text-right transition" data-cue="slideInUp" data-delay="200">EXROX</a>
+                                </div>
+                                <div class="col-xl-4 offset-xxl-1 col-md-5 ps-xxl-4">
+                                    <div class="footer-widget" data-cue="slideInUp" data-delay="200">
+                                        <p class="text-gray fs-xxl-18 mb-25">Exrox is a trusted accounting and management consulting firm helping businesses grow with clarity and control.</p>
+                                        <ul class="social-profile style-one list-unstyled mb-0">
+                                            <li><a href="https://www.facebook.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
+                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
+                                            <li><a href="https://www.instagram.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-instagram-line"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-bottom">
+                            <div class="row align-items-center">
+                                <div class="col-md-7 pe-md-0 mb-sm-10">
+                                    <p class="copyright-text fs-xxl-18 text-md-start text-center text-gray mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">Exrox</span> Is Proudly Owned By <a href="https://envytheme.com/" target="_blank" class="text_secondary link-hover-white">EnvyTheme</a></p>
+                                </div>
+                                <div class="col-md-5">
+                                    <ul class="footer-bottom-menu list-unstyled text-lg-end text-center mb-0">
+                                        <li class="fs-xxl-18"><a href="terms-conditions.html">Terms And Conditions</a></li>
+                                        <li class="fs-xxl-18"><a href="privacy-policy.html">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- Footer End -->
+
+            </div>
+        </div>
+        <!-- Back to Top -->
+        <div id="progress-wrap" class="progress-wrap style-one">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+              <path id="progress-path" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+            </svg>
+        </div>
+
+        <!-- Link of JS files -->
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/megamenu.js"></script>
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <script src="assets/js/fslightbox.js"></script>
+        <script src="assets/js/gsap.min.js"></script>
+        <script src="assets/js/scrollTrigger.min.js"></script>
+        <script src="assets/js/lenis.min.js"></script>
+        <script src="assets/js/scrollToPlugin.js"></script>
+        <script src="assets/js/SplitText.min.js"></script>
+        <script src="assets/js/customEase.js"></script>
+        <script src="assets/js/scrollcue.min.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

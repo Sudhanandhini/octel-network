@@ -1,0 +1,5 @@
+# Allow PHP to run inside .html files so pages like distribution.html and the
+# distributor detail pages can render editable content from the admin panel.
+<FilesMatch "\.html$">
+    SetHandler application/x-httpd-php
+</FilesMatch>

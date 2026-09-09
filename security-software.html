@@ -1,0 +1,12 @@
+<?php
+require_once __DIR__ . '/includes/partners.php';
+
+$slug = 'security-software';
+$item = get_partner($slug);
+$allItems = get_published_partners();
+$fileMap = partner_file_map();
+$sidebarTitle = 'Our Partners';
+$breadcrumbParentLabel = 'Our Partners';
+$breadcrumbParentHref = 'partners.html';
+
+require __DIR__ . '/templates/content-detail.php';

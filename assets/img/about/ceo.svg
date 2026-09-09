@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="p15" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00252C"/>
+      <stop offset="1" stop-color="#91D089"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#p15)"/>
+  <circle cx="100" cy="76" r="32" fill="#ffffff" fill-opacity="0.18"/>
+  <path d="M 36 200 C 36 124, 164 124, 164 200 Z" fill="#ffffff" fill-opacity="0.14"/>
+  <text x="50%" y="87.2" text-anchor="middle" font-family="Rethink Sans, DM Sans, Arial, sans-serif" font-weight="700" font-size="32" fill="#ffffff" fill-opacity="0.85">CW</text>
+</svg>

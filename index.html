@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Link of CSS files -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets/css/scrollcue.min.css">
+        <link rel="stylesheet" href="assets/css/remixicon.css">
+        <link rel="stylesheet" href="assets/css/header.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/footer.css">
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        <link rel="stylesheet" href="assets/css/dark-theme.css">
+        
+        <title>Exrox – Accounting & Management Consulting HTML Template</title>
+        <link rel="icon" type="image/png" href="assets/img/new/favicon.png">
+        <style>
+            a.navbar-brand {
+                position: relative;
+                display: inline-block;
+            }
+            a.navbar-brand .logo-default,
+            a.navbar-brand .logo-hover {
+                transition: opacity 0.4s ease, transform 0.4s ease;
+            }
+            a.navbar-brand .logo-hover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-default,
+            .navbar-area.sticky a.navbar-brand .logo-default {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-hover,
+            .navbar-area.sticky a.navbar-brand .logo-hover {
+                opacity: 1;
+                transform: scale(1);
+            }
+        </style>
+    </head>
+    <body>
+
+       <!--  Preloader Start -->
+        <div class="preloader-area" id="preloader">
+            <div class="spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!--  Preloader End -->
+
+        <!-- Theme Switcher Start -->
+        <div class="switch-theme-mode">
+            <label id="switch" class="switch">
+                <input type="checkbox" onchange="toggleTheme()" id="slider">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <!-- Theme Switcher End -->
+
+        <!-- Custom Cursor -->
+        <div class="cursor">
+            <span class="cursor-text d-flex flex-column align-items-center justify-content-center rounded-circle bg-white text-title fs-14 fw-semibold"></span>
+        </div>
+        <div class="cursor-inner"></div>
+
+        <div id="smooth-wrapper">
+            <div id="smooth-content">
+
+                <div class="bg-albastor position-relative z-1">
+
+                    <!-- Navbar Area Start -->
+                    <div class="navbar-area style-one position-relative z-2" id="navbar">
+                        <div class="container style-two">
+                            <div class="navbar-wrapper d-flex justify-content-between align-items-center">
+                                <a href="index.html" class="navbar-brand">
+                                    <img src="assets/img/logo-white.png" alt="Logo" class="logo-default">
+                                    <img src="assets/img/new/logo-white.png" alt="Logo" class="logo-hover">
+                                </a>
+                                <div class="menu-area mx-auto">
+                                    <div class="overlay"></div>
+                                    <nav class="menu">
+                                        <div class="menu-mobile-header">
+                                            <button type="button" class="menu-mobile-arrow bg-transparent border-0"><i class="ri-arrow-left-s-line"></i></button>
+                                            <div class="menu-mobile-title"></div>
+                                            <button type="button" class="menu-mobile-close bg-transparent border-0"><i class="ri-close-line"></i></button>
+                                        </div>
+                                        <ul class="menu-section p-0 mb-0 lh-1">
+                                          
+
+                                            <!-- <li class="menu-item-has-children">
+                                                <a href="javascript:void(0)">Pages<i class="ri-arrow-down-s-line"></i></a>
+                                                <ul class="menu-subs menu-column-1">
+                                                    <li><a href="about-us.html">About Us</a></li>
+                                                    <li class="menu-item-has-children">
+                                                        <a href="javascript:void(0)">Leaders<i class="ri-arrow-right-s-line"></i></a>
+                                                        <ul class="menu-subs menu-column-1">
+                                                            <li><a href="our-leaders.html">Our Leaders</a></li>
+                                                            <li><a href="leader-details.html">Leader Details</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="menu-item-has-children">
+                                                        <a href="javascript:void(0)">Careers<i class="ri-arrow-right-s-line"></i></a>
+                                                        <ul class="menu-subs menu-column-1">
+                                                            <li><a href="careers.html">Careers</a></li>
+                                                            <li><a href="career-details.html">Career Details</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="appointment.html">Appointment</a></li>
+                                                    <li><a href="pricing-plan.html">Pricing Plan</a></li>
+                                                    <li><a href="faq.html">FAQ</a></li>
+                                                    <li><a href="testimonials.html">Testimonials</a></li>
+                                                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                                    <li><a href="error-404.html">Error 404</a></li>
+                                                </ul>
+                                            </li> -->
+                                            <li class="menu-item-has-children">
+                                                <a href="services.html">SOLUTIONS</a>                                
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="distribution.html">DISTRIBUTION</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="partners.html">OUR PARTNERS</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="javascript:void(0)">WHY OCTEL?<i class="ri-arrow-down-s-line"></i></a>
+                                                <ul class="menu-subs menu-column-1">
+                                                    <li><a href="why-octel.html">Why Octel</a></li>
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="our-leaders.html">Our Leaders</a></li>
+                                                    <li><a href="case-studies.html">Case Studies</a></li>
+                                                    <li><a href="careers.html">Careers</a></li>
+                                                    <li><a href="contact.html">Contact Us</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <!-- <li class="menu-item-has-children">
+                                                <a href="javascript:void(0)">Case Studies<i class="ri-arrow-down-s-line"></i></a>
+                                                <ul class="menu-subs menu-column-1">
+                                                    <li><a href="case-studies.html">Case Studies</a></li>
+                                                    <li><a href="case-details.html">Case Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="javascript:void(0)">Blog<i class="ri-arrow-down-s-line"></i></a>
+                                                <ul class="menu-subs menu-column-1">
+                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Blog Layout<i class="ri-arrow-right-s-line"></i></a>
+                                                        <ul class="menu-subs menu-column-1">
+                                                            <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+                                                            <li><a href="blog-standard.html">Blog Standard</a></li>
+                                                            <li><a href="blog-columns.html">Blog Columns</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Blog Details Layout<i class="ri-arrow-right-s-line"></i></a>
+                                                        <ul class="menu-subs menu-column-1">
+                                                            <li><a href="blog-details-left-sidebar.html">Blog Details Left Sidebar</a></li>
+                                                            <li><a href="blog-details-right-sidebar.html">Blog Details Right Sidebar</a></li>
+                                                            <li><a href="blog-details-no-sidebar.html">Blog Details No Sidebar</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Others<i class="ri-arrow-right-s-line"></i></a>
+                                                        <ul class="menu-subs menu-column-1">
+                                                            <li><a href="posts-by-author.html">Posts By Author</a></li>
+                                                            <li><a href="posts-by-date.html">Posts By Date</a></li>
+                                                            <li><a href="posts-by-category.html">Posts By Category</a></li>
+                                                            <li><a href="posts-by-tag.html">Posts By Tag</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li> -->
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="other-options d-flex flex-wrap align-items-center justify-content-end">
+                                    <div class="option-item position-relative d-flex align-items-center">
+                                        <div class="mobile-options position-relative d-lg-none me-3">
+                                            <button class="dropdown-toggle  text-center bg-transparent border-0 p-0 transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                                <i class="ri-more-fill"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-centered mobile-option-list top-1 border-0" data-bs-popper="static">
+                                                <a href="appointment.html" class="btn style-one d-inline-flex align-items-center">
+                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                    <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Get A Free Consultation</span>
+                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <button class="search-btn bg_gradient border-0 rounded-circle d-flex flex-column align-items-center justify-content-center dropdown-toggle transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                            <i class="ri-search-line"></i>
+                                            <i class="ri-close-line"></i>
+                                        </button>
+                                        <div class="search-dropdown dropdown-menu dropdown-menu-right top-1 border-0" data-bs-popper="static">
+                                            <form class="search-popup position-relative" action="#">
+                                                <input type="search" class="form-control text-para" placeholder="Search Here">
+                                                <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent d-flex flex-column align-items-center justify-content-center"><i class="ri-search-2-line"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="option-item d-lg-block d-none">
+                                        <a href="appointment.html" class="btn style-one d-inline-flex align-items-center">
+                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Get A Free Consultation</span>
+                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                        </a>
+                                    </div>
+                                    <div class="option-item d-lg-none">
+                                        <button type="button" class="menu-mobile-trigger">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Navbar Area End -->
+
+                    <!-- Hero Section Start -->
+                    <div class="hero-area style-one overflow-hidden">
+                        <div class="hero-slider-one swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="hero-slide-item style-one position-relative z-1">
+                                        <img src="assets/img/new/diagram-1.png" alt="Shape" class="hero-shape position-absolute z-1 move-left">
+                                        <div class="hero-bg img-container position-absolute top-0 start-0 w-100 h-100">
+                                            <img src="assets/img/new/hero-slide-1.jpg.jpeg" alt="Image" class="w-100 h-100 object-fit-cover">
+                                        </div>
+                                        <div class="container style-two">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="hero-content position-relative z-1">
+                                                        <h1 class="fw-bold text-white title-anim">Elevate Your Business With Expert <b class="fw-bold text_secondary">Accounting & Consulting</b></h1>
+                                                        <ul class="social-profile style-five d-flex flex-column align-items-start list-unstyled mb-0">
+                                                            <li class="fs-xxl-18"><a href="https://www.facebook.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Facebook</a></li>
+                                                            <li class="fs-xxl-18"><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Twitter</a></li>
+                                                            <li class="fs-xxl-18"><a href="https://www.linkedin.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Linkedin</a></li>
+                                                            <li class="fs-xxl-18"><a href="https://www.instagram.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Instagram</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 position-relative z-1">
+                                                    <div class="stat-card style-three position-relative z-2 round-20 ms-lg-auto mb-30">
+                                                        <h3 class="text-white fw-semibold lh-1 mb-0">20+</h3>
+                                                        <span class="text-white fs-xxl-18 d-block mb-22">Years Of Expertise</span>
+                                                        <ul class="client-list list-unstyled mb-2">
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-3.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-4.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-5.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-2.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                        </ul>
+                                                        <p class="text-white fs-xxl-18 mb-0">2,250+ businesses are trusting us.</p>
+                                                    </div>
+                                                    <div class="hero-para position-relative z-1">
+                                                        <p class="fs-xxl-18 text-white">Tailored accounting and management strategies to optimize performance and reduce risks.</p>
+                                                        <a href="services.html" class="btn style-two d-inline-flex align-items-center">
+                                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Explore Services</span>
+                                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="hero-slide-item style-one position-relative z-1">
+                                        <img src="assets/img/new/diagram-1.png" alt="Shape" class="hero-shape position-absolute z-1 move-left">
+                                        <div class="hero-bg img-container position-absolute top-0 start-0 w-100 h-100">
+                                            <img src="assets/img/new/hero-slide-2.jpg.jpeg" alt="Image" class="w-100 h-100 object-fit-cover">
+                                        </div>
+                                        <div class="container style-two">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="hero-content position-relative z-1">
+                                                        <h1 class="fw-bold text-white reveal-text-bottom" >Strategic Financial Solutions For <b class="fw-bold text_secondary">Sustainable Growth</b></h1>
+                                                        <ul class="social-profile style-five d-flex flex-column align-items-start list-unstyled mb-0">
+                                                            <li class="fs-xxl-18"><a href="https://www.facebook.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Facebook</a></li>
+                                                            <li class="fs-xxl-18"><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Twitter</a></li>
+                                                            <li class="fs-xxl-18"><a href="https://www.linkedin.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Linkedin</a></li>
+                                                            <li class="fs-xxl-18"><a href="https://www.instagram.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Instagram</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 position-relative z-1" data-cue="slideInLeft" data-delay="300" data-duration="600">
+                                                    <div class="stat-card style-three position-relative z-2 round-20 ms-auto mb-30">
+                                                        <h3 class="text-white fw-semibold lh-1 mb-0">20+</h3>
+                                                        <span class="text-white fs-xxl-18 d-block mb-22">Years Of Expertise</span>
+                                                        <ul class="client-list list-unstyled mb-2">
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-3.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-4.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-5.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-2.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                        </ul>
+                                                        <p class="text-white fs-xxl-18 mb-0">2,250+ businesses are trusting us.</p>
+                                                    </div>
+                                                    <div class="hero-para position-relative z-1">
+                                                        <p class="fs-xxl-18 text-white">Tailored accounting and management strategies to optimize performance and reduce risks.</p>
+                                                        <a href="services.html" class="btn style-two d-inline-flex align-items-center">
+                                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Explore Services</span>
+                                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="hero-slide-item style-one position-relative z-1">
+                                        <img src="assets/img/new/diagram-1.png" alt="Shape" class="hero-shape position-absolute z-1 move-left">
+                                        <div class="hero-bg img-container position-absolute top-0 start-0 w-100 h-100">
+                                            <img src="assets/img/new/hero-slide-3.jpg.jpeg" alt="Image" class="w-100 h-100 object-fit-cover">
+                                        </div>
+                                        <div class="container style-two">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="hero-content position-relative z-1">
+                                                        <h1 class="fw-bold text-white reveal-text-bottom" >Where Accounting Meets Innovation <b class="fw-bold text_secondary">Build Smarter With Exrox</b></h1>
+                                                        <ul class="social-profile style-five d-flex flex-column align-items-start list-unstyled mb-0">
+                                                            <li class="fs-xxl-18"><a href="https://www.facebook.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Facebook</a></li>
+                                                            <li class="fs-xxl-18"><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Twitter</a></li>
+                                                            <li class="fs-xxl-18"><a href="https://www.linkedin.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Linkedin</a></li>
+                                                            <li class="fs-xxl-18"><a href="https://www.instagram.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Instagram</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 position-relative z-1" data-cue="slideInLeft" data-delay="300" data-duration="600">
+                                                    <div class="stat-card style-three position-relative z-2 round-20 ms-auto mb-30">
+                                                        <h3 class="text-white fw-semibold lh-1 mb-0">20+</h3>
+                                                        <span class="text-white fs-xxl-18 d-block mb-22">Years Of Expertise</span>
+                                                        <ul class="client-list list-unstyled mb-2">
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-3.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-4.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-5.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                            <li class="rounded-circle"><img src="assets/img/new/client-2.jpg.png" alt="Icon" class="rounded-circle"></li>
+                                                        </ul>
+                                                        <p class="text-white fs-xxl-18 mb-0">2,250+ businesses are trusting us.</p>
+                                                    </div>
+                                                    <div class="hero-para position-relative z-1">
+                                                        <p class="fs-xxl-18 text-white">Tailored accounting and management strategies to optimize performance and reduce risks.</p>
+                                                        <a href="services.html" class="btn style-two d-inline-flex align-items-center">
+                                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Explore Services</span>
+                                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hero-pagination"></div>
+                        </div>
+                    </div>
+                    <!-- Hero Section End -->
+
+                    <!-- Promo Area Start -->
+                    <div class="bg_secondary">
+                        <div class="container style-two">
+                            <div class="promo-card-wrap style-one d-flex flex-wrap justify-content-xl-between justify-content-center">
+                                <div class="promo-card style-one d-flex flex-wrap align-items-center" data-cue="slideInLeft">
+                                    <span class="font-secondary text-white fw-semibold">2005</span>
+                                    <p class="fs-xxl-18 text-white mb-0">Founded with focus on small business tax optimization</p>
+                                </div>
+                                <div class="promo-card style-one d-flex flex-wrap align-items-center" data-cue="slideInLeft">
+                                    <span class="font-secondary text-white fw-semibold">2015</span>
+                                    <p class="fs-xxl-18 text-white mb-0">Expanded to offer CFO advisory for startups</p>
+                                </div>
+                                <div class="promo-card style-one d-flex flex-wrap align-items-center" data-cue="slideInLeft">
+                                    <span class="font-secondary text-white fw-semibold">2024</span>
+                                    <p class="fs-xxl-18 text-white mb-0">Recognized as Top 50 Accounting Firms by Forbes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Promo Area End -->
+
+                    <!-- About Us Section Start -->
+                    <div class="about-area style-one ptb-120">
+                        <div class="container style-one">
+                            <div class="row">
+                                <div class="col-xxl-11 offset-xxl-1 col-md-10 offset-md-1 pe-xxl-5">
+                                    <h2 class="section-title style-one fw-semibold title-anim mb-35">
+                                        <small class="fs-18 fw-normal text-md-center text-start d-inline-block">ABOUT US</small>
+                                        Exrox was founded in 2005 with a simple mission: to empower businesses with financial clarity and strategic direction. What began as a small accounting firm has evolved into a full-service consultancy serving 500+ clients across multiple industries.
+                                    </h2>
+                                    <a href="about-us.html" class="btn style-one d-inline-flex align-items-center" data-cue="slideInLeft" data-delay="800">
+                                        <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                        <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Discover More</span>
+                                        <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="container-wrapper mb-45">
+                                <div class="about-shape move-right-full">
+                                    <img src="assets/img/new/shape-1.png" alt="Shape" class="about-shape d-block ms-auto rotate-fast">
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-lg-5 col-lg-5 pe-xxl-2 mb-md-30">
+                                    <div class="about-img-wrap img-container position-relative overflow-hidden round-20" data-cue="anim-left" data-delay="400" data-duration="1200">
+                                        <img src="assets/img/new/about-img-1.jpg.jpeg" alt="Image" class="w-100 round-20">
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 ps-xl-5">
+                                    <div class="about-content">
+                                        <h3 class="reveal-text-bottom">Exrox is a forward-thinking accounting and management consulting firm committed to helping businesses thrive with clarity, confidence, and control.</h3>
+                                        <div class="counter-card-wrap d-flex flex-wrap justify-content-md-between justify-content-center">
+                                            <div class="counter-card text-center mb-30" data-cue="slideInLeft" data-delay="100">
+                                                <h4 class="text-title fw-semibold"><span class="counter fw-bold transition">99</span>%</h4>
+                                                <span class="fs-xxl-18 d-block">Professional Advisors</span>
+                                            </div>
+                                            <div class="counter-card text-center mb-30" data-cue="slideInLeft" data-delay="200">
+                                                <h4 class="text-title fw-semibold"><span class="counter fw-bold transition">15</span>K+</h4>
+                                                <span class="fs-xxl-18 d-block">Completed Projects</span>
+                                            </div>
+                                            <div class="counter-card text-center mb-30" data-cue="slideInLeft" data-delay="300">
+                                                <h4 class="text-title fw-semibold"><span class="counter fw-bold transition">98</span>%</h4>
+                                                <span class="fs-xxl-18 d-block">Client Retention</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xxl-6 col-lg-5 col-md-6 pe-xxl-4">
+                                                <div class="achievement-box position-relative z-1 move-right-full round-20 mb-md-30" data-cue="slideInLeft" data-delay="400">
+                                                    <h6 class="fs-18 font-primary fw-normal text-title mb-40">ACHIEVEMENTS</h6>
+                                                    <ul class="list-unstyled mb-0">
+                                                        <li class="d-flex flex-wrap align-items-start justify-content-between">
+                                                            <span class="fs-18 fw-semibold">Name of the award</span>
+                                                            <span class="fs-18 fw-semibold">Year</span>
+                                                        </li>
+                                                        <li class="d-flex flex-wrap align-items-start justify-content-between">
+                                                            <span class="fs-20 font-secondary fw-semibold text-title">Best Accounting & Consulting Firm</span>
+                                                            <span class="fs-20 font-secondary fw-semibold text-title">2024</span>
+                                                        </li>
+                                                        <li class="d-flex flex-wrap align-items-start justify-content-between">
+                                                            <span class="fs-20 font-secondary fw-semibold text-title">Top 100 Financial Advisors In South Asia</span>
+                                                            <span class="fs-20 font-secondary fw-semibold text-title">2022</span>
+                                                        </li>
+                                                        <li class="d-flex flex-wrap align-items-start justify-content-between">
+                                                            <span class="fs-20 font-secondary fw-semibold text-title">Client Choice Award</span>
+                                                            <span class="fs-20 font-secondary fw-semibold text-title">2023</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-xxl-6 col-lg-7 col-md-6 ps-xxl-2">
+                                                <div class="founders-box bg_secondary round-20" data-cue="slideInRight" data-delay="400">
+                                                    <h6 class="text-white">“We don’t just balance books—we build better businesses.”</h6>
+                                                    <div class="ceo-info-wrap d-flex flex-wrap align-items-center">
+                                                        <div class="ceo-img rounded-circle">
+                                                            <img src="assets/img/about/ceo.jpg" alt="Image" class="rounded-circle">
+                                                        </div>
+                                                        <div class="ceo-info">
+                                                            <h5 class="fs-20 fw-bold mb-6 text-white">Carrie Wallace</h5>
+                                                            <span class="text-title fs-xxl-18 text-white">Founder & CEO</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="support-box round-20 overflow-hidden">
+                                                        <div class="move-text style-one position-relative z-1">
+                                                            <ul class="d-flex align-items-center list-unstyled mb-0">
+                                                                <li class="font-secondary fw-normal text-white">24/7 CALL US: <a href="tel:18083609282" class="text-white fw-semibold">+1 (808) 360-9282 </a></li>
+                                                                <li class="font-secondary fw-normal text-white">24/7 CALL US: <a href="tel:18083609282" class="text-white fw-semibold">+1 (808) 360-9282 </a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- About Us Section End -->
+
+                    <!-- Why Choose Us Section Start -->
+                    <div class="container style-one pb-90">
+                        <h4 class="section-subtitle fs-18 fw-normal font-primary mb-50">WHY CHOOSE EXROX?</h4>
+                        <div class="row justify-content-center">
+                            <div class="col-xl-4 col-md-6 d-flex">
+                                <div class="wh-card style-one flex-fill round-20 transition mb-30" data-cue="bounceIn" data-duration="600" data-delay="200">
+                                    <h3 class="mb-25">Expertise That Delivers</h3>
+                                    <img src="assets/img/new/rocket-growth.svg" alt="Icon" class="d-block mb-30">
+                                    <ul class="feature-list list-unstyled mb-0">
+                                        <li class="position-relative fs-xxl-18">
+                                            <img src="assets/img/new/check.svg" alt="Icon" class="position-absolute start-0">
+                                            <span class="fw-semibold text-title me-1">Certified Professionals:</span>CPA, CMA, and MBA-qualified team.
+                                        </li>
+                                        <li class="position-relative fs-xxl-18">
+                                            <img src="assets/img/new/check.svg" alt="Icon" class="position-absolute start-0">
+                                            <span class="fw-semibold text-title me-1">Industry Specialization:</span>Deep knowledge in [e.g., healthcare, tech, manufacturing].
+                                        </li>
+                                        <li class="position-relative fs-xxl-18">
+                                            <img src="assets/img/new/check.svg" alt="Icon" class="position-absolute start-0">
+                                            <span class="fw-semibold text-title me-1">Tech-Forward:</span>Leveraging AI-driven tools for precision and efficiency.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6 d-flex">
+                                <div class="wh-card style-one flex-fill round-20 mb-30" data-cue="bounceIn" data-duration="600" data-delay="400">
+                                    <h3 class="mb-15">Client-Centric Approach</h3>
+                                    <p class="fs-xxl-18 mb-10">"We listen first—your goals shape our strategies."</p>
+                                    <p class="fs-xxl-18 mb-25">Dedicated account managers for personalized service.</p>
+                                    <div class="wh-img round-10">
+                                        <img src="assets/img/new/wh-img-1.jpg.jpeg" alt="Image" class="round-10">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6 d-flex">
+                                <div class="wh-card style-two flex-fill round-20 mb-30" data-cue="bounceIn" data-duration="600" data-delay="500">
+                                    <h3 class="fs-24 text-black mb-22">Proven Results</h3>
+                                    <div class="row gx-xxl-3 gx-md-2 align-items-center">
+                                        <div class="col-md-6">
+                                            <div class="wh-img round-10 mb-25">
+                                                <img src="assets/img/new/wh-img-2.jpg.jpeg" alt="Image" class="w-100 round-10">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="rating-box text-center round-10 mb-25">
+                                                <p class="fs-xxl-18 text-black mb-2">Customer Satisfaction</p>
+                                                <img src="assets/img/new/smiley.svg" alt="Icon" class="smiley-icon d-block mx-auto mb-6">
+                                                <div class="ratings d-flex flex-wrap align-items-center justify-content-center">
+                                                    <span class="d-inline-block lh-1 fs-18 fs-xxl-24 fw-bold text-black me-2">5.0</span>
+                                                    <ul class="rating list-unstyled lh-1 mb-0">
+                                                        <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="feature-list list-unstyled mb-0">
+                                        <li class="position-relative fs-xxl-18 text-black">*"$2B+ in client assets managed"*</li>
+                                        <li class="position-relative fs-xxl-18 text-black">"90% client retention rate over 5 years"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Why Choose Us Section End -->
+
+                    <!-- Service Section Start -->
+                    <div class="service-area style-one position-relative z-1 overflow-hidden horizontal-slider h-100">
+                        <div class="service-bg img-container position-absolute z-0 top-0 start-0 w-100 h-100">
+                            <img src="assets/img/new/service-bg-1.jpg.jpeg" alt="Image" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <div class="container style-one pt-120">
+                            <div class="row">
+                                <div class="col-xl-10 offset-xl-1">
+                                    <h2 class="section-title style-one fw-semibold title-anim text-white mb-80">
+                                    <small class="fs-18 fw-normal text-md-center text-start text-white d-inline-block">EXROX SERVICES</small>
+                                    Expert accounting and management advice, all in one place. Custom-crafted for the way your business works.
+                                </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-slider-one swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="service-card style-one">
+                                        <img src="assets/img/new/tax-planning.svg" alt="Icon">
+                                        <h3 class="fs-24"><a href="service-details.html" class="text-white link-hover-white transition">Tax Planning & Compliance</a></h3>
+                                        <p class="fs-xxl-18">Minimize liabilities and meet deadlines with our strategic tax support for individuals and businesses.</p>
+                                        <a href="services.html" class="btn style-one d-inline-flex align-items-center">
+                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Discover more</span>
+                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="service-card style-one active">
+                                        <img src="assets/img/new/bookkeeping.svg" alt="Icon">
+                                        <h3 class="fs-24"><a href="service-details.html" class="text-white link-hover-white transition">Bookkeeping & Financial Reporting</a></h3>
+                                        <p class="fs-xxl-18">Stay organized and compliant with real-time reports, monthly summaries, and clean records.</p>
+                                        <a href="services.html" class="btn style-one d-inline-flex align-items-center">
+                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Discover more</span>
+                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="service-card style-one">
+                                        <img src="assets/img/new/paycheck.svg" alt="Icon">
+                                        <h3 class="fs-24"><a href="service-details.html" class="text-white link-hover-white transition">Payroll Services</a></h3>
+                                        <p class="fs-xxl-18">Fast, accurate, and compliant payroll processing — stress-free for your team and your books.</p>
+                                        <a href="services.html" class="btn style-one d-inline-flex align-items-center">
+                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Discover more</span>
+                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="service-card style-one">
+                                        <img src="assets/img/new/management.svg" alt="Icon">
+                                        <h3 class="fs-24"><a href="service-details.html" class="text-white link-hover-white transition">Audit & Assurance</a></h3>
+                                        <p class="fs-xxl-18">We offer comprehensive internal reviews, thorough external audits, and in-depth risk assessments.</p>
+                                        <a href="services.html" class="btn style-one d-inline-flex align-items-center">
+                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Discover more</span>
+                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                 <div class="swiper-slide">
+                                    <div class="service-card style-one">
+                                        <img src="assets/img/new/tax-planning.svg" alt="Icon">
+                                        <h3 class="fs-24"><a href="service-details.html" class="text-white link-hover-white transition">Tax Planning & Compliance</a></h3>
+                                        <p class="fs-xxl-18">Minimize liabilities and meet deadlines with our strategic tax support for individuals and businesses.</p>
+                                        <a href="services.html" class="btn style-one d-inline-flex align-items-center">
+                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Discover more</span>
+                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-btn style-four d-flex flex-wrap align-items-center justify-content-end w-75">
+                            <button class="prev-btn service-prev border-0 z-1 d-flex flex-column align-items-center justify-content-center me-2 rounded-circle transition"><img src="assets/img/new/left-arrow-ash.svg" alt="Icon"></button>
+                            <button class="next-btn service-next border-0 z-1 d-flex flex-column align-items-center justify-content-center ms-1 rounded-circle transition"><img src="assets/img/new/right-arrow-ash.svg" alt="Icon"></button>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- Service Section End -->
+
+                    <!-- Moving Text Start -->
+                    <div class="move-text-wrapper style-one">
+                        <div class="move-text style-three position-relative overflow-hidden z-1">
+                            <ul class="d-flex align-items-center list-unstyled mb-0">
+                                <li class="font-secondary fw-bold text-white">HEALTHCARE</li>
+                                <li class="font-secondary fw-bold text-white">MANUFACTURING</li>
+                                <li class="font-secondary fw-bold text-white">TECHNOLOGY</li>
+                                <li class="font-secondary fw-bold text-white">RETAIL</li>
+                                <li class="font-secondary fw-bold text-white">REAL ESTATE</li>
+                                <li class="font-secondary fw-bold text-white">HEALTHCARE</li>
+                                <li class="font-secondary fw-bold text-white">MANUFACTURING</li>
+                                <li class="font-secondary fw-bold text-white">TECHNOLOGY</li>
+                                <li class="font-secondary fw-bold text-white">RETAIL</li>
+                                <li class="font-secondary fw-bold text-white">REAL ESTATE</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Moving Text End -->
+
+                    <!-- Case Studies Section Start -->
+                    <div class="container pt-120">
+                        <div class="row">
+                            <div class="col-xl-10 offset-xl-1">
+                                <h2 class="section-title style-one fw-semibold title-anim mb-35">
+                                    <small class="fs-18 fw-normal text-md-center text-start d-inline-block">CASE STUDIES</small>
+                                    Explore how we've helped businesses overcome challenges and achieve transformational growth
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="case-card-wrap style-one">
+                            <div class="case-card style-one bg-white round-20 mb-25">
+                                <div class="row align-items-center">
+                                    <div class="col-xl-6 col-lg-5">
+                                        <div class="case-img round-20 position-relative hover-text-target mb-md-25" data-cursor-text="View Projects">
+                                            <img src="assets/img/new/case-1.jpg.jpeg" alt="Image" class="round-20" data-cue="anim-left" data-duration="1000">
+                                            <span class="case-counter font-secondary fw-semibold text-white position-absolute">01</span>
+                                            <a href="case-details.html" class="position-absolute top-0 start-0 w-100 h-100"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-7">
+                                        <div class="case-info" data-cue="slideInUp">
+                                            <h3 class="fs-24 mb-22"><a href="case-details.html" class="text-title link-hover-primary transition">E-Commerce Efficiency Boost</a></h3>
+                                            <div class="job-info-wrap d-flex flex-wrap align-items-center mb-25">
+                                                <div class="employer-logo bg-albastor d-flex flex-column align-items-center justify-content-center rounded-circle">
+                                                    <img src="assets/img/new/employer-logo-1.png" alt="Image">
+                                                </div>
+                                                <div class="job-info">
+                                                    <h3 class="fs-20 lh-1 mb-10">FastTrack Apparel</h3>
+                                                    <span class="fs-xxl-18 d-block">(Online Retail, USA)</span>
+                                                </div>
+                                            </div>
+                                            <p class="fs-xxl-18"><span class="text-title fw-semibold">Challenge:</span> Disorganized finances and inaccurate forecasting</p>
+                                            <p class="fs-xxl-18 mb-18"><span class="text-title fw-semibold">Solution:</span>  Cloud accounting setup, KPI dashboards, automated reporting</p>
+                                            <div class="case-outcome-box bg-albastor round-20">
+                                                <h3 class="fs-20 mb-12">Outcome</h3>
+                                                <div class="row gx-xl-2">
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-one bg-white round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 mb-0">40% fewer accounting errors</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-two bg_secondary round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 text-white mb-0">25% better cash flow forecasting</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-three bg-secondary round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 text-white mb-0">15% increase in quarterly profits</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="case-card style-one bg-albastor round-20 mb-25">
+                                <div class="row align-items-center">
+                                    <div class="col-xl-6 col-lg-5">
+                                        <div class="case-img round-20 position-relative hover-text-target mb-md-25" data-cursor-text="View Projects">
+                                            <img src="assets/img/new/case-2.jpg.jpeg" alt="Image" class="round-20" data-cue="anim-left" data-duration="1000">
+                                            <span class="case-counter font-secondary fw-semibold text-white position-absolute">02</span>
+                                            <a href="case-details.html" class="position-absolute top-0 start-0 w-100 h-100"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-7">
+                                        <div class="case-info" data-cue="slideInUp">
+                                            <h3 class="fs-24 mb-22"><a href="case-details.html" class="text-title link-hover-primary transition">Healthcare Compliance & Cost Control</a></h3>
+                                            <div class="job-info-wrap d-flex flex-wrap align-items-center mb-25">
+                                                <div class="employer-logo bg-white d-flex flex-column align-items-center justify-content-center rounded-circle">
+                                                    <img src="assets/img/new/employer-logo-1.png" alt="Image">
+                                                </div>
+                                                <div class="job-info">
+                                                    <h3 class="fs-20 lh-1 mb-10">Medicore Clinics</h3>
+                                                    <span class="fs-xxl-18 d-block">(Multi-location Health Provider)</span>
+                                                </div>
+                                            </div>
+                                            <p class="fs-xxl-18"><span class="text-title fw-semibold">Challenge:</span> Compliance gaps and rising operational costs</p>
+                                            <p class="fs-xxl-18 mb-18"><span class="text-title fw-semibold">Solution:</span>Workflow standardization, billing automation, regulatory audit</p>
+                                            <div class="case-outcome-box bg-white round-20">
+                                                <h3 class="fs-20 mb-12">Outcome</h3>
+                                                <div class="row gx-xl-2">
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-one bg-albastor round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 mb-0 ">12% revenue increase</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-two bg_secondary round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 text-white mb-0">Full compliance in 60 days</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-three bg-secondary round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 text-white mb-0">30% faster billing cycles</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="case-card style-one bg-white round-20 mb-25">
+                                <div class="row align-items-center">
+                                    <div class="col-xl-6 col-lg-5">
+                                        <div class="case-img round-20 position-relative hover-text-target mb-md-25" data-cursor-text="View Projects">
+                                            <img src="assets/img/new/case-3.jpg.jpeg" alt="Image" class="round-20" data-cue="anim-left" data-duration="1000">
+                                            <span class="case-counter font-secondary fw-semibold text-white position-absolute">03</span>
+                                            <a href="case-details.html" class="position-absolute top-0 start-0 w-100 h-100"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-7">
+                                        <div class="case-info">
+                                            <h3 class="fs-24 mb-22"><a href="case-details.html" class="text-title link-hover-primary transition">Startup Scaling Strategy</a></h3>
+                                            <div class="job-info-wrap d-flex flex-wrap align-items-center mb-25">
+                                                <div class="employer-logo bg-albastor d-flex flex-column align-items-center justify-content-center rounded-circle">
+                                                    <img src="assets/img/new/employer-logo-1.png" alt="Image">
+                                                </div>
+                                                <div class="job-info">
+                                                    <h3 class="fs-20 lh-1 mb-10">FastTrack Apparel</h3>
+                                                    <span class="fs-xxl-18 d-block">(Online Retail, USA)</span>
+                                                </div>
+                                            </div>
+                                            <p class="fs-xxl-18"><span class="text-title fw-semibold">Challenge:</span> Lack of financial structure and investor-ready reports</p>
+                                            <p class="fs-xxl-18 mb-18"><span class="text-title fw-semibold">Solution:</span>Created financial models, structured budgets, VC reporting packs</p>
+                                            <div class="case-outcome-box bg-albastor round-20">
+                                                <h3 class="fs-20 mb-12">Outcome</h3>
+                                                <div class="row gx-xl-2">
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-one bg-white round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 mb-0">Raised $2.5M in seed funding</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-two bg_secondary round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 text-white mb-0">100% investor reporting accuracy</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-three bg-secondary round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 text-white mb-0">Financial burn rate optimized by 18%</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="case-card style-one bg-albastor round-20 mb-25">
+                                <div class="row align-items-center">
+                                    <div class="col-xl-6 col-lg-5">
+                                        <div class="case-img round-20 position-relative hover-text-target mb-md-25" data-cursor-text="View Projects">
+                                            <img src="assets/img/new/case-4.jpg.jpeg" alt="Image" class="round-20" data-cue="anim-left" data-duration="1000">
+                                            <span class="case-counter font-secondary fw-semibold text-white position-absolute">04</span>
+                                            <a href="case-details.html" class="position-absolute top-0 start-0 w-100 h-100"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-7">
+                                        <div class="case-info">
+                                            <h3 class="fs-24 mb-22"><a href="case-details.html" class="text-title link-hover-primary transition">Manufacturing Cost Optimization</a></h3>
+                                            <div class="job-info-wrap d-flex flex-wrap align-items-center mb-25">
+                                                <div class="employer-logo bg-white d-flex flex-column align-items-center justify-content-center rounded-circle">
+                                                    <img src="assets/img/new/employer-logo-1.png" alt="Image">
+                                                </div>
+                                                <div class="job-info">
+                                                    <h3 class="fs-20 lh-1 mb-10">SteelCore Industries</h3>
+                                                    <span class="fs-xxl-18 d-block">(Manufacturing Firm)</span>
+                                                </div>
+                                            </div>
+                                            <p class="fs-xxl-18"><span class="text-title fw-semibold">Challenge:</span> Inefficient production budgeting, untracked spending</p>
+                                            <p class="fs-xxl-18 mb-18"><span class="text-title fw-semibold">Solution:</span>Implemented real-time cost tracking & department budgets</p>
+                                            <div class="case-outcome-box bg-white round-20">
+                                                <h3 class="fs-20 mb-12">Outcome</h3>
+                                                <div class="row gx-xl-2">
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-one bg-albastor round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 mb-0">Reduced overhead costs by 22%</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-two bg_secondary round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 text-white mb-0">Improved budget accuracy 1 locations</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="outcome-box style-three bg-secondary round-10 mb-sm-20">
+                                                            <p class="fs-xxl-18 text-white mb-0">Achieved visibility within 6 Month</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Case Studies Section End -->
+
+                    <!-- Testimonial Section Start -->
+                    <div class="testimonial-area style-two">
+                        <div class="container style-one pt-120">
+                            <div class="row">
+                                <div class="col-xl-10 offset-xl-1">
+                                    <h2 class="section-title style-one fw-semibold title-anim mb-35">
+                                        <small class="fs-18 fw-normal text-md-center text-start d-inline-block">TESTIMONIALS</small>
+                                        Join 500+ businesses who rely on Exrox for financial clarity and strategic growth
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid style-two">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-4 col-md-5">
+                                    <div class="success-box style-one bg_secondary round-20 mb-sm-30" data-cue="slideInUp">
+                                        <h6 class="fs-24 lh-1 mb-18 text-white">Success stories</h6>
+                                        <div class="counter-card">
+                                            <h4 class="text-white fw-semibold mb-3"><span class="counter fw-bold transition">98</span>%</h4>
+                                            <span class="fs-xxl-18 d-block text-white">Client Retention</span>
+                                        </div>
+                                        <div class="ratings d-flex flex-wrap align-items-end mb-12">
+                                            <span class="font-secondary fw-semibold text-white">4.9</span>
+                                            <ul class="rating list-unstyled mb-12 ms-3 lh-1">
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                                <li><i class="ri-star-fill"></i></li>
+                                            </ul>
+                                        </div>
+                                        <p class="fs-xxl-18 text-white mb-0">Based on 50 reviews</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-9 col-lg-8 col-md-7 pe-lg-0">
+                                    <div class="testimonial-slider-one swiper" data-cue="slideInUp">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-card style-one d-flex flex-column justify-content-between round-20">
+                                                    <div>
+                                                        <ul class="rating list-unstyled">
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        </ul>
+                                                        <p class="font-primary fw-bold text-title">“Exrox transformed our messy financials into a streamlined system we can trust. Their team feels like an extension of our business.”</p>
+                                                    </div>
+                                                    <div class="client-info-wrap d-flex flex-wrap align-items-center">
+                                                        <div class="client-img rounded-circle">
+                                                            <img src="assets/img/new/client-7.jpg.png" alt="Image" class="rounded-circle">
+                                                        </div>
+                                                        <div class="client-info">
+                                                            <h6 class="fs-20">Robert Cervantes</h6>
+                                                            <span>CEO & CO-Founder</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-card style-one d-flex flex-column justify-content-between round-20">
+                                                    <div>
+                                                        <ul class="rating list-unstyled">
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        </ul>
+                                                        <p class="font-primary fw-bold text-title">“Thanks to Exrox, we went from reactive budgeting to real-time decision-making. Their insight helped us reduce costs and scale with confidence.”</p>
+                                                    </div>
+                                                    <div class="client-info-wrap d-flex flex-wrap align-items-center">
+                                                        <div class="client-img rounded-circle">
+                                                            <img src="assets/img/new/client-2.jpg.png" alt="Image" class="rounded-circle">
+                                                        </div>
+                                                        <div class="client-info">
+                                                            <h6 class="fs-20">Sharon Starks</h6>
+                                                            <span>CFO, IUBT</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-card style-one d-flex flex-column justify-content-between round-20">
+                                                    <div>
+                                                        <ul class="rating list-unstyled">
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        </ul>
+                                                        <p class="font-primary fw-bold text-title">“They handled our complex multi-location accounts with ease and precision. I couldn’t recommend them more for growing teams.”</p>
+                                                    </div>
+                                                    <div class="client-info-wrap d-flex flex-wrap align-items-center">
+                                                        <div class="client-img rounded-circle">
+                                                            <img src="assets/img/new/client-8.jpg.png" alt="Image" class="rounded-circle">
+                                                        </div>
+                                                        <div class="client-info">
+                                                            <h6 class="fs-20">Brandon Coyne</h6>
+                                                            <span>Businessman</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-card style-one d-flex flex-column justify-content-between round-20">
+                                                    <div>
+                                                        <ul class="rating list-unstyled">
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        </ul>
+                                                        <p class="font-primary fw-bold text-title">“Exrox helped us prepare for funding by building investor-ready reports and forecasts. We closed our seed round in record time.”</p>
+                                                    </div>
+                                                    <div class="client-info-wrap d-flex flex-wrap align-items-center">
+                                                        <div class="client-img rounded-circle">
+                                                            <img src="assets/img/new/client-6.jpg.png" alt="Image" class="rounded-circle">
+                                                        </div>
+                                                        <div class="client-info">
+                                                            <h6 class="fs-20">Rhonda Proffitt</h6>
+                                                            <span>Entrepreneur</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-card style-one d-flex flex-column justify-content-between round-20">
+                                                    <div>
+                                                        <ul class="rating list-unstyled">
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        </ul>
+                                                        <p class="font-primary fw-bold text-title">“Exrox transformed our messy financials into a streamlined system we can trust. Their team feels like an extension of our business.”</p>
+                                                    </div>
+                                                    <div class="client-info-wrap d-flex flex-wrap align-items-center">
+                                                        <div class="client-img rounded-circle">
+                                                            <img src="assets/img/new/client-1.jpg.png" alt="Image" class="rounded-circle">
+                                                        </div>
+                                                        <div class="client-info">
+                                                            <h6 class="fs-20">Robert Cervantes</h6>
+                                                            <span>CEO & CO-Founder</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-card style-one d-flex flex-column justify-content-between round-20">
+                                                    <div>
+                                                        <ul class="rating list-unstyled">
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        </ul>
+                                                        <p class="font-primary fw-bold text-title">“Exrox transformed our messy financials into a streamlined system we can trust. Their team feels like an extension of our business.”</p>
+                                                    </div>
+                                                    <div class="client-info-wrap d-flex flex-wrap align-items-center">
+                                                        <div class="client-img rounded-circle">
+                                                            <img src="assets/img/new/client-7.jpg.png" alt="Image" class="rounded-circle">
+                                                        </div>
+                                                        <div class="client-info">
+                                                            <h6 class="fs-20">Robert Cervantes</h6>
+                                                            <span>CEO & CO-Founder</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-card style-one d-flex flex-column justify-content-between round-20">
+                                                    <div>
+                                                        <ul class="rating list-unstyled">
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        </ul>
+                                                        <p class="font-primary fw-bold text-title">“Thanks to Exrox, we went from reactive budgeting to real-time decision-making. Their insight helped us reduce costs and scale with confidence.”</p>
+                                                    </div>
+                                                    <div class="client-info-wrap d-flex flex-wrap align-items-center">
+                                                        <div class="client-img rounded-circle">
+                                                            <img src="assets/img/new/client-2.jpg.png" alt="Image" class="rounded-circle">
+                                                        </div>
+                                                        <div class="client-info">
+                                                            <h6 class="fs-20">Sharon Starks</h6>
+                                                            <span>CFO, IUBT</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-card style-one d-flex flex-column justify-content-between round-20">
+                                                    <div>
+                                                        <ul class="rating list-unstyled">
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                            <li><img src="assets/img/new/star.svg" alt="Icon"></li>
+                                                        </ul>
+                                                        <p class="font-primary fw-bold text-title">“They handled our complex multi-location accounts with ease and precision. I couldn’t recommend them more for growing teams.”</p>
+                                                    </div>
+                                                    <div class="client-info-wrap d-flex flex-wrap align-items-center">
+                                                        <div class="client-img rounded-circle">
+                                                            <img src="assets/img/new/client-8.jpg.png" alt="Image" class="rounded-circle">
+                                                        </div>
+                                                        <div class="client-info">
+                                                            <h6 class="fs-20">Brandon Coyne</h6>
+                                                            <span>Businessman</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Section End -->
+
+                    <!-- Brand Section Start -->
+                    <div class="container ptb-120">
+                        <div class="row align-items-center">
+                            <div class="col-xxl-5 col-xl-4 col-lg-5 mb-md-20">
+                                <h6 class="fs-18 font-primary fw-normal mb-0 reveal-text-right">OUR ESTEEMED CLIENTS</h6>
+                            </div>
+                            <div class="col-xxl-7 col-xl-8 col-lg-7">
+                                <div class="brand-logo-wrap style-one d-flex flex-wrap align-items-center" data-cue="slideInUp" data-delay="200">
+                                    <div class="brand-logo d-flex flex-column align-items-center justify-content-center style-one round-20">
+                                        <img src="assets/img/new/brand-logo-1.svg" alt="Logo" class="d-block mx-auto">
+                                    </div>
+                                    <div class="brand-logo d-flex flex-column align-items-center justify-content-center style-one round-20">
+                                        <img src="assets/img/new/brand-logo-2.svg" alt="Logo" class="d-block mx-auto">
+                                    </div>
+                                    <div class="brand-logo d-flex flex-column align-items-center justify-content-center style-one round-20">
+                                        <img src="assets/img/new/brand-logo-3.svg" alt="Logo" class="d-block mx-auto">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="brand-logo-wrap style-two d-flex flex-wrap align-items-center">
+                                    <div class="brand-logo d-flex flex-column align-items-center justify-content-center style-one round-20">
+                                        <img src="assets/img/new/brand-logo-4.svg" alt="Logo" class="d-block mx-auto">
+                                    </div>
+                                    <div class="brand-logo d-flex flex-column align-items-center justify-content-center style-one round-20">
+                                        <img src="assets/img/new/brand-logo-5.svg" alt="Logo" class="d-block mx-auto">
+                                    </div>
+                                    <div class="brand-logo d-flex flex-column align-items-center justify-content-center style-one round-20">
+                                        <img src="assets/img/new/brand-logo-6.svg" alt="Logo" class="d-block mx-auto">
+                                    </div>
+                                    <div class="brand-logo d-flex flex-column align-items-center justify-content-center style-one round-20">
+                                        <img src="assets/img/new/brand-logo-7.svg" alt="Logo" class="d-block mx-auto">
+                                    </div>
+                                    <div class="brand-logo d-flex flex-column align-items-center justify-content-center style-one round-20">
+                                        <img src="assets/img/new/brand-logo-8.svg" alt="Logo" class="d-block mx-auto">
+                                    </div>
+                                    <div class="brand-logo d-flex flex-column align-items-center justify-content-center style-one round-20">
+                                        <img src="assets/img/new/brand-logo-9.svg" alt="Logo" class="d-block mx-auto">
+                                    </div>
+                                    <div class="brand-logo d-flex flex-column align-items-center justify-content-center style-one round-20">
+                                        <img src="assets/img/new/brand-logo-10.svg" alt="Logo" class="d-block mx-auto">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Brand Section End -->
+
+                    <!-- Promo Section Start -->
+                    <div class="promo-area style-one position-relative z-1 overflow-hidden pt-120">
+                        <div class="promo-bg img-container position-absolute top-0 start-0 w-100 h-100">
+                            <img src="assets/img/new/promo-bg-1.jpg.jpeg" alt="Image" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <div class="container-fluid style-two">
+                            <div class="row">
+                                <div class="col-xl-5 offset-xl-7">
+                                    <div class="promo-box position-relative z-2 ms-md-auto"  data-cue="anim-left" data-duration="700">
+                                        <h2 class="section-title style-two text-white pe-xxl-5 me-xxl-4 fw-semibold mb-25">Why Trust Exrox?</h2>
+                                        <ul class="promo-list list-unstyled">
+                                            <li>
+                                                <h6 class="fs-24 fw-semibold text-white mb-6">CPA Certified</h6>
+                                                <p class="fs-xxl-18 text-white mb-0">All partners hold active CPA licenses with 10+ years experience</p>
+                                            </li>
+                                            <li>
+                                                <h6 class="fs-24 fw-semibold text-white mb-6">AICP Member</h6>
+                                                <p class="fs-xxl-18 text-white mb-0">Adhering to highest professional standards</p>
+                                            </li>
+                                            <li>
+                                                <h6 class="fs-24 fw-semibold text-white mb-6">25+ Years</h6>
+                                                <p class="fs-xxl-18 text-white mb-0">Combined experience in financial consulting</p>
+                                            </li>
+                                            <li>
+                                                <h6 class="fs-24 fw-semibold text-white mb-6">SOC 2 Compliant</h6>
+                                                <p class="fs-xxl-18 text-white mb-0">Enterprise-grade data security</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Promo Section End -->
+                    <div class="cta-area style-two" data-cue="slideInUp">
+                        <div class="container-fluid style-two">
+                            <div class="cta-box">
+                                <div class="container px-xl-0">
+                                    <div class="row align-items-center">
+                                        <div class="col-xxl-7 col-lg-7 mb-sm-20 mb-md-20">
+                                            <h6 class="fs-18 fw-bold text-white text-xl-center mb-0">Join hundreds of satisfied clients who trust Exrox with their financial strategy.</h6>
+                                        </div>
+                                        <div class="col-xxl-5 col-lg-5 ps-xxl-5">
+                                            <div class="text-xxl-center text-lg-end ms-xxl-2">
+                                                <a href="appointment.html" class="btn style-two d-inline-flex align-items-center">
+                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                                    <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Schedule Free Consultation</span>
+                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Section Start -->
+                    <div class="container ptb-120">
+                        <div class="row">
+                            <div class="col-xl-10 offset-xl-1">
+                                <h2 class="section-title style-one fw-semibold title-anim mb-35">
+                                    <small class="fs-18 fw-normal text-md-center text-start d-inline-block">LATEST ARTICLES</small>
+                                    Financial strategies, industry trends, and expert advice — all in one place
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="blog-slider-one swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="blog-card style-one bg-white img-hover-scale position-relative round-20 mb-30" data-cue="slideInUp" data-duration="800">
+                                        <div class="blog-img img-scale position-relative overflow-hidden">
+                                            <img src="assets/img/new/blog-1.jpg.jpeg" alt="Image" class="position-absolute top-0 start-0 w-100 h-100 transition">
+                                            <img src="assets/img/new/blog-1.jpg.jpeg" alt="Image" class="transition">
+                                        </div>
+                                        <div class="blog-info">
+                                            <ul class="blog-metainfo style-one list-unstyled">
+                                                <li class="position-relative"><a href="posts-by-category.html" >Consulting</a></li>
+                                                <li class="position-relative"><a href="posts-by-date.html">Sep 24, 2025</a></li>
+                                            </ul>
+                                            <h3><a href="blog-details-right-sidebar.html" class="text-title link-hover-primary">7 common accounting mistakes small businesses make</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="blog-card style-one bg-white img-hover-scale position-relative round-20 mb-30" data-cue="slideInUp" data-duration="800">
+                                        <div class="blog-img img-scale position-relative overflow-hidden">
+                                            <img src="assets/img/new/blog-2.jpg.jpeg" alt="Image" class="position-absolute top-0 start-0 w-100 h-100 transition">
+                                            <img src="assets/img/new/blog-2.jpg.jpeg" alt="Image" class="transition">
+                                        </div>
+                                        <div class="blog-info">
+                                            <ul class="blog-metainfo style-one list-unstyled">
+                                                <li class="position-relative"><a href="posts-by-category.html" >Accounting</a></li>
+                                                <li class="position-relative"><a href="posts-by-date.html">Sep 22, 2025</a></li>
+                                            </ul>
+                                            <h3><a href="blog-details-right-sidebar.html" class="text-title link-hover-primary">How choose the right accounting software for your business</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="blog-card style-one bg-white img-hover-scale position-relative round-20 mb-30" data-cue="slideInUp" data-duration="800">
+                                        <div class="blog-img img-scale position-relative overflow-hidden">
+                                            <img src="assets/img/new/blog-3.jpg.jpeg" alt="Image" class="position-absolute top-0 start-0 w-100 h-100 transition">
+                                            <img src="assets/img/new/blog-3.jpg.jpeg" alt="Image" class="transition">
+                                        </div>
+                                        <div class="blog-info">
+                                            <ul class="blog-metainfo style-one list-unstyled">
+                                                <li class="position-relative"><a href="posts-by-category.html" >Consulting</a></li>
+                                                <li class="position-relative"><a href="posts-by-date.html">Sep 20, 2025</a></li>
+                                            </ul>
+                                            <h3><a href="blog-details-right-sidebar.html" class="text-title link-hover-primary">What the latest tax changes mean for your business in 2025</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="blog-card style-one bg-white img-hover-scale position-relative round-20 mb-30" data-cue="slideInUp" data-duration="800">
+                                        <div class="blog-img img-scale position-relative overflow-hidden">
+                                            <img src="assets/img/new/blog-4.jpg.jpeg" alt="Image" class="position-absolute top-0 start-0 w-100 h-100 transition">
+                                            <img src="assets/img/new/blog-4.jpg.jpeg" alt="Image" class="transition">
+                                        </div>
+                                        <div class="blog-info">
+                                            <ul class="blog-metainfo style-one list-unstyled">
+                                                <li class="position-relative"><a href="posts-by-category.html" >Consulting</a></li>
+                                                <li class="position-relative"><a href="posts-by-date.html">Sep 10, 2025</a></li>
+                                            </ul>
+                                            <h3><a href="blog-details-right-sidebar.html" class="text-title link-hover-primary">7 common accounting mistakes small businesses make</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="blog-card style-one bg-white img-hover-scale position-relative round-20 mb-30" data-cue="slideInUp" data-duration="800">
+                                        <div class="blog-img img-scale position-relative overflow-hidden">
+                                            <img src="assets/img/new/blog-5.jpg.jpeg" alt="Image" class="position-absolute top-0 start-0 w-100 h-100 transition">
+                                            <img src="assets/img/new/blog-5.jpg.jpeg" alt="Image" class="transition">
+                                        </div>
+                                        <div class="blog-info">
+                                            <ul class="blog-metainfo style-one list-unstyled">
+                                                <li class="position-relative"><a href="posts-by-category.html" >Accounting</a></li>
+                                                <li class="position-relative"><a href="posts-by-date.html">Sep 15, 2025</a></li>
+                                            </ul>
+                                            <h3><a href="blog-details-right-sidebar.html" class="text-title link-hover-primary">Top 7 Accounting Software Tools for Small Businesses in 2025</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-pagination text-center"></div>
+                        </div>
+                    </div>
+                    <!-- Blog Section End -->
+
+                </div>
+                
+                <!-- Footer Section Start -->
+                <footer class="footer-area style-one">
+                    <div class="container style-one">
+                        <div class="footer-top pt-115">
+                            <div class="row mb-65">
+                                <div class="col-xxl-5 col-lg-4 col-md-5">
+                                    <div class="footer-widget mb-30" data-cue="slideInLeft">
+                                        <a href="index.html" class="logo d-block mb-50">
+                                            <img src="assets/img/new/logo-white.png" alt="Image">
+                                        </a>
+                                        <a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary mb-18">+1 (808) 360-9282</a>
+                                        <a href="/cdn-cgi/l/email-protection#8ae2efe6e6e5caeff2f8e5f2a4e9e5e7" class="contact-mail fs-xxl-18 fw-bold text-white hover-text-secondary"><span class="__cf_email__" data-cfemail="6f070a0303002f0a171d0017410c0002">[email&#160;protected]</span></a>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-4 col-lg-4 col-md-7 ps-xxl-4">
+                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="100">
+                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Quick Links</h3>
+                                        <ul class="footer-menu style-one list-unstyled mb-0">
+                                            <li class="d-block fs-xxl-18"><a href="index.html">Home</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="about-us.html">About Us</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="services.html">Services</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="case-studies.html">Case Studies</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="blog-left-sidebar.html">Blog </a></li>
+                                            <li class="d-block fs-xxl-18"><a href="contact.html">Contact</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="faq.html">FAQs</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-lg-4 col-md-6">
+                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="200">
+                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Stay Connected</h3>
+                                        <p class="text-black fs-xxl-18 mb-25">Join our newsletter and stay updated on the latest news</p>
+                                        <form action="#" class="newsletter-form style-one position-relative">
+                                             <input type="email" class="w-100 fs-xxl-18 text-black border-0 round-5 outline-0" placeholder="Type your email" required>
+                                             <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent"><i class="ri-send-plane-fill"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-7 pe-xxl-0">
+                                    <a href="index.html" class="logo-text text-black reveal-text-right transition" data-cue="slideInUp" data-delay="200">OCTEL <br\>NETWORKS</a>
+                                </div>
+                                <div class="col-xl-4 offset-xxl-1 col-md-5 ps-xxl-4">
+                                    <div class="footer-widget" data-cue="slideInUp" data-delay="200">
+                                        <p class="text-black fs-xxl-18 mb-25">Exrox is a trusted accounting and management consulting firm helping businesses grow with clarity and control.</p>
+                                        <ul class="social-profile style-one list-unstyled mb-0">
+                                            <li><a href="https://www.facebook.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
+                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
+                                            <li><a href="https://www.instagram.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-instagram-line"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-bottom">
+                            <div class="row align-items-center">
+                                <div class="col-md-7 pe-md-0 mb-sm-10">
+                                    <p class="copyright-text fs-xxl-10 text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks</span> | Crafted By <a href="https://www.sunsys.in" target="_blank" class=" link-hover-white text-black">Manithas Technologies Pvt. Ltd.</a></p>
+                                </div>
+                                <div class="col-md-5">
+                                    <ul class="footer-bottom-menu list-unstyled text-lg-end text-center mb-0">
+                                        <li class="fs-xxl-18"><a href="terms-conditions.html" class="text-black link-hover-primary">Terms And Conditions</a></li>
+                                        <li class="fs-xxl-18"><a href="privacy-policy.html" class="text-black link-hover-primary">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- Footer End -->
+
+            </div>
+        </div>
+        <!-- Back to Top -->
+        <div id="progress-wrap" class="progress-wrap style-one">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+              <path id="progress-path" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+            </svg>
+        </div>
+
+        <!-- Link of JS files -->
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/megamenu.js"></script>
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <script src="assets/js/fslightbox.js"></script>
+        <script src="assets/js/gsap.min.js"></script>
+        <script src="assets/js/scrollTrigger.min.js"></script>
+        <script src="assets/js/lenis.min.js"></script>
+        <script src="assets/js/scrollToPlugin.js"></script>
+        <script src="assets/js/SplitText.min.js"></script>
+        <script src="assets/js/customEase.js"></script>
+        <script src="assets/js/scrollcue.min.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

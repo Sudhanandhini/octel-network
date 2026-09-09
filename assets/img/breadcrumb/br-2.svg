@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="460" viewBox="0 0 1920 460">
+  <defs>
+    <linearGradient id="g72" x1="0" y1="0" x2="1920" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00252C"/>
+      <stop offset="1" stop-color="#043138"/>
+    </linearGradient>
+    <radialGradient id="b72" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="460" fill="url(#g72)"/>
+  <g><line x1="-460" y1="0" x2="-920" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="-268" y1="0" x2="-728" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="-76" y1="0" x2="-536" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="116" y1="0" x2="-344" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="308" y1="0" x2="-152" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="500" y1="0" x2="40" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="692" y1="0" x2="232" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="884" y1="0" x2="424" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="1076" y1="0" x2="616" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="1268" y1="0" x2="808" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="1460" y1="0" x2="1000" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="1652" y1="0" x2="1192" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="1844" y1="0" x2="1384" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="2036" y1="0" x2="1576" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/><line x1="2228" y1="0" x2="1768" y2="460" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/></g>
+  <circle cx="157" cy="412" r="694" fill="url(#b72)" opacity="0.12" /><circle cx="1823" cy="285" r="543" fill="url(#b72)" opacity="0.19" /><circle cx="1537" cy="111" r="438" fill="url(#b72)" opacity="0.18" /><circle cx="1835" cy="122" r="763" fill="url(#b72)" opacity="0.10" />
+  
+</svg>

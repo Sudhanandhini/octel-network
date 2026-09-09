@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Scroll / text-reveal animations
+   ========================================================================== */
+
+/* Line-based mask reveal (built by main.js: groups words into their rendered
+   lines, then wraps each line in .reveal-mask > .line-inner). GSAP animates
+   .line-inner directly, so these just need to be sane un-animated defaults. */
+.reveal-mask { overflow: hidden; display: block; }
+.line-inner { display: block; will-change: transform, opacity; }
+
+/* Fallback for browsers/first-paint before JS wraps the lines */
+.reveal-text-bottom, .title-anim { display: block; }
+
+/* Generic scroll-reveal fallback (used if scrollCue attribute animation
+   hasn't initialized yet, avoids content flash) */
+[data-cue] { visibility: visible; }
+
+/* Counter number nudge on view */
+.counter { display: inline-block; }
+
+/* Image reveal wipe (about / case-study images) */
+.img-reveal { position: relative; overflow: hidden; }
+.img-reveal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-secondary);
+  transform-origin: top;
+  z-index: 2;
+  transform: scaleY(1);
+  transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.img-reveal.revealed::before { transform: scaleY(0); }
+
+/* Card lift on hover (generic utility used across grid cards) */
+.hover-lift { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+.hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1); }
+
+/* Image scale-on-hover wrapper (blog / case cards) */
+.img-hover-scale { overflow: hidden; }
+
+/* Fade-in on page load for hero content */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.8s ease both; }
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

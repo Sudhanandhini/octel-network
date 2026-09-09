@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <defs>
+    <linearGradient id="a43" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="hsl(333,45%,28%)"/>
+      <stop offset="1" stop-color="hsl(13,55%,45%)"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" fill="url(#a43)"/>
+  <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-family="Rethink Sans, Arial, sans-serif" font-weight="700" font-size="60.8" fill="#ffffff">BC</text>
+</svg>

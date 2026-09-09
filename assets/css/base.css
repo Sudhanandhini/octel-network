@@ -1,0 +1,162 @@
+/* ==========================================================================
+   Base / Reset / Typography / Layout utilities
+   ========================================================================== */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: var(--font-primary);
+  font-size: var(--font-size);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-para);
+  background-color: var(--color-white);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+a:hover, a:focus { text-decoration: none; }
+
+img { max-width: 100%; height: auto; display: inline-block; }
+
+ul { margin: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  color: var(--color-title);
+  line-height: 1.3;
+  margin: 0 0 0.5em;
+}
+
+p { margin: 0 0 1em; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: 1rem;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.container,
+.container-fluid {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 1400px) {
+  .container { max-width: var(--container-width); }
+}
+
+.container.style-one { max-width: 1370px; }
+.container.style-two { max-width: 1530px; }
+
+/* ---- Color utility classes ---- */
+.text-title { color: var(--color-title) !important; }
+.text-para { color: var(--color-para) !important; }
+.text-white { color: var(--color-white) !important; }
+.text-gray { color: var(--color-gray) !important; }
+.text_secondary { color: var(--color-accent) !important; }
+.text_primary { color: var(--color-primary) !important; }
+
+.bg_primary { background-color: var(--color-primary) !important; }
+.bg_secondary { background-color: var(--color-secondary) !important; }
+.bg-albastor { background-color: var(--color-ash) !important; }
+.bg-white { background-color: var(--color-white) !important; }
+.bg_gradient {
+  background: radial-gradient(97.57% 210.75% at 0.9% 2.98%, rgba(255,255,255,.4) 0%, rgba(255,255,255,0) 100%);
+  backdrop-filter: blur(21px);
+}
+
+.font-primary { font-family: var(--font-primary); }
+.font-secondary { font-family: var(--font-secondary); }
+
+/* ---- Radius scale ---- */
+.round-5 { border-radius: var(--radius-5); }
+.round-10 { border-radius: var(--radius-10); }
+.round-15 { border-radius: var(--radius-15); }
+.round-20 { border-radius: var(--radius-20); }
+.round-30 { border-radius: var(--radius-30); }
+
+/* ---- Spacing scale (top/bottom padding) ---- */
+.ptb-120 { padding-top: 120px; padding-bottom: 120px; }
+.pt-120 { padding-top: 120px; }
+.pb-120 { padding-bottom: 120px; }
+.pt-90 { padding-top: 90px; }
+.pb-90 { padding-bottom: 90px; }
+.pb-95 { padding-bottom: 95px; }
+.mb-120 { margin-bottom: 120px; }
+.mtb-120 { margin-top: 120px; margin-bottom: 120px; }
+
+/* Font-size helpers used across the markup (matches reference scale) */
+.fs-14 { font-size: 14px; }
+.fs-18 { font-size: 18px; }
+.fs-20 { font-size: 20px; }
+.fs-24 { font-size: 24px; }
+.fs-xxl-18 { font-size: 18px; }
+
+/* ---- Object fit helpers ---- */
+.object-fit-cover { object-fit: cover; }
+
+/* ---- Misc ---- */
+.z-0 { z-index: 0; }
+.z-1 { z-index: 1; }
+.z-2 { z-index: 2; }
+
+.img-container { overflow: hidden; }
+
+/* Section title (shared across all sections) */
+.section-title {
+  font-size: 40px;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+.section-title small,
+.section-subtitle {
+  display: inline-block;
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.section-title small { display: block; }
+.section-title.style-two {
+  font-size: 36px;
+}
+.section-title.style-three {
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+/* Skip link for a11y */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 10px 16px;
+  z-index: 2000;
+}
+.skip-link:focus { left: 10px; top: 10px; }

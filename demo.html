@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cloud Transformation Journey</title>
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #111111;
+        }
+
+
+        /* =========================================================
+           MAIN SECTION
+        ========================================================= */
+
+        .cloud-journey-section {
+            width: 100%;
+
+            padding:
+                clamp(35px, 5vw, 65px)
+                clamp(15px, 3vw, 45px)
+                clamp(45px, 5vw, 75px);
+
+            background: #ffffff;
+
+            overflow: hidden;
+        }
+
+
+        /* =========================================================
+           MAIN CONTAINER
+        ========================================================= */
+
+        .cloud-journey {
+            width: 100%;
+            max-width: 1500px;
+
+            margin: 0 auto;
+
+            position: relative;
+        }
+
+
+        /* =========================================================
+           FIRST ROW
+
+           Discover → Assess → Architect → Migrate → Modernize
+        ========================================================= */
+
+        .journey-row-one {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, minmax(0, 1fr));
+
+            align-items: start;
+
+            position: relative;
+
+            z-index: 5;
+        }
+
+
+        /* =========================================================
+           SECOND ROW
+
+           Optimize ← Operate ← Secure ← Automate
+        ========================================================= */
+
+        .journey-row-two {
+            width: 80%;
+
+            margin-left: 20%;
+
+            margin-top:
+                clamp(85px, 9vw, 125px);
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            align-items: start;
+
+            position: relative;
+
+            z-index: 5;
+        }
+
+
+        /* =========================================================
+           JOURNEY ITEM
+        ========================================================= */
+
+        .journey-item {
+            width: 100%;
+
+            min-width: 0;
+
+            position: relative;
+
+            text-align: center;
+        }
+
+
+        /* =========================================================
+           ICON CIRCLE
+        ========================================================= */
+
+        .icon-circle {
+            width:
+                clamp(68px, 6.2vw, 92px);
+
+            height:
+                clamp(68px, 6.2vw, 92px);
+
+            margin:
+                0 auto
+                clamp(10px, 1vw, 16px);
+
+            border:
+                1px solid #dedede;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+
+        /* =========================================================
+           SVG ICON
+        ========================================================= */
+
+        .step-icon {
+            width:
+                clamp(29px, 2.6vw, 39px);
+
+            height:
+                clamp(29px, 2.6vw, 39px);
+
+            fill: none;
+
+            stroke: #ef1025;
+
+            stroke-width: 1.8;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        /* =========================================================
+           TITLE
+        ========================================================= */
+
+        .step-title {
+            margin-bottom:
+                clamp(6px, .7vw, 10px);
+
+            font-size:
+                clamp(13px, 1.05vw, 16px);
+
+            line-height: 1.3;
+
+            font-weight: 600;
+
+            color: #111111;
+        }
+
+
+        /* =========================================================
+           DESCRIPTION
+        ========================================================= */
+
+        .step-description {
+            width: 100%;
+
+            max-width:
+                clamp(120px, 12vw, 175px);
+
+            margin: 0 auto;
+
+            font-size:
+                clamp(10px, .85vw, 13px);
+
+            line-height: 1.55;
+
+            font-weight: 400;
+
+            color: #888888;
+        }
+
+
+        /* =========================================================
+           FIRST ROW ARROWS
+
+           Discover → Assess
+           Assess → Architect
+           Architect → Migrate
+           Migrate → Modernize
+        ========================================================= */
+
+        .row-one-arrow {
+            position: absolute;
+
+            top: 50%;
+
+            left:
+                calc(
+                    50% +
+                    clamp(34px, 3.15vw, 47px)
+                );
+
+            width:
+                calc(
+                    100% -
+                    clamp(68px, 6.3vw, 94px)
+                );
+
+            height: 12px;
+
+            transform:
+                translateY(-50%);
+
+            z-index: 2;
+
+            pointer-events: none;
+        }
+
+
+        /* Dashed horizontal line */
+
+        .row-one-arrow::before {
+            content: "";
+
+            position: absolute;
+
+            top: 5px;
+
+            left: 0;
+
+            width: calc(100% - 10px);
+
+            border-top:
+                2px dashed #ef1025;
+        }
+
+
+        /* Right arrow */
+
+        .row-one-arrow::after {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            right: 0;
+
+            width: 0;
+
+            height: 0;
+
+            border-top:
+                6px solid transparent;
+
+            border-bottom:
+                6px solid transparent;
+
+            border-left:
+                9px solid #ef1025;
+        }
+
+
+        /* No arrow after Modernize */
+
+        .journey-row-one
+        .journey-item:last-child
+        .row-one-arrow {
+            display: none;
+        }
+
+
+        /* =========================================================
+           SECOND ROW ARROWS
+
+           Optimize ← Operate ← Secure ← Automate
+        ========================================================= */
+
+        .row-two-arrow {
+            position: absolute;
+
+            top: 50%;
+
+            right:
+                calc(
+                    50% +
+                    clamp(34px, 3.1vw, 46px)
+                );
+
+            width:
+                calc(
+                    100% -
+                    clamp(68px, 6.2vw, 92px)
+                );
+
+            height: 12px;
+
+            transform:
+                translateY(-50%);
+
+            z-index: 2;
+
+            pointer-events: none;
+        }
+
+
+        /* Dashed horizontal line */
+
+        .row-two-arrow::before {
+            content: "";
+
+            position: absolute;
+
+            top: 5px;
+
+            left: 10px;
+
+            right: 0;
+
+            border-top:
+                2px dashed #ef1025;
+        }
+
+
+        /* Left arrow */
+
+        .row-two-arrow::after {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 0;
+
+            height: 0;
+
+            border-top:
+                6px solid transparent;
+
+            border-bottom:
+                6px solid transparent;
+
+            border-right:
+                9px solid #ef1025;
+        }
+
+
+        /* Optimize doesn't have an arrow */
+
+        .journey-row-two
+        .journey-item:first-child
+        .row-two-arrow {
+            display: none;
+        }
+
+
+        /* =========================================================
+           STRAIGHT VERTICAL ARROW
+
+           Modernize
+                |
+                |
+                ↓
+             Automate
+        ========================================================= */
+
+        .vertical-connector {
+            position: absolute;
+
+            /*
+             * Center of the 5th grid column.
+             *
+             * 5 columns means:
+             *
+             * column center = 90%
+             */
+
+            left: 90%;
+
+            /*
+             * Start below Modernize circle
+             */
+
+            top:
+                clamp(70px, 6.5vw, 96px);
+
+            /*
+             * End before the Automate circle
+             */
+
+            height:
+                clamp(70px, 7vw, 105px);
+
+            width: 2px;
+
+            z-index: 4;
+
+            pointer-events: none;
+        }
+
+
+        /* Dashed vertical line */
+
+        .vertical-connector::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 0;
+
+            height: calc(100% - 9px);
+
+            border-left:
+                2px dashed #ef1025;
+        }
+
+
+        /* Down arrow */
+
+        .vertical-connector::after {
+            content: "";
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width: 0;
+
+            height: 0;
+
+            border-left:
+                6px solid transparent;
+
+            border-right:
+                6px solid transparent;
+
+            border-top:
+                9px solid #ef1025;
+        }
+
+
+        /* =========================================================
+           DISCOVER DECORATION
+        ========================================================= */
+
+        .discover-decoration {
+            position: absolute;
+
+            width:
+                clamp(27px, 2.4vw, 36px);
+
+            height:
+                clamp(27px, 2.4vw, 36px);
+
+            left:
+                clamp(-4px, -.3vw, -2px);
+
+            bottom:
+                clamp(-4px, -.3vw, -2px);
+
+            border:
+                1px solid #173d46;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            z-index: 20;
+        }
+
+
+        .discover-decoration::after {
+            content: "";
+
+            position: absolute;
+
+            width: 7px;
+
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #173d46;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+        }
+
+
+        /* =========================================================
+           OPTIMIZE DECORATION
+        ========================================================= */
+
+        .optimize-decoration {
+            position: absolute;
+
+            width:
+                clamp(21px, 1.8vw, 28px);
+
+            height:
+                clamp(21px, 1.8vw, 28px);
+
+            right:
+                clamp(-4px, -.3vw, -2px);
+
+            top:
+                clamp(-4px, -.3vw, -2px);
+
+            border:
+                1.5px solid #ef1025;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            z-index: 20;
+        }
+
+
+        .optimize-decoration::before {
+            content: "";
+
+            position: absolute;
+
+            width: 7px;
+
+            height: 7px;
+
+            border:
+                1.5px solid #ef1025;
+
+            border-radius: 50%;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+        }
+
+
+        .optimize-decoration::after {
+            content: "";
+
+            position: absolute;
+
+            width: 5px;
+
+            height: 1.5px;
+
+            background: #ef1025;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-5%, -50%)
+                rotate(45deg);
+
+            transform-origin: left center;
+        }
+
+
+        /* =========================================================
+           LARGE DESKTOP
+        ========================================================= */
+
+        @media (min-width: 1400px) {
+
+            .cloud-journey {
+                max-width: 1500px;
+            }
+
+        }
+
+
+        /* =========================================================
+           LAPTOP
+        ========================================================= */
+
+        @media (max-width: 1199px) {
+
+            .journey-row-two {
+                margin-top: 105px;
+            }
+
+            .vertical-connector {
+                top: 75px;
+                height: 90px;
+            }
+
+        }
+
+
+        /* =========================================================
+           TABLET LANDSCAPE
+        ========================================================= */
+
+        @media (max-width: 1023px) and (min-width: 769px) {
+
+            .journey-row-two {
+                margin-top: 90px;
+            }
+
+            .vertical-connector {
+                top: 70px;
+                height: 80px;
+            }
+
+            .step-description {
+                max-width: 135px;
+            }
+
+        }
+
+
+        /* =========================================================
+           MOBILE
+
+           The infographic becomes a vertical timeline.
+
+           This prevents:
+           - horizontal overflow
+           - tiny text
+           - overlapping arrows
+        ========================================================= */
+
+        @media (max-width: 768px) {
+
+            .cloud-journey-section {
+                padding:
+                    35px
+                    15px
+                    55px;
+
+                overflow: hidden;
+            }
+
+
+            .cloud-journey {
+                width: 100%;
+
+                max-width: 600px;
+            }
+
+
+            /* -----------------------------------------------
+               FIRST ROW
+            ----------------------------------------------- */
+
+            .journey-row-one {
+
+                display: flex;
+
+                flex-direction: column;
+
+                width: 100%;
+
+                gap: 45px;
+            }
+
+
+            /* -----------------------------------------------
+               SECOND ROW
+            ----------------------------------------------- */
+
+            .journey-row-two {
+
+                display: flex;
+
+                flex-direction: column;
+
+                width: 100%;
+
+                margin-left: 0;
+
+                margin-top: 45px;
+
+                gap: 45px;
+            }
+
+
+            /* -----------------------------------------------
+               ITEMS
+            ----------------------------------------------- */
+
+            .journey-item {
+
+                width: 100%;
+
+                min-width: 0;
+
+                padding-bottom: 25px;
+            }
+
+
+            /* -----------------------------------------------
+               ICON
+            ----------------------------------------------- */
+
+            .icon-circle {
+
+                width: 82px;
+
+                height: 82px;
+
+                margin-bottom: 14px;
+            }
+
+
+            .step-icon {
+
+                width: 35px;
+
+                height: 35px;
+            }
+
+
+            /* -----------------------------------------------
+               TITLE
+            ----------------------------------------------- */
+
+            .step-title {
+
+                font-size: 16px;
+            }
+
+
+            /* -----------------------------------------------
+               DESCRIPTION
+            ----------------------------------------------- */
+
+            .step-description {
+
+                max-width: 250px;
+
+                font-size: 13px;
+            }
+
+
+            /* -----------------------------------------------
+               Hide desktop arrows
+            ----------------------------------------------- */
+
+            .row-one-arrow,
+            .row-two-arrow,
+            .vertical-connector {
+
+                display: none;
+            }
+
+
+            /* -----------------------------------------------
+               Mobile vertical connectors
+            ----------------------------------------------- */
+
+            .journey-row-one
+            .journey-item:not(:last-child)::after,
+
+            .journey-row-two
+            .journey-item:not(:last-child)::after {
+
+                content: "";
+
+                position: absolute;
+
+                left: 50%;
+
+                bottom: -43px;
+
+                height: 42px;
+
+                border-left:
+                    2px dashed #ef1025;
+
+                transform:
+                    translateX(-50%);
+            }
+
+        }
+
+
+        /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
+
+        @media (max-width: 480px) {
+
+            .cloud-journey-section {
+
+                padding:
+                    30px
+                    12px
+                    45px;
+            }
+
+
+            .journey-row-one,
+            .journey-row-two {
+
+                gap: 40px;
+            }
+
+
+            .journey-row-two {
+
+                margin-top: 40px;
+            }
+
+
+            .icon-circle {
+
+                width: 76px;
+
+                height: 76px;
+            }
+
+
+            .step-icon {
+
+                width: 32px;
+
+                height: 32px;
+            }
+
+
+            .step-title {
+
+                font-size: 15px;
+            }
+
+
+            .step-description {
+
+                font-size: 12px;
+            }
+
+        }
+
+
+        /* =========================================================
+           VERY SMALL MOBILE
+        ========================================================= */
+
+        @media (max-width: 375px) {
+
+            .cloud-journey-section {
+
+                padding-left: 10px;
+
+                padding-right: 10px;
+            }
+
+
+            .icon-circle {
+
+                width: 72px;
+
+                height: 72px;
+            }
+
+
+            .step-icon {
+
+                width: 30px;
+
+                height: 30px;
+            }
+
+
+            .step-title {
+
+                font-size: 14px;
+            }
+
+
+            .step-description {
+
+                font-size: 11px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<section class="cloud-journey-section">
+
+    <div class="cloud-journey">
+
+
+        <!-- =====================================================
+             STRAIGHT ARROW
+
+             Modernize
+                  |
+                  |
+                  ↓
+               Automate
+        ====================================================== -->
+
+        <div
+            class="vertical-connector"
+            aria-hidden="true">
+        </div>
+
+
+
+        <!-- =====================================================
+             FIRST ROW
+        ====================================================== -->
+
+        <div class="journey-row-one">
+
+
+            <!-- =================================================
+                 DISCOVER
+            ================================================== -->
+
+            <div class="journey-item">
+
+                <div class="icon-circle">
+
+                    <svg
+                        class="step-icon"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true">
+
+                        <circle
+                            cx="24"
+                            cy="24"
+                            r="13">
+                        </circle>
+
+                        <circle
+                            cx="24"
+                            cy="24"
+                            r="5">
+                        </circle>
+
+                        <path
+                            d="M31 17L38 10">
+                        </path>
+
+                        <path
+                            d="M35 10H38V13">
+                        </path>
+
+                    </svg>
+
+
+                    <div
+                        class="discover-decoration"
+                        aria-hidden="true">
+                    </div>
+
+                </div>
+
+
+                <h3 class="step-title">
+                    Discover
+                </h3>
+
+
+                <p class="step-description">
+                    Understand your<br>
+                    current landscape
+                </p>
+
+
+                <div
+                    class="row-one-arrow"
+                    aria-hidden="true">
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ASSESS
+            ================================================== -->
+
+            <div class="journey-item">
+
+                <div class="icon-circle">
+
+                    <svg
+                        class="step-icon"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true">
+
+                        <rect
+                            x="14"
+                            y="11"
+                            width="20"
+                            height="27"
+                            rx="1">
+                        </rect>
+
+                        <path
+                            d="M19 8H29V14H19Z">
+                        </path>
+
+                        <path
+                            d="M19 22H29">
+                        </path>
+
+                        <path
+                            d="M19 28H29">
+                        </path>
+
+                        <path
+                            d="M19 34H25">
+                        </path>
+
+                    </svg>
+
+                </div>
+
+
+                <h3 class="step-title">
+                    Assess
+                </h3>
+
+
+                <p class="step-description">
+                    Evaluate readiness,<br>
+                    risks &amp; opportunities
+                </p>
+
+
+                <div
+                    class="row-one-arrow"
+                    aria-hidden="true">
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ARCHITECT
+            ================================================== -->
+
+            <div class="journey-item">
+
+                <div class="icon-circle">
+
+                    <svg
+                        class="step-icon"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true">
+
+                        <path
+                            d="M11 36L31 16">
+                        </path>
+
+                        <path
+                            d="M28 13L35 20">
+                        </path>
+
+                        <path
+                            d="M30 11L37 18L35 20L28 13Z">
+                        </path>
+
+                        <path
+                            d="M11 36L10 30L16 31Z">
+                        </path>
+
+                        <path
+                            d="M16 20L22 26">
+                        </path>
+
+                    </svg>
+
+                </div>
+
+
+                <h3 class="step-title">
+                    Architect
+                </h3>
+
+
+                <p class="step-description">
+                    Design the target<br>
+                    cloud foundation
+                </p>
+
+
+                <div
+                    class="row-one-arrow"
+                    aria-hidden="true">
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MIGRATE
+            ================================================== -->
+
+            <div class="journey-item">
+
+                <div class="icon-circle">
+
+                    <svg
+                        class="step-icon"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true">
+
+                        <path
+                            d="
+                                M15 34H34
+                                C39 34 41 30 39 26
+                                C38 23 35 22 32 22
+                                C31 16 26 12 21 13
+                                C17 13 14 16 13 20
+                                C9 20 7 23 7 27
+                                C7 31 10 34 15 34Z">
+                        </path>
+
+                        <path
+                            d="M24 36V22">
+                        </path>
+
+                        <path
+                            d="M18 28L24 22L30 28">
+                        </path>
+
+                    </svg>
+
+                </div>
+
+
+                <h3 class="step-title">
+                    Migrate
+                </h3>
+
+
+                <p class="step-description">
+                    Move workloads<br>
+                    with confidence
+                </p>
+
+
+                <div
+                    class="row-one-arrow"
+                    aria-hidden="true">
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MODERNIZE
+            ================================================== -->
+
+            <div class="journey-item">
+
+                <div class="icon-circle">
+
+                    <svg
+                        class="step-icon"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true">
+
+                        <path
+                            d="M18 17L11 24L18 31">
+                        </path>
+
+                        <path
+                            d="M30 17L37 24L30 31">
+                        </path>
+
+                        <path
+                            d="M27 12L21 36">
+                        </path>
+
+                    </svg>
+
+                </div>
+
+
+                <h3 class="step-title">
+                    Modernize
+                </h3>
+
+
+                <p class="step-description">
+                    Transform apps for<br>
+                    the future
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             SECOND ROW
+
+             Optimize ← Operate ← Secure ← Automate
+        ====================================================== -->
+
+        <div class="journey-row-two">
+
+
+            <!-- =================================================
+                 OPTIMIZE
+            ================================================== -->
+
+            <div class="journey-item">
+
+                <div class="icon-circle">
+
+                    <svg
+                        class="step-icon"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true">
+
+                        <path
+                            d="M10 38V10">
+                        </path>
+
+                        <path
+                            d="M10 38H39">
+                        </path>
+
+                        <path
+                            d="M16 31L23 24L28 28L38 16">
+                        </path>
+
+                        <path
+                            d="M32 16H38V22">
+                        </path>
+
+                    </svg>
+
+
+                    <div
+                        class="optimize-decoration"
+                        aria-hidden="true">
+                    </div>
+
+                </div>
+
+
+                <h3 class="step-title">
+                    Optimize
+                </h3>
+
+
+                <p class="step-description">
+                    Continuously<br>
+                    improve performance &amp;<br>
+                    cost
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 OPERATE
+            ================================================== -->
+
+            <div class="journey-item">
+
+                <div class="icon-circle">
+
+                    <svg
+                        class="step-icon"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true">
+
+                        <rect
+                            x="10"
+                            y="10"
+                            width="28"
+                            height="21"
+                            rx="1">
+                        </rect>
+
+                        <path
+                            d="M17 38H31">
+                        </path>
+
+                        <path
+                            d="M24 31V38">
+                        </path>
+
+                    </svg>
+
+                </div>
+
+
+                <h3 class="step-title">
+                    Operate
+                </h3>
+
+
+                <p class="step-description">
+                    Manage, monitor &amp;<br>
+                    support 24x7
+                </p>
+
+
+                <div
+                    class="row-two-arrow"
+                    aria-hidden="true">
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SECURE
+            ================================================== -->
+
+            <div class="journey-item">
+
+                <div class="icon-circle">
+
+                    <svg
+                        class="step-icon"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true">
+
+                        <path
+                            d="
+                                M24 8
+                                L37 13
+                                V22
+                                C37 30 32 36 24 40
+                                C16 36 11 30 11 22
+                                V13
+                                L24 8Z">
+                        </path>
+
+                        <path
+                            d="M17 24L22 29L32 19">
+                        </path>
+
+                    </svg>
+
+                </div>
+
+
+                <h3 class="step-title">
+                    Secure
+                </h3>
+
+
+                <p class="step-description">
+                    Protect every layer<br>
+                    of your cloud
+                </p>
+
+
+                <div
+                    class="row-two-arrow"
+                    aria-hidden="true">
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 AUTOMATE
+            ================================================== -->
+
+            <div class="journey-item">
+
+                <div class="icon-circle">
+
+                    <svg
+                        class="step-icon"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true">
+
+                        <circle
+                            cx="24"
+                            cy="24"
+                            r="9">
+                        </circle>
+
+                        <path
+                            d="M24 10V15">
+                        </path>
+
+                        <path
+                            d="M24 33V38">
+                        </path>
+
+                        <path
+                            d="M10 24H15">
+                        </path>
+
+                        <path
+                            d="M33 24H38">
+                        </path>
+
+                        <path
+                            d="M14 14L18 18">
+                        </path>
+
+                        <path
+                            d="M30 30L34 34">
+                        </path>
+
+                        <path
+                            d="M34 14L30 18">
+                        </path>
+
+                        <path
+                            d="M18 30L14 34">
+                        </path>
+
+                    </svg>
+
+                </div>
+
+
+                <h3 class="step-title">
+                    Automate
+                </h3>
+
+
+                <p class="step-description">
+                    Enable DevOps &amp;<br>
+                    process automation
+                </p>
+
+
+                <div
+                    class="row-two-arrow"
+                    aria-hidden="true">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</body>
+</html>
