@@ -496,7 +496,7 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                                         </div>
                                         <?php if (!empty($item['hero_image'])): ?>
                                         <div class="single-img img-container overflow-hidden round-20 mb-35" data-cue="anim-top" data-duration="800">
-                                            <img src="<?= e($item['hero_image']) ?>" alt="<?= e($item['nav_name']) ?>" class="w-100 h-100 object-fit-cover round-20">
+                                            <img src="<?= e($item['hero_image']) ?>" alt="<?= e($item['nav_name']) ?>" class="w-100 h-auto object-fit-cover round-20">
                                         </div>
                                         <?php endif; ?>
 
@@ -548,7 +548,7 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                                         <div class="cloud-journey-section">
                                             <div class="cloud-journey-heading">
                                                 <span class="cph-line"></span>
-                                                <h5><?= e($item['cloud_journey_heading'] ?: 'Our Cloud Journey') ?></h5>
+                                                <h5><?= e($item['cloud_journey_heading'] ?? 'Our Cloud Journey') ?></h5>
                                                 <span class="cph-line"></span>
                                             </div>
                                             <div class="cloud-journey-track">
@@ -567,7 +567,7 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
 
                                         <?php if (!empty($item['published']) && !empty($whatWeDoItems)): ?>
                                         <div class="single-para">
-                                            <h5><?= e($item['whatwedo_heading'] ?: 'What Octel Networks Does') ?></h5>
+                                            <h5><?= e($item['whatwedo_heading'] ?? 'What Octel Networks Does') ?></h5>
                                             <?php if (!empty($item['whatwedo_intro'])): ?>
                                             <p><?= e($item['whatwedo_intro']) ?></p>
                                             <?php endif; ?>
@@ -596,7 +596,7 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                                         <?php endif; ?>
                                     </div>
                                     <div class="post-pagination d-flex flex-wrap justify-content-between">
-                                        <a href="<?= e($prevHref) ?>" class="prev-post fs-16 fw-bold text-title hover-text-primary transition"><img src="assets/img/icons/left-arrow-black.svg" alt="Icon" class="me-2 transition"><?= e($prevLabel) ?></a>
+                                        <a href="<?= e($prevHref) ?>" class="prev-post fs-16 fw-bold text-title hover-text-primary transition"><img src="assets/img/icons/right-arrow-black.svg" alt="Icon" class="me-2 transition" style="transform: scaleX(-1);"><?= e($prevLabel) ?></a>
                                         <a href="<?= e($nextHref) ?>" class="next-post fs-16 fw-bold text-title hover-text-primary transition"><?= e($nextLabel) ?> <img src="assets/img/icons/right-arrow-black.svg" alt="Icon" class="ms-2 transition"></a>
                                     </div>
                                 </div>
@@ -668,7 +668,7 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                                             <img src="assets/img/logo-white.png" alt="Image">
                                         </a>
                                         <a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary mb-18">+1 (808) 360-9282</a>
-                                        <a href="/cdn-cgi/l/email-protection#c1a9a4adadae81a4b9b3aeb9efa2aeac" class="contact-mail fs-xxl-18 fw-bold text-white hover-text-secondary"><span class="__cf_email__" data-cfemail="5038353c3c3f103528223f287e333f3d">[email&#160;protected]</span></a>
+                                        <a href="mailto:info@octelnetworks.com" class="contact-mail fs-xxl-18 fw-bold text-white hover-text-secondary">info@octelnetworks.com</a>
                                     </div>
                                 </div>
                                 <div class="col-xxl-4 col-lg-4 col-md-7 ps-xxl-4">
@@ -698,11 +698,11 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                             </div>
                             <div class="row ">
                                 <div class="col-md-7 pe-xxl-0">
-                                    <a href="index.html" class="logo-text text-white reveal-text-right transition" data-cue="slideInUp" data-delay="200">EXROX</a>
+                                    <a href="index.html" class="logo-text text-white reveal-text-right transition" data-cue="slideInUp" data-delay="200">OCTEL</a>
                                 </div>
                                 <div class="col-xl-4 offset-xxl-1 col-md-5 ps-xxl-4">
                                     <div class="footer-widget" data-cue="slideInUp" data-delay="200">
-                                        <p class="text-gray fs-xxl-18 mb-25">Exrox is a trusted accounting and management consulting firm helping businesses grow with clarity and control.</p>
+                                        <p class="text-gray fs-xxl-18 mb-25">Octel Networks is a trusted network infrastructure and IT solutions partner, helping businesses stay connected, secure, and supported.</p>
                                         <ul class="social-profile style-one list-unstyled mb-0">
                                             <li><a href="https://www.facebook.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
                                             <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
@@ -716,7 +716,7 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                         <div class="footer-bottom">
                             <div class="row align-items-center">
                                 <div class="col-md-7 pe-md-0 mb-sm-10">
-                                    <p class="copyright-text fs-xxl-18 text-md-start text-center text-gray mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">Exrox</span> Is Proudly Owned By <a href="https://envytheme.com/" target="_blank" class="text_secondary link-hover-white">EnvyTheme</a></p>
+                                    <p class="copyright-text fs-xxl-18 text-md-start text-center text-gray mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">Octel Networks</span>. All Rights Reserved.</p>
                                 </div>
                                 <div class="col-md-5">
                                     <ul class="footer-bottom-menu list-unstyled text-lg-end text-center mb-0">

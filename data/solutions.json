@@ -17,59 +17,8 @@
         "summary_bullets": "Integrated LAN, WAN & SD-WAN Architecture\r\nNext-Gen Firewall & Wi-Fi Security\r\nCentralized Monitoring & Redundancy",
         "cta_heading": "NEED A NETWORK BUILT RIGHT THE FIRST TIME?",
         "cta_text": "Talk to Our Network Infrastructure Team",
-        "content_blocks": [
-            {
-                "type": "heading",
-                "level": "h2",
-                "text": "New heading",
-                "id": "bmto1e60fk6jt3d"
-            },
-            {
-                "type": "paragraph",
-                "text": "Octel Networks supplies and deploys core computing hardware — desktops, laptops, servers, and engineering workstations — sourced from leading global manufacturers and configured to match the workload they'll actually run.\n\nWe handle procurement, imaging, deployment, and warranty coordination, so IT teams get equipment that's ready to use on day one rather than a pallet of boxes to configure themselves.",
-                "id": "bmto1e60fy86yi7"
-            },
-            {
-                "type": "image",
-                "src": "assets/img/uploads/block-bmto1e60f0idhx5-1788862545.jpg",
-                "alt": "",
-                "caption": "Octel Networks",
-                "id": "bmto1e60f0idhx5"
-            },
-            {
-                "id": "bmto1fiek7597c8",
-                "type": "row",
-                "columns": [
-                    [
-                        {
-                            "id": "bmto1fycja2i7de",
-                            "type": "heading",
-                            "level": "h2",
-                            "text": "Octel Networks"
-                        },
-                        {
-                            "id": "bmto1g0hnx5rv3d",
-                            "type": "paragraph",
-                            "text": "Octel Networks supplies and deploys core computing hardware — desktops, laptops, servers, and engineering workstations — sourced from leading global manufacturers and configured to match the workload they'll actually run."
-                        }
-                    ],
-                    [
-                        {
-                            "id": "bmto1gk7frtkxse",
-                            "type": "heading",
-                            "level": "h2",
-                            "text": "Octel Networks"
-                        },
-                        {
-                            "id": "bmto1gd7v2sbkqw",
-                            "type": "paragraph",
-                            "text": "Octel Networks supplies and deploys core computing hardware — desktops, laptops, servers, and engineering workstations — sourced from leading global manufacturers and configured to match the workload they'll actually run."
-                        }
-                    ]
-                ]
-            }
-        ],
-        "whatwedo_intro": "<br /><b>Warning</b>:  Undefined array key"
+        "content_blocks": [],
+        "whatwedo_intro": ""
     },
     {
         "slug": "ip-telephony",
@@ -89,7 +38,7 @@
         "summary_bullets": "IP-PBX & Centralized Call Management\r\nUnified Communications & Remote Access\r\nCRM & Microsoft Teams Integration",
         "cta_heading": "LOOKING TO MOVE OFF LEGACY PHONE LINES?",
         "cta_text": "Talk to Our IP Telephony & UC Team",
-        "whatwedo_intro": "<br /><b>Warning</b>:  Undefined array key",
+        "whatwedo_intro": "",
         "content_blocks": []
     },
     {
@@ -126,7 +75,7 @@
         "summary_bullets": "IP Camera Systems & Edge Recording\r\nVideo Management & AI Analytics\r\nMulti-Site Integration with Access Control",
         "cta_heading": "NEED VISIBILITY ACROSS YOUR SITE?",
         "cta_text": "Talk to Our Video Surveillance Team",
-        "whatwedo_intro": "<br /><b>Warning</b>:  Undefined array key",
+        "whatwedo_intro": "",
         "content_blocks": []
     },
     {
@@ -179,7 +128,7 @@
         "summary_bullets": "Discovery & Topology Mapping\r\nReal-Time & Performance Monitoring\r\nFault, Alerts & Capacity Planning",
         "cta_heading": "FLYING BLIND ON NETWORK HEALTH?",
         "cta_text": "Talk to Our Network Management Team",
-        "whatwedo_intro": "<br /><b>Warning</b>:  Undefined array key",
+        "whatwedo_intro": "",
         "content_blocks": []
     },
     {
@@ -216,7 +165,7 @@
         "summary_bullets": "Structured Copper & Fiber Cabling\r\nRacks, Patch Panels & Cable Management\r\nTesting, Certification & Documentation",
         "cta_heading": "NEED CABLING DONE RIGHT THE FIRST TIME?",
         "cta_text": "Talk to Our Structured Cabling Team",
-        "whatwedo_intro": "<br /><b>Warning</b>:  Undefined array key",
+        "whatwedo_intro": "",
         "content_blocks": []
     },
     {
@@ -237,7 +186,7 @@
         "summary_bullets": "IT Consulting & Solution Architecture\r\nProject Management & Vendor Coordination\r\nFacility Management & SLA-Based Support",
         "cta_heading": "NEED ONE TEAM ACROSS YOUR IT LIFECYCLE?",
         "cta_text": "Talk to Our IT Services Team",
-        "whatwedo_intro": "<br /><b>Warning</b>:  Undefined array key",
+        "whatwedo_intro": "",
         "content_blocks": []
     },
     {
@@ -258,7 +207,7 @@
         "summary_bullets": "Internet Redundancy & Network Management\r\nMall-Wide & Guest Wi-Fi\r\nTenant Connectivity & Segmentation",
         "cta_heading": "NEED ONE NETWORK FOR YOUR ENTIRE PROPERTY?",
         "cta_text": "Talk to Our Mall Infrastructure Team",
-        "whatwedo_intro": "<br /><b>Warning</b>:  Undefined array key",
+        "whatwedo_intro": "",
         "content_blocks": []
     },
     {
