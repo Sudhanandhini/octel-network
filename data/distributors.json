@@ -11,7 +11,7 @@
         "portfolio_cards": "ri-archive-2-line | Enclosures | Industrial and IT enclosures/cabinets standardized for server rooms, factory floors, and outdoor installations.\r\nri-flashlight-line | Power Distribution | Power distribution systems designed to safely and efficiently deliver power, integrated with Rittal's broader enclosure and cooling ecosystem.\r\nri-temp-cold-line | Climate Control | Precision cooling solutions, including the Blue e+S range, engineered to reduce energy consumption while keeping equipment within safe operating temperatures.\r\nri-stack-line | IT Infrastructure (RiMatrix) | Modular data center systems that align racks, power, cooling, monitoring, and physical security into one scalable platform.\r\nri-settings-4-line | Automation Systems | Automation-ready enclosure and panel-building solutions integrated with Rittal's Eplan software ecosystem.\r\nri-apps-2-line | System Accessories & Software | Configuration tools and accessories that let customers plan, order, and standardize infrastructure builds efficiently.",
         "whatwedo_intro": "System-level infrastructure design and deployment, not piecemeal components:",
         "whatwedo_items": "System Design | Racks, power, cooling, and monitoring planned as one integrated system\r\nFaster Deployment | Pre-configured, standardized enclosure systems to cut installation time\r\nScalable Data Center Design | Infrastructure that expands with future capacity needs, without redesigning\r\nLocal Implementation | On-site installation and commissioning support\r\nAfter-Sales Support | Ongoing maintenance and warranty support",
-        "summary_bullets": "IT & Industrial Enclosures\r\nPower Distribution & Precision Cooling\r\nModular Data Centers (RiMatrix)",
+        "summary_bullets": "Enclosures, Power & Cooling as One System\nModular Data Center Design\nPre-Configured Systems for Faster Deployment\nOn-Site Commissioning & After-Sales Support",
         "cta_heading": "NEED RITTAL INFRASTRUCTURE FOR YOUR SITE?",
         "cta_text": "Talk to Our Rittal Specialists",
         "content_blocks": []
@@ -28,7 +28,7 @@
         "portfolio_cards": "ri-router-line | Local Area Network (LAN) Cabling | Structured copper and fiber cabling for offices, digital buildings, residential, industrial, and healthcare sites — including WLAN cabling, Single Pair Ethernet, and digital ceiling systems for connected buildings.\r\nri-database-2-line | Data Center Cabling | Integrated cabling across building entrance facilities, meet-me rooms, computer rooms, and edge/containment systems — designed to keep pace with rising bandwidth and density demands.\r\nri-signal-tower-line | Public Network Infrastructure | Outside plant, central office, and fiber-to-the-antenna (FTTA) cabling solutions purpose-built for telecom operators, utilities, smart cities, and railway networks.\r\nri-cpu-line | OEM & Fiber Optic Components | Fiber optic connectivity components and custom-assembled solutions for OEMs and system integrators building their own networking equipment.\r\nri-dashboard-3-line | Infrastructure Management (inteliPhy) | Automated Infrastructure Management (AIM) and DCIM software that gives IT teams real-time visibility and control over the physical cabling layer.",
         "whatwedo_intro": "End-to-end delivery so R&M infrastructure is installed right the first time, and stays supported after go-live:",
         "whatwedo_items": "Design & BOQ Planning | Cabling architecture and bill-of-quantities aligned to R&M's certified system design\r\nCertified Installation | Deployment by installers trained under R&M's Qualified Partner program\r\nTesting & Certification | End-to-end link testing and system warranty certification\r\nLocal Stock & Lead Times | Regionally stocked components to avoid long import delays\r\nAfter-Sales Support | Ongoing maintenance, troubleshooting, and warranty support",
-        "summary_bullets": "Structured LAN & Fiber Cabling\r\nData Center Cabling & inteliPhy Management\r\nPublic Network & OEM Fiber Components",
+        "summary_bullets": "Structured Cabling for LAN, Data Center & Public Networks\nCertified Design, Installation & Testing\nLocal Stock & Shorter Lead Times\nAfter-Sales & Warranty Support",
         "cta_heading": "NEED R&M CABLING FOR YOUR SITE?",
         "cta_text": "Talk to Our R&M Specialists",
         "content_blocks": []
@@ -45,25 +45,26 @@
         "portfolio_cards": "ri-radar-line | IT Observability (NNMX) | NetkaView Network Manager X delivers real-time network monitoring, application performance monitoring (APM), and wireless access point (WAP) management from a single console.\r\nri-shield-keyhole-line | IT Security — SIEM & SOAR (NLG) | NetkaView Logger combines SIEM and SOAR capabilities — threat detection, log analysis, and regulatory compliance reporting.\r\nri-customer-service-2-line | IT Service Management (NSDX) | NetkaQuartz Service Desk X streamlines service operations, incident management, change enablement, and IT asset management.\r\nri-lock-2-line | Data Privacy Management (NDPP) | Cookie consent, privacy notices, Records of Processing Activities (RoPA), DPIA, and breach response — aligned to GDPR, India's DPDP Act, and other regional privacy laws.\r\nri-brain-line | AI for IT Ops (N-AIOps) | Predictive analytics and event correlation that help IT teams detect and resolve issues before they affect the business.\r\nri-leaf-line | ESG & Governance (EnXus / EnTrust) | Carbon accounting, sustainability reporting, and governance, risk & compliance (GRC) management for organizations building out ESG programs.",
         "whatwedo_intro": "Implementation, integration, and ongoing support across NETKA's platform suite:",
         "whatwedo_items": "Deployment & Integration | On-premise, cloud, or hybrid rollout integrated with existing IT and security tools\r\nCompliance Alignment | Configuration mapped to GDPR, DPDP, and ITIL frameworks\r\nUnified Support | Single point of contact across security, observability, ITSM, and compliance modules\r\nFlexible Licensing | Software, hardware appliance, or SaaS delivery based on customer need\r\nTraining & Enablement | Onboarding and admin training for internal IT teams",
-        "summary_bullets": "IT Observability & AIOps\r\nSIEM/SOAR Security & ITSM\r\nData Privacy & ESG Compliance",
+        "summary_bullets": "IT Observability & Cybersecurity\nService Management & Data Privacy Compliance\nOn-Premise, Cloud or Hybrid Deployment\nIntegration, Training & Unified Support",
         "cta_heading": "NEED NETKA'S PLATFORM SUITE FOR YOUR SITE?",
         "cta_text": "Talk to Our NETKA Specialists",
         "content_blocks": []
     },
     {
         "slug": "matrix",
-        "published": false,
+        "published": true,
         "nav_name": "MATRIX",
-        "page_title": "MATRIX",
+        "page_title": "Matrix — Security, Access Control & Unified Communications",
         "hero_image": "assets/img/services/img1.jpg",
-        "intro_paragraphs": "",
-        "portfolio_heading": "Our MATRIX Product Portfolio",
-        "portfolio_subtitle": "",
-        "portfolio_cards": "",
-        "whatwedo_intro": "",
-        "whatwedo_items": "",
-        "summary_bullets": "",
+        "intro_paragraphs": "Matrix brings together three connected technology domains: SATATYA IP video surveillance, COSEC access control and time-attendance, and Matrix Telecom for IP-PBX, unified communications and voice gateways. From edge devices and biometric terminals to recording systems and centralized management software, the portfolio is built so that communication, security and workforce operations work together instead of disconnected systems.\n\nOctel Networks is a Matrix distributor, combining the Matrix portfolio with infrastructure expertise, solution architecture and integration capability. From product selection to deployment and ongoing management, customers get one point of accountability for surveillance, workforce identity and enterprise communication.",
+        "portfolio_heading": "Our Matrix Product Portfolio",
+        "portfolio_subtitle": "Video surveillance, workforce identity and communication platforms from one connected ecosystem",
+        "portfolio_cards": "ri-camera-line | SATATYA: IP Video Surveillance | Enterprise-grade surveillance covering IP cameras, recorders, video management and intelligent video applications. Centralized monitoring, recording, playback and investigation scale across multiple locations, with analytics, alarms and access-control integration. Product families: Project and Professional Series bullet and dome cameras (2MP, 5MP, 8MP), Turret and All-Color cameras, Ruggedized cameras, PTZ network cameras, Network Video Recorders, SATATYA VMS, SATATYA SAMAS, Network PTZ Controller.\nri-fingerprint-line | COSEC: Access Control & Time-Attendance | Identity-first access and workforce management through biometric terminals, readers, door controllers, centralized software, cloud applications and visitor management. Credentials include face recognition, fingerprint, RFID/card, PIN, QR and mobile, depending on the product. Product families: COSEC ARGO FACE, ARGO, VEGA, ATOM, PATH, ARC DC200P, ARC IO800, PANEL200P, CENTRA, VYOM, VYOM Visitor Management, mobile and tablet applications (APTA, VMS, MIRROR, MODE).\nri-phone-line | Matrix Telecom: Unified Communications | Enterprise communication across IP-PBX, hybrid PBX, unified communications, voice gateways, GSM connectivity, IP phones and softphones. Suited to organizations moving from traditional telephony to IP and hybrid architectures while keeping older voice systems interoperable. Product families: VISIONPRO, ETERNITY (NENX, PENX, GENX, MENX/LENX), PRASAR UCS, ANANT UCS, SARVAM UCS, SETU gateways (VFX, VFXTH, VTEP), SARVAM UMG, SIMADO GSM gateways, SPARSH IP phones, EON510, VARTA softphone.",
+        "whatwedo_intro": "Product selection, integration and deployment across the Matrix ecosystem:",
+        "whatwedo_items": "Requirement Mapping | Matching the right Matrix product family and model to the site, workforce and communication requirement.\nSolution Design & Integration | Surveillance, access control, time-attendance and communications planned to work together and with existing IT infrastructure.\nDeployment & Commissioning | Installation, configuration and rollout of cameras, terminals, controllers, PBX and gateway platforms.\nMulti-Site Scalability | Architectures that start at one location and extend to centralized monitoring and administration across branches and campuses.\nOngoing Management | Continued support so the deployed environment stays secure, connected and aligned with business needs.",
+        "summary_bullets": "See: SATATYA IP Video Surveillance\nIdentity: COSEC Access Control & Time-Attendance\nManage: Centralized Multi-Site Monitoring & Administration\nConnect: IP-PBX, Unified Communications & Voice Gateways",
         "cta_heading": "NEED MATRIX FOR YOUR SITE?",
-        "cta_text": "Talk to Our MATRIX Specialists"
+        "cta_text": "Talk to Our MATRIX Specialists",
+        "content_blocks": []
     }
 ]

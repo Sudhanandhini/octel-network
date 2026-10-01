@@ -1,0 +1,12 @@
+<?php
+require_once __DIR__ . '/includes/distributors.php';
+
+$slug = 'matrix';
+$item = get_distributor($slug);
+$allItems = get_published_distributors();
+$fileMap = distributor_file_map();
+$sidebarTitle = 'Distribution Partners';
+$breadcrumbParentLabel = 'Distribution';
+$breadcrumbParentHref = 'distribution.html';
+
+require __DIR__ . '/templates/content-detail.php';
