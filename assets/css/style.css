@@ -4098,3 +4098,13 @@ body {
 .comment-item-wrap .comment-item .comment-text:last-child {
   margin-bottom: 0;
 }/*# sourceMappingURL=style.css.map */
+/* Breadcrumb over a dark photo: light text */
+.breadcrumb-area.br-photo .br-menu li a {
+  color: rgba(255, 255, 255, 0.8);
+}
+.breadcrumb-area.br-photo .br-menu li a:hover {
+  color: var(--secondaryColor);
+}
+.breadcrumb-area.br-photo .br-menu li:after {
+  color: rgba(255, 255, 255, 0.6);
+}
