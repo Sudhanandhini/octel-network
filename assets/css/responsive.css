@@ -120,7 +120,7 @@
     max-width: 18px;
   }
   .btn .btn-icon-one {
-    margin-right: -9px;
+    margin-right: 6px;
   }
   .btn .btn-icon-two {
     margin-left: -44px;
@@ -131,7 +131,7 @@
     padding: 5px 14px;
   }
   .btn:hover .btn-icon-two {
-    margin-left: -9px;
+    margin-left: 6px;
   }
   .btn:hover .btn-text {
     margin-left: -44px;
@@ -1757,5 +1757,12 @@
   .funfact-area.style-one .container-fluid {
     max-width: 1920px;
     padding: 0 150px !important;
+  }
+}
+/* Keep off-canvas menus and animated elements from widening the page on phones and tablets */
+@media only screen and (max-width: 991px) {
+  html,
+  body {
+    overflow-x: clip;
   }
 }/*# sourceMappingURL=responsive.css.map */

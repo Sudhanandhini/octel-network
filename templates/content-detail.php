@@ -49,7 +49,7 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
         <link rel="stylesheet" href="assets/css/dark-theme.css">
 
         <title><?= e($item['page_title']) ?> – Octel Networks</title>
-        <link rel="icon" type="image/png" href="assets/img/new/favicon.png">
+        <link rel="icon" type="image/png" href="assets/img/octel-favicon.png">
         <style>
             a.navbar-brand {
                 position: relative;
@@ -416,9 +416,9 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                                                 <i class="ri-more-fill"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-centered mobile-option-list top-1 border-0" data-bs-popper="static">
-                                                <a href="appointment.html" class="btn style-one d-inline-flex align-items-center">
+                                                <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
                                                     <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
-                                                    <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Get A Free Consultation</span>
+                                                    <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
                                                     <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
                                                 </a>
                                             </div>
@@ -435,9 +435,9 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                                         </div>
                                     </div>
                                     <div class="option-item d-lg-block d-none">
-                                        <a href="appointment.html" class="btn style-one d-inline-flex align-items-center">
+                                        <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
                                             <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
-                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Get A Free Consultation</span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
                                             <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
                                         </a>
                                     </div>
@@ -567,7 +567,7 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
 
                                         <?php if (!empty($item['published']) && !empty($whatWeDoItems)): ?>
                                         <div class="single-para">
-                                            <h5><?= e($item['whatwedo_heading'] ?? 'What Octel Networks Does') ?></h5>
+                                            <h5><?= e(($item['whatwedo_heading'] ?? '') ?: 'What Octel Networks Does') ?></h5>
                                             <?php if (!empty($item['whatwedo_intro'])): ?>
                                             <p><?= e($item['whatwedo_intro']) ?></p>
                                             <?php endif; ?>
@@ -752,5 +752,6 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
         <script src="assets/js/customEase.js"></script>
         <script src="assets/js/scrollcue.min.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/chatbot.js"></script>
     </body>
 </html>

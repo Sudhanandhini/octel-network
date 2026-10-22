@@ -482,7 +482,7 @@ body {
       filter: invert(1);
 }
 .btn .btn-icon-one {
-  margin-right: -10px;
+  margin-right: 6px;
   transition: var(--transition);
 }
 .btn .btn-icon-two {
@@ -506,7 +506,7 @@ body {
 .btn:hover .btn-icon-two {
   opacity: 1;
   visibility: visible;
-  margin-left: -9px;
+  margin-left: 6px;
 }
 .btn:hover .btn-text {
   margin-left: -52px;

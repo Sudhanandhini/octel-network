@@ -101,7 +101,7 @@ function renderHeader(o) {
           <div class="option-item d-none d-lg-block">
             <a href="contact.html" class="btn style-one">
               <span class="btn-icon-one"><i class="ri-arrow-right-up-line"></i></span>
-              <span class="btn-text">Get A Free Consultation</span>
+              <span class="btn-text">Contact Us</span>
               <span class="btn-icon-two"><i class="ri-arrow-right-up-line"></i></span>
             </a>
           </div>

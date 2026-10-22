@@ -15,8 +15,9 @@ function get_solution(string $slug): ?array {
     return get_item(SOLUTIONS_FILE, $slug);
 }
 
+/** Published solutions, excluding any marked "hidden" (page still works, but isn't listed anywhere). */
 function get_published_solutions(): array {
-    return get_published_items(SOLUTIONS_FILE);
+    return array_values(array_filter(get_published_items(SOLUTIONS_FILE), function ($s) { return empty($s['hidden']); }));
 }
 
 /** slug => detail page URL, for every published solution. Falls back to solution-details.html?slug=... when no hand-built <slug>.html page exists. */

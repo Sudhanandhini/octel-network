@@ -87,7 +87,8 @@ function process_block_image_uploads(array &$blocks): void {
 $errors = [];
 $blankRecord = [
     'slug' => '', 'nav_name' => '', 'page_title' => '', 'published' => false,
-    'hero_image' => '', 'intro_paragraphs' => '', 'portfolio_heading' => '',
+    'hero_image' => '', 'intro_heading' => '', 'intro_paragraphs' => '', 'portfolio_heading' => '',
+    'whatwedo_heading' => '', 'built_for' => '', 'outcome' => '',
     'portfolio_subtitle' => '', 'portfolio_cards' => '', 'whatwedo_intro' => '',
     'whatwedo_items' => '', 'summary_bullets' => '', 'cta_heading' => '', 'cta_text' => '',
     'content_blocks' => [],
@@ -103,7 +104,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $updated['nav_name'] = trim($_POST['nav_name'] ?? '');
         $updated['page_title'] = trim($_POST['page_title'] ?? '');
         $updated['published'] = isset($_POST['published']);
+        $updated['intro_heading'] = trim($_POST['intro_heading'] ?? '');
         $updated['intro_paragraphs'] = trim($_POST['intro_paragraphs'] ?? '');
+        $updated['whatwedo_heading'] = trim($_POST['whatwedo_heading'] ?? '');
+        $updated['built_for'] = trim($_POST['built_for'] ?? '');
+        $updated['outcome'] = trim($_POST['outcome'] ?? '');
         $updated['portfolio_heading'] = trim($_POST['portfolio_heading'] ?? '');
         $updated['portfolio_subtitle'] = trim($_POST['portfolio_subtitle'] ?? '');
         $updated['portfolio_cards'] = trim($_POST['portfolio_cards'] ?? '');
@@ -213,6 +218,9 @@ require __DIR__ . '/includes/layout-top.php';
         </label>
         <input type="file" id="hero_image_file" name="hero_image_file" accept="image/*">
 
+        <label for="intro_heading">Introduction heading</label>
+        <input type="text" id="intro_heading" name="intro_heading" value="<?= e($record['intro_heading'] ?? '') ?>">
+
         <label for="intro_paragraphs">Introduction
             <span class="hint">One or more paragraphs. Leave a blank line between paragraphs.</span>
         </label>
@@ -229,6 +237,9 @@ require __DIR__ . '/includes/layout-top.php';
         </label>
         <textarea id="portfolio_cards" name="portfolio_cards" rows="8"><?= e($record['portfolio_cards']) ?></textarea>
 
+        <label for="whatwedo_heading">"Why Organizations Choose Octel" heading</label>
+        <input type="text" id="whatwedo_heading" name="whatwedo_heading" value="<?= e($record['whatwedo_heading'] ?? '') ?>">
+
         <label for="whatwedo_intro">"What Octel Networks Does" intro line</label>
         <input type="text" id="whatwedo_intro" name="whatwedo_intro" value="<?= e($record['whatwedo_intro']) ?>">
 
@@ -236,6 +247,14 @@ require __DIR__ . '/includes/layout-top.php';
             <span class="hint">One item per line, formatted as: Title | Description</span>
         </label>
         <textarea id="whatwedo_items" name="whatwedo_items" rows="6"><?= e($record['whatwedo_items']) ?></textarea>
+
+        <label for="built_for">Built for
+            <span class="hint">Separate items with " | " (e.g. Precision | Reliability | Demanding Environments)</span>
+        </label>
+        <input type="text" id="built_for" name="built_for" value="<?= e($record['built_for'] ?? '') ?>">
+
+        <label for="outcome">Outcome</label>
+        <textarea id="outcome" name="outcome" rows="2"><?= e($record['outcome'] ?? '') ?></textarea>
 
         <label for="summary_bullets">Listing page card bullets
             <span class="hint">One short bullet per line. Shown on the summary card on the listing page.</span>
