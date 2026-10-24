@@ -3,16 +3,23 @@ require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/distributors.php';
 require_once __DIR__ . '/../includes/solutions.php';
 require_once __DIR__ . '/../includes/partners.php';
+require_once __DIR__ . '/includes/search.php';
 require_login();
 
-$distributors = load_distributors();
-$solutions = load_solutions();
-$partners = load_partners();
+$q = admin_search_query();
+$searchFields = ['nav_name', 'slug', 'summary_bullets', 'intro_paragraphs'];
+$distributors = admin_search_filter(load_distributors(), $q, $searchFields);
+$solutions = admin_search_filter(load_solutions(), $q, $searchFields);
+$partners = admin_search_filter(load_partners(), $q, $searchFields);
 $pageTitle = 'Dashboard';
 $activeNav = 'dashboard';
 require __DIR__ . '/includes/layout-top.php';
 
 function render_content_table(array $items, string $type): void {
+    if (!$items) {
+        echo '<div class="empty-state">' . (admin_search_query() !== '' ? 'No matches in this section.' : 'Nothing here yet.') . '</div>';
+        return;
+    }
     ?>
     <table class="admin-table">
         <thead>
@@ -41,6 +48,13 @@ function render_content_table(array $items, string $type): void {
     <?php
 }
 ?>
+<div class="admin-card">
+    <?php render_admin_search($q, [], 'Search distribution partners, solutions and partners by name…'); ?>
+    <?php if ($q !== ''): ?>
+        <p class="search-note" style="margin-bottom:0"><?= count($distributors) + count($solutions) + count($partners) ?> result(s) for “<?= e($q) ?>”</p>
+    <?php endif; ?>
+</div>
+
 <div class="admin-card" id="distribution-partners">
     <div class="card-head">
         <div>

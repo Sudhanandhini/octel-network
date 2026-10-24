@@ -44,6 +44,30 @@
                 opacity: 1;
                 transform: scale(1);
             }
+            /* Hero banner: 95% of the viewport height on desktop */
+            @media (min-width: 992px) {
+                .hero-area.style-one .hero-slide-item.style-one {
+                    height: 95vh;
+                    min-height: 640px;
+                    padding: 120px 0 40px;
+                    display: flex;
+                    align-items: center;
+                }
+                .hero-area.style-one .hero-slide-item.style-one > .container {
+                    width: 100%;
+                }
+                .hero-slide-item.style-one .hero-content h1 {
+                    font-size: clamp(40px, 3.4vw, 58px);
+                    line-height: 1.25;
+                    margin-bottom: 0;
+                }
+                .hero-slide-item.style-one .stat-card {
+                    margin: 0 0 30px;
+                }
+                .hero-slide-item.style-one .hero-para p {
+                    margin-bottom: 24px;
+                }
+            }
         </style>
     </head>
     <body>
@@ -143,7 +167,6 @@
                                                     <li><a href="our-leaders.html">Our Leaders</a></li>
                                                     <li><a href="case-studies.html">Case Studies</a></li>
                                                     <li><a href="careers.html">Careers</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
                                                 </ul>
                                             </li>
 
@@ -235,130 +258,92 @@
                     <div class="hero-area style-one overflow-hidden">
                         <div class="hero-slider-one swiper">
                             <div class="swiper-wrapper">
+                                
                                 <div class="swiper-slide">
                                     <div class="hero-slide-item style-one position-relative z-1">
-                                        <img src="assets/img/new/diagram-1.png" alt="Shape" class="hero-shape position-absolute z-1 move-left">
                                         <div class="hero-bg img-container position-absolute top-0 start-0 w-100 h-100">
-                                            <img src="assets/img/new/hero-slide-1.jpg.jpeg" alt="Image" class="w-100 h-100 object-fit-cover">
+                                            <img src="assets/img/home/hero-2.jpg" alt="Network switch with patch cables" class="w-100 h-100 object-fit-cover">
                                         </div>
                                         <div class="container style-two">
-                                            <div class="row">
+                                            <div class="row align-items-center">
                                                 <div class="col-lg-6">
                                                     <div class="hero-content position-relative z-1">
-                                                        <h1 class="fw-bold text-white title-anim">Elevate Your Business With Expert <b class="fw-bold text_secondary">Accounting & Consulting</b></h1>
-                                                        <ul class="social-profile style-five d-flex flex-column align-items-start list-unstyled mb-0">
-                                                            <li class="fs-xxl-18"><a href="https://www.facebook.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Facebook</a></li>
-                                                            <li class="fs-xxl-18"><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Twitter</a></li>
-                                                            <li class="fs-xxl-18"><a href="https://www.linkedin.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Linkedin</a></li>
-                                                            <li class="fs-xxl-18"><a href="https://www.instagram.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Instagram</a></li>
-                                                        </ul>
+                                                        <h1 class="fw-bold text-white reveal-text-bottom" >Secure, Scalable Networks For <b class="fw-bold text_secondary">Enterprise &amp; Retail</b></h1>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 position-relative z-1" data-cue="slideInLeft" data-delay="300" data-duration="600">
+                                                    <div class="stat-card style-three position-relative z-2 round-20 ms-auto mb-30">
+                                                        <h3 class="text-white fw-semibold lh-1 mb-0">25+</h3>
+                                                        <span class="text-white fs-xxl-18 d-block mb-15">Years Of Infrastructure Expertise</span>
+                                                        <p class="text-white fs-xxl-18 mb-0">15,000+ clients across enterprise, retail &amp; mall environments.</p>
+                                                    </div>
+                                                    <div class="hero-para position-relative z-1">
+                                                        <p class="fs-xxl-18 text-white">Enterprise networking, SD-WAN, surveillance and access control, engineered end to end and backed by 24x7 support.</p>
+                                                        <a href="services.html" class="btn style-two d-inline-flex align-items-center">
+                                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Our Solutions</span>
+                                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="hero-slide-item style-one position-relative z-1">
+                                        <div class="hero-bg img-container position-absolute top-0 start-0 w-100 h-100">
+                                            <img src="assets/img/home/hero-3.jpg" alt="Global network connectivity" class="w-100 h-100 object-fit-cover">
+                                        </div>
+                                        <div class="container style-two">
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-6">
+                                                    <div class="hero-content position-relative z-1">
+                                                        <h1 class="fw-bold text-white reveal-text-bottom" >Your Trusted Technology Partner <b class="fw-bold text_secondary">Since 1999</b></h1>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 position-relative z-1" data-cue="slideInLeft" data-delay="300" data-duration="600">
+                                                    <div class="stat-card style-three position-relative z-2 round-20 ms-auto mb-30">
+                                                        <h3 class="text-white fw-semibold lh-1 mb-0">25+</h3>
+                                                        <span class="text-white fs-xxl-18 d-block mb-15">Years Of Infrastructure Expertise</span>
+                                                        <p class="text-white fs-xxl-18 mb-0">15,000+ clients across enterprise, retail &amp; mall environments.</p>
+                                                    </div>
+                                                    <div class="hero-para position-relative z-1">
+                                                        <p class="fs-xxl-18 text-white">Authorized distributor for Rittal, R&amp;M, NETKA and MATRIX, with certified engineers who stay with you after go-live.</p>
+                                                        <a href="why-octel.html" class="btn style-two d-inline-flex align-items-center">
+                                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Why Octel</span>
+                                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="hero-slide-item style-one position-relative z-1">
+                                        <div class="hero-bg img-container position-absolute top-0 start-0 w-100 h-100">
+                                            <img src="assets/img/home/hero-1-servers.jpg" alt="Server racks in a data center" class="w-100 h-100 object-fit-cover">
+                                        </div>
+                                        <div class="container style-two">
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-6">
+                                                    <div class="hero-content position-relative z-1">
+                                                        <h1 class="fw-bold text-white title-anim">Reliable IT &amp; Network Infrastructure <b class="fw-bold text_secondary">Built To Perform</b></h1>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 position-relative z-1">
                                                     <div class="stat-card style-three position-relative z-2 round-20 ms-lg-auto mb-30">
-                                                        <h3 class="text-white fw-semibold lh-1 mb-0">20+</h3>
-                                                        <span class="text-white fs-xxl-18 d-block mb-22">Years Of Expertise</span>
-                                                        <ul class="client-list list-unstyled mb-2">
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-3.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-4.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-5.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-2.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                        </ul>
-                                                        <p class="text-white fs-xxl-18 mb-0">2,250+ businesses are trusting us.</p>
+                                                        <h3 class="text-white fw-semibold lh-1 mb-0">25+</h3>
+                                                        <span class="text-white fs-xxl-18 d-block mb-15">Years Of Infrastructure Expertise</span>
+                                                        <p class="text-white fs-xxl-18 mb-0">15,000+ clients across enterprise, retail &amp; mall environments.</p>
                                                     </div>
                                                     <div class="hero-para position-relative z-1">
-                                                        <p class="fs-xxl-18 text-white">Tailored accounting and management strategies to optimize performance and reduce risks.</p>
+                                                        <p class="fs-xxl-18 text-white">From structured cabling to cybersecurity, we design, deploy and support infrastructure that keeps your business connected and secure.</p>
                                                         <a href="services.html" class="btn style-two d-inline-flex align-items-center">
                                                             <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
-                                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Explore Services</span>
-                                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="hero-slide-item style-one position-relative z-1">
-                                        <img src="assets/img/new/diagram-1.png" alt="Shape" class="hero-shape position-absolute z-1 move-left">
-                                        <div class="hero-bg img-container position-absolute top-0 start-0 w-100 h-100">
-                                            <img src="assets/img/new/hero-slide-2.jpg.jpeg" alt="Image" class="w-100 h-100 object-fit-cover">
-                                        </div>
-                                        <div class="container style-two">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="hero-content position-relative z-1">
-                                                        <h1 class="fw-bold text-white reveal-text-bottom" >Strategic Financial Solutions For <b class="fw-bold text_secondary">Sustainable Growth</b></h1>
-                                                        <ul class="social-profile style-five d-flex flex-column align-items-start list-unstyled mb-0">
-                                                            <li class="fs-xxl-18"><a href="https://www.facebook.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Facebook</a></li>
-                                                            <li class="fs-xxl-18"><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Twitter</a></li>
-                                                            <li class="fs-xxl-18"><a href="https://www.linkedin.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Linkedin</a></li>
-                                                            <li class="fs-xxl-18"><a href="https://www.instagram.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Instagram</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 position-relative z-1" data-cue="slideInLeft" data-delay="300" data-duration="600">
-                                                    <div class="stat-card style-three position-relative z-2 round-20 ms-auto mb-30">
-                                                        <h3 class="text-white fw-semibold lh-1 mb-0">20+</h3>
-                                                        <span class="text-white fs-xxl-18 d-block mb-22">Years Of Expertise</span>
-                                                        <ul class="client-list list-unstyled mb-2">
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-3.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-4.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-5.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-2.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                        </ul>
-                                                        <p class="text-white fs-xxl-18 mb-0">2,250+ businesses are trusting us.</p>
-                                                    </div>
-                                                    <div class="hero-para position-relative z-1">
-                                                        <p class="fs-xxl-18 text-white">Tailored accounting and management strategies to optimize performance and reduce risks.</p>
-                                                        <a href="services.html" class="btn style-two d-inline-flex align-items-center">
-                                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
-                                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Explore Services</span>
-                                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="hero-slide-item style-one position-relative z-1">
-                                        <img src="assets/img/new/diagram-1.png" alt="Shape" class="hero-shape position-absolute z-1 move-left">
-                                        <div class="hero-bg img-container position-absolute top-0 start-0 w-100 h-100">
-                                            <img src="assets/img/new/hero-slide-3.jpg.jpeg" alt="Image" class="w-100 h-100 object-fit-cover">
-                                        </div>
-                                        <div class="container style-two">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="hero-content position-relative z-1">
-                                                        <h1 class="fw-bold text-white reveal-text-bottom" >Where Accounting Meets Innovation <b class="fw-bold text_secondary">Build Smarter With Exrox</b></h1>
-                                                        <ul class="social-profile style-five d-flex flex-column align-items-start list-unstyled mb-0">
-                                                            <li class="fs-xxl-18"><a href="https://www.facebook.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Facebook</a></li>
-                                                            <li class="fs-xxl-18"><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Twitter</a></li>
-                                                            <li class="fs-xxl-18"><a href="https://www.linkedin.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Linkedin</a></li>
-                                                            <li class="fs-xxl-18"><a href="https://www.instagram.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle">Instagram</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 position-relative z-1" data-cue="slideInLeft" data-delay="300" data-duration="600">
-                                                    <div class="stat-card style-three position-relative z-2 round-20 ms-auto mb-30">
-                                                        <h3 class="text-white fw-semibold lh-1 mb-0">20+</h3>
-                                                        <span class="text-white fs-xxl-18 d-block mb-22">Years Of Expertise</span>
-                                                        <ul class="client-list list-unstyled mb-2">
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-3.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-4.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-5.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                            <li class="rounded-circle"><img src="assets/img/new/client-2.jpg.png" alt="Icon" class="rounded-circle"></li>
-                                                        </ul>
-                                                        <p class="text-white fs-xxl-18 mb-0">2,250+ businesses are trusting us.</p>
-                                                    </div>
-                                                    <div class="hero-para position-relative z-1">
-                                                        <p class="fs-xxl-18 text-white">Tailored accounting and management strategies to optimize performance and reduce risks.</p>
-                                                        <a href="services.html" class="btn style-two d-inline-flex align-items-center">
-                                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
-                                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Explore Services</span>
+                                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Explore Solutions</span>
                                                             <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
                                                         </a>
                                                     </div>
@@ -368,7 +353,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="hero-pagination"></div>
                         </div>
                     </div>
                     <!-- Hero Section End -->
@@ -377,17 +361,17 @@
                     <div class="bg_secondary">
                         <div class="container style-two">
                             <div class="promo-card-wrap style-one d-flex flex-wrap justify-content-xl-between justify-content-center">
-                                <div class="promo-card style-one d-flex flex-wrap align-items-center" data-cue="slideInLeft">
-                                    <span class="font-secondary text-white fw-semibold">2005</span>
-                                    <p class="fs-xxl-18 text-white mb-0">Founded with focus on small business tax optimization</p>
+                                <div class="promo-card style-one d-flex flex-wrap align-items-center">
+                                    <span class="font-secondary text-white fw-semibold">1999</span>
+                                    <p class="fs-xxl-18 text-white mb-0">Founded in Bengaluru as a specialized network infrastructure provider</p>
                                 </div>
-                                <div class="promo-card style-one d-flex flex-wrap align-items-center" data-cue="slideInLeft">
-                                    <span class="font-secondary text-white fw-semibold">2015</span>
-                                    <p class="fs-xxl-18 text-white mb-0">Expanded to offer CFO advisory for startups</p>
+                                <div class="promo-card style-one d-flex flex-wrap align-items-center">
+                                    <span class="font-secondary text-white fw-semibold">25+</span>
+                                    <p class="fs-xxl-18 text-white mb-0">Years of infrastructure design, deployment &amp; support</p>
                                 </div>
-                                <div class="promo-card style-one d-flex flex-wrap align-items-center" data-cue="slideInLeft">
-                                    <span class="font-secondary text-white fw-semibold">2024</span>
-                                    <p class="fs-xxl-18 text-white mb-0">Recognized as Top 50 Accounting Firms by Forbes</p>
+                                <div class="promo-card style-one d-flex flex-wrap align-items-center">
+                                    <span class="font-secondary text-white fw-semibold">24x7</span>
+                                    <p class="fs-xxl-18 text-white mb-0">Single point of contact, from first assessment to ongoing support</p>
                                 </div>
                             </div>
                         </div>
@@ -418,7 +402,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-5 col-lg-5 pe-xxl-2 mb-md-30">
                                     <div class="about-img-wrap img-container position-relative overflow-hidden round-20" data-cue="anim-left" data-delay="400" data-duration="1200">
-                                        <img src="assets/img/new/about-img-1.jpg.jpeg" alt="Image" class="w-100 round-20">
+                                        <img src="assets/img/home/data-center-corridor.jpg" alt="Image" class="w-100 round-20">
                                     </div>
                                 </div>
                                 <div class="col-lg-7 ps-xl-5">
@@ -509,7 +493,7 @@
                                     <p class="fs-xxl-18 mb-10"><span class="fw-semibold text-title">Hands-On Expertise:</span> Every deployment is scoped and supported by engineers, not just a sales catalog.</p>
                                     <p class="fs-xxl-18 mb-25"><span class="fw-semibold text-title">Right-Sized Solutions:</span> Infrastructure built for your actual load, not oversold.</p>
                                     <div class="wh-img round-10">
-                                        <img src="assets/img/new/wh-img-1.jpg.jpeg" alt="Image" class="round-10">
+                                        <img src="assets/img/home/monitoring-dashboard.jpg" alt="Image" class="round-10">
                                     </div>
                                 </div>
                             </div>
@@ -519,7 +503,7 @@
                                     <div class="row gx-xxl-3 gx-md-2 align-items-center">
                                         <div class="col-md-6">
                                             <div class="wh-img round-10 mb-25">
-                                                <img src="assets/img/new/wh-img-2.jpg.jpeg" alt="Image" class="w-100 round-10">
+                                                <img src="assets/img/home/memory-modules.jpg" alt="Image" class="w-100 round-10">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -542,7 +526,7 @@
                     <!-- Service Section Start -->
                     <div class="service-area style-one position-relative z-1 overflow-hidden horizontal-slider h-100">
                         <div class="service-bg img-container position-absolute z-0 top-0 start-0 w-100 h-100">
-                            <img src="assets/img/new/service-bg-1.jpg.jpeg" alt="Image" class="w-100 h-100 object-fit-cover">
+                            <img src="assets/img/home/fiber-light-bg.jpg" alt="Image" class="w-100 h-100 object-fit-cover">
                         </div>
                         <?php
                         require_once __DIR__ . '/includes/solutions.php';
@@ -987,7 +971,7 @@
                     <!-- Promo Section Start -->
                     <div class="promo-area style-one position-relative z-1 overflow-hidden pt-120">
                         <div class="promo-bg img-container position-absolute top-0 start-0 w-100 h-100">
-                            <img src="assets/img/new/promo-bg-1.jpg.jpeg" alt="Image" class="w-100 h-100 object-fit-cover">
+                            <img src="assets/img/home/tech-workspace-bg.jpg" alt="Image" class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="container-fluid style-two">
                             <div class="row">
@@ -1024,11 +1008,11 @@
                                 <div class="container px-xl-0">
                                     <div class="row align-items-center">
                                         <div class="col-xxl-7 col-lg-7 mb-sm-20 mb-md-20">
-                                            <h6 class="fs-18 fw-bold text-white text-xl-center mb-0">Join hundreds of satisfied clients who trust Exrox with their financial strategy.</h6>
+                                            <h6 class="fs-18 fw-bold text-white text-xl-center mb-0">Join 15,000+ clients who trust Octel Networks with their IT &amp; network infrastructure.</h6>
                                         </div>
                                         <div class="col-xxl-5 col-lg-5 ps-xxl-5">
                                             <div class="text-xxl-center text-lg-end ms-xxl-2">
-                                                <a href="appointment.html" class="btn style-two d-inline-flex align-items-center">
+                                                <a href="contact.html#contact-form" class="btn style-two d-inline-flex align-items-center">
                                                     <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
                                                     <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Schedule Free Consultation</span>
                                                     <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
@@ -1156,22 +1140,25 @@
                                         <ul class="footer-menu style-one list-unstyled mb-0">
                                             <li class="d-block fs-xxl-18"><a href="index.html">Home</a></li>
                                             <li class="d-block fs-xxl-18"><a href="about.html">About Us</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="services.html">Services</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="services.html">Solutions</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="distribution.html">Distribution</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="partners.html">Our Partners</a></li>
                                             <li class="d-block fs-xxl-18"><a href="case-studies.html">Case Studies</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="blog-left-sidebar.html">Blog </a></li>
+                                            <li class="d-block fs-xxl-18"><a href="careers.html">Careers</a></li>
                                             <li class="d-block fs-xxl-18"><a href="contact.html">Contact</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="faq.html">FAQs</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-xxl-3 col-lg-4 col-md-6">
                                     <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="200">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Stay Connected</h3>
-                                        <p class="text-black fs-xxl-18 mb-25">Join our newsletter and stay updated on the latest news</p>
-                                        <form action="#" class="newsletter-form style-one position-relative">
-                                             <input type="email" class="w-100 fs-xxl-18 text-black border-0 round-5 outline-0" placeholder="Type your email" required>
-                                             <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent"><i class="ri-send-plane-fill"></i></button>
-                                        </form>
+                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Our Solutions</h3>
+                                        <ul class="footer-menu list-unstyled mb-0">
+                                            <li class="d-block fs-xxl-18"><a href="cyber-security.html">Cybersecurity</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -1195,13 +1182,10 @@
                         <div class="footer-bottom">
                             <div class="row align-items-center">
                                 <div class="col-md-7 pe-md-0 mb-sm-10">
-                                    <p class="copyright-text fs-xxl-10 text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks</span> | Crafted By <a href="https://www.sunsys.in" target="_blank" class=" link-hover-white text-black">Manithas Technologies Pvt. Ltd.</a></p>
+                                    <p class="copyright-text fs-xxl-10 text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
                                 </div>
                                 <div class="col-md-5">
-                                    <ul class="footer-bottom-menu list-unstyled text-lg-end text-center mb-0">
-                                        <li class="fs-xxl-18"><a href="terms-conditions.html" class="text-black link-hover-primary">Terms And Conditions</a></li>
-                                        <li class="fs-xxl-18"><a href="privacy-policy.html" class="text-black link-hover-primary">Privacy Policy</a></li>
-                                    </ul>
+                                    <p class="copyright-text fs-xxl-10 text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                         </div>

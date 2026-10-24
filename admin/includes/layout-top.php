@@ -1,7 +1,7 @@
 <?php
 /**
  * Shared admin chrome. Expects $pageTitle to be set before including.
- * Optionally set $activeNav to one of: dashboard, distributors, solutions, partners, password.
+ * Optionally set $activeNav to one of: dashboard, distributors, solutions, partners, contacts, jobs, applications, password.
  * Requires ../../includes/auth.php to already be loaded (for e(), is_logged_in()).
  */
 $pageTitle = $pageTitle ?? 'Admin';
@@ -12,6 +12,18 @@ $navItems = [
     'solutions'   => ['label' => 'Solutions',             'href' => 'dashboard.php#solutions',                'icon' => 'ri-stack-line'],
     'partners'    => ['label' => 'Our Partners',          'href' => 'dashboard.php#our-partners',             'icon' => 'ri-team-line'],
 ];
+$careerNavItems = [
+    'jobs'        => ['label' => 'Current Openings',      'href' => 'careers.php',                            'icon' => 'ri-briefcase-line'],
+    'applications'=> ['label' => 'Job Applications',      'href' => 'applications.php',                       'icon' => 'ri-user-search-line'],
+];
+if (!function_exists('load_applications')) {
+    require_once __DIR__ . '/../../includes/careers.php';
+}
+$pendingApplications = count_applications_by_status(load_applications())['pending'];
+if (!function_exists('load_contacts')) {
+    require_once __DIR__ . '/../../includes/contacts.php';
+}
+$newContacts = count_contacts_by_status(load_contacts())['new'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,6 +113,17 @@ $navItems = [
         .sidebar-nav a i, .sidebar-foot a i { font-size: 18px; line-height: 1; }
         .sidebar-nav a:hover, .sidebar-foot a:hover { background: rgba(255,255,255,.08); color: #fff; }
         .sidebar-nav a.active, .sidebar-foot a.active { background: var(--accentColor); color: #fff; }
+        .nav-count {
+            margin-left: auto;
+            min-width: 22px;
+            padding: 1px 7px;
+            border-radius: 999px;
+            background: #fff;
+            color: var(--accentColor);
+            font-size: 12px;
+            font-weight: 700;
+            text-align: center;
+        }
         .sidebar-foot {
             border-top: 1px solid rgba(255,255,255,.12);
             padding-top: 14px;
@@ -174,6 +197,67 @@ $navItems = [
         }
         .badge-live { background: #dcfce7; color: #166534; }
         .badge-draft { background: #fef3c7; color: #92400e; }
+        .badge-pending { background: #fef3c7; color: #92400e; }
+        .badge-reviewed { background: #dbeafe; color: #1e40af; }
+        .badge-shortlisted { background: #dcfce7; color: #166534; }
+        .badge-rejected { background: #fee2e2; color: #991b1b; }
+        .badge-new { background: #fef3c7; color: #92400e; }
+        .badge-contacted { background: #dbeafe; color: #1e40af; }
+        .badge-closed { background: #e5e7eb; color: #374151; }
+        .btn-danger-outline { background: #fff; color: #b91c1c !important; border: 1px solid #fca5a5; }
+        .btn-danger-outline:hover { background: #fee2e2; }
+        .btn-sm { padding: 7px 14px; font-size: 14px; }
+        .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; }
+        @media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } }
+
+        /* Careers */
+        .filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+        .admin-search { display: flex; align-items: center; gap: 8px; margin: 0 0 18px; position: relative; flex-wrap: wrap; }
+        .admin-search > i { position: absolute; left: 13px; top: 12px; color: var(--paraColor); font-size: 17px; pointer-events: none; }
+        .admin-search input[type=search] {
+            flex: 1; min-width: 200px; padding: 10px 13px 10px 38px;
+            border: 1px solid #d1d5db; border-radius: 9px; font-size: 15px; font-family: inherit;
+        }
+        .admin-search input[type=search]:focus { outline: none; border-color: var(--accentColor); box-shadow: 0 0 0 3px rgba(227,0,22,.10); }
+        .search-note { color: var(--paraColor); font-size: 14px; margin: -6px 0 16px; }
+        .filter-tabs a {
+            padding: 8px 16px;
+            border-radius: 9px;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            color: var(--titleColor);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .filter-tabs a:hover { background: #f3f4f6; }
+        .filter-tabs a.active { background: var(--primaryColor); border-color: var(--primaryColor); color: #fff; }
+        .list-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px 22px;
+            margin-bottom: 14px;
+            display: flex;
+            gap: 18px;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .list-item h3 { margin: 0 0 4px; font-size: 18px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .list-item h3 a { color: var(--titleColor); text-decoration: none; }
+        .list-item h3 a:hover { color: var(--accentColor); }
+        .list-item .item-sub { color: var(--paraColor); font-size: 15px; margin: 0 0 10px; }
+        .item-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--paraColor); font-size: 14px; }
+        .item-meta span { display: inline-flex; align-items: center; gap: 5px; }
+        .item-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .item-actions form { margin: 0; }
+        .empty-state { color: var(--paraColor); text-align: center; padding: 36px 10px; border: 1px dashed #d1d5db; border-radius: 12px; }
+        .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; margin-bottom: 8px; }
+        .detail-grid .k { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--paraColor); }
+        .detail-grid .v { font-size: 16px; word-break: break-word; }
+        .detail-grid .v a { color: var(--accentColor); }
+        .cover-letter { white-space: pre-wrap; background: #f9fafb; border: 1px solid #eef0f2; border-radius: 10px; padding: 16px 18px; font-size: 15px; }
+        @media (max-width: 640px) { .detail-grid { grid-template-columns: 1fr; } }
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -196,7 +280,7 @@ $navItems = [
         .alert-error { background: #fee2e2; color: #991b1b; }
         label { display: block; font-weight: 700; font-size: 15px; margin: 18px 0 7px; }
         label .hint { display: block; font-weight: 400; color: var(--paraColor); font-size: 13px; margin-top: 3px; }
-        input[type=text], input[type=password], input[type=file], textarea {
+        input[type=text], input[type=password], input[type=file], input[type=email], select, textarea {
             width: 100%;
             padding: 11px 13px;
             border: 1px solid #d1d5db;
@@ -205,7 +289,7 @@ $navItems = [
             font-family: inherit;
         }
         textarea { resize: vertical; }
-        input:focus, textarea:focus {
+        input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--accentColor);
             box-shadow: 0 0 0 3px rgba(227,0,22,.10);
@@ -341,6 +425,22 @@ $navItems = [
                 <?php foreach ($navItems as $key => $item): ?>
                     <a href="<?= e($item['href']) ?>" class="<?= $activeNav === $key ? 'active' : '' ?>">
                         <i class="<?= e($item['icon']) ?>"></i><?= e($item['label']) ?>
+                    </a>
+                <?php endforeach; ?>
+                <div class="nav-label">Enquiries</div>
+                <a href="contacts.php" class="<?= $activeNav === 'contacts' ? 'active' : '' ?>">
+                    <i class="ri-contacts-book-line"></i>Contact Enquiries
+                    <?php if ($newContacts > 0): ?>
+                        <span class="nav-count"><?= (int) $newContacts ?></span>
+                    <?php endif; ?>
+                </a>
+                <div class="nav-label">Careers</div>
+                <?php foreach ($careerNavItems as $key => $item): ?>
+                    <a href="<?= e($item['href']) ?>" class="<?= $activeNav === $key ? 'active' : '' ?>">
+                        <i class="<?= e($item['icon']) ?>"></i><?= e($item['label']) ?>
+                        <?php if ($key === 'applications' && $pendingApplications > 0): ?>
+                            <span class="nav-count"><?= (int) $pendingApplications ?></span>
+                        <?php endif; ?>
                     </a>
                 <?php endforeach; ?>
             </nav>

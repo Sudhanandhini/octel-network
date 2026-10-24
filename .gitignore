@@ -1,0 +1,4 @@
+# Applicant data (personal info + resumes) is created at runtime; keep it out of git.
+data/applications.json
+data/uploads/
+data/contacts.json

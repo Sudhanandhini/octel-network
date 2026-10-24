@@ -29,6 +29,26 @@ $prevHref = $prev ? ($fileMap[$prev['slug']] ?? $breadcrumbParentHref) : $breadc
 $nextHref = $next ? ($fileMap[$next['slug']] ?? $breadcrumbParentHref) : $breadcrumbParentHref;
 $prevLabel = $prev ? $prev['nav_name'] : 'All ' . $sidebarTitle;
 $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
+
+// Solution pages use their own image as the banner; other collections keep the shared banner.
+$defaultBanner = 'assets/img/uploads/block-bmto1e60f0idhx5-1788591945.jpg';
+$useItemBanner = $breadcrumbParentHref === 'services.html' && !empty($item['hero_image']);
+$bannerImage = $useItemBanner ? $item['hero_image'] : $defaultBanner;
+
+// Sidebar enquiry form ("Make An Appointment").
+require_once __DIR__ . '/../includes/contacts.php';
+$contactErrors = [];
+$contactOld = array_fill_keys(['name', 'email', 'phone', 'message'], '');
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
+    $pageUrl = basename(strtok($_SERVER['REQUEST_URI'] ?? '', '?')) . (!empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '');
+    $result = submit_contact($_POST, $breadcrumbParentLabel . ': ' . $item['nav_name'], $pageUrl);
+    if ($result['ok']) {
+        header('Location: ' . contact_redirect_url('enquiry-box'));
+        exit;
+    }
+    $contactErrors = $result['errors'];
+    $contactOld = $result['old'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -403,7 +423,6 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                                                     <li><a href="our-leaders.html">Our Leaders</a></li>
                                                     <li><a href="case-studies.html">Case Studies</a></li>
                                                     <li><a href="careers.html">Careers</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -458,7 +477,10 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                     <!-- Breadcrumb Area Start -->
                     <div class="breadcrumb-area style-one position-relative z-1">
                         <div class="br-bg img-container position-absolute top-0 start-0 w-100">
-                            <img src="assets/img/uploads/block-bmto1e60f0idhx5-1788591945.jpg" alt="Image" class="w-100 h-100 object-fit-cover">
+                            <img src="<?= e($bannerImage) ?>" alt="<?= e($item['nav_name']) ?>" class="w-100 h-100 object-fit-cover">
+                            <?php if ($useItemBanner): ?>
+                            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(90deg, rgba(2,10,20,.88) 0%, rgba(2,10,20,.7) 50%, rgba(2,10,20,.45) 100%);"></div>
+                            <?php endif; ?>
                         </div>
                         <div class="container style-one">
                             <div class="row">
@@ -628,24 +650,38 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                                             </ul>
                                         </div>
                                         <div class="sidebar-widget tags-widget round-20">
-                                            <h3 class="sidebar-widget-title fs-24 fw-semibold text-title mb-20"><?= e($item['cta_heading']) ?></h3>
+                                            <h3 class="sidebar-widget-title fs-24 fw-semibold text-title mb-20" id="enquiry-box"><?= e($item['cta_heading']) ?></h3>
                                             <p><?= e($item['cta_text']) ?></p>
-                                            <form action="#" class="contact-form style-two">
+                                            <?php if (isset($_GET['sent'])): ?>
+                                            <div class="alert alert-success fs-xxl-18 mb-0" role="alert">Thank you! Your request has been received. Our team will get in touch with you shortly.</div>
+                                            <?php else: ?>
+                                            <?php if ($contactErrors): ?>
+                                            <div class="alert alert-danger mb-30" role="alert">
+                                                <?php foreach ($contactErrors as $err): ?><div><?= e($err) ?></div><?php endforeach; ?>
+                                            </div>
+                                            <?php endif; ?>
+                                            <form method="post" action="#enquiry-box" class="contact-form style-two">
+                                                <input type="hidden" name="contact_form" value="1">
+                                                <input type="text" name="website" value="" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
                                                 <div class="form-group mb-45">
-                                                    <input type="text" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Full Name*" required>
+                                                    <input type="text" name="name" value="<?= e($contactOld['name']) ?>" maxlength="120" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Full Name*" required>
                                                 </div>
                                                 <div class="form-group mb-45">
-                                                    <input type="email" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Email*" required>
+                                                    <input type="email" name="email" value="<?= e($contactOld['email']) ?>" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Email*" required>
+                                                </div>
+                                                <div class="form-group mb-45">
+                                                    <input type="tel" name="phone" value="<?= e($contactOld['phone']) ?>" maxlength="20" pattern="[0-9+\s\-]{7,20}" title="Enter a valid phone number" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Phone Number*" required>
                                                 </div>
                                                 <div class="form-group mb-22">
-                                                    <textarea class="w-100 bg-transparent fs-xxl-18 text-title outline-0 resize-0" placeholder="Comment*" required></textarea>
+                                                    <textarea name="message" maxlength="5000" class="w-100 bg-transparent fs-xxl-18 text-title outline-0 resize-0" placeholder="Comment"><?= e($contactOld['message']) ?></textarea>
                                                 </div>
-                                                <button class="btn style-one d-flex align-items-center">
+                                                <button type="submit" class="btn style-one d-flex align-items-center">
                                                     <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
                                                     <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Make An Appointment</span>
                                                     <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
                                                 </button>
                                             </form>
+                                            <?php endif; ?>
                                         </div>
                                     </aside>
                                 </div>
@@ -677,22 +713,25 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                                         <ul class="footer-menu style-one list-unstyled mb-0">
                                             <li class="d-block fs-xxl-18"><a href="index.html">Home</a></li>
                                             <li class="d-block fs-xxl-18"><a href="about.html">About Us</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="services.html">Services</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="services.html">Solutions</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="distribution.html">Distribution</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="partners.html">Our Partners</a></li>
                                             <li class="d-block fs-xxl-18"><a href="case-studies.html">Case Studies</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="blog-left-sidebar.html">Blog </a></li>
+                                            <li class="d-block fs-xxl-18"><a href="careers.html">Careers</a></li>
                                             <li class="d-block fs-xxl-18"><a href="contact.html">Contact</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="faq.html">FAQs</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-xxl-3 col-lg-4 col-md-6">
                                     <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="200">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Stay Connected</h3>
-                                        <p class="text-black fs-xxl-18 mb-25">Join our newsletter and stay updated on the latest news</p>
-                                        <form action="#" class="newsletter-form style-one position-relative">
-                                             <input type="email" class="w-100 fs-xxl-18 text-black border-0 round-5 outline-0" placeholder="Type your email" required>
-                                             <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent"><i class="ri-send-plane-fill"></i></button>
-                                        </form>
+                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Our Solutions</h3>
+                                        <ul class="footer-menu list-unstyled mb-0">
+                                            <li class="d-block fs-xxl-18"><a href="cyber-security.html">Cybersecurity</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
+                                            <li class="d-block fs-xxl-18"><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -716,13 +755,10 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
                         <div class="footer-bottom">
                             <div class="row align-items-center">
                                 <div class="col-md-7 pe-md-0 mb-sm-10">
-                                    <p class="copyright-text fs-xxl-10 text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks</span> | Crafted By <a href="https://www.sunsys.in" target="_blank" class=" link-hover-white text-black">Manithas Technologies Pvt. Ltd.</a></p>
+                                    <p class="copyright-text fs-xxl-10 text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
                                 </div>
                                 <div class="col-md-5">
-                                    <ul class="footer-bottom-menu list-unstyled text-lg-end text-center mb-0">
-                                        <li class="fs-xxl-18"><a href="terms-conditions.html" class="text-black link-hover-primary">Terms And Conditions</a></li>
-                                        <li class="fs-xxl-18"><a href="privacy-policy.html" class="text-black link-hover-primary">Privacy Policy</a></li>
-                                    </ul>
+                                    <p class="copyright-text fs-xxl-10 text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                         </div>
