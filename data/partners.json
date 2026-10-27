@@ -13,7 +13,33 @@
         "whatwedo_items": "Needs Assessment | Matching hardware specs to the actual workload, not over- or under-buying\nProcurement | Sourcing from established manufacturers at volume pricing\nImaging & Deployment | Standard images and configuration before equipment reaches end users\nAsset Tracking | Serial-level records for warranty and lifecycle management\nWarranty Coordination | Managing claims and replacements on the manufacturer's behalf",
         "summary_bullets": "Desktops & Laptops\nServers & Engineering Workstations\nImaging, Deployment & Warranty Support",
         "cta_heading": "NEED HARDWARE SOURCED AND DEPLOYED, NOT JUST SHIPPED?",
-        "cta_text": "Talk to Our Hardware Team"
+        "cta_text": "Talk to Our Hardware Team",
+        "logos": [
+            {
+                "name": "Dell Technologies",
+                "image": "assets/img/logo/dell-technologies.jpg"
+            },
+            {
+                "name": "HP",
+                "image": "assets/img/logo/hp.png"
+            },
+            {
+                "name": "Supermicro",
+                "image": "assets/img/logo/supermicro.png"
+            },
+            {
+                "name": "Lenovo",
+                "image": "assets/img/logo/lenovo.png"
+            },
+            {
+                "name": "Acer",
+                "image": "assets/img/logo/acer.png"
+            },
+            {
+                "name": "Apple",
+                "image": "assets/img/logo/apple.png"
+            }
+        ]
     },
     {
         "slug": "networking-security",
@@ -29,7 +55,61 @@
         "whatwedo_items": "Product Selection | Matching hardware to network scale, budget, and growth plans\nSupply | Sourcing genuine hardware through established distribution channels\nInstallation | Configuring supplied hardware into the live network\nWarranty & RMA Support | Managing manufacturer warranty claims on the customer's behalf\nOngoing Support | Troubleshooting and firmware updates after deployment",
         "summary_bullets": "Switches, Routers & Firewalls\nEnterprise Wireless Access Points\nInstallation & Warranty Support",
         "cta_heading": "NEED NETWORKING HARDWARE YOU CAN TRUST?",
-        "cta_text": "Talk to Our Networking & Security Team"
+        "cta_text": "Talk to Our Networking & Security Team",
+        "logos": [
+            {
+                "name": "Aruba",
+                "image": "assets/img/logo/aruba.png"
+            },
+            {
+                "name": "Cisco",
+                "image": "assets/img/logo/cisco.png"
+            },
+            {
+                "name": "Extreme Networks",
+                "image": "assets/img/logo/extreme.png"
+            },
+            {
+                "name": "Fortinet",
+                "image": "assets/img/logo/fortinet.png"
+            },
+            {
+                "name": "Palo Alto Networks",
+                "image": "assets/img/logo/paloalto.png"
+            },
+            {
+                "name": "Ekahau",
+                "image": "assets/img/logo/ekahau.png"
+            },
+            {
+                "name": "Hewlett Packard Enterprise",
+                "image": "assets/img/logo/hpe.jpg"
+            },
+            {
+                "name": "Juniper Networks",
+                "image": "assets/img/logo/juniper.png"
+            },
+            {
+                "name": "Ruckus",
+                "image": "assets/img/logo/ruckus.png"
+            },
+            {
+                "name": "Forcepoint",
+                "image": "assets/img/logo/forcepoint.png"
+            },
+            {
+                "name": "SonicWall",
+                "image": "assets/img/logo/sonicwall.svg"
+            },
+            {
+                "name": "Atrie",
+                "image": "assets/img/logo/atrie.png"
+            },
+            {
+                "name": "Dinstar",
+                "image": "assets/img/logo/dinstar.png"
+            }
+        ]
     },
     {
         "slug": "peripheral-products",
@@ -45,7 +125,37 @@
         "whatwedo_items": "Standardization | Consistent peripheral models across desks and sites for easier support\nBulk Procurement | Volume sourcing for office rollouts and refreshes\nDelivery & Setup | Peripherals delivered configured and ready to use\nWarranty Support | Coordinated claims and replacements\nConsumables Supply | Ongoing supply of toner, cables, and accessories",
         "summary_bullets": "Printers, Scanners & Displays\nUPS & Power Protection\nBulk Procurement & Rollout",
         "cta_heading": "NEED PERIPHERALS SOURCED ALONGSIDE YOUR IT?",
-        "cta_text": "Talk to Our Peripherals Team"
+        "cta_text": "Talk to Our Peripherals Team",
+        "logos": [
+            {
+                "name": "APC",
+                "image": "assets/img/logo/apc.png"
+            },
+            {
+                "name": "LG",
+                "image": "assets/img/logo/lg.png"
+            },
+            {
+                "name": "Samsung",
+                "image": "assets/img/logo/samsung.png"
+            },
+            {
+                "name": "Logitech",
+                "image": "assets/img/logo/logitech.png"
+            },
+            {
+                "name": "Epson",
+                "image": "assets/img/logo/epson.png"
+            },
+            {
+                "name": "Canon",
+                "image": "assets/img/logo/canon.png"
+            },
+            {
+                "name": "Brother",
+                "image": "assets/img/logo/brother.png"
+            }
+        ]
     },
     {
         "slug": "software-solutions",
@@ -61,7 +171,21 @@
         "whatwedo_items": "Licensing Advisory | Matching license models to actual usage patterns\nProcurement | Sourcing licenses through established software channels\nDeployment | Installing and activating software as part of hardware rollout\nCompliance Tracking | Monitoring license counts and renewal dates\nRenewal Management | Handling renewals before they lapse",
         "summary_bullets": "OS & Productivity Licensing\nVirtualization & LOB Software\nLicense Compliance Management",
         "cta_heading": "NEED SOFTWARE LICENSING HANDLED PROPERLY?",
-        "cta_text": "Talk to Our Software Team"
+        "cta_text": "Talk to Our Software Team",
+        "logos": [
+            {
+                "name": "Microsoft",
+                "image": "assets/img/logo/microsoft.png"
+            },
+            {
+                "name": "Red Hat",
+                "image": "assets/img/logo/redhat.png"
+            },
+            {
+                "name": "VMware",
+                "image": "assets/img/logo/vmware.png"
+            }
+        ]
     },
     {
         "slug": "backup-solutions",
@@ -77,7 +201,21 @@
         "whatwedo_items": "Backup Strategy | Defining recovery point and recovery time objectives with the business\nDeployment | Installing and configuring backup software and storage\nScheduling | Automated backup jobs matched to data criticality\nRecovery Testing | Regular restore drills to confirm backups actually work\nMonitoring | Alerting on failed or incomplete backup jobs",
         "summary_bullets": "Server, Endpoint & Cloud Backup\nRecovery Point & Time Planning\nScheduled Recovery Testing",
         "cta_heading": "HAS YOUR BACKUP EVER BEEN TESTED?",
-        "cta_text": "Talk to Our Backup Solutions Team"
+        "cta_text": "Talk to Our Backup Solutions Team",
+        "logos": [
+            {
+                "name": "Commvault",
+                "image": "assets/img/logo/commvault.png"
+            },
+            {
+                "name": "Veeam",
+                "image": "assets/img/logo/veeam.png"
+            },
+            {
+                "name": "Veritas",
+                "image": "assets/img/logo/veritas.png"
+            }
+        ]
     },
     {
         "slug": "storage-solutions",
@@ -93,7 +231,33 @@
         "whatwedo_items": "Capacity Assessment | Reviewing current usage and growth trends before sizing a solution\nArchitecture Design | Choosing NAS, SAN, or hybrid storage based on actual access patterns\nDeployment | Installing and configuring storage infrastructure\nRedundancy Configuration | RAID and replication setup to protect against data loss\nGrowth Planning | Capacity forecasts to avoid reactive expansion",
         "summary_bullets": "NAS, SAN & Hybrid Storage\nRedundancy & RAID Planning\nCapacity Planning for Growth",
         "cta_heading": "OUTGROWING YOUR CURRENT STORAGE?",
-        "cta_text": "Talk to Our Storage Solutions Team"
+        "cta_text": "Talk to Our Storage Solutions Team",
+        "logos": [
+            {
+                "name": "Dell EMC",
+                "image": "assets/img/logo/dell-emc.png"
+            },
+            {
+                "name": "Hitachi",
+                "image": "assets/img/logo/hitachi.png"
+            },
+            {
+                "name": "HPE",
+                "image": "assets/img/logo/hpe-partner.png"
+            },
+            {
+                "name": "Synology",
+                "image": "assets/img/logo/synology.png"
+            },
+            {
+                "name": "QNAP",
+                "image": "assets/img/logo/qnap.png"
+            },
+            {
+                "name": "NetApp",
+                "image": "assets/img/logo/netapp.png"
+            }
+        ]
     },
     {
         "slug": "cloud-partners",
@@ -109,7 +273,21 @@
         "whatwedo_items": "Platform Matching | Recommending a platform based on workload fit, not vendor preference\nAccount Setup | Structuring cloud accounts, billing, and access control correctly from day one\nLicensing Support | Navigating pricing models and available commitments\nOngoing Account Management | Support for platform-level issues and changes\nEscalation Support | A single contact point when something needs vendor-level attention",
         "summary_bullets": "Multi-Cloud Platform Access\nAccount & Billing Setup\nOngoing Platform Support",
         "cta_heading": "NEED CLOUD ACCOUNTS SET UP RIGHT?",
-        "cta_text": "Talk to Our Cloud Partners Team"
+        "cta_text": "Talk to Our Cloud Partners Team",
+        "logos": [
+            {
+                "name": "AWS",
+                "image": "assets/img/logo/aws.png"
+            },
+            {
+                "name": "Microsoft Azure",
+                "image": "assets/img/logo/microsoft-azure.png"
+            },
+            {
+                "name": "Google Cloud",
+                "image": "assets/img/logo/google-cloud.png"
+            }
+        ]
     },
     {
         "slug": "security-software",
@@ -125,7 +303,29 @@
         "whatwedo_items": "Software Selection | Matching security software to existing infrastructure and risk profile\nLicensing & Deployment | Rolling out endpoint, identity, and monitoring software across the estate\nConfiguration & Tuning | Setting up policies and alert thresholds that are actually usable\nIntegration | Connecting security software with existing network and IT systems\nOngoing Monitoring Support | Helping internal teams act on what the software reports",
         "summary_bullets": "Endpoint Protection & EDR\nIdentity & Access Management\nSIEM & Log Management",
         "cta_heading": "RUNNING SECURITY SOFTWARE NOBODY'S WATCHING?",
-        "cta_text": "Talk to Our Security Software Team"
+        "cta_text": "Talk to Our Security Software Team",
+        "logos": [
+            {
+                "name": "TrendAI",
+                "image": "assets/img/logo/trendai.png"
+            },
+            {
+                "name": "Trellix",
+                "image": "assets/img/logo/trellix.svg"
+            },
+            {
+                "name": "CrowdStrike",
+                "image": "assets/img/logo/crowdstrike.png"
+            },
+            {
+                "name": "Sophos",
+                "image": "assets/img/logo/sophos.png"
+            },
+            {
+                "name": "Quick Heal",
+                "image": "assets/img/logo/quick-heal.png"
+            }
+        ]
     },
     {
         "slug": "passive-components",
@@ -141,6 +341,16 @@
         "whatwedo_items": "Spec Matching | Supplying components rated for the cabling standard being installed\nBulk Supply | Volume sourcing for contractors and large installations\nRack & Enclosure Sizing | Matching rack hardware to equipment and airflow requirements\nTooling Supply | Termination tools and testers for installation teams\nTechnical Support | Guidance on component selection for non-standard installations",
         "summary_bullets": "Connectors, Patch Cords & Panels\nRacks & Enclosures\nCable Management & Termination Tools",
         "cta_heading": "NEED CABLING COMPONENTS TO SPEC?",
-        "cta_text": "Talk to Our Passive Components Team"
+        "cta_text": "Talk to Our Passive Components Team",
+        "logos": [
+            {
+                "name": "Vertiv",
+                "image": "assets/img/logo/vertiv.png"
+            },
+            {
+                "name": "CommScope",
+                "image": "assets/img/logo/commscope.png"
+            }
+        ]
     }
 ]

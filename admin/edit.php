@@ -84,6 +84,58 @@ function process_block_image_uploads(array &$blocks): void {
     unset($block);
 }
 
+/**
+ * Rebuild a partner category's logo list from the form: existing rows (in the
+ * order they were submitted, minus any ticked for removal) followed by any
+ * newly uploaded files, each named after its file until renamed.
+ */
+function process_partner_logos(array &$record, array &$errors): void {
+    $logos = [];
+    foreach ($_POST['logos'] ?? [] as $row) {
+        if (!is_array($row) || !empty($row['remove'])) continue;
+        $image = trim($row['image'] ?? '');
+        if (strpos($image, 'assets/img/') !== 0) continue;
+        $logos[] = ['name' => trim($row['name'] ?? ''), 'image' => $image];
+    }
+
+    $files = $_FILES['logo_files'] ?? null;
+    if ($files && is_array($files['name'])) {
+        $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+        $uploadDir = __DIR__ . '/../assets/img/logo';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+        foreach ($files['name'] as $i => $originalName) {
+            if ($originalName === '') continue;
+            if ($files['error'][$i] !== UPLOAD_ERR_OK) {
+                $errors[] = 'Upload of "' . $originalName . '" failed. Please try again.';
+                continue;
+            }
+            $ext = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+            if (!in_array($ext, $allowed, true)) {
+                $errors[] = '"' . $originalName . '" must be one of: ' . implode(', ', $allowed) . '.';
+                continue;
+            }
+            if ($files['size'][$i] > 5 * 1024 * 1024) {
+                $errors[] = '"' . $originalName . '" must be smaller than 5MB.';
+                continue;
+            }
+            $baseName = pathinfo($originalName, PATHINFO_FILENAME);
+            $filename = slugify($baseName) . '-' . time() . '-' . $i . '.' . $ext;
+            if (move_uploaded_file($files['tmp_name'][$i], $uploadDir . '/' . $filename)) {
+                $logos[] = [
+                    'name' => ucwords(trim(preg_replace('/[-_]+/', ' ', $baseName))),
+                    'image' => 'assets/img/logo/' . $filename,
+                ];
+            } else {
+                $errors[] = 'Could not save "' . $originalName . '".';
+            }
+        }
+    }
+
+    $record['logos'] = $logos;
+}
+
 $errors = [];
 $blankRecord = [
     'slug' => '', 'nav_name' => '', 'page_title' => '', 'published' => false,
@@ -91,7 +143,7 @@ $blankRecord = [
     'whatwedo_heading' => '', 'built_for' => '', 'outcome' => '',
     'portfolio_subtitle' => '', 'portfolio_cards' => '', 'whatwedo_intro' => '',
     'whatwedo_items' => '', 'summary_bullets' => '', 'cta_heading' => '', 'cta_text' => '',
-    'content_blocks' => [],
+    'content_blocks' => [], 'logos' => [],
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -122,6 +174,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $decodedBlocks = json_decode($_POST['content_blocks'] ?? '[]', true);
         $updated['content_blocks'] = is_array($decodedBlocks) ? $decodedBlocks : [];
         process_block_image_uploads($updated['content_blocks']);
+
+        if ($type === 'partners') {
+            process_partner_logos($updated, $errors);
+        }
 
         if ($updated['nav_name'] === '') {
             $errors[] = 'Name cannot be empty.';
@@ -204,6 +260,55 @@ require __DIR__ . '/includes/layout-top.php';
 
         <label for="nav_name">Name</label>
         <input type="text" id="nav_name" name="nav_name" value="<?= e($record['nav_name']) ?>" required>
+
+        <?php if ($type === 'partners'): ?>
+        <fieldset class="logo-manager">
+            <legend>Partner logos</legend>
+            <p class="hint">Shown under this category on the Our Partners page, in this order. Use the arrows to reorder, tick "Remove" to delete, then save.</p>
+            <div id="logo-list">
+                <?php foreach ($record['logos'] ?? [] as $i => $logo): ?>
+                <div class="logo-row">
+                    <img src="../<?= e($logo['image']) ?>" alt="">
+                    <input type="hidden" name="logos[<?= $i ?>][image]" value="<?= e($logo['image']) ?>">
+                    <input type="text" name="logos[<?= $i ?>][name]" value="<?= e($logo['name']) ?>" placeholder="Brand name">
+                    <button type="button" class="logo-move" data-dir="-1" title="Move up">↑</button>
+                    <button type="button" class="logo-move" data-dir="1" title="Move down">↓</button>
+                    <label class="logo-remove"><input type="checkbox" name="logos[<?= $i ?>][remove]" value="1"> Remove</label>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <?php if (empty($record['logos'])): ?>
+            <p class="hint">No logos yet.</p>
+            <?php endif; ?>
+            <label for="logo_files">Add logos
+                <span class="hint">Select one or more images (JPG, PNG, WEBP or GIF, up to 5MB each). Each is named after its file; you can rename it after saving. Logos with little empty space around them look best.</span>
+            </label>
+            <input type="file" id="logo_files" name="logo_files[]" accept=".jpg,.jpeg,.png,.webp,.gif" multiple>
+        </fieldset>
+        <style>
+            .logo-manager { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px 20px; margin: 20px 0; }
+            .logo-manager legend { font-weight: 700; padding: 0 6px; }
+            .logo-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+            .logo-row img { width: 110px; height: 44px; object-fit: contain; background: #fff; border: 1px solid #eee; border-radius: 6px; padding: 4px; flex-shrink: 0; }
+            .logo-row input[type="text"] { flex: 1; margin: 0; }
+            .logo-row .logo-move { width: 34px; height: 34px; border: 1px solid #d1d5db; background: #fff; border-radius: 6px; cursor: pointer; flex-shrink: 0; }
+            .logo-row .logo-remove { display: flex; align-items: center; gap: 5px; margin: 0; font-weight: 400; white-space: nowrap; }
+            .logo-row .logo-remove input { width: auto; margin: 0; }
+            .logo-row:has(.logo-remove input:checked) { opacity: .45; }
+        </style>
+        <script>
+            document.getElementById('logo-list').addEventListener('click', function (ev) {
+                var btn = ev.target.closest('.logo-move');
+                if (!btn) return;
+                var row = btn.closest('.logo-row');
+                if (btn.dataset.dir === '-1' && row.previousElementSibling) {
+                    row.parentNode.insertBefore(row, row.previousElementSibling);
+                } else if (btn.dataset.dir === '1' && row.nextElementSibling) {
+                    row.parentNode.insertBefore(row.nextElementSibling, row);
+                }
+            });
+        </script>
+        <?php endif; ?>
 
         <label for="page_title">Page title (heading shown on the detail page)</label>
         <input type="text" id="page_title" name="page_title" value="<?= e($record['page_title']) ?>">

@@ -30,9 +30,10 @@ $nextHref = $next ? ($fileMap[$next['slug']] ?? $breadcrumbParentHref) : $breadc
 $prevLabel = $prev ? $prev['nav_name'] : 'All ' . $sidebarTitle;
 $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
 
-// Solution pages use their own image as the banner; other collections keep the shared banner.
+// Each detail page (solution, distributor, partner) uses its own image as the banner;
+// the shared banner is only a fallback for items without an image.
 $defaultBanner = 'assets/img/uploads/block-bmto1e60f0idhx5-1788591945.jpg';
-$useItemBanner = $breadcrumbParentHref === 'services.html' && !empty($item['hero_image']);
+$useItemBanner = !empty($item['hero_image']);
 $bannerImage = $useItemBanner ? $item['hero_image'] : $defaultBanner;
 
 // Sidebar enquiry form ("Make An Appointment").

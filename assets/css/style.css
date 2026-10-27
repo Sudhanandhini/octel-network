@@ -3118,6 +3118,7 @@ body {
 .cta-box.style-one {
   background-color: #00252C;
   padding: 40px 25px 48px;
+  margin-top: 50px;
 }
 .cta-box.style-one .cta-shape-one {
   left: 8%;
@@ -4108,3 +4109,4 @@ body {
 .breadcrumb-area.br-photo .br-menu li:after {
   color: rgba(255, 255, 255, 0.6);
 }
+

@@ -87,7 +87,7 @@ function render_content_table(array $items, string $type): void {
     <div class="card-head">
         <div>
             <h1 class="page-title">Our Partners</h1>
-            <p class="page-sub">Edit the content shown on partners.html and each product category's detail page.</p>
+            <p class="page-sub">Edit each category's logos on partners.html, plus its detail page content.</p>
         </div>
         <a href="edit.php?type=partners" class="btn">+ Add New</a>
     </div>

@@ -396,7 +396,8 @@
     });
 
     //Text Reveal By Letters
-    let split = new SplitText(".reveal-text", { type: "chars" });
+    // Split into words as well as chars so each word stays together and lines only wrap between words.
+    let split = new SplitText(".reveal-text", { type: "words,chars" });
 
     gsap.from(split.chars, {
       x: 20,
