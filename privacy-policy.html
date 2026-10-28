@@ -1,24 +1,76 @@
-
 <!DOCTYPE html>
 <html lang="zxx">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <!-- Link of CSS files -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/scrollcue.min.css">
         <link rel="stylesheet" href="assets/css/remixicon.css">
         <link rel="stylesheet" href="assets/css/header.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/footer.css">
+        <link rel="stylesheet" href="assets/css/style.css?v=20261028b">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261028b">
         <link rel="stylesheet" href="assets/css/responsive.css">
-        <link rel="stylesheet" href="assets/css/dark-theme.css">
-        
+        <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
+
         <title>Privacy Policy – Octel Networks</title>
         <link rel="icon" type="image/png" href="assets/img/octel-favicon.png">
+        <style>
+            a.navbar-brand {
+                position: relative;
+                display: inline-block;
+            }
+            a.navbar-brand .logo-default,
+            a.navbar-brand .logo-hover {
+                transition: opacity 0.4s ease, transform 0.4s ease;
+            }
+            a.navbar-brand .logo-hover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-default,
+            .navbar-area.sticky a.navbar-brand .logo-default {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-hover,
+            .navbar-area.sticky a.navbar-brand .logo-hover {
+                opacity: 1;
+                transform: scale(1);
+            }
+        </style>
+        <style>
+            .breadcrumb-area.style-one .br-bg:after { background: linear-gradient(90deg, rgba(0, 0, 0, .85) 0%, rgba(0, 0, 0, .55) 45%, rgba(0, 0, 0, .15) 100%); }
+            .pp-toc { position: sticky; top: 120px; background: #fff; padding: 30px; }
+            .pp-toc ol { counter-reset: pp; }
+            .pp-toc li { counter-increment: pp; border-bottom: 1px dashed #e5e5e5; }
+            .pp-toc li:last-child { border-bottom: 0; }
+            .pp-toc li a { display: flex; gap: 10px; padding: 9px 0; color: var(--titleColor); font-size: 15px; transition: color .3s; }
+            .pp-toc li a:before { content: counter(pp, decimal-leading-zero); color: var(--secondaryColor); font-weight: 700; min-width: 24px; }
+            .pp-toc li a:hover { color: var(--secondaryColor); }
+            .pp-content { color: var(--paraColor); font-size: 16px; line-height: 1.75; }
+            .pp-content p { margin-bottom: 18px; }
+            .pp-content a { color: var(--secondaryColor); text-decoration: underline; }
+            .pp-updated { display: inline-block; background: #fff; border-left: 3px solid var(--secondaryColor); padding: 8px 16px; border-radius: 6px; color: var(--titleColor); font-weight: 600; }
+            .pp-content h3 { display: flex; align-items: center; gap: 14px; font-size: 24px; font-weight: 600; color: #000; margin: 45px 0 16px; scroll-margin-top: 120px; }
+            .pp-content h3 span { flex: none; width: 38px; height: 38px; border-radius: 50%; background: var(--secondaryColor); color: #fff; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+            .pp-content ul { list-style: none; padding: 0; margin: 0 0 18px; }
+            .pp-content ul li { position: relative; padding-left: 24px; margin-bottom: 10px; }
+            .pp-content ul li:before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; background: var(--secondaryColor); transform: rotate(45deg); }
+            .pp-content strong { color: var(--titleColor); }
+            .pp-table { background: #fff; border-radius: 16px; overflow: hidden; margin-bottom: 18px; font-size: 15px; }
+            .pp-table th { background: #000; color: #fff; font-weight: 600; padding: 14px 18px; border: 0; }
+            .pp-table td { padding: 14px 18px; color: var(--paraColor); border-color: #eee; vertical-align: top; }
+            .pp-table td:first-child { color: var(--titleColor); width: 55%; }
+            .pp-contact-box { background: #fff; padding: 26px 30px; border-top: 3px solid var(--secondaryColor); }
+            @media (max-width: 991px) { .pp-toc { position: static; } }
+        </style>
     </head>
     <body>
 
@@ -34,15 +86,6 @@
         </div>
         <!--  Preloader End -->
 
-        <!-- Theme Switcher Start -->
-        <div class="switch-theme-mode">
-            <label id="switch" class="switch">
-                <input type="checkbox" onchange="toggleTheme()" id="slider">
-                <span class="slider round"></span>
-            </label>
-        </div>
-        <!-- Theme Switcher End -->
-
         <!-- Custom Cursor -->
         <div class="cursor">
             <span class="cursor-text d-flex flex-column align-items-center justify-content-center rounded-circle bg-white text-title fs-14 fw-semibold"></span>
@@ -53,35 +96,14 @@
             <div id="smooth-content">
 
                 <div class="bg-albastor position-relative z-1">
-                    <!-- Navbar To Start -->
-                    <div class="navbar-top style-two position-relative z-2">
-                        <div class="container style-two">
-                            <div class="row">
-                                <div class="col-md-7 mb-sm-6">
-                                    <ul class="contact-info list-unstyled text-md-start text-center mb-0">
-                                        <li class="d-inline-block"><a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary link-hover-secondary">+1 (808) 360-9282</a></li>
-                                        <li class="d-inline-block"><a href="mailto:info@octelnetworks.com" class="contact-mail fw-normal text-white hover-text-secondary d-inline-block">info<span class="text_secondary">@</span>octelnetworks.com</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-5">
-                                    <ul class="social-profile style-two list-unstyled text-md-end text-center mb-0">
-                                        <li><a href="https://www.facebook.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
-                                        <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
-                                        <li><a href="https://www.linkedin.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
-                                        <li><a href="https://www.instagram.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-instagram-line"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Navbar Top End -->
 
                     <!-- Navbar Area Start -->
-                    <div class="navbar-area style-four position-relative z-2" id="navbar">
+                    <div class="navbar-area style-one position-relative z-2" id="navbar">
                         <div class="container style-two">
                             <div class="navbar-wrapper d-flex justify-content-between align-items-center">
                                 <a href="index.html" class="navbar-brand">
-                                    <img src="assets/img/logo-white.png" alt="Logo">
+                                    <img src="assets/img/logo-white.png" alt="Logo" class="logo-default">
+                                    <img src="assets/img/new/logo-white.png" alt="Logo" class="logo-hover">
                                 </a>
                                 <div class="menu-area mx-auto">
                                     <div class="overlay"></div>
@@ -93,99 +115,28 @@
                                         </div>
                                         <ul class="menu-section p-0 mb-0 lh-1">
                                             <li class="menu-item-has-children">
-                                                <a href="javascript:void(0)">Home<i class="ri-arrow-down-s-line"></i></a>
-                                                <ul class="menu-subs menu-column-1">
-                                                    <li class="list-item">
-                                                        <a href="index.html">Home - Accounting & Consulting</a>
-                                                    </li>
-                                                    <li class="list-item">
-                                                        <a href="index-2.html">Home - Tax Audit Consulting</a>
-                                                    </li>
-                                                    <li class="list-item">
-                                                        <a href="index-3.html">Home - Accounting & Business Advisory</a>
-                                                    </li>
-                                                </ul>
+                                                <a href="services.html">SOLUTIONS</a>
                                             </li>
                                             <li class="menu-item-has-children">
-                                                <a href="javascript:void(0)" class="active">Pages<i class="ri-arrow-down-s-line"></i></a>
-                                                <ul class="menu-subs menu-column-1">
-                                                    <li><a href="about-us.html">About Us</a></li>
-                                                    <li class="menu-item-has-children">
-                                                        <a href="javascript:void(0)">Leaders<i class="ri-arrow-right-s-line"></i></a>
-                                                        <ul class="menu-subs menu-column-1">
-                                                            <li><a href="our-leaders.html">Our Leaders</a></li>
-                                                            <li><a href="leader-details.html">Leader Details</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-has-children">
-                                                        <a href="javascript:void(0)">Careers<i class="ri-arrow-right-s-line"></i></a>
-                                                        <ul class="menu-subs menu-column-1">
-                                                            <li><a href="careers.html">Careers</a></li>
-                                                            <li><a href="career-details.html">Career Details</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="appointment.html">Appointment</a></li>
-                                                    <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                                    <li><a href="faq.html">FAQ</a></li>
-                                                    <li><a href="testimonials.html">Testimonials</a></li>
-                                                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                                                    <li><a href="privacy-policy.html" class="active">Privacy Policy</a></li>
-                                                    <li><a href="error-404.html">Error 404</a></li>
-                                                </ul>
+                                                <a href="distribution.html">DISTRIBUTION</a>
                                             </li>
                                             <li class="menu-item-has-children">
-                                                <a href="javascript:void(0)">Services<i class="ri-arrow-down-s-line"></i></a>
-                                                <ul class="menu-subs menu-column-1">
-                                                    <li><a href="services.html">Our Services</a></li>
-                                                    <li><a href="service-details.html">Service Details</a></li>
-                                                </ul>
+                                                <a href="partners.html">OUR PARTNERS</a>
                                             </li>
                                             <li class="menu-item-has-children">
-                                                <a href="javascript:void(0)">Case Studies<i class="ri-arrow-down-s-line"></i></a>
+                                                <a href="javascript:void(0)">WHY OCTEL?<i class="ri-arrow-down-s-line"></i></a>
                                                 <ul class="menu-subs menu-column-1">
+                                                    <li><a href="why-octel.html">Why Octel</a></li>
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="our-leaders.html">Our Leaders</a></li>
                                                     <li><a href="case-studies.html">Case Studies</a></li>
-                                                    <li><a href="case-details.html">Case Details</a></li>
+                                                    <li><a href="careers.html">Careers</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="menu-item-has-children">
-                                                <a href="javascript:void(0)">Blog<i class="ri-arrow-down-s-line"></i></a>
-                                                <ul class="menu-subs menu-column-1">
-                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Blog Layout<i class="ri-arrow-right-s-line"></i></a>
-                                                        <ul class="menu-subs menu-column-1">
-                                                            <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                                            <li><a href="blog-standard.html">Blog Standard</a></li>
-                                                            <li><a href="blog-columns.html">Blog Columns</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Blog Details Layout<i class="ri-arrow-right-s-line"></i></a>
-                                                        <ul class="menu-subs menu-column-1">
-                                                            <li><a href="blog-details-left-sidebar.html">Blog Details Left Sidebar</a></li>
-                                                            <li><a href="blog-details-right-sidebar.html">Blog Details Right Sidebar</a></li>
-                                                            <li><a href="blog-details-no-sidebar.html">Blog Details No Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Others<i class="ri-arrow-right-s-line"></i></a>
-                                                        <ul class="menu-subs menu-column-1">
-                                                            <li><a href="posts-by-author.html">Posts By Author</a></li>
-                                                            <li><a href="posts-by-date.html">Posts By Date</a></li>
-                                                            <li><a href="posts-by-category.html">Posts By Category</a></li>
-                                                            <li><a href="posts-by-tag.html">Posts By Tag</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                                 <div class="other-options d-flex flex-wrap align-items-center justify-content-end">
-                                    <div class="option-item d-lg-block d-none">
-                                        <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
-                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon"></span>
-                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
-                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon"></span>
-                                        </a>
-                                    </div>
                                     <div class="option-item position-relative d-flex align-items-center">
                                         <div class="mobile-options position-relative d-lg-none me-3">
                                             <button class="dropdown-toggle  text-center bg-transparent border-0 p-0 transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
@@ -193,13 +144,13 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-centered mobile-option-list top-1 border-0" data-bs-popper="static">
                                                 <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
-                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon"></span>
+                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
                                                     <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
-                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon"></span>
+                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
                                                 </a>
                                             </div>
                                         </div>
-                                        <button class="search-btn border-0 rounded-circle d-flex flex-column align-items-center justify-content-center dropdown-toggle transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                        <button class="search-btn bg_gradient border-0 rounded-circle d-flex flex-column align-items-center justify-content-center dropdown-toggle transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
                                             <i class="ri-search-line"></i>
                                             <i class="ri-close-line"></i>
                                         </button>
@@ -209,6 +160,13 @@
                                                 <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent d-flex flex-column align-items-center justify-content-center"><i class="ri-search-2-line"></i></button>
                                             </form>
                                         </div>
+                                    </div>
+                                    <div class="option-item d-lg-block d-none">
+                                        <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
+                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
+                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                        </a>
                                     </div>
                                     <div class="option-item d-lg-none">
                                         <button type="button" class="menu-mobile-trigger">
@@ -227,7 +185,7 @@
                     <!-- Breadcrumb Area Start -->
                     <div class="breadcrumb-area style-one position-relative z-1">
                         <div class="br-bg img-container position-absolute top-0 start-0 w-100">
-                            <img src="assets/img/breadcrumb/br-18.jpg" alt="Image" class="w-100 h-100 object-fit-cover">
+                            <img src="assets/img/breadcrumb/privacy-banner.jpg" alt="Close-up of a circuit board" class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="container style-one">
                             <div class="row">
@@ -243,142 +201,155 @@
                     </div>
                     <!-- Breadcrumb Area End -->
 
-                    <!-- Terms & Conditions Start -->
-                    <div class="container style-one ptb-120">
-                        <div class="terms-wrap">
-                            <h6 class="font-primary fs-18 mb-5">Last updated on January 01, 2025.</h6>
-                            <div class="single-para">
-                                <h5> Introduction</h5>
-                                <p class="ps-md-5 ms-md-5">We are committed to protecting your privacy and ensuring that your personal and business data is handled securely and responsibly. This Privacy Policy explains how we collect, use, disclose, and protect the information you provide to us.</p>
-                            </div>
-                            <div class="single-para">
-                                <h5>What Information We Collect</h5>
-                                <p class="ps-md-5 ms-md-5">We may collect the following types of information:</p>
-                                <h6 class="fs-18 font-primary mb-2">Personal Information:</h6>
-                                <ul class="features-list style-one list-unstyled ps-md-5 ms-md-5">
-                                    <li class="position-relative">Full name</li>
-                                    <li class="position-relative">Email address</li>
-                                    <li class="position-relative">Phone number</li>
-                                    <li class="position-relative">Billing address</li>
-                                    <li class="position-relative">Business name and registration details</li>
-                                </ul>
-                                <h6 class="fs-18 font-primary mb-2">Billing Information:</h6>
-                                <ul class="features-list style-one list-unstyled ps-md-5 ms-md-5">
-                                    <li class="position-relative">Company financial records</li>
-                                    <li class="position-relative">Tax IDs and registration numbers</li>
-                                    <li class="position-relative">Accounting and bookkeeping files</li>
-                                    <li class="position-relative">Banking/payment details (as needed for services)</li>
-                                </ul>
-                                <h6 class="fs-18 font-primary mb-2"> Technical & Usage Data:</h6>
-                                <ul class="features-list style-one list-unstyled ps-md-5 ms-md-5">
-                                    <li class="position-relative">IP address</li>
-                                    <li class="position-relative">Browser type and version</li>
-                                    <li class="position-relative">Device identifiers</li>
-                                    <li class="position-relative">Pages viewed and time spent on our website</li>
-                                </ul>
-                            </div>
-                            <div class="single-para">
-                                <h5>How We Collect Information</h5>
-                                <p class="ps-md-5 ms-md-5">We collect data through:</p>
-                                <ul class="features-list style-one list-unstyled ps-md-5 ms-md-5">
-                                    Website forms (e.g., contact, inquiry, newsletter signup)
-                                    Client onboarding processes
-                                    Service agreements and communication
-                                    Use of cookies and analytics tools (e.g., Google Analytics)
-                                    Third-party accounting or financial platforms integrated with our services
-                                    <li class="position-relative">Provide accurate, complete, and updated information</li>
-                                    <li class="position-relative">Not misuse the website (e.g., hacking, spreading malware)</li>
-                                    <li class="position-relative">Maintain the confidentiality of your login credentials</li>
-                                    <li class="position-relative">Be solely responsible for any activity under your account</li>
-                                </ul>
-                            </div>
-                            <div class="single-para">
-                                <h5>Legal Basis for Processing (GDPR)</h5>
-                                <p class="ps-md-5 ms-md-5">If you are located in the European Union, we process your personal data under the following legal bases:</p>
-                                <ul class="features-list style-one list-unstyled ps-md-5 ms-md-5">
-                                    <li class="position-relative"><span class="text-title fw-medium">Performance of a contract</span> (e.g., service agreement)</li>
-                                    <li class="position-relative"><span class="text-title fw-medium">Legal obligation</span> (e.g., tax and compliance reporting)</li>
-                                    <li class="position-relative"><span class="text-title fw-medium">Legitimate interest</span> (e.g., service improvement)</li>
-                                    <li class="position-relative"><span class="text-title fw-medium">Consent</span> (e.g., marketing emails)</li>
-                                </ul>
-                            </div>
-                            <div class="single-para">
-                                <h5>How We Share Your Information</h5>
-                                <p class="ps-md-5 ms-md-5">We may share your data only when necessary and only with:</p>
-                                <ul class="features-list style-one list-unstyled ps-md-5 ms-md-5">
-                                    <li></li>
-                                    <li class="position-relative">Trusted third-party service providers (e.g., cloud accounting software, email platforms)</li>
-                                    <li class="position-relative">Regulatory bodies or government authorities (if legally required)</li>
-                                    <li class="position-relative">Our accountants, tax advisors, or legal representatives</li>
-                                </ul>
-                                <p class=" ps-md-5 ms-md-5">We do not sell, rent, or trade your personal data.</p>
-                            </div>
-                            <div class="single-para">
-                                <h5>Data Storage & Security</h5>
-                                <p class="ps-md-5 ms-md-5">We implement technical and organizational measures to protect your information:</p>
-                                <ul class="features-list style-one list-unstyled ps-md-5 ms-md-5">
-                                     <li class="position-relative">Encrypted data transmission (SSL)</li>
-                                     <li class="position-relative">Secure cloud storage providers (e.g., AWS, Google Cloud, Xero)</li>
-                                     <li class="position-relative">Access controls and regular security audits</li>
-                                     <li class="position-relative">Backup systems and disaster recovery protocols</li>
-                                </ul>
-                            </div>
-                            <div class="single-para">
-                                <h5>Your Rights</h5>
-                                <p class="ps-md-5 ms-md-5">Depending on your location, you have the right to:</p>
-                                <ul class="features-list list-unstyled ps-md-5 ms-md-5">
-                                   <li class="position-relative">Access the personal data we hold about you</li>
-                                   <li class="position-relative">Request correction of inaccurate information</li>
-                                   <li class="position-relative">Request deletion of your data (where legally </li>applicable)</li>
-                                   <li class="position-relative">Withdraw consent at any time</li>
-                                   <li class="position-relative">Object to processing or request data portability</li>
-                                </ul>
-                                <p>To exercise any of these rights, email us at <a href="/cdn-cgi/l/email-protection#d2a2a0bba4b3b1ab92b7aaa0bdaafcb1bdbffc" class="text-optional hover-text-primary transition"><span class="__cf_email__" data-cfemail="19696b706f787a60597c616b7661377a7674">[email&#160;protected]</span>.</a></p>
-                            </div>
-                            <div class="single-para">
-                                <h5>Cookies Policy</h5>
-                                <p class="ps-md-5 ms-md-5">Our website uses cookies to improve your experience. Cookies help us analyze site traffic, remember preferences, and enhance security.
-                                You can control cookie usage in your browser settings. By using our site, you consent to our cookie usage as described.</p>
-                            </div>
-                            <div class="single-para">
-                                <h5>International Data Transfer</h5>
-                                <p class="ps-md-5 ms-md-5">If you are located outside the country where our servers are hosted, your data may be transferred and processed across borders. We ensure such transfers are secured and legally compliant (e.g., through standard contractual clauses where required).</p>
-                            </div>
-                            <div class="single-para">
-                                <h5>Third Party Links</h5>
-                                <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of those websites. We encourage you to read their policies before submitting any data.</p>
-                            </div>
-                            <div class="single-para">
-                                <h5>Changes To This Policy</h5>
-                                <p>We may update this Privacy Policy occasionally to reflect changes in our practices or legal obligations. Updates will be posted on this page with a revised “Effective Date.”</p>
-                            </div>
-                            <div class="single-para">
-                                <h5>Contact Information</h5>
-                                <p>For any questions about these Terms, please contact:</p>
-                                <ul class="features-list style-one list-unstyled ps-md-5 ms-md-5">
-                                    <li class="position-relative"><span class="text-title fw-semibold">Email:</span> <a href="/cdn-cgi/l/email-protection#93fbf6fffffcd3f6ebe1fcebbdf0fcfe" class="text-para hover-text-primary transition"><span class="__cf_email__" data-cfemail="f9919c959596b99c818b9681d79a9694">[email&#160;protected]</span></a></li>
-                                    <li class="position-relative"><span class="text-title fw-semibold">Phone:</span> <a href="tel:18083609282" class="text-optional hover-text-primary transition">+1(808) 360-9282</a></li>
-                                    <li class="position-relative"><span class="text-title fw-semibold">Website:</span> <a href="https://www.envytheme.com" target="_blank" class="text-para hover-text-primary transition">www.exrox.com</a></li>
-                                </ul>
+                    <!-- Privacy Policy Start -->
+                    <div class="bg-albastor">
+                        <div class="container style-one ptb-120">
+                            <div class="row">
+                                <div class="col-lg-4 mb-md-30">
+                                    <aside class="pp-toc round-20">
+                                        <h6 class="fs-18 fw-semibold text-title mb-15">On This Page</h6>
+                                        <ol class="list-unstyled mb-0">
+                                            <li><a href="#pp-who">Who We Are</a></li>
+                                            <li><a href="#pp-collect">Information We Collect</a></li>
+                                            <li><a href="#pp-use">How We Use It &amp; Legal Basis</a></li>
+                                            <li><a href="#pp-cookies">Cookies</a></li>
+                                            <li><a href="#pp-share">Sharing Your Information</a></li>
+                                            <li><a href="#pp-transfer">International Transfers</a></li>
+                                            <li><a href="#pp-retention">How Long We Keep It</a></li>
+                                            <li><a href="#pp-security">Security</a></li>
+                                            <li><a href="#pp-rights">Your Rights</a></li>
+                                            <li><a href="#pp-children">Children</a></li>
+                                            <li><a href="#pp-links">Third-Party Links &amp; Services</a></li>
+                                            <li><a href="#pp-changes">Changes To This Policy</a></li>
+                                            <li><a href="#pp-contact">Contact Us</a></li>
+                                        </ol>
+                                    </aside>
+                                </div>
+                                <div class="col-lg-8 ps-xl-5">
+                                    <div class="pp-content">
+                                        <p class="pp-updated">Last updated: October 28, 2026</p>
+                                        <p>Octel Networks Pvt Ltd ("Octel Networks", "we", "us" or "our") respects your privacy. This Privacy Policy explains what personal information we collect when you visit our website or contact us, why we collect it, how we protect it, and the choices and rights you have. It is written to meet the EU and UK General Data Protection Regulation (GDPR) and India's Digital Personal Data Protection Act, 2023.</p>
+
+                                        <h3 id="pp-who"><span>1</span>Who We Are</h3>
+                                        <p>Octel Networks Pvt Ltd is the data controller (data fiduciary) responsible for your personal information. Our head office is at 887 11th Main 4th Cross HAL 2nd Stage, Bangalore, Karnataka, India - 560008. You can reach us about privacy at <a href="mailto:info@octelnetworks.com">info@octelnetworks.com</a>.</p>
+
+                                        <h3 id="pp-collect"><span>2</span>Information We Collect</h3>
+                                        <p>We only collect information that you give us or that is needed to run the website:</p>
+                                        <ul>
+                                            <li><strong>Enquiries:</strong> when you use our contact or consultation forms, we collect your name, email address, phone number, the type of enquiry (sales or support) and your message.</li>
+                                            <li><strong>Job applications:</strong> when you apply through our Careers page, we collect your name, email address, phone number, qualification, experience, cover letter and the CV / resume you upload.</li>
+                                            <li><strong>Communications:</strong> emails, calls and messages you exchange with our team, including chat messages sent through the website chat assistant.</li>
+                                            <li><strong>Technical data:</strong> like most websites, our server automatically records basic technical details such as your IP address, browser type, pages requested and the date and time of your visit, to keep the site secure and working.</li>
+                                            <li><strong>Cookie choices:</strong> your cookie preferences, stored on your device (see <a href="#pp-cookies">Cookies</a>).</li>
+                                        </ul>
+                                        <p>We do not ask for sensitive personal data (such as health, religion or biometric data) through our website. Please do not include it in your messages.</p>
+
+                                        <h3 id="pp-use"><span>3</span>How We Use It &amp; Legal Basis</h3>
+                                        <div class="table-responsive">
+                                            <table class="table pp-table">
+                                                <thead>
+                                                    <tr><th>Purpose</th><th>Legal basis</th></tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td>Responding to your enquiry, preparing quotations and providing the products, services and support you request</td><td>Steps at your request before a contract, or performance of a contract</td></tr>
+                                                    <tr><td>Assessing job applications and contacting candidates</td><td>Steps at your request before a contract; your consent for keeping your CV for future roles</td></tr>
+                                                    <tr><td>Keeping the website secure, preventing spam and abuse, and fixing problems</td><td>Our legitimate interests in operating a safe website</td></tr>
+                                                    <tr><td>Analytics and marketing cookies</td><td>Your consent, which you can withdraw at any time</td></tr>
+                                                    <tr><td>Sending you updates about our solutions</td><td>Your consent, or our legitimate interests for existing customers; you can opt out at any time</td></tr>
+                                                    <tr><td>Meeting tax, accounting and other legal requirements</td><td>Legal obligation</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <p>We do not sell your personal information, and we do not use it for automated decision-making that has legal or similarly significant effects on you.</p>
+
+                                        <h3 id="pp-cookies"><span>4</span>Cookies</h3>
+                                        <p>Cookies are small files stored on your device. We use:</p>
+                                        <ul>
+                                            <li><strong>Strictly necessary cookies</strong>, which the website needs to work, such as remembering your cookie choice and protecting forms. These do not need consent.</li>
+                                            <li><strong>Analytics cookies</strong>, which help us understand how visitors use the site so we can improve it. Used only if you allow them.</li>
+                                            <li><strong>Marketing cookies</strong>, which help us show relevant content and measure campaigns. Used only if you allow them.</li>
+                                        </ul>
+                                        <p>When you first visit, we ask for your consent. Optional cookies stay off unless you choose to allow them. You can change or withdraw your consent at any time with the cookie button at the bottom left of every page, or here: <a href="#" data-cookie-settings>Cookie Settings</a>. Your choice is remembered for 180 days.</p>
+
+                                        <h3 id="pp-share"><span>5</span>Sharing Your Information</h3>
+                                        <p>We share personal information only when needed, and only with:</p>
+                                        <ul>
+                                            <li><strong>Service providers</strong> who host our website, email and IT systems for us, under contracts that require them to protect your data and use it only on our instructions.</li>
+                                            <li><strong>Manufacturers and partners we represent</strong> (such as Rittal, R&amp;M, NETKA System and Matrix), where needed to quote for, supply or support the products you ask about.</li>
+                                            <li><strong>Professional advisers and authorities</strong>, such as auditors, lawyers, regulators or law enforcement, when required by law or to protect our legal rights.</li>
+                                        </ul>
+
+                                        <h3 id="pp-transfer"><span>6</span>International Transfers</h3>
+                                        <p>We are based in India, so information you send us is processed in India. If you are in the European Economic Area or the United Kingdom, this means your data is transferred outside your country. Where required, we protect such transfers with appropriate safeguards, such as the European Commission's Standard Contractual Clauses, or rely on the transfer being necessary to answer your request.</p>
+
+                                        <h3 id="pp-retention"><span>7</span>How Long We Keep It</h3>
+                                        <ul>
+                                            <li><strong>Enquiries:</strong> up to 24 months after our last contact with you, unless you become a customer.</li>
+                                            <li><strong>Customer records:</strong> for as long as we serve you, and afterwards for the period required by tax and accounting laws.</li>
+                                            <li><strong>Job applications:</strong> up to 12 months after the hiring decision, unless you are hired or ask us to keep your CV for future roles.</li>
+                                            <li><strong>Server logs:</strong> for a limited period needed for security, normally no more than 12 months.</li>
+                                        </ul>
+                                        <p>When information is no longer needed, we delete it or make it anonymous.</p>
+
+                                        <h3 id="pp-security"><span>8</span>Security</h3>
+                                        <p>We use appropriate technical and organisational measures to protect your information, including encrypted connections (HTTPS), restricted access to admin systems, and access only for staff who need it. No method of transmission over the internet is completely secure, but we work to protect your information and will notify you and the relevant authorities of a data breach where the law requires.</p>
+
+                                        <h3 id="pp-rights"><span>9</span>Your Rights</h3>
+                                        <p>Depending on where you live, you have the right to:</p>
+                                        <ul>
+                                            <li><strong>Access</strong> the personal information we hold about you and get a copy.</li>
+                                            <li><strong>Correct</strong> information that is inaccurate or incomplete.</li>
+                                            <li><strong>Erase</strong> your information when we no longer need it or you withdraw consent.</li>
+                                            <li><strong>Restrict</strong> or <strong>object to</strong> how we use your information, including for direct marketing.</li>
+                                            <li><strong>Data portability</strong>: receive your information in a common format or have it sent to another organisation.</li>
+                                            <li><strong>Withdraw consent</strong> at any time, without affecting what we did before you withdrew it.</li>
+                                            <li><strong>Nominate</strong> another person to exercise your rights if you are unable to (India).</li>
+                                            <li><strong>Complain</strong> to a data protection authority, such as the supervisory authority in your EU country, the UK Information Commissioner's Office, or the Data Protection Board of India.</li>
+                                        </ul>
+                                        <p>To use any of these rights, email <a href="mailto:info@octelnetworks.com">info@octelnetworks.com</a>. We may need to confirm your identity, and we will reply within one month. We would appreciate the chance to resolve your concern before you contact an authority.</p>
+
+                                        <h3 id="pp-children"><span>10</span>Children</h3>
+                                        <p>Our website and services are intended for businesses and are not directed at children under 18. We do not knowingly collect personal information from children. If you believe a child has sent us personal information, please contact us and we will delete it.</p>
+
+                                        <h3 id="pp-links"><span>11</span>Third-Party Links &amp; Services</h3>
+                                        <p>Our website contains links to other websites, such as our partners' sites and our social media pages, and shows embedded Google Maps on the Contact page. These services have their own privacy policies and may collect information when you use them. We are not responsible for their practices, so please review their policies.</p>
+
+                                        <h3 id="pp-changes"><span>12</span>Changes To This Policy</h3>
+                                        <p>We may update this Privacy Policy from time to time. The latest version will always be on this page with the "Last updated" date at the top. If we make significant changes, we will let you know on the website or, where appropriate, by email.</p>
+
+                                        <h3 id="pp-contact"><span>13</span>Contact Us</h3>
+                                        <p>If you have any questions about this Privacy Policy or how we handle your information, please contact us:</p>
+                                        <div class="pp-contact-box round-20">
+                                            <p class="mb-10"><strong>Octel Networks Pvt Ltd</strong></p>
+                                            <p class="mb-10">887 11th Main 4th Cross HAL 2nd Stage, Bangalore, Karnataka, India - 560008</p>
+                                            <p class="mb-10">Email: <a href="mailto:info@octelnetworks.com">info@octelnetworks.com</a></p>
+                                            <p class="mb-0">Phone: <a href="tel:18083609282">+1 (808) 360-9282</a></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Terms & Conditions End -->
-
+                    <!-- Privacy Policy End -->
                 </div>
 
                 <!-- Footer Section Start -->
                 <footer class="footer-area style-one">
                     <div class="container style-one">
                         <div class="footer-top pt-115">
-                            <div class="row mb-65">
+                            <div class="row">
                                 <div class="col-xxl-5 col-lg-4 col-md-5">
                                     <div class="footer-widget mb-30" data-cue="slideInLeft">
                                         <a href="index.html" class="logo d-block mb-50">
                                             <img src="assets/img/new/logo-white.png" alt="Image">
                                         </a>
                                         <a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary mb-18">+1 (808) 360-9282</a>
-                                        <a href="mailto:info@octelnetworks.com" class="contact-mail fs-xxl-18 fw-bold text-white hover-text-secondary">info@octelnetworks.com</a>
+                                        <a href="mailto:info@octelnetworks.com" class="contact-mail fs-xxl-18 fw-bold text-black d-inline-block hover-text-secondary">info@octelnetworks.com</a>
+                                        <ul class="social-profile style-one list-unstyled mt-4 mb-0">
+                                            <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
+                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-xxl-4 col-lg-4 col-md-7 ps-xxl-4">
@@ -390,7 +361,6 @@
                                             <li class="d-block fs-xxl-18"><a href="services.html">Solutions</a></li>
                                             <li class="d-block fs-xxl-18"><a href="distribution.html">Distribution</a></li>
                                             <li class="d-block fs-xxl-18"><a href="partners.html">Our Partners</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="case-studies.html">Case Studies</a></li>
                                             <li class="d-block fs-xxl-18"><a href="careers.html">Careers</a></li>
                                             <li class="d-block fs-xxl-18"><a href="contact.html">Contact</a></li>
                                         </ul>
@@ -405,22 +375,6 @@
                                             <li class="d-block fs-xxl-18"><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
                                             <li class="d-block fs-xxl-18"><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
                                             <li class="d-block fs-xxl-18"><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-md-7 pe-xxl-0">
-                                    <a href="index.html" class="logo-text text-black reveal-text-right transition" data-cue="slideInUp" data-delay="200">OCTEL <br\>NETWORKS</a>
-                                </div>
-                                <div class="col-xl-4 offset-xxl-1 col-md-5 ps-xxl-4">
-                                    <div class="footer-widget" data-cue="slideInUp" data-delay="200">
-                                        <p class="text-black fs-xxl-18 mb-25">Octel Networks is a trusted network infrastructure and IT solutions partner, helping businesses stay connected, secure, and supported.</p>
-                                        <ul class="social-profile style-one list-unstyled mb-0">
-                                            <li><a href="https://www.facebook.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
-                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
-                                            <li><a href="https://www.linkedin.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
-                                            <li><a href="https://www.instagram.com/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-instagram-line"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -461,7 +415,8 @@
         <script src="assets/js/SplitText.min.js"></script>
         <script src="assets/js/customEase.js"></script>
         <script src="assets/js/scrollcue.min.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="assets/js/main.js?v=20261028b"></script>
         <script src="assets/js/chatbot.js"></script>
+        <script src="assets/js/cookie-consent.js?v=20261028b"></script>
     </body>
 </html>

@@ -1158,6 +1158,9 @@ input:checked + .slider:before {
 .theme-dark .footer-area.style-one {
   background-color: var(--aztechColor);
 }
+.theme-dark .footer-area .contact-mail {
+  color: var(--whiteColor) !important;
+}
 .theme-dark .footer-area.style-two {
   background-color: var(--aztechColor);
 }

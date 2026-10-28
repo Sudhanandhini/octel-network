@@ -533,6 +533,43 @@
     gsap.utils.toArray('.img-container').forEach(container => {
     const img = container.querySelector('img');
 
+    // Home hero slides stay still: the fade slider hides slides while ScrollTrigger measures
+    // them, which pushed their images down and opened a gap under the header.
+    if (container.closest('.hero-area')) return;
+
+    // Page-top banners and hero slides: start the shift at 0 when the page is at the top and
+    // only move the image down, so a gap never opens above it behind the header. The scroll
+    // distance never drops to 0, even for slides measured while hidden by the slider.
+    if (container.closest('.breadcrumb-area, .hero-area')) {
+        gsap.fromTo(img, { yPercent: 0 }, {
+            yPercent: 20,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: container,
+                start: 'top top',
+                end: () => '+=' + Math.max(container.offsetHeight, window.innerHeight),
+                scrub: true,
+                invalidateOnRefresh: true
+            }
+        });
+        return;
+    }
+
+    // Section backgrounds (absolutely positioned, fixed height): make the image 125% tall and
+    // shift it ±10% of its height, so its edges stay hidden for the whole scroll range.
+    if (getComputedStyle(container).position === 'absolute') {
+        container.style.overflow = 'hidden';
+        img.style.position = 'relative';
+        img.style.top = '-12.5%';
+        img.style.setProperty('height', '125%', 'important'); // beats Bootstrap's .h-100
+        gsap.fromTo(img, { yPercent: -10 }, {
+            yPercent: 10,
+            ease: 'none',
+            scrollTrigger: { trigger: container, scrub: true }
+        });
+        return;
+    }
+
     const tl = gsap.timeline({
         scrollTrigger: {
         trigger: container,
@@ -742,15 +779,8 @@ try {
             setTheme('theme-dark');
         }
     }
-    // Immediately invoked function to set the theme on initial load
-    (function () {
-        if (localStorage.getItem('exrox_theme') === 'theme-dark') {
-            setTheme('theme-dark');
-            document.querySelector('.slider-btn').checked = false;
-        } else {
-            setTheme('theme-light');
-        document.querySelector('.slider-btn').checked = true;
-        }
-    })();
+    // The dark mode switch has been removed, so always load the light theme
+    // (this also resets visitors who had saved the dark theme).
+    setTheme('theme-light');
 
 } catch (err) {}

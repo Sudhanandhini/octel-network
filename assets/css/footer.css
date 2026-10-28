@@ -10,7 +10,7 @@
 }
 
 .footer-area.style-one .footer-bottom {
-  padding: 38px 0;
+  padding: 10px 0 38px;
 }
 .footer-area.style-two {
   background-color: var(--primaryColor);

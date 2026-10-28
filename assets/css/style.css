@@ -735,6 +735,7 @@ body {
 .social-profile.style-one li {
   margin-right: 6px;
   line-height: 1;
+  vertical-align: top;
 }
 .social-profile.style-one li:last-child {
   margin-right: 0;
@@ -767,6 +768,10 @@ body {
   line-height: 17px;
   position: relative;
   color: var(--whiteColor);
+}
+.social-profile.style-one li a i.ri-instagram-line {
+  font-size: 21px;
+  line-height: 17px; /* same as the other icons so the circles stay level */
 }
 .social-profile.style-one li a:hover:after {
   transform: translate(0, 0);
