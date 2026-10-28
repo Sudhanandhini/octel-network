@@ -136,6 +136,55 @@ function process_partner_logos(array &$record, array &$errors): void {
     $record['logos'] = $logos;
 }
 
+/**
+ * Rebuild a distributor's listing-card slider images from the form: existing
+ * slides (in submitted order, minus any ticked for removal) followed by any
+ * newly uploaded files.
+ */
+function process_card_slides(array &$record, array &$errors): void {
+    $slides = [];
+    foreach ($_POST['card_slides'] ?? [] as $row) {
+        if (!is_array($row) || !empty($row['remove'])) continue;
+        $image = trim($row['image'] ?? '');
+        if (strpos($image, 'assets/img/') !== 0) continue;
+        $slides[] = $image;
+    }
+
+    $files = $_FILES['card_slide_files'] ?? null;
+    if ($files && is_array($files['name'])) {
+        $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+        $uploadDir = __DIR__ . '/../assets/img/slides';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+        foreach ($files['name'] as $i => $originalName) {
+            if ($originalName === '') continue;
+            if ($files['error'][$i] !== UPLOAD_ERR_OK) {
+                $errors[] = 'Upload of "' . $originalName . '" failed. Please try again.';
+                continue;
+            }
+            $ext = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+            if (!in_array($ext, $allowed, true)) {
+                $errors[] = '"' . $originalName . '" must be one of: ' . implode(', ', $allowed) . '.';
+                continue;
+            }
+            if ($files['size'][$i] > 5 * 1024 * 1024) {
+                $errors[] = '"' . $originalName . '" must be smaller than 5MB.';
+                continue;
+            }
+            $prefix = $record['slug'] !== '' ? $record['slug'] : 'slide';
+            $filename = $prefix . '-' . slugify(pathinfo($originalName, PATHINFO_FILENAME)) . '-' . time() . '-' . $i . '.' . $ext;
+            if (move_uploaded_file($files['tmp_name'][$i], $uploadDir . '/' . $filename)) {
+                $slides[] = 'assets/img/slides/' . $filename;
+            } else {
+                $errors[] = 'Could not save "' . $originalName . '".';
+            }
+        }
+    }
+
+    $record['card_slides'] = $slides;
+}
+
 $errors = [];
 $blankRecord = [
     'slug' => '', 'nav_name' => '', 'page_title' => '', 'published' => false,
@@ -144,6 +193,7 @@ $blankRecord = [
     'portfolio_subtitle' => '', 'portfolio_cards' => '', 'whatwedo_intro' => '',
     'whatwedo_items' => '', 'summary_bullets' => '', 'cta_heading' => '', 'cta_text' => '',
     'content_blocks' => [], 'logos' => [],
+    'product_range' => '', 'hide_portfolio_cards' => false, 'card_slides' => [],
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -184,6 +234,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } elseif ($isNew) {
             $existingSlugs = array_column($items, 'slug');
             $updated['slug'] = unique_slug(slugify($updated['nav_name']), $existingSlugs);
+        }
+
+        if ($type === 'distributors') {
+            $updated['product_range'] = trim($_POST['product_range'] ?? '');
+            $updated['hide_portfolio_cards'] = isset($_POST['hide_portfolio_cards']);
+            process_card_slides($updated, $errors);
         }
 
         if (!empty($_FILES['hero_image_file']['name'])) {
@@ -265,7 +321,7 @@ require __DIR__ . '/includes/layout-top.php';
         <fieldset class="logo-manager">
             <legend>Partner logos</legend>
             <p class="hint">Shown under this category on the Our Partners page, in this order. Use the arrows to reorder, tick "Remove" to delete, then save.</p>
-            <div id="logo-list">
+            <div id="logo-list" class="reorder-list">
                 <?php foreach ($record['logos'] ?? [] as $i => $logo): ?>
                 <div class="logo-row">
                     <img src="../<?= e($logo['image']) ?>" alt="">
@@ -285,6 +341,9 @@ require __DIR__ . '/includes/layout-top.php';
             </label>
             <input type="file" id="logo_files" name="logo_files[]" accept=".jpg,.jpeg,.png,.webp,.gif" multiple>
         </fieldset>
+        <?php endif; ?>
+
+        <?php if ($type === 'partners' || $type === 'distributors'): ?>
         <style>
             .logo-manager { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px 20px; margin: 20px 0; }
             .logo-manager legend { font-weight: 700; padding: 0 6px; }
@@ -295,10 +354,12 @@ require __DIR__ . '/includes/layout-top.php';
             .logo-row .logo-remove { display: flex; align-items: center; gap: 5px; margin: 0; font-weight: 400; white-space: nowrap; }
             .logo-row .logo-remove input { width: auto; margin: 0; }
             .logo-row:has(.logo-remove input:checked) { opacity: .45; }
+            .logo-row img.slide-thumb { width: 160px; height: 64px; object-fit: cover; padding: 0; background: #111; }
+            .logo-row .slide-path { flex: 1; font-size: 13px; color: #6b7280; word-break: break-all; }
         </style>
         <script>
-            document.getElementById('logo-list').addEventListener('click', function (ev) {
-                var btn = ev.target.closest('.logo-move');
+            document.addEventListener('click', function (ev) {
+                var btn = ev.target.closest('.reorder-list .logo-move');
                 if (!btn) return;
                 var row = btn.closest('.logo-row');
                 if (btn.dataset.dir === '-1' && row.previousElementSibling) {
@@ -323,6 +384,32 @@ require __DIR__ . '/includes/layout-top.php';
         </label>
         <input type="file" id="hero_image_file" name="hero_image_file" accept="image/*">
 
+        <?php if ($type === 'distributors'): ?>
+        <fieldset class="logo-manager">
+            <legend>Listing card slider images</legend>
+            <p class="hint">When this list has images, the card on the Distribution page shows them as an auto-playing slider instead of the hero image. Use the arrows to reorder, tick "Remove" to delete, then save.</p>
+            <div id="slide-list" class="reorder-list">
+                <?php foreach ($record['card_slides'] ?? [] as $i => $slide): ?>
+                <div class="logo-row">
+                    <img class="slide-thumb" src="../<?= e($slide) ?>" alt="">
+                    <input type="hidden" name="card_slides[<?= $i ?>][image]" value="<?= e($slide) ?>">
+                    <span class="slide-path"><?= e(basename($slide)) ?></span>
+                    <button type="button" class="logo-move" data-dir="-1" title="Move up">↑</button>
+                    <button type="button" class="logo-move" data-dir="1" title="Move down">↓</button>
+                    <label class="logo-remove"><input type="checkbox" name="card_slides[<?= $i ?>][remove]" value="1"> Remove</label>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <?php if (empty($record['card_slides'])): ?>
+            <p class="hint">No slider images. The card shows the hero image.</p>
+            <?php endif; ?>
+            <label for="card_slide_files">Add slider images
+                <span class="hint">Select one or more images (JPG, PNG, WEBP or GIF, up to 5MB each). New images are added to the end of the list. Wide images (about 2:1) fill the card best.</span>
+            </label>
+            <input type="file" id="card_slide_files" name="card_slide_files[]" accept=".jpg,.jpeg,.png,.webp,.gif" multiple>
+        </fieldset>
+        <?php endif; ?>
+
         <label for="intro_heading">Introduction heading</label>
         <input type="text" id="intro_heading" name="intro_heading" value="<?= e($record['intro_heading'] ?? '') ?>">
 
@@ -341,6 +428,32 @@ require __DIR__ . '/includes/layout-top.php';
             <span class="hint">One card per line, formatted as: icon-class | Title | Description. Icons come from remixicon.com (e.g. ri-router-line).</span>
         </label>
         <textarea id="portfolio_cards" name="portfolio_cards" rows="8"><?= e($record['portfolio_cards']) ?></textarea>
+
+        <?php if ($type === 'distributors'): ?>
+        <label for="product_range">Product range
+            <span class="hint">Detailed product lists shown below the portfolio cards on the detail page. One entry per line:</span>
+        </label>
+        <pre class="format-help">## 1. Group heading          a heading above a set of cards ("1." becomes a number badge)
+### Card title               starts a new card
+### ri-camera-line | Title   a card with an icon (remixicon.com)
+- List item                  a bullet in the current card
+Plain text                   a paragraph in the current card
+! Highlighted text           a bold, boxed line in the current card
+&gt; Text                       a paragraph outside the cards
+---                          start a new row of cards
+
+Inside any line: **bold text** and [[source tag]]</pre>
+        <textarea id="product_range" name="product_range" rows="18" class="mono"><?= e($record['product_range'] ?? '') ?></textarea>
+
+        <div class="checkbox-row">
+            <input type="checkbox" id="hide_portfolio_cards" name="hide_portfolio_cards" <?= !empty($record['hide_portfolio_cards']) ? 'checked' : '' ?>>
+            <label for="hide_portfolio_cards" style="margin:0;">Hide the portfolio cards above (use when the product range already covers them). The heading and subtitle stay.</label>
+        </div>
+        <style>
+            .format-help { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px 14px; font-size: 12.5px; line-height: 1.6; white-space: pre-wrap; margin: 0 0 8px; }
+            textarea.mono { font-family: Consolas, Menlo, monospace; font-size: 13px; }
+        </style>
+        <?php endif; ?>
 
         <label for="whatwedo_heading">"Why Organizations Choose Octel" heading</label>
         <input type="text" id="whatwedo_heading" name="whatwedo_heading" value="<?= e($record['whatwedo_heading'] ?? '') ?>">

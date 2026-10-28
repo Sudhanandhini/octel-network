@@ -188,3 +188,143 @@ function render_content_blocks(array $blocks): void {
         }
     }
 }
+
+/** Escape a product-range line, then apply its inline markup: **bold** and [[source tag]]. */
+function product_range_inline(string $text): string {
+    $html = e($text);
+    $html = preg_replace('/\*\*(.+?)\*\*/', '<strong>$1</strong>', $html);
+    return preg_replace('/\[\[(.+?)\]\]/', '<span class="dp-src">$1</span>', $html);
+}
+
+/**
+ * Render the "Product range" text field as heading groups and cards.
+ *   ## 1. Group heading           (a leading "N." becomes a number badge)
+ *   ### Card title                or: ### ri-camera-line | Card title
+ *   - List item                   inside the current card
+ *   Plain line                    paragraph inside the current card
+ *   ! Highlighted line            bold boxed line inside the current card
+ *   > Line                        paragraph outside the cards (lead or note)
+ *   ---                           start a new row of cards
+ * Inline: **bold** and [[source tag]].
+ * Cards with paragraphs span the full width; a row of exactly three list cards
+ * sits three across; otherwise two across, with an odd last card full width.
+ */
+function render_product_range(string $text): void {
+    $blocks = [];
+    $bi = null; // index of the open card's row in $blocks
+    $ci = null; // index of the open card in that row
+    foreach (parse_lines($text) as $line) {
+        if (strpos($line, '### ') === 0) {
+            $title = trim(substr($line, 4));
+            $icon = '';
+            $parts = array_map('trim', explode('|', $title, 2));
+            if (count($parts) === 2 && strpos($parts[0], 'ri-') === 0) {
+                [$icon, $title] = $parts;
+            }
+            // $blocks and each row's cards are plain lists, so the last index is count - 1
+            // (array_key_last() would need PHP 7.3; the live server runs 7.2).
+            $lastIndex = count($blocks) - 1;
+            if ($lastIndex < 0 || $blocks[$lastIndex]['type'] !== 'cards') {
+                $blocks[] = ['type' => 'cards', 'cards' => []];
+                $lastIndex = count($blocks) - 1;
+            }
+            $blocks[$lastIndex]['cards'][] = ['icon' => $icon, 'title' => $title, 'body' => []];
+            $bi = $lastIndex;
+            $ci = count($blocks[$lastIndex]['cards']) - 1;
+            continue;
+        }
+        if (strpos($line, '## ') === 0) {
+            $bi = $ci = null;
+            $blocks[] = ['type' => 'group', 'text' => trim(substr($line, 3))];
+            continue;
+        }
+        if ($line === '---') {
+            $bi = $ci = null;
+            $blocks[] = ['type' => 'break'];
+            continue;
+        }
+        if ($line[0] === '>' || $bi === null) {
+            $bi = $ci = null;
+            $blocks[] = ['type' => 'para', 'text' => $line[0] === '>' ? trim(substr($line, 1)) : $line];
+            continue;
+        }
+        if (strpos($line, '- ') === 0) {
+            $entry = ['type' => 'item', 'text' => trim(substr($line, 2))];
+        } elseif (strpos($line, '! ') === 0) {
+            $entry = ['type' => 'highlight', 'text' => trim(substr($line, 2))];
+        } else {
+            $entry = ['type' => 'para', 'text' => $line];
+        }
+        $blocks[$bi]['cards'][$ci]['body'][] = $entry;
+    }
+
+    if (empty($blocks)) return;
+
+    $numbered = function (string $title): string {
+        if (preg_match('/^(\d+)\.\s+(.*)$/', $title, $m)) {
+            return '<span class="dp-num">' . e($m[1]) . '</span>' . product_range_inline($m[2]);
+        }
+        return product_range_inline($title);
+    };
+
+    $seenCards = false;
+    echo '<div class="dp-section">';
+    foreach ($blocks as $block) {
+        if ($block['type'] === 'group') {
+            echo '<h4 class="dp-group">' . $numbered($block['text']) . '</h4>';
+        } elseif ($block['type'] === 'para') {
+            echo '<p class="' . ($seenCards ? 'dp-note' : 'dp-lead') . '">' . product_range_inline($block['text']) . '</p>';
+        } elseif ($block['type'] === 'cards') {
+            $seenCards = true;
+            $cards = $block['cards'];
+            $count = count($cards);
+            echo '<div class="row">';
+            foreach ($cards as $i => $c) {
+                $hasPara = false;
+                foreach ($c['body'] as $b) {
+                    if ($b['type'] !== 'item') $hasPara = true;
+                }
+                if ($hasPara) {
+                    $col = 'col-12';
+                } elseif ($count === 3) {
+                    $col = 'col-lg-4';
+                } elseif ($count % 2 === 1 && $i === $count - 1) {
+                    $col = 'col-12';
+                } else {
+                    $col = 'col-lg-6';
+                }
+                echo '<div class="' . $col . ' d-flex"><div class="dp-card">';
+                echo '<h4>';
+                if ($c['icon'] !== '') {
+                    echo '<span class="dp-icon"><i class="' . e($c['icon']) . '"></i></span>';
+                }
+                echo '<span>' . $numbered($c['title']) . '</span></h4>';
+                if (!empty($c['body'])) {
+                    echo '<div class="dp-body">';
+                    $inList = false;
+                    foreach ($c['body'] as $b) {
+                        if ($b['type'] === 'item' && !$inList) {
+                            echo '<ul>';
+                            $inList = true;
+                        } elseif ($b['type'] !== 'item' && $inList) {
+                            echo '</ul>';
+                            $inList = false;
+                        }
+                        if ($b['type'] === 'item') {
+                            echo '<li>' . product_range_inline($b['text']) . '</li>';
+                        } elseif ($b['type'] === 'highlight') {
+                            echo '<p class="dp-families"><strong>' . product_range_inline($b['text']) . '</strong></p>';
+                        } else {
+                            echo '<p>' . product_range_inline($b['text']) . '</p>';
+                        }
+                    }
+                    if ($inList) echo '</ul>';
+                    echo '</div>';
+                }
+                echo '</div></div>';
+            }
+            echo '</div>';
+        }
+    }
+    echo '</div>';
+}

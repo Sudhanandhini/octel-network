@@ -109,6 +109,49 @@ $slugShortName = [
             }
             .admin-edit-badge:hover { background: #14161a; transform: scale(1.08); }
 
+            /* Image slider inside a partner card (same 320px frame as the static card image) */
+            .service-area .row.justify-content-center > [class*="col-"],
+            .service-card.style-three {
+                min-width: 0;
+            }
+            .service-card.style-three .dist-card-slider {
+                width: 100%;
+                min-width: 0;
+                background: #05080c;
+            }
+            .dist-card-slider .swiper-wrapper,
+            .dist-card-slider .swiper-slide {
+                height: 100%;
+            }
+            .service-card.style-three .dist-card-slider img {
+                display: block;
+                object-fit: contain;
+                filter: none;
+            }
+            .dist-card-pagination {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 14px;
+                z-index: 2;
+                display: flex;
+                justify-content: center;
+                gap: 6px;
+            }
+            .dist-card-pagination .swiper-pagination-bullet {
+                width: 8px;
+                height: 8px;
+                margin: 0 !important;
+                background: rgba(255, 255, 255, .5);
+                opacity: 1;
+                transition: width .3s ease, background .3s ease;
+            }
+            .dist-card-pagination .swiper-pagination-bullet-active {
+                width: 22px;
+                border-radius: 4px;
+                background: #e30016;
+            }
+
             /* Full-bleed hero slider cycling through the 4 distribution partner types */
             .dist-hero-area {
                 overflow: hidden;
@@ -197,6 +240,57 @@ $slugShortName = [
             }
             @media (max-width: 767px) {
                 .dist-hero-nav { display: none; }
+            }
+
+            /* Distributor details content section */
+            .dist-detail-area {
+                padding: 100px 0;
+            }
+            .dist-detail-area + .dist-detail-area {
+                border-top: 1px solid rgba(0, 0, 0, .08);
+            }
+            .dist-detail-group {
+                margin: 10px 0 20px;
+            }
+            .dist-detail-card {
+                width: 100%;
+                background: #f5f6f7;
+                padding: 28px 30px;
+                margin-bottom: 24px;
+            }
+            .dist-detail-card h4,
+            .dist-detail-card h5 {
+                margin-bottom: 14px;
+            }
+            .dist-detail-card p:last-child,
+            .dist-detail-card ul:last-child {
+                margin-bottom: 0;
+            }
+            .dist-detail-card ul,
+            .dist-detail-list {
+                padding-left: 20px;
+            }
+            .dist-detail-card li,
+            .dist-detail-list li {
+                margin-bottom: 8px;
+            }
+            .dist-detail-card strong,
+            .dist-detail-list strong {
+                color: var(--titleColor);
+            }
+            .dist-detail-src {
+                font-size: 13px;
+                text-decoration: underline;
+                opacity: .7;
+            }
+            .theme-dark .dist-detail-area { background-color: #000 !important; }
+            .theme-dark .dist-detail-area + .dist-detail-area { border-top-color: rgba(255, 255, 255, .1); }
+            .theme-dark .dist-detail-card { background: #0F0F0F; }
+            .theme-dark .dist-detail-card strong,
+            .theme-dark .dist-detail-list strong { color: var(--whiteColor); }
+            @media (max-width: 767px) {
+                .dist-detail-area { padding: 60px 0; }
+                .dist-detail-card { padding: 22px 20px; }
             }
         </style>
     </head>
@@ -375,9 +469,21 @@ $slugShortName = [
                                     ?>
                                     <div class="col-md-6">
                                         <div class="service-card style-three bg-white img-hover-scale round-20 mb-45">
+                                            <?php if (!empty($d['card_slides'])): ?>
+                                            <div class="service-img dist-card-slider swiper overflow-hidden position-relative">
+                                                <div class="swiper-wrapper">
+                                                    <?php foreach ($d['card_slides'] as $slide): ?>
+                                                    <div class="swiper-slide">
+                                                        <img src="<?= e($slide) ?>" alt="<?= e($d['nav_name']) ?>">
+                                                    </div>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                                <div class="dist-card-pagination"></div>
+                                            <?php else: ?>
                                             <div class="service-img img-scale overflow-hidden position-relative">
                                                 <img src="<?= e($image) ?>" alt="<?= e($d['nav_name']) ?>" class="position-absolute top-0 start-0 w-100 h-100 transition">
                                                 <img src="<?= e($image) ?>" alt="<?= e($d['nav_name']) ?>" class="transition">
+                                            <?php endif; ?>
                                                 <?php if ($isAdmin): ?>
                                                 <a href="admin/edit.php?type=distributors&slug=<?= e($d['slug']) ?>" class="admin-edit-badge" target="_blank" rel="noopener" title="Edit in admin panel"><i class="ri-pencil-line"></i></a>
                                                 <?php endif; ?>
@@ -406,12 +512,11 @@ $slugShortName = [
                             </div>
                         </div>
                     </div>
-                    <!-- Distribution Partners Section End -->
-
+                    
                     <!--  CTA Start -->
-                    <div class="industry-area style-one position-relative bg-white z-1 pb-120">
+                    <div class="industry-area style-one position-relative bg-white z-1 pb-120 pt-100">
                         <div class="container style-one">
-                            <div class="cta-box style-one position-relative z-1 overflow-hidden round-20">                                <div class="row">
+                            <div class="cta-box style-one position-relative z-1 overflow-hidden round-20" style="margin-top: 50px;">                                <div class="row">
                                     <div class="col-xxl-10 offset-xxl-1">
                                         <h2 class="section-title style-two fw-semibold text-center text-white reveal-text-right mb-12">Want To Know More About Our Distribution Partners?</h2>
                                         <p class="fs-xxl-18 text-center mb-4 w-xl-75 mx-auto px-xxl-5">Schedule a free 30-minute consultation with one of our specialists to discuss the right products for your business.</p>
@@ -532,6 +637,21 @@ $slugShortName = [
             }, $allDistributors)) ?>;
             var distHeroTitleEl = document.getElementById('distHeroTitle');
             var distHeroCrumbEl = document.getElementById('distHeroCrumb');
+
+            document.querySelectorAll('.dist-card-slider').forEach(function (el) {
+                new Swiper(el, {
+                    loop: true,
+                    speed: 800,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false
+                    },
+                    pagination: {
+                        el: el.querySelector('.dist-card-pagination'),
+                        clickable: true
+                    }
+                });
+            });
 
             new Swiper('.dist-hero-slider', {
                 loop: true,

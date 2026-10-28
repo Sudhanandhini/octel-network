@@ -515,7 +515,7 @@ input:checked + .slider:before {
   background-color: rgba(0, 37, 44, 0.5);
 }
 .theme-dark .navbar-area.style-four.sticky {
-  background-color: rgb(0, 37, 44);
+  background-color: rgb(0, 0, 0);
 }
 .theme-dark .navbar-area.style-four .other-options .option-item .search-btn {
   background-color: #043138;

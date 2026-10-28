@@ -14,7 +14,14 @@
         "summary_bullets": "Enclosures, Power & Cooling as One System\nModular Data Center Design\nPre-Configured Systems for Faster Deployment\nOn-Site Commissioning & After-Sales Support",
         "cta_heading": "NEED RITTAL INFRASTRUCTURE FOR YOUR SITE?",
         "cta_text": "Talk to Our Rittal Specialists",
-        "content_blocks": []
+        "content_blocks": [],
+        "product_range": "> A complete modular system from the enclosure to the data center: enclosures, power, cooling, automation, IT and accessories\n\n### Enclosures\n- **Small enclosures:** polycarbonate (PK), cast aluminium (GA), KX and sheet steel variants\n- **Wall-mounted enclosures**\n- **Enclosure systems:** VX25 and TS 8 baying systems, SE system enclosures\n- **Outdoor enclosures:** CS, CS New Basic and CS Toptec\n- **Stainless steel and Hygienic Design enclosures** for food, beverage and corrosive environments\n- **Workplace solutions:** console systems, PC enclosures, command panels, support arm (CP) and stand systems\n\n### Power Distribution\n- Ri4Power: switchgear and power distribution systems on VX25, up to 6300 A\n- RiLine busbar systems for AC and DC applications, up to 2100 A\n- IT power: rack power distribution and backup\n- Energy monitoring hardware and software\n- VX ESS energy storage enclosures\n\n### Climate Control\n- Fans, filter fans and air/air heat exchangers\n- Cooling units and thermoelectric coolers\n- Modular door-integrated cooling, up to 1.5 kW\n- Air/water heat exchangers and Blue e+ chillers\n- Heaters and outdoor climate control\n- IT cooling, from a single rack to a full data center\n\n### IT Infrastructure\n- RiMatrix Micro Data Center\n- RiMatrix Data Center, up to 400 kW cooling per module\n- Container-housed data center solutions\n- IT rack systems and IT enclosures (19″)\n- Indoor and outdoor housing solutions\n- IT monitoring for physical parameters\n\n### Automation Systems\n- **Machining:** Perforex milling and drilling centres for enclosures and panels in steel, stainless steel, aluminium, copper and plastic. Perforex LC 3D laser machining for stainless steel, sheet steel and powder-coated enclosure doors and panels\n- **Busbar machining:** copper processing (CW 120) for bending, punching and cutting\n- **Component cutting and assembly:** tools and frames for component mounting and wiring\n- **Wire processing:** semi-automated and fully automated wire cutting, stripping, crimping and assembly machines, including the fully automated Wire Terminal WT C\n- **Hand tools:** crimping pliers, wire strippers and other tools for electricians\n- **Handling systems:** equipment for transporting and lifting enclosures\n- **Software:** RiPanel Processing Center for order and production management, with interfaces to EPLAN Pro Panel and DXF\n\n### System Accessories\n- **Base/plinth systems:** VX and AX plinths, cable chambers, levelling feet, castors and transport accessories\n- **Baying and structure:** baying system components, system dividers, stabilizers, roof plates for cable entry or ventilation, wall-mounting brackets\n- **Doors and locks:** secure, user-friendly access for enclosures and racks\n- **Interior installation:** mounting plates, rail systems, component shelves, EMC and earthing accessories, socket strips\n- **System lighting:** LED system lights with connection accessories\n- **Cable management:** cable entry plates, gland plates, cable glands, 19″ cable routing\n- **19″ installation:** swing frames, mounting angles, slide rails, patch panels, splicing boxes, LSA technology\n- **Operator interface accessories:** command panel front assembly, monitor mounts, handles, supports, keyboard drawers, signal pillars\n\n### Software & Planning Tools\n- **RiPanel Configurator:** online configurator for planning indoor enclosures and selecting the right enclosure, accessories and layout\n- **RiPower:** planning tool for low-voltage switchgear and power distribution, used with the Ri4Power system\n- **RiMatrix Data Center Configurator:** quick, guided planning for micro data centers and data center projects\n- **Support Arm Configurator:** configures CP support arm systems for control panels and operator stations\n- **RiPanel Processing Center:** cloud-capable software for production order control in enclosure manufacturing, working with EPLAN and DXF data\n- **Rittal ePocket:** digital wiring plan pocket that keeps machine and plant documentation accessible and up to date from any location\n- **Spare Parts & Accessories Finder:** finds the matching parts and accessories from a Rittal item number",
+        "hide_portfolio_cards": false,
+        "card_slides": [],
+        "intro_heading": "",
+        "whatwedo_heading": "",
+        "built_for": "",
+        "outcome": ""
     },
     {
         "slug": "rm",
@@ -31,7 +38,14 @@
         "summary_bullets": "Structured Cabling for LAN, Data Center & Public Networks\nCertified Design, Installation & Testing\nLocal Stock & Shorter Lead Times\nAfter-Sales & Warranty Support",
         "cta_heading": "NEED R&M CABLING FOR YOUR SITE?",
         "cta_text": "Talk to Our R&M Specialists",
-        "content_blocks": []
+        "content_blocks": [],
+        "product_range": "## 1. Copper (Twisted Pair) Cabling\n\n### RJ45 connection modules\n- R&Mfreenet Cat.6A module, unshielded and shielded [[cloudinary]]\n- R&Mfreenet Cat.6A EL module [[cloudinary]]\n- Cat.6 and Cat.6 EL modules\n- Cat.8.1 module\n- FM45 Cat.6A EL\n\n### 19″ patch panels\n- 19″ 1U HD Patch Panel, 48 × RJ45 Cat. 6A, fully populated [[rdm]]\n- 19″ 1U Patch Panel HD ELISO, 48 × RJ45 Cat. 6A EL [[rdm]]\n- 24-port Panel EL, with Cat.6 EL / 6A / 6A EL / 8.1\n- 16-port Panel Freenet, with Cat.5/6 and Cat.6A\n\n### Patch cords\n- ThinLine, Powersafe (IDC) and ClassicLine (IPC) copper patch cords, plus short 20 cm cords [[ingkomora]]\n- ThinLine Cat. 6A S/FTP patch cords [[rdm]]\n\n### Outlets and accessories\n- Global Outlets and Global AP (access point outlet)\n- Freenet racks and wall-mount housings\n- Single Pair Ethernet (SPE) connection module, SPE LC-Cu\n\n## 2. Fiber Optic Cabling\n\n### High-density panels\n- Netscale 48 (mixed copper and fiber, 1U), Netscale 72 and Netscale 120 [[rdm]]\n- Netscale cassettes with inteliPhy integration [[rdm]]\n\n### Splice and distribution\n- UniRack2 splice box\n- FiberEasy Rack 2\n- 19″ Prime ODF 3U Splice Rack and FO-Field 2.0 [[ingkomora]]\n- FiberOutlet, SC APC wall-mount, with InHome drop cord\n\n### Connectivity and patch cords\n- LC QR-Uniboot, SC-QR, MPO-QR and MDC-QR fiber patch cords [[ingkomora]]\n- Fiber adapters (LC-D, SC-D, LC shuttered, MPO, MDC)\n- MTP/MPO trunk cables, OM4 and OS2\n\n### Pre-terminated assemblies\n- Cable assemblies in 24 LC and SC\n- Fiber optic installation cables, indoor and outdoor, also supplied by the metre\n\n---\n\n### 3. Racks and Enclosures\n- R&M Tecnosteel cabinets [[rdm]]\n- BladeShelter Rack (compute/data center)\n\n### 4. Infrastructure Management\n- inteliPhy (automated infrastructure management)\n\n### 5. Other\n- R&MhealthLine (Cat.6A and Cat.8.1 HD panels, in the Freenet system catalogue)\n- FTTx range (R&M publishes a separate FTTx system catalogue)",
+        "hide_portfolio_cards": false,
+        "card_slides": [],
+        "intro_heading": "",
+        "whatwedo_heading": "",
+        "built_for": "",
+        "outcome": ""
     },
     {
         "slug": "netka",
@@ -48,7 +62,22 @@
         "summary_bullets": "IT Observability & Cybersecurity\nService Management & Data Privacy Compliance\nOn-Premise, Cloud or Hybrid Deployment\nIntegration, Training & Unified Support",
         "cta_heading": "NEED NETKA'S PLATFORM SUITE FOR YOUR SITE?",
         "cta_text": "Talk to Our NETKA Specialists",
-        "content_blocks": []
+        "content_blocks": [],
+        "product_range": "### IT Operations Management (OpsTech)\n- **Netka AIOps Director (N-AIOps):** AI for IT operations\n- **NetkaQuartz Service Desk X (NSDX):** ITSM and IT asset management\n- **NetkaView Network Manager X (NNMX):** network monitoring and management\n- **NetkaView Logger (NLG):** log management, SIEM and SOAR\n\n### Regulatory Technology (RegTech)\n- **Netka Data Privacy & Protection (NDPP):** consent, RoPA, DSAR and breach management\n- **NetkaView Logger (NLG):** log compliance and security monitoring\n- **Netka EnTrust:** GRC and data governance\n\n### Environmental, Social, and Governance Technology (ESG Tech)\n- **Netka EnXus:** carbon accounting and management\n- **Netka EnTrust:** ESG governance and compliance\n\n### Artificial Intelligence Technology (AITech)\n- **Netka EnTelligence:** AI-powered surveillance for existing CCTV\n\n> **Delivery options:** software licensing, hardware appliances, cloud (SaaS) and implementation and support services",
+        "hide_portfolio_cards": false,
+        "card_slides": [
+            "assets/img/netka/687105689-aad92114-e380-47b4-bb2c-557556bb3dd8.jpg",
+            "assets/img/netka/687105690-16f7b417-449b-4088-9931-7637a1ecd73a.png",
+            "assets/img/netka/687105691-1f10a5eb-10f1-4275-8467-364413d2d127.png",
+            "assets/img/netka/687105692-fc1b2bfd-efe5-4e14-bcff-0116ce8cd0ae.png",
+            "assets/img/netka/687105693-2a6c0788-3c82-4bec-a966-a26db5c4594c.png",
+            "assets/img/netka/687105694-ce432d79-8ec0-4673-b2b7-be4ac4fcb4fa.png",
+            "assets/img/netka/687105695-04acfe7a-b5e1-468f-b0db-5274547a284f.png"
+        ],
+        "intro_heading": "",
+        "whatwedo_heading": "",
+        "built_for": "",
+        "outcome": ""
     },
     {
         "slug": "matrix",
@@ -65,6 +94,13 @@
         "summary_bullets": "See: SATATYA IP Video Surveillance\nIdentity: COSEC Access Control & Time-Attendance\nManage: Centralized Multi-Site Monitoring & Administration\nConnect: IP-PBX, Unified Communications & Voice Gateways",
         "cta_heading": "NEED MATRIX FOR YOUR SITE?",
         "cta_text": "Talk to Our MATRIX Specialists",
-        "content_blocks": []
+        "content_blocks": [],
+        "product_range": "### ri-camera-line | SATATYA: IP Video Surveillance\nEnterprise-grade surveillance covering IP cameras, recorders, video management and intelligent video applications. Centralized monitoring, recording, playback and investigation scale across multiple locations, with analytics, alarms and access-control integration.\n! Product families: Project and Professional Series bullet and dome cameras (2MP, 5MP, 8MP), Turret and All-Color cameras, Ruggedized cameras, PTZ network cameras, Network Video Recorders, SATATYA VMS, SATATYA SAMAS, Network PTZ Controller\n\n### ri-fingerprint-line | COSEC: Access Control & Time-Attendance\nIdentity-first access and workforce management through biometric terminals, readers, door controllers, centralized software, cloud applications and visitor management. Credentials include face recognition, fingerprint, RFID/card, PIN, QR and mobile, depending on the product.\n! Product families: COSEC ARGO FACE, ARGO, VEGA, ATOM, PATH, ARC DC200P, ARC IO800, PANEL200P, CENTRA, VYOM, VYOM Visitor Management, mobile and tablet applications (APTA, VMS, MIRROR, MODE)\n\n### ri-phone-line | Matrix Telecom: Unified Communications\nEnterprise communication across IP-PBX, hybrid PBX, unified communications, voice gateways, GSM connectivity, IP phones and softphones. Suited to organizations moving from traditional telephony to IP and hybrid architectures while keeping older voice systems interoperable.\n! Product families: VISIONPRO, ETERNITY (NENX, PENX, GENX, MENX/LENX), PRASAR UCS, ANANT UCS, SARVAM UCS, SETU gateways (VFX, VFXTH, VTEP), SARVAM UMG, SIMADO GSM gateways, SPARSH IP phones, EON510, VARTA softphone",
+        "hide_portfolio_cards": true,
+        "card_slides": [],
+        "intro_heading": "",
+        "whatwedo_heading": "",
+        "built_for": "",
+        "outcome": ""
     }
 ]

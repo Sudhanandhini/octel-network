@@ -140,6 +140,277 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                 margin-bottom: 0;
             }
 
+            /* Product range section, rendered from the admin "Product range" field by render_product_range() */
+            .dp-section { margin-bottom: 40px; }
+            .dp-section .row { --bs-gutter-x: 20px; }
+
+            /* Group heading: number badge + title + rule */
+            .dp-section .dp-group {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                font-size: 20px;
+                font-weight: 700;
+                color: var(--titleColor);
+                margin: 16px 0 22px;
+            }
+            .dp-section .dp-group::after {
+                content: "";
+                flex: 1 1 auto;
+                height: 1px;
+                background: linear-gradient(90deg, rgba(227, 0, 22, .35), rgba(227, 0, 22, 0));
+            }
+            .dp-section .dp-num {
+                flex-shrink: 0;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 34px;
+                height: 34px;
+                border-radius: 10px;
+                background: var(--secondaryColor);
+                color: var(--whiteColor);
+                font-size: 15px;
+                font-weight: 700;
+                box-shadow: 0 6px 14px rgba(227, 0, 22, .25);
+            }
+            .dp-section .dp-card .dp-num {
+                width: 26px;
+                height: 26px;
+                border-radius: 8px;
+                font-size: 13px;
+                margin-right: 10px;
+                box-shadow: none;
+            }
+
+            .dp-section .dp-lead {
+                font-size: 17px;
+                color: var(--titleColor);
+                padding-left: 16px;
+                border-left: 3px solid var(--secondaryColor);
+                margin-bottom: 28px;
+            }
+
+            /* Cards: tinted header strip + compact list body */
+            .dp-section .dp-card {
+                position: relative;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                background-color: var(--whiteColor);
+                border: 1px solid #ececec;
+                border-radius: 16px;
+                overflow: hidden;
+                margin-bottom: 20px;
+                transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease;
+            }
+            .dp-section .dp-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: var(--secondaryColor);
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform .4s ease;
+            }
+            .dp-section .dp-card:hover {
+                border-color: transparent;
+                box-shadow: 0 15px 40px rgba(0, 37, 44, .10);
+                transform: translateY(-4px);
+            }
+            .dp-section .dp-card:hover::before { transform: scaleX(1); }
+            .dp-section .dp-card h4,
+            .dp-section .dp-card h5 {
+                display: flex;
+                align-items: center;
+                color: var(--primaryColor);
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1.35;
+                margin: 0;
+                padding: 16px 22px;
+                background: #fafafa;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            .dp-section .dp-card ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            .dp-section .dp-card li {
+                position: relative;
+                padding: 9px 0 9px 20px;
+                font-size: 15px;
+                line-height: 1.55;
+                color: var(--paraColor);
+                border-bottom: 1px dashed #ececec;
+            }
+            .dp-section .dp-card li:last-child { border-bottom: 0; }
+            .dp-section .dp-card li::before {
+                content: "";
+                position: absolute;
+                left: 2px;
+                top: 17px;
+                width: 7px;
+                height: 7px;
+                border-radius: 2px;
+                background: var(--secondaryColor);
+                transform: rotate(45deg);
+            }
+            .dp-section .dp-card strong { color: var(--titleColor); font-weight: 600; }
+
+            /* Icon header + paragraph body (Matrix) */
+            .dp-section .dp-icon {
+                flex-shrink: 0;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                margin-right: 14px;
+                border-radius: 12px;
+                background: rgba(227, 0, 22, .08);
+                color: var(--secondaryColor);
+                font-size: 21px;
+                transition: background .3s ease, color .3s ease;
+            }
+            .dp-section .dp-card:hover .dp-icon {
+                background: var(--secondaryColor);
+                color: var(--whiteColor);
+            }
+            .dp-section .dp-card .dp-icon + * { font-size: 17px; }
+            .dp-section .dp-body { padding: 10px 22px 16px; }
+            .dp-section .dp-body > p:first-child { margin-top: 8px; }
+            .dp-section .dp-body p {
+                font-size: 15px;
+                line-height: 1.7;
+                color: var(--paraColor);
+                margin-bottom: 14px;
+            }
+            .dp-section .dp-body .dp-families {
+                margin-bottom: 0;
+                padding: 14px 18px;
+                border-radius: 12px;
+                background: #fafafa;
+                border-left: 3px solid var(--secondaryColor);
+            }
+            .dp-section .dp-body .dp-families strong {
+                color: var(--titleColor);
+                font-weight: 700;
+            }
+
+            /* Source tags as small pills */
+            .dp-section .dp-src {
+                display: inline-block;
+                margin-left: 6px;
+                padding: 1px 9px;
+                border-radius: 20px;
+                background: rgba(227, 0, 22, .08);
+                color: var(--secondaryColor);
+                font-size: 11px;
+                font-weight: 600;
+                line-height: 1.7;
+                letter-spacing: .3px;
+                vertical-align: middle;
+            }
+
+            .dp-section .dp-note {
+                background: var(--whiteColor);
+                border: 1px solid #ececec;
+                border-left: 3px solid var(--secondaryColor);
+                border-radius: 12px;
+                padding: 16px 20px;
+                margin: 4px 0 0;
+            }
+            .dp-section .dp-note strong { color: var(--titleColor); }
+
+            @media (max-width: 767px) {
+                .dp-section .dp-group { font-size: 18px; }
+                .dp-section .dp-card h4,
+                .dp-section .dp-card h5 { padding: 14px 18px; }
+                .dp-section .dp-body { padding: 8px 18px 12px; }
+            }
+
+            .theme-dark .dp-section .dp-card,
+            .theme-dark .dp-section .dp-note { background-color: #0F0F0F; border-color: rgba(255, 255, 255, .1); }
+            .theme-dark .dp-section .dp-note { border-left-color: var(--secondaryColor); }
+            .theme-dark .dp-section .dp-card h4,
+            .theme-dark .dp-section .dp-card h5 { background: #161616; border-bottom-color: rgba(255, 255, 255, .08); color: var(--whiteColor); }
+            .theme-dark .dp-section .dp-card li { border-bottom-color: rgba(255, 255, 255, .08); }
+            .theme-dark .dp-section .dp-group,
+            .theme-dark .dp-section .dp-lead,
+            .theme-dark .dp-section .dp-card strong,
+            .theme-dark .dp-section .dp-note strong { color: var(--whiteColor); }
+
+            /* Detail page image slider (admin "Listing card slider images"), shown in place of the hero image */
+            .detail-slider {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 12 / 5;
+                background: #05080c;
+            }
+            .detail-slider .swiper-wrapper,
+            .detail-slider .swiper-slide {
+                height: 100%;
+            }
+            .detail-slider img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+            .detail-slider-nav {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 3;
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 22px;
+                color: #fff;
+                background: rgba(255, 255, 255, .15);
+                border: 1px solid rgba(255, 255, 255, .4);
+                backdrop-filter: blur(4px);
+                cursor: pointer;
+                transition: background .15s ease, border-color .15s ease;
+            }
+            .detail-slider-nav:hover { background: var(--secondaryColor); border-color: var(--secondaryColor); }
+            .detail-slider-prev { left: 18px; }
+            .detail-slider-next { right: 18px; }
+            .detail-slider-pagination {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 16px;
+                z-index: 3;
+                display: flex;
+                justify-content: center;
+                gap: 6px;
+            }
+            .detail-slider-pagination .swiper-pagination-bullet {
+                width: 8px;
+                height: 8px;
+                margin: 0 !important;
+                background: rgba(255, 255, 255, .5);
+                opacity: 1;
+                transition: width .3s ease, background .3s ease;
+            }
+            .detail-slider-pagination .swiper-pagination-bullet-active {
+                width: 22px;
+                border-radius: 4px;
+                background: var(--secondaryColor);
+            }
+            @media (max-width: 767px) {
+                .detail-slider-nav { display: none; }
+            }
+
             .custom-blocks-wrap { margin-top: 10px; }
             .custom-block-heading { margin: 30px 0 14px; }
             .custom-block-paragraph { margin-bottom: 16px; }
@@ -517,7 +788,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
                                         </div>
-                                        <?php if (!empty($item['hero_image'])): ?>
+                                        <?php if (!empty($item['card_slides'])): ?>
+                                        <div class="detail-slider swiper overflow-hidden round-20 mb-35">
+                                            <div class="swiper-wrapper">
+                                                <?php foreach ($item['card_slides'] as $slide): ?>
+                                                <div class="swiper-slide">
+                                                    <img src="<?= e($slide) ?>" alt="<?= e($item['nav_name']) ?>">
+                                                </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                            <div class="detail-slider-nav detail-slider-prev"><i class="ri-arrow-left-s-line"></i></div>
+                                            <div class="detail-slider-nav detail-slider-next"><i class="ri-arrow-right-s-line"></i></div>
+                                            <div class="detail-slider-pagination"></div>
+                                        </div>
+                                        <?php elseif (!empty($item['hero_image'])): ?>
                                         <div class="single-img img-container overflow-hidden round-20 mb-35" data-cue="anim-top" data-duration="800">
                                             <img src="<?= e($item['hero_image']) ?>" alt="<?= e($item['nav_name']) ?>" class="w-100 h-auto object-fit-cover round-20">
                                         </div>
@@ -550,6 +834,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                             <h5><?= e($item['portfolio_heading']) ?></h5>
                                             <p><?= e($item['portfolio_subtitle']) ?></p>
                                         </div>
+                                        <?php if (empty($item['hide_portfolio_cards']) || empty($item['product_range'])): ?>
                                         <div class="row mb-15">
                                             <?php foreach ($portfolioCards as $card): ?>
                                             <div class="col-md-6 col-lg-6 mb-25">
@@ -565,6 +850,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                             </div>
                                             <?php endforeach; ?>
                                         </div>
+                                        <?php endif; ?>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($item['published']) && !empty($item['product_range'])): ?>
+                                        <?php render_product_range($item['product_range']); ?>
                                         <?php endif; ?>
 
                                         <?php if (!empty($item['published']) && !empty($cloudJourneySteps)): ?>
@@ -790,5 +1080,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         <script src="assets/js/scrollcue.min.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="assets/js/chatbot.js"></script>
+        <?php if (!empty($item['card_slides'])): ?>
+        <script>
+            new Swiper('.detail-slider', {
+                loop: true,
+                speed: 800,
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false
+                },
+                navigation: {
+                    nextEl: '.detail-slider-next',
+                    prevEl: '.detail-slider-prev'
+                },
+                pagination: {
+                    el: '.detail-slider-pagination',
+                    clickable: true
+                }
+            });
+        </script>
+        <?php endif; ?>
     </body>
 </html>
