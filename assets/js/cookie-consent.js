@@ -20,6 +20,7 @@
     var VERSION = 1;          // bump to ask everyone again (e.g. after adding a new tracker)
     var MAX_AGE_DAYS = 180;
     var PRIVACY_URL = 'privacy-policy.html';
+    var DISMISS_KEY = 'octel_cookie_banner_closed';
     var listeners = [];
 
     function readConsent() {
@@ -71,7 +72,8 @@
         'background:#fff;color:#393737;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.25);padding:28px;' +
         'font-size:15px;line-height:1.6;transform:translateY(20px);opacity:0;transition:transform .4s ease,opacity .4s ease;}' +
         '.oc-cookie.oc-show{transform:none;opacity:1;}' +
-        '.oc-cookie h4{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:600;color:#000;margin:0 0 10px;}' +
+        '.oc-cookie .oc-close{position:absolute;top:14px;right:16px;}' +
+        '.oc-cookie h4{display:flex;padding-right:24px;align-items:center;gap:10px;font-size:20px;font-weight:600;color:#000;margin:0 0 10px;}' +
         '.oc-cookie h4 i{color:#e30016;font-size:24px;}' +
         '.oc-cookie p{margin:0 0 18px;color:#5b5b5b;}' +
         '.oc-cookie p a{color:#e30016;text-decoration:underline;}' +
@@ -128,6 +130,7 @@
         if (banner) return;
         banner = el(
             '<div class="oc-cookie" role="dialog" aria-live="polite" aria-labelledby="oc-cookie-title">' +
+                '<button type="button" class="oc-close" data-oc="dismiss" aria-label="Close">&times;</button>' +
                 '<h4 id="oc-cookie-title"><i class="ri-shield-check-line" aria-hidden="true"></i>We Value Your Privacy</h4>' +
                 '<p>We use essential cookies to make this website work. With your consent, we would also like to use ' +
                 'analytics and marketing cookies to understand how the site is used and improve our services. ' +
@@ -218,6 +221,18 @@
         reopenBtn = null;
     }
 
+    // Closing the banner without choosing keeps optional cookies off and hides
+    // it for the rest of this browser session; it asks again next visit.
+    function dismissBanner() {
+        try { sessionStorage.setItem(DISMISS_KEY, '1'); } catch (e) {}
+        hideBanner();
+        showReopen();
+    }
+
+    function bannerDismissed() {
+        try { return sessionStorage.getItem(DISMISS_KEY) === '1'; } catch (e) { return false; }
+    }
+
     function finish(analytics, marketing) {
         saveConsent(analytics, marketing);
         hideModal();
@@ -242,6 +257,7 @@
             case 'reject': finish(false, false); break;
             case 'customize': showModal(); break;
             case 'close': hideModal(); break;
+            case 'dismiss': dismissBanner(); break;
             case 'save':
                 finish(overlay.querySelector('#oc-analytics').checked, overlay.querySelector('#oc-marketing').checked);
                 break;
@@ -274,7 +290,7 @@
         var style = document.createElement('style');
         style.textContent = css;
         document.head.appendChild(style);
-        if (readConsent()) {
+        if (readConsent() || bannerDismissed()) {
             showReopen();
         } else {
             setTimeout(showBanner, 800);

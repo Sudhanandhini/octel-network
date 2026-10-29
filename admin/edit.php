@@ -91,11 +91,16 @@ function process_block_image_uploads(array &$blocks): void {
  */
 function process_partner_logos(array &$record, array &$errors): void {
     $logos = [];
-    foreach ($_POST['logos'] ?? [] as $row) {
+    foreach ($_POST['logos'] ?? [] as $key => $row) {
         if (!is_array($row) || !empty($row['remove'])) continue;
         $image = trim($row['image'] ?? '');
         if (strpos($image, 'assets/img/') !== 0) continue;
-        $logos[] = ['name' => trim($row['name'] ?? ''), 'image' => $image];
+        $logo = ['name' => trim($row['name'] ?? ''), 'image' => $image];
+        $certificate = empty($row['remove_certificate']) ? trim($row['certificate'] ?? '') : '';
+        $uploaded = upload_partner_certificate($key, $logo['name'], $errors);
+        if ($uploaded !== null) $certificate = $uploaded;
+        if (strpos($certificate, 'assets/pdf/') === 0) $logo['certificate'] = $certificate;
+        $logos[] = $logo;
     }
 
     $files = $_FILES['logo_files'] ?? null;
@@ -134,6 +139,42 @@ function process_partner_logos(array &$record, array &$errors): void {
     }
 
     $record['logos'] = $logos;
+}
+
+/**
+ * Save the certificate PDF uploaded for one logo row, if any. Returns its
+ * path, or null when nothing was uploaded or the upload was rejected.
+ */
+function upload_partner_certificate($key, string $brandName, array &$errors): ?string {
+    $files = $_FILES['certificate_files'] ?? null;
+    if (!$files || !isset($files['name'][$key]) || $files['name'][$key] === '') return null;
+
+    $originalName = $files['name'][$key];
+    if ($files['error'][$key] !== UPLOAD_ERR_OK) {
+        $errors[] = 'Upload of "' . $originalName . '" failed. Please try again.';
+        return null;
+    }
+    if (strtolower(pathinfo($originalName, PATHINFO_EXTENSION)) !== 'pdf'
+        || file_get_contents($files['tmp_name'][$key], false, null, 0, 5) !== '%PDF-') {
+        $errors[] = '"' . $originalName . '" must be a PDF file.';
+        return null;
+    }
+    if ($files['size'][$key] > 10 * 1024 * 1024) {
+        $errors[] = '"' . $originalName . '" must be smaller than 10MB.';
+        return null;
+    }
+
+    $uploadDir = __DIR__ . '/../assets/pdf';
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+    $baseName = slugify($brandName !== '' ? $brandName : pathinfo($originalName, PATHINFO_FILENAME));
+    $filename = $baseName . '-certificate-' . time() . '-' . $key . '.pdf';
+    if (move_uploaded_file($files['tmp_name'][$key], $uploadDir . '/' . $filename)) {
+        return 'assets/pdf/' . $filename;
+    }
+    $errors[] = 'Could not save "' . $originalName . '".';
+    return null;
 }
 
 /**
@@ -320,16 +361,28 @@ require __DIR__ . '/includes/layout-top.php';
         <?php if ($type === 'partners'): ?>
         <fieldset class="logo-manager">
             <legend>Partner logos</legend>
-            <p class="hint">Shown under this category on the Our Partners page, in this order. Use the arrows to reorder, tick "Remove" to delete, then save.</p>
+            <p class="hint">Shown under this category on the Our Partners page, in this order. Use the arrows to reorder, tick "Remove" to delete, then save. Attach a certificate PDF (up to 10MB) to show it when visitors hover over that logo.</p>
             <div id="logo-list" class="reorder-list">
                 <?php foreach ($record['logos'] ?? [] as $i => $logo): ?>
                 <div class="logo-row">
                     <img src="../<?= e($logo['image']) ?>" alt="">
                     <input type="hidden" name="logos[<?= $i ?>][image]" value="<?= e($logo['image']) ?>">
+                    <input type="hidden" name="logos[<?= $i ?>][certificate]" value="<?= e($logo['certificate'] ?? '') ?>">
                     <input type="text" name="logos[<?= $i ?>][name]" value="<?= e($logo['name']) ?>" placeholder="Brand name">
                     <button type="button" class="logo-move" data-dir="-1" title="Move up">↑</button>
                     <button type="button" class="logo-move" data-dir="1" title="Move down">↓</button>
                     <label class="logo-remove"><input type="checkbox" name="logos[<?= $i ?>][remove]" value="1"> Remove</label>
+                    <div class="logo-cert">
+                        <span class="logo-cert-label">Certificate (PDF):</span>
+                        <?php if (!empty($logo['certificate'])): ?>
+                        <a href="../<?= e($logo['certificate']) ?>" target="_blank" rel="noopener"><?= e(basename($logo['certificate'])) ?></a>
+                        <label class="logo-remove"><input type="checkbox" name="logos[<?= $i ?>][remove_certificate]" value="1"> Remove certificate</label>
+                        <span class="hint">or replace:</span>
+                        <?php else: ?>
+                        <span class="hint">none —</span>
+                        <?php endif; ?>
+                        <input type="file" name="certificate_files[<?= $i ?>]" accept=".pdf,application/pdf">
+                    </div>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -353,7 +406,13 @@ require __DIR__ . '/includes/layout-top.php';
             .logo-row .logo-move { width: 34px; height: 34px; border: 1px solid #d1d5db; background: #fff; border-radius: 6px; cursor: pointer; flex-shrink: 0; }
             .logo-row .logo-remove { display: flex; align-items: center; gap: 5px; margin: 0; font-weight: 400; white-space: nowrap; }
             .logo-row .logo-remove input { width: auto; margin: 0; }
-            .logo-row:has(.logo-remove input:checked) { opacity: .45; }
+            .logo-row:has(> .logo-remove input:checked) { opacity: .45; }
+            #logo-list .logo-row { flex-wrap: wrap; }
+            .logo-row .logo-cert { flex-basis: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-left: 120px; font-size: 13px; }
+            .logo-row .logo-cert-label { font-weight: 600; }
+            .logo-row .logo-cert a { color: #e30613; word-break: break-all; }
+            .logo-row .logo-cert input[type="file"] { width: auto; margin: 0; }
+            .logo-row .logo-cert .hint { margin: 0; }
             .logo-row img.slide-thumb { width: 160px; height: 64px; object-fit: cover; padding: 0; background: #111; }
             .logo-row .slide-path { flex: 1; font-size: 13px; color: #6b7280; word-break: break-all; }
         </style>

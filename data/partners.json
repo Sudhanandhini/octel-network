@@ -17,11 +17,13 @@
         "logos": [
             {
                 "name": "Dell Technologies",
-                "image": "assets/img/logo/dell-technologies.jpg"
+                "image": "assets/img/logo/dell-technologies.jpg",
+                "certificate": "assets/pdf/DELL.CERTIFICATE.pdf"
             },
             {
                 "name": "HP",
-                "image": "assets/img/logo/hp.png"
+                "image": "assets/img/logo/hp.png",
+                "certificate": "assets/pdf/HPE.Certificate.-.High.Res.pdf"
             },
             {
                 "name": "Supermicro",
@@ -83,7 +85,8 @@
             },
             {
                 "name": "Hewlett Packard Enterprise",
-                "image": "assets/img/logo/hpe.jpg"
+                "image": "assets/img/logo/hpe.jpg",
+                "certificate": "assets/pdf/HPE.Certificate.-.High.Res.pdf"
             },
             {
                 "name": "Juniper Networks",
