@@ -11,9 +11,9 @@
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/scrollcue.min.css">
         <link rel="stylesheet" href="assets/css/remixicon.css">
-        <link rel="stylesheet" href="assets/css/header.css">
+        <link rel="stylesheet" href="assets/css/header.css?v=20261105">
         <link rel="stylesheet" href="assets/css/style.css?v=20261028b">
-        <link rel="stylesheet" href="assets/css/footer.css?v=20261028b">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261105c">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
         
@@ -50,7 +50,7 @@
                             <div class="row">
                                 <div class="col-md-7 mb-sm-6">
                                     <ul class="contact-info list-unstyled text-md-start text-center mb-0">
-                                        <li class="d-inline-block"><a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary link-hover-secondary">+1 (808) 360-9282</a></li>
+                                        <li class="d-inline-block"><a href="tel:+918041155349" class="contact-num d-block fw-bold text_secondary link-hover-secondary">080 41155349</a></li>
                                         <li class="d-inline-block"><a href="mailto:info@octelnetworks.com" class="contact-mail fw-normal text-white hover-text-secondary d-inline-block">info<span class="text_secondary">@</span>octelnetworks.com</a></li>
                                     </ul>
                                 </div>
@@ -194,8 +194,8 @@
                                             <i class="ri-close-line"></i>
                                         </button>
                                         <div class="search-dropdown dropdown-menu dropdown-menu-right top-1 border-0" data-bs-popper="static">
-                                            <form class="search-popup position-relative" action="#">
-                                                <input type="search" class="form-control text-para" placeholder="Search Here">
+                                            <form class="search-popup position-relative" action="search.html" method="get" role="search">
+                                                <input type="search" name="q" class="form-control text-para" placeholder="Search Here" aria-label="Search the site" required>
                                                 <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent d-flex flex-column align-items-center justify-content-center"><i class="ri-search-2-line"></i></button>
                                             </form>
                                         </div>
@@ -397,57 +397,87 @@
                 <!-- Footer Section Start -->
                 <footer class="footer-area style-one">
                     <div class="container style-one">
-                        <div class="footer-top pt-115">
-                            <div class="row">
-                                <div class="col-xxl-5 col-lg-4 col-md-5">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft">
-                                        <a href="index.html" class="logo d-block mb-50">
-                                            <img src="assets/img/new/logo-white.png" alt="Image">
+                        <div class="footer-top">
+                            <div class="row g-4 g-xl-5">
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft">
+                                        <a href="index.html" class="logo d-inline-block mb-20">
+                                            <img src="assets/img/new/logo-white.png" alt="Octel Networks">
                                         </a>
-                                        <a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary mb-18">+1 (808) 360-9282</a>
-                                        <a href="mailto:info@octelnetworks.com" class="contact-mail fs-xxl-18 fw-bold text-black d-inline-block hover-text-secondary">info@octelnetworks.com</a>
-                                        <ul class="social-profile style-one list-unstyled mt-4 mb-0">
+                                        <p class="footer-about mb-25">Building the IT, network and security infrastructure businesses rely on, since 1999.</p>
+                                        <ul class="social-profile style-one list-unstyled mb-0">
                                             <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
                                             <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
                                             <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xxl-4 col-lg-4 col-md-7 ps-xxl-4">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="100">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Quick Links</h3>
-                                        <ul class="footer-menu style-one list-unstyled mb-0">
-                                            <li class="d-block fs-xxl-18"><a href="index.html">Home</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="about.html">About Us</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="services.html">Solutions</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="distribution.html">Distribution</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="partners.html">Our Partners</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="careers.html">Careers</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="contact.html">Contact</a></li>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="100">
+                                        <h3 class="footer-widget-title">Our Solutions</h3>
+                                        <ul class="footer-menu list-unstyled mb-0">
+                                            <li><a href="cyber-security.html">Cybersecurity</a></li>
+                                            <li><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
+                                            <li><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
+                                            <li><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
+                                            <li><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="services.html" class="footer-menu-more">View All Solutions <i class="ri-arrow-right-line"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xxl-3 col-lg-4 col-md-6">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="200">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Our Solutions</h3>
+                                <div class="col-xl-2 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="200">
+                                        <h3 class="footer-widget-title">Distribution</h3>
                                         <ul class="footer-menu list-unstyled mb-0">
-                                            <li class="d-block fs-xxl-18"><a href="cyber-security.html">Cybersecurity</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="matrix-details.html">Matrix</a></li>
+                                            <li><a href="rm-details.html">R&amp;M</a></li>
+                                            <li><a href="rittal-details.html">Rittal</a></li>
+                                            <li><a href="netka-details.html">NETKA System</a></li>
+                                            <li><a href="distribution.html" class="footer-menu-more">View All <i class="ri-arrow-right-line"></i></a></li>
                                         </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="300">
+                                        <h3 class="footer-widget-title">Contact Us</h3>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-shopping-bag-3-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Sales</span>
+                                                <a href="tel:+918041155349" class="contact-num d-block">080 41155349</a>
+                                                <a href="mailto:info@octelnetworks.com" class="contact-mail d-inline-block">info@octelnetworks.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-customer-service-2-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Service</span>
+                                                <a href="tel:+918049574038" class="contact-num d-block">080 49574038</a>
+                                                <a href="mailto:helpdesk@octelnetworks.com" class="contact-mail d-inline-block">helpdesk@octelnetworks.com</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="footer-links">
+                            <ul class="footer-bottom-menu list-unstyled text-center mb-0">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="services.html">Solutions</a></li>
+                                <li><a href="distribution.html">Distribution</a></li>
+                                <li><a href="partners.html">Our Partners</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
                         <div class="footer-bottom">
-                            <div class="row align-items-center">
-                                <div class="col-md-7 pe-md-0 mb-sm-10">
-                                    <p class="copyright-text fs-xxl-10 text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
+                            <div class="row align-items-center g-2">
+                                <div class="col-md-7">
+                                    <p class="copyright-text text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
                                 </div>
                                 <div class="col-md-5">
-                                    <p class="copyright-text fs-xxl-10 text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
+                                    <p class="copyright-text text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                         </div>

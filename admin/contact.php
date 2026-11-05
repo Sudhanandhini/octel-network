@@ -74,6 +74,15 @@ require __DIR__ . '/includes/layout-top.php';
             <?php endif; ?>
         </div></div>
         <div><div class="k">Service Interest</div><div class="v"><?= e(($c['interest'] ?? '') ?: '—') ?></div></div>
+        <div><div class="k">Email Notification</div><div class="v">
+            <?php if (($c['email_status'] ?? '') === 'sent'): ?>
+                <span class="email-sent"><i class="ri-mail-check-line"></i> Sent to <?= e($c['email_to'] ?? '') ?></span>
+            <?php elseif (($c['email_status'] ?? '') === 'failed'): ?>
+                <span class="email-failed"><i class="ri-mail-close-line"></i> Not sent<?= !empty($c['email_to']) ? ' (to ' . e($c['email_to']) . ')' : '' ?>. Check the SMTP settings in .env</span>
+            <?php else: ?>
+                —
+            <?php endif; ?>
+        </div></div>
         <?php if (!empty($c['updated_at'])): ?>
             <div><div class="k">Last Updated</div><div class="v"><?= e(format_contact_date($c['updated_at'])) ?></div></div>
         <?php endif; ?>

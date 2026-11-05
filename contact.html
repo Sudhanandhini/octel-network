@@ -26,9 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/scrollcue.min.css">
         <link rel="stylesheet" href="assets/css/remixicon.css">
-        <link rel="stylesheet" href="assets/css/header.css">
+        <link rel="stylesheet" href="assets/css/header.css?v=20261105">
         <link rel="stylesheet" href="assets/css/style.css?v=20261028b">
-        <link rel="stylesheet" href="assets/css/footer.css?v=20261028b">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261105c">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
 
@@ -59,6 +59,216 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
             .navbar-area.sticky a.navbar-brand .logo-hover {
                 opacity: 1;
                 transform: scale(1);
+            }
+            /* Get In Touch desks */
+            .contact-desks-eyebrow {
+                gap: 8px;
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--secondaryColor);
+                margin-bottom: 10px;
+            }
+            .contact-desks-eyebrow::before,
+            .contact-desks-eyebrow::after {
+                content: "";
+                width: 28px;
+                height: 2px;
+                background-color: var(--secondaryColor);
+            }
+            .contact-desk {
+                position: relative;
+                z-index: 1;
+                overflow: hidden;
+                padding: 40px;
+                background-color: #fff;
+                border: 1px solid #ececec;
+                transition: transform 0.45s cubic-bezier(.2, .8, .2, 1), box-shadow 0.45s ease, border-color 0.45s ease;
+            }
+            /* red bar that sweeps across the top on hover */
+            .contact-desk::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: "";
+                width: 100%;
+                height: 4px;
+                background: linear-gradient(90deg, var(--secondaryColor), var(--primaryColor));
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.6s cubic-bezier(.2, .8, .2, 1);
+            }
+            /* soft glow that follows into the corner */
+            .contact-desk::after {
+                position: absolute;
+                top: -120px;
+                right: -120px;
+                content: "";
+                width: 260px;
+                height: 260px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(227, 0, 22, 0.10), transparent 70%);
+                z-index: -1;
+                transition: transform 0.6s ease;
+            }
+            .contact-desk:hover {
+                transform: translateY(-8px);
+                border-color: transparent;
+                box-shadow: 0 25px 55px rgba(0, 37, 44, 0.12);
+            }
+            .contact-desk:hover::before {
+                transform: scaleX(1);
+            }
+            .contact-desk:hover::after {
+                transform: scale(1.6);
+            }
+            .contact-desk-watermark {
+                position: absolute;
+                right: -10px;
+                bottom: -30px;
+                font-size: 170px;
+                line-height: 1;
+                color: var(--primaryColor);
+                opacity: 0.04;
+                z-index: -1;
+                pointer-events: none;
+                transition: transform 0.7s cubic-bezier(.2, .8, .2, 1), opacity 0.5s ease;
+            }
+            .contact-desk:hover .contact-desk-watermark {
+                opacity: 0.07;
+                transform: rotate(-12deg) scale(1.1);
+            }
+            .contact-desk-head {
+                gap: 20px;
+                padding-bottom: 24px;
+                margin-bottom: 18px;
+                border-bottom: 1px dashed #e2e2e2;
+            }
+            .contact-desk-head h3 {
+                color: var(--primaryColor);
+            }
+            .contact-desk-tag {
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: var(--secondaryColor);
+                margin-bottom: 2px;
+            }
+            .contact-desk-icon {
+                position: relative;
+                flex: 0 0 68px;
+                width: 68px;
+                height: 68px;
+                font-size: 30px;
+                color: #fff;
+                background-color: var(--secondaryColor);
+                box-shadow: 0 10px 25px rgba(227, 0, 22, 0.3);
+                transition: background-color 0.4s ease, transform 0.5s ease;
+            }
+            /* pulsing rings */
+            .contact-desk-icon::before,
+            .contact-desk-icon::after {
+                position: absolute;
+                inset: 0;
+                content: "";
+                border-radius: 50%;
+                border: 2px solid var(--secondaryColor);
+                animation: deskPulse 2.4s ease-out infinite;
+            }
+            .contact-desk-icon::after {
+                animation-delay: 1.2s;
+            }
+            .contact-desk:hover .contact-desk-icon {
+                background-color: var(--primaryColor);
+                transform: rotate(-8deg) scale(1.05);
+            }
+            .contact-desk:hover .contact-desk-icon i {
+                animation: deskRing 0.8s ease;
+            }
+            .contact-desk-row {
+                gap: 16px;
+                padding: 14px 16px;
+                margin: 0 -16px;
+                border-radius: 12px;
+                transition: background-color 0.35s ease, transform 0.35s ease;
+            }
+            .contact-desk-row + .contact-desk-row {
+                margin-top: 6px;
+            }
+            .contact-desk-row > i:first-child {
+                flex: 0 0 46px;
+                width: 46px;
+                height: 46px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                color: var(--secondaryColor);
+                background-color: rgba(227, 0, 22, 0.08);
+                border-radius: 50%;
+                transition: background-color 0.35s ease, color 0.35s ease;
+            }
+            .contact-desk-label {
+                font-size: 13px;
+                color: #7a7a7a;
+                margin-bottom: 2px;
+            }
+            .contact-desk-value {
+                font-size: 18px;
+                font-weight: 600;
+                color: var(--primaryColor);
+                word-break: break-word;
+                transition: color 0.35s ease;
+            }
+            .contact-desk-arrow {
+                font-size: 22px;
+                color: var(--secondaryColor);
+                opacity: 0;
+                transform: translate(-10px, 10px);
+                transition: opacity 0.35s ease, transform 0.35s ease;
+            }
+            .contact-desk-row:hover {
+                background-color: #f7f7f7;
+                transform: translateX(4px);
+            }
+            .contact-desk-row:hover > i:first-child {
+                color: #fff;
+                background-color: var(--secondaryColor);
+            }
+            .contact-desk-row:hover .contact-desk-value {
+                color: var(--secondaryColor);
+            }
+            .contact-desk-row:hover .contact-desk-arrow {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+            @keyframes deskPulse {
+                0%   { transform: scale(1);   opacity: 0.55; }
+                100% { transform: scale(1.7); opacity: 0; }
+            }
+            @keyframes deskRing {
+                0%, 100% { transform: rotate(0); }
+                20% { transform: rotate(-15deg); }
+                40% { transform: rotate(12deg); }
+                60% { transform: rotate(-8deg); }
+                80% { transform: rotate(5deg); }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .contact-desk-icon::before,
+                .contact-desk-icon::after,
+                .contact-desk:hover .contact-desk-icon i {
+                    animation: none;
+                }
+            }
+            @media (max-width: 575px) {
+                .contact-desk {
+                    padding: 28px 22px;
+                }
+                .contact-desk-value {
+                    font-size: 16px;
+                }
             }
         </style>
     </head>
@@ -145,8 +355,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                             <i class="ri-close-line"></i>
                                         </button>
                                         <div class="search-dropdown dropdown-menu dropdown-menu-right top-1 border-0" data-bs-popper="static">
-                                            <form class="search-popup position-relative" action="#">
-                                                <input type="search" class="form-control text-para" placeholder="Search Here">
+                                            <form class="search-popup position-relative" action="search.html" method="get" role="search">
+                                                <input type="search" name="q" class="form-control text-para" placeholder="Search Here" aria-label="Search the site" required>
                                                 <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent d-flex flex-column align-items-center justify-content-center"><i class="ri-search-2-line"></i></button>
                                             </form>
                                         </div>
@@ -175,7 +385,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                     <!-- Breadcrumb Area Start -->
                     <div class="breadcrumb-area style-one position-relative z-1">
                         <div class="br-bg img-container position-absolute top-0 start-0 w-100">
-                            <img src="assets/img/contact/contact-banner.jpg" alt="Laptop glowing in the dark" class="w-100 h-100 object-fit-cover">
+                            <img src="assets/img/contact-1.avif" alt="Wooden blocks with chat, email, mail and phone icons" class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="container style-one">
                             <div class="row">
@@ -202,12 +412,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                         <li class="fs-xxl-18 mb-10"><span class="text-title fw-semibold me-1">Octel Networks Pvt Ltd — Bangalore</span></li>
                                         <li class="fs-xxl-18 mb-10">887 11th Main 4th Cross HAL 2nd Stage, Bangalore, Karnataka, India - 560008</li>
                                         <li class="fs-xxl-18 mb-10"><span class="text-title fw-semibold me-1">GST:</span>29AABCO2230Q1Z6</li>
-                                        <li class="fs-xxl-18 mb-10"><span class="text-title fw-semibold me-1">Mail:</span><a href="mailto:info@octelnetworks.com" class="text-title fw-semibold link-hover-primary">info@octelnetworks.com</a></li>
                                     </ul>
                                     <h6 class="fs-18 fw-semibold mb-18">Branch Offices</h6>
                                     <ul class="contact-info list-unstyled mb-28">
-                                        <li class="fs-xxl-18 mb-10"><span class="text-title fw-semibold me-1">Chennai —</span>Octel Networks Pvt Ltd, Puliyur 2nd Lane, 2nd Main Kodambakkam, Chennai, Tamil Nadu, India - 600024<br/> <span class="text-title fw-semibold">GST:</span> 33AABCO2230Q1ZH</li>
-                                        <li class="fs-xxl-18 mb-10"><span class="text-title fw-semibold me-1">Hyderabad —</span>Octel Networks Pvt Ltd, 1-10-39, 4th Floor, Gumidelli Towers, Prakash Nagar, Begumpet, Hyderabad, Telangana, India - 500016<br/> <span class="text-title fw-semibold">GST:</span> 36AABCO2230Q1ZB</li>
+                                        <li class="fs-xxl-18 mb-10"><span class="text-title fw-semibold me-1">Chennai —</span>Octel Networks Pvt Ltd, Puliyur 2nd Lane, 2nd Main Kodambakkam, Chennai, Tamil Nadu, India - 600024<br/> <span class="text-title fw-semibold">GST:</span> 33AABCO2230Q1ZH<br/> <span class="text-title fw-semibold me-1">Location:</span><a href="https://www.google.com/maps/search/?api=1&query=Old+Door+No+11%2F1%2C+New+Door+No+21%2C+Puliyur+2nd+Lane%2C+VOC+2nd+Main+Rd%2C+Kodambakkam%2C+Chennai%2C+Tamil+Nadu+600024" target="_blank" rel="noopener" class="text-title fw-semibold link-hover-primary">View on Google Maps</a></li>
+                                        <li class="fs-xxl-18 mb-10"><span class="text-title fw-semibold me-1">Hyderabad —</span>Octel Networks Pvt Ltd, 1-10-39, 4th Floor, Gumidelli Towers, Prakash Nagar, Begumpet, Hyderabad, Telangana, India - 500016<br/> <span class="text-title fw-semibold">GST:</span> 36AABCO2230Q1ZB<br/> <span class="text-title fw-semibold me-1">Location:</span><a href="https://www.google.com/maps/search/?api=1&query=Gumidelli+Towers%2C+1-10-39+to+44%2C+Old+Airport+Rd%2C+Begumpet%2C+Hyderabad%2C+Telangana+500011" target="_blank" rel="noopener" class="text-title fw-semibold link-hover-primary">View on Google Maps</a></li>
                                     </ul>
                                     <!-- <h3 class="fs-24 mb-18">Office Hours</h3>
                                     <ul class="business-hours list-unstyled mb-25">
@@ -276,7 +485,80 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                     </form>
                                 </div>
                             </div>
-                            <div class="row mb-40">
+                            <!-- Contact Desks Start -->
+                            <!-- <div class="contact-desks mb-90">
+                                <div class="text-center mb-50" data-cue="slideInUp">
+                                    <span class="contact-desks-eyebrow d-inline-flex align-items-center">Talk To Us</span>
+                                    <h2 class="section-title style-two fw-semibold mb-12">Get In Touch</h2>
+                                    <p class="fs-xxl-18 mb-0">Reach the right team directly for faster assistance.</p>
+                                </div>
+                                <div class="row g-4">
+                                    <div class="col-md-6" data-cue="slideInUp" data-delay="100">
+                                        <div class="contact-desk h-100 round-20">
+                                            <i class="ri-shopping-bag-3-line contact-desk-watermark" aria-hidden="true"></i>
+                                            <div class="contact-desk-head d-flex align-items-center">
+                                                <span class="contact-desk-icon d-flex align-items-center justify-content-center rounded-circle"><i class="ri-shopping-bag-3-line"></i></span>
+                                                <div>
+                                                    <span class="contact-desk-tag d-block">Sales Desk</span>
+                                                    <h3 class="fs-24 mb-1">Sales</h3>
+                                                    <p class="mb-0">Product enquiries, quotes &amp; partnerships</p>
+                                                </div>
+                                            </div>
+                                            <div class="contact-desk-rows">
+                                                <a href="tel:+918041155349" class="contact-desk-row d-flex align-items-center">
+                                                    <i class="ri-phone-line"></i>
+                                                    <span class="flex-grow-1">
+                                                        <span class="contact-desk-label d-block">Landline Number</span>
+                                                        <span class="contact-desk-value d-block">080 41155349</span>
+                                                    </span>
+                                                    <i class="ri-arrow-right-up-line contact-desk-arrow"></i>
+                                                </a>
+                                                <a href="mailto:info@octelnetworks.com" class="contact-desk-row d-flex align-items-center">
+                                                    <i class="ri-mail-line"></i>
+                                                    <span class="flex-grow-1">
+                                                        <span class="contact-desk-label d-block">Email</span>
+                                                        <span class="contact-desk-value d-block">info@octelnetworks.com</span>
+                                                    </span>
+                                                    <i class="ri-arrow-right-up-line contact-desk-arrow"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" data-cue="slideInUp" data-delay="250">
+                                        <div class="contact-desk h-100 round-20">
+                                            <i class="ri-customer-service-2-line contact-desk-watermark" aria-hidden="true"></i>
+                                            <div class="contact-desk-head d-flex align-items-center">
+                                                <span class="contact-desk-icon d-flex align-items-center justify-content-center rounded-circle"><i class="ri-customer-service-2-line"></i></span>
+                                                <div>
+                                                    <span class="contact-desk-tag d-block">Service Desk</span>
+                                                    <h3 class="fs-24 mb-1">Service</h3>
+                                                    <p class="mb-0">Technical support &amp; after-sales help</p>
+                                                </div>
+                                            </div>
+                                            <div class="contact-desk-rows">
+                                                <a href="tel:+918049574038" class="contact-desk-row d-flex align-items-center">
+                                                    <i class="ri-phone-line"></i>
+                                                    <span class="flex-grow-1">
+                                                        <span class="contact-desk-label d-block">Landline Number</span>
+                                                        <span class="contact-desk-value d-block">080 49574038</span>
+                                                    </span>
+                                                    <i class="ri-arrow-right-up-line contact-desk-arrow"></i>
+                                                </a>
+                                                <a href="mailto:helpdesk@octelnetworks.com" class="contact-desk-row d-flex align-items-center">
+                                                    <i class="ri-mail-line"></i>
+                                                    <span class="flex-grow-1">
+                                                        <span class="contact-desk-label d-block">Email</span>
+                                                        <span class="contact-desk-value d-block">helpdesk@octelnetworks.com</span>
+                                                    </span>
+                                                    <i class="ri-arrow-right-up-line contact-desk-arrow"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- Contact Desks End -->
+                            <div class="row mb-90">
                                 <div class="col-12">
                                     <h6 class="fs-18 fw-semibold mb-18">Head Office — Bangalore</h6>
                                     <div class="comp-map style-one" style="height:420px;">
@@ -286,28 +568,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                     </div>
                                 </div>
                             </div>
-                         <div class="row g-4 mb-90">
-                                <div class="col-lg-6">
-                                    <h6 class="fs-18 fw-semibold mb-18">Chennai Branch</h6>
-                                    <div class="comp-map style-one" style="height:360px;">
-                                        <iframe
-                                            title="Octel Networks Chennai branch location"
-                                            src="https://www.google.com/maps?q=Old+Door+No+11%2F1%2C+New+Door+No+21%2C+Puliyur+2nd+Lane%2C+VOC+2nd+Main+Rd%2C+Kodambakkam%2C+Chennai%2C+Tamil+Nadu+600024&output=embed"
-                                            loading="lazy">
-                                        </iframe>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <h6 class="fs-18 fw-semibold mb-18">Hyderabad Branch</h6>
-                                    <div class="comp-map style-one" style="height:360px;">
-                                        <iframe
-                                            title="Octel Networks Hyderabad branch location"
-                                            src="https://www.google.com/maps?q=Gumidelli+Towers%2C+1-10-39+to+44%2C+Old+Airport+Rd%2C+Begumpet%2C+Hyderabad%2C+Telangana+500011&output=embed"
-                                            loading="lazy">
-                                        </iframe>
-                                    </div>
-                                </div>
-                            </div> 
                             <!-- <div class="cta-box style-one position-relative z-1 overflow-hidden round-20">                                <div class="row">
                                     <div class="col-xxl-6 offset-xxl-3  col-xl-8 offset-xl-2">
                                         <h2 class="section-title style-two fw-semibold text-center text-white reveal-text-right mb-12">Ready To Get Started?</h2>
@@ -330,57 +590,87 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                 <!-- Footer Section Start -->
                 <footer class="footer-area style-one">
                     <div class="container style-one">
-                        <div class="footer-top pt-115">
-                            <div class="row">
-                                <div class="col-xxl-5 col-lg-4 col-md-5">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft">
-                                        <a href="index.html" class="logo d-block mb-50">
-                                            <img src="assets/img/new/logo-white.png" alt="Image">
+                        <div class="footer-top">
+                            <div class="row g-4 g-xl-5">
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft">
+                                        <a href="index.html" class="logo d-inline-block mb-20">
+                                            <img src="assets/img/new/logo-white.png" alt="Octel Networks">
                                         </a>
-                                        <a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary mb-18">+1 (808) 360-9282</a>
-                                        <a href="mailto:info@octelnetworks.com" class="contact-mail fs-xxl-18 fw-bold text-black d-inline-block hover-text-secondary">info@octelnetworks.com</a>
-                                        <ul class="social-profile style-one list-unstyled mt-4 mb-0">
+                                        <p class="footer-about mb-25">Building the IT, network and security infrastructure businesses rely on, since 1999.</p>
+                                        <ul class="social-profile style-one list-unstyled mb-0">
                                             <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
                                             <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
                                             <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xxl-4 col-lg-4 col-md-7 ps-xxl-4">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="100">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Quick Links</h3>
-                                        <ul class="footer-menu style-one list-unstyled mb-0">
-                                            <li class="d-block fs-xxl-18"><a href="index.html">Home</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="about.html">About Us</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="services.html">Solutions</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="distribution.html">Distribution</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="partners.html">Our Partners</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="careers.html">Careers</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="contact.html">Contact</a></li>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="100">
+                                        <h3 class="footer-widget-title">Our Solutions</h3>
+                                        <ul class="footer-menu list-unstyled mb-0">
+                                            <li><a href="cyber-security.html">Cybersecurity</a></li>
+                                            <li><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
+                                            <li><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
+                                            <li><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
+                                            <li><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="services.html" class="footer-menu-more">View All Solutions <i class="ri-arrow-right-line"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xxl-3 col-lg-4 col-md-6">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="200">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Our Solutions</h3>
+                                <div class="col-xl-2 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="200">
+                                        <h3 class="footer-widget-title">Distribution</h3>
                                         <ul class="footer-menu list-unstyled mb-0">
-                                            <li class="d-block fs-xxl-18"><a href="cyber-security.html">Cybersecurity</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="matrix-details.html">Matrix</a></li>
+                                            <li><a href="rm-details.html">R&amp;M</a></li>
+                                            <li><a href="rittal-details.html">Rittal</a></li>
+                                            <li><a href="netka-details.html">NETKA System</a></li>
+                                            <li><a href="distribution.html" class="footer-menu-more">View All <i class="ri-arrow-right-line"></i></a></li>
                                         </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="300">
+                                        <h3 class="footer-widget-title">Contact Us</h3>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-shopping-bag-3-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Sales</span>
+                                                <a href="tel:+918041155349" class="contact-num d-block">080 41155349</a>
+                                                <a href="mailto:info@octelnetworks.com" class="contact-mail d-inline-block">info@octelnetworks.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-customer-service-2-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Service</span>
+                                                <a href="tel:+918049574038" class="contact-num d-block">080 49574038</a>
+                                                <a href="mailto:helpdesk@octelnetworks.com" class="contact-mail d-inline-block">helpdesk@octelnetworks.com</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="footer-links">
+                            <ul class="footer-bottom-menu list-unstyled text-center mb-0">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="services.html">Solutions</a></li>
+                                <li><a href="distribution.html">Distribution</a></li>
+                                <li><a href="partners.html">Our Partners</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
                         <div class="footer-bottom">
-                            <div class="row align-items-center">
-                                <div class="col-md-7 pe-md-0 mb-sm-10">
-                                    <p class="copyright-text fs-xxl-10 text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
+                            <div class="row align-items-center g-2">
+                                <div class="col-md-7">
+                                    <p class="copyright-text text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
                                 </div>
                                 <div class="col-md-5">
-                                    <p class="copyright-text fs-xxl-10 text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
+                                    <p class="copyright-text text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                         </div>

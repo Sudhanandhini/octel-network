@@ -204,6 +204,8 @@ $newContacts = count_contacts_by_status(load_contacts())['new'];
         .badge-new { background: #fef3c7; color: #92400e; }
         .badge-contacted { background: #dbeafe; color: #1e40af; }
         .badge-closed { background: #e5e7eb; color: #374151; }
+        .email-sent { color: #166534 !important; }
+        .email-failed { color: #b91c1c !important; font-weight: 600; }
         .btn-danger-outline { background: #fff; color: #b91c1c !important; border: 1px solid #fca5a5; }
         .btn-danger-outline:hover { background: #fee2e2; }
         .btn-sm { padding: 7px 14px; font-size: 14px; }

@@ -3,3 +3,8 @@
 <FilesMatch "\.html$">
     SetHandler application/x-httpd-php
 </FilesMatch>
+
+# Never serve the .env file (it holds the SMTP password).
+<Files ".env">
+    Require all denied
+</Files>

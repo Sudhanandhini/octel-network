@@ -21,6 +21,10 @@ $portfolioCards = parse_pipe_rows($item['portfolio_cards'] ?? '', ['icon', 'titl
 $portfolioStyle = $item['portfolio_style'] ?? 'default';
 $cloudJourneySteps = parse_pipe_rows($item['cloud_journey'] ?? '', ['icon', 'title', 'desc']);
 $whatWeDoItems = parse_pipe_rows($item['whatwedo_items'] ?? '', ['title', 'desc']);
+// Solution pages get the animated portfolio / "why" layouts; distributor and partner pages keep the classic ones.
+$isSolutionPage = ($breadcrumbParentHref ?? '') === 'services.html';
+// Distributor pages share the animated "why" panel but keep the classic portfolio cards.
+$useAnimatedWhy = $isSolutionPage || ($breadcrumbParentHref ?? '') === 'distribution.html';
 
 $pos = array_search($item['slug'], array_column($allItems, 'slug'));
 $prev = $pos !== false && $pos > 0 ? $allItems[$pos - 1] : null;
@@ -33,8 +37,10 @@ $nextLabel = $next ? $next['nav_name'] : 'All ' . $sidebarTitle;
 // Each detail page (solution, distributor, partner) uses its own image as the banner;
 // the shared banner is only a fallback for items without an image.
 $defaultBanner = 'assets/img/uploads/block-bmto1e60f0idhx5-1788591945.jpg';
-$useItemBanner = !empty($item['hero_image']);
-$bannerImage = $useItemBanner ? $item['hero_image'] : $defaultBanner;
+// Distributors can set a separate banner_image (also used on the Distribution and home pages).
+$itemBanner = ($item['banner_image'] ?? '') ?: ($item['hero_image'] ?? '');
+$useItemBanner = $itemBanner !== '';
+$bannerImage = $useItemBanner ? $itemBanner : $defaultBanner;
 
 // Sidebar enquiry form ("Submit").
 require_once __DIR__ . '/../includes/contacts.php';
@@ -63,9 +69,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/scrollcue.min.css">
         <link rel="stylesheet" href="assets/css/remixicon.css">
-        <link rel="stylesheet" href="assets/css/header.css">
+        <link rel="stylesheet" href="assets/css/header.css?v=20261105">
         <link rel="stylesheet" href="assets/css/style.css?v=20261028b">
-        <link rel="stylesheet" href="assets/css/footer.css?v=20261028b">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261105c">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
 
@@ -157,8 +163,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
             .dp-section .dp-group::after {
                 content: "";
                 flex: 1 1 auto;
-                height: 1px;
-                background: linear-gradient(90deg, rgba(227, 0, 22, .35), rgba(227, 0, 22, 0));
+                /* 2px so the rule doesn't vanish at fractional zoom / display scaling */
+                height: 2px;
+                border-radius: 2px;
+                background: linear-gradient(90deg, rgba(227, 0, 22, .55), rgba(227, 0, 22, .05));
             }
             .dp-section .dp-num {
                 flex-shrink: 0;
@@ -625,6 +633,349 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                 color: var(--paraColor);
                 font-size: 15px;
             }
+
+            /* Solution pages: animated "Our Solutions" cards and "Why" panel */
+            .sx-portfolio { margin: 10px 0 30px; }
+            .sx-head { margin-bottom: 30px; }
+            .sx-label {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 7px 15px;
+                margin-bottom: 14px;
+                border-radius: 50px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: var(--secondaryColor);
+                background: rgba(227, 0, 22, .08);
+            }
+            .sx-dot {
+                position: relative;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--secondaryColor);
+            }
+            .sx-dot::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: 50%;
+                background: var(--secondaryColor);
+                animation: sxPing 1.8s ease-out infinite;
+            }
+            .sx-title {
+                position: relative;
+                padding-bottom: 16px;
+                margin-bottom: 14px;
+                font-size: 28px;
+                font-weight: 700;
+                line-height: 1.3;
+            }
+            .sx-title::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 70px;
+                height: 3px;
+                border-radius: 3px;
+                background: linear-gradient(90deg, var(--secondaryColor), #ff7a85, var(--secondaryColor));
+                background-size: 200% 100%;
+                animation: sxShimmer 3s linear infinite;
+            }
+            .sx-sub {
+                margin-bottom: 0;
+                font-size: 17px;
+                color: var(--paraColor);
+            }
+            .sx-card {
+                position: relative;
+                overflow: hidden;
+                padding: 28px 26px 30px;
+                border-radius: 20px;
+                background: var(--whiteColor);
+                border: 1px solid #e8e8e8;
+                transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+            }
+            .sx-card::before {
+                content: "";
+                position: absolute;
+                top: -80px;
+                right: -80px;
+                width: 180px;
+                height: 180px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(227, 0, 22, .12), transparent 70%);
+                transition: transform .6s ease;
+            }
+            .sx-card:hover {
+                transform: translateY(-8px);
+                border-color: rgba(227, 0, 22, .35);
+                box-shadow: 0 22px 45px rgba(0, 37, 44, .12);
+            }
+            .sx-card:hover::before { transform: scale(2.4); }
+            .sx-num {
+                position: absolute;
+                top: 18px;
+                right: 22px;
+                font-size: 46px;
+                font-weight: 800;
+                line-height: 1;
+                color: transparent;
+                -webkit-text-stroke: 1.5px rgba(0, 37, 44, .15);
+                transition: color .4s ease, -webkit-text-stroke-color .4s ease;
+            }
+            .sx-card:hover .sx-num {
+                color: rgba(227, 0, 22, .12);
+                -webkit-text-stroke-color: var(--secondaryColor);
+            }
+            .sx-icon {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 60px;
+                height: 60px;
+                margin-bottom: 20px;
+                overflow: hidden;
+                border-radius: 16px;
+                font-size: 28px;
+                color: var(--whiteColor);
+                background: linear-gradient(135deg, var(--secondaryColor), #ff4d5e);
+                box-shadow: 0 10px 22px rgba(227, 0, 22, .28);
+                transition: transform .4s ease;
+            }
+            .sx-icon::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -75%;
+                width: 50%;
+                height: 100%;
+                background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .55), transparent);
+                transform: skewX(-20deg);
+                animation: sxShine 4s ease-in-out infinite;
+            }
+            .sx-card:hover .sx-icon { transform: rotate(-8deg) scale(1.08); }
+            .sx-card h4 {
+                position: relative;
+                margin-bottom: 10px;
+                font-size: 19px;
+                font-weight: 700;
+                color: var(--titleColor);
+            }
+            .sx-card p {
+                position: relative;
+                margin-bottom: 0;
+                font-size: 15.5px;
+                color: var(--paraColor);
+            }
+            .sx-bar {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(90deg, var(--secondaryColor), var(--primaryColor));
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform .5s ease;
+            }
+            .sx-card:hover .sx-bar { transform: scaleX(1); }
+
+            .sx-why {
+                position: relative;
+                overflow: hidden;
+                margin: 20px 0 30px;
+                padding: 40px 34px 24px;
+                border-radius: 22px;
+                background:
+                    radial-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px) 0 0 / 20px 20px,
+                    #737474;
+            }
+            .sx-why::before {
+                content: "";
+                position: absolute;
+                top: -120px;
+                right: -120px;
+                width: 320px;
+                height: 320px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(227, 0, 22, .35), transparent 70%);
+                animation: sxDrift 10s ease-in-out infinite alternate;
+            }
+            .sx-why > * { position: relative; }
+            .sx-why-head { margin-bottom: 28px; }
+            .sx-label-light {
+                color: var(--whiteColor);
+                background: rgba(255, 255, 255, .1);
+                border: 1px solid rgba(255, 255, 255, .15);
+            }
+            .sx-label-light i { font-size: 15px; color: #ff6b78; }
+            .sx-why .sx-title { color: var(--whiteColor); }
+            .sx-why .sx-sub { color: rgba(255, 255, 255, .7); }
+            .sx-step {
+                display: flex;
+                align-items: flex-start;
+                gap: 16px;
+                padding: 20px;
+                border-radius: 16px;
+                background: rgba(255, 255, 255, .04);
+                border: 1px solid rgba(255, 255, 255, .1);
+                transition: transform .35s ease, background .35s ease, border-color .35s ease;
+            }
+            .sx-step:hover {
+                transform: translateY(-5px);
+                background: rgba(227, 0, 22, .12);
+                border-color: rgba(227, 0, 22, .5);
+            }
+            .sx-step-num {
+                position: relative;
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 46px;
+                height: 46px;
+                border-radius: 50%;
+                font-size: 15px;
+                font-weight: 700;
+                color: var(--whiteColor);
+                background: var(--secondaryColor);
+            }
+            .sx-step-num::after {
+                content: "";
+                position: absolute;
+                inset: -6px;
+                border-radius: 50%;
+                border: 1.5px dashed rgba(255, 255, 255, .35);
+                animation: sxSpin 12s linear infinite;
+            }
+            .sx-step:hover .sx-step-num::after {
+                border-color: var(--secondaryColor);
+                animation-duration: 3s;
+            }
+            .sx-step h5 {
+                margin-bottom: 6px;
+                font-size: 17px;
+                font-weight: 700;
+                color: var(--whiteColor);
+            }
+            .sx-step p {
+                margin-bottom: 0;
+                font-size: 15px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, .7);
+            }
+            .sx-summary { margin-top: 10px; }
+            .sx-built,
+            .sx-outcome {
+                padding: 22px 24px;
+                border-radius: 16px;
+            }
+            .sx-built {
+                background: rgba(255, 255, 255, .06);
+                border: 1px solid rgba(255, 255, 255, .12);
+            }
+            .sx-built h6,
+            .sx-outcome h6 {
+                margin-bottom: 14px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, .7);
+            }
+            .sx-chips {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .sx-chips span {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 7px 14px;
+                border-radius: 50px;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--primaryColor);
+                background: var(--whiteColor);
+                animation: sxFloat 3.5s ease-in-out infinite;
+                animation-delay: calc(var(--i) * .4s);
+            }
+            .sx-chips span i { color: var(--secondaryColor); }
+            .sx-outcome {
+                position: relative;
+                overflow: hidden;
+                background: linear-gradient(135deg, var(--secondaryColor), #b30012);
+            }
+            .sx-outcome h6 { color: rgba(255, 255, 255, .85); }
+            .sx-outcome .sx-quote {
+                position: absolute;
+                top: 6px;
+                right: 16px;
+                font-size: 64px;
+                line-height: 1;
+                color: rgba(255, 255, 255, .18);
+            }
+            .sx-outcome p {
+                position: relative;
+                margin-bottom: 0;
+                font-size: 17px;
+                font-style: italic;
+                font-weight: 500;
+                line-height: 1.6;
+                color: var(--whiteColor);
+            }
+            .theme-dark .sx-card {
+                background: #171717;
+                border-color: rgba(255, 255, 255, .1);
+            }
+            .theme-dark .sx-card h4 { color: var(--whiteColor); }
+            .theme-dark .sx-num { -webkit-text-stroke-color: rgba(255, 255, 255, .2); }
+            .theme-dark .sx-why { border: 1px solid rgba(255, 255, 255, .08); }
+            @keyframes sxPing {
+                0% { transform: scale(1); opacity: .8; }
+                100% { transform: scale(3); opacity: 0; }
+            }
+            @keyframes sxShimmer {
+                to { background-position: -200% 0; }
+            }
+            @keyframes sxShine {
+                0%, 60% { left: -75%; }
+                100% { left: 130%; }
+            }
+            @keyframes sxSpin {
+                to { transform: rotate(360deg); }
+            }
+            @keyframes sxDrift {
+                to { transform: translate(-60px, 60px) scale(1.2); }
+            }
+            @keyframes sxFloat {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-4px); }
+            }
+            @media (max-width: 767px) {
+                .sx-title { font-size: 23px; }
+                .sx-why { padding: 30px 18px 12px; }
+                .sx-card { padding: 24px 20px 26px; }
+                .sx-num { font-size: 38px; }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .sx-portfolio *,
+                .sx-portfolio *::before,
+                .sx-portfolio *::after,
+                .sx-why,
+                .sx-why *,
+                .sx-why::before,
+                .sx-why *::after {
+                    animation: none !important;
+                }
+            }
         </style>
     </head>
     <body>
@@ -710,8 +1061,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                             <i class="ri-close-line"></i>
                                         </button>
                                         <div class="search-dropdown dropdown-menu dropdown-menu-right top-1 border-0" data-bs-popper="static">
-                                            <form class="search-popup position-relative" action="#">
-                                                <input type="search" class="form-control text-para" placeholder="Search Here">
+                                            <form class="search-popup position-relative" action="search.html" method="get" role="search">
+                                                <input type="search" name="q" class="form-control text-para" placeholder="Search Here" aria-label="Search the site" required>
                                                 <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent d-flex flex-column align-items-center justify-content-center"><i class="ri-search-2-line"></i></button>
                                             </form>
                                         </div>
@@ -820,6 +1171,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                             </div>
                                             <?php endforeach; ?>
                                         </div>
+                                        <?php elseif (!empty($item['published']) && !empty($portfolioCards) && $isSolutionPage): ?>
+                                        <div class="sx-portfolio">
+                                            <div class="sx-head" data-cue="slideInUp">
+                                                <span class="sx-label"><span class="sx-dot"></span>What We Offer</span>
+                                                <h3 class="sx-title"><?= e($item['portfolio_heading']) ?></h3>
+                                                <?php if (!empty($item['portfolio_subtitle'])): ?>
+                                                <p class="sx-sub"><?= e($item['portfolio_subtitle']) ?></p>
+                                                <?php endif; ?>
+                                            </div>
+                                            <div class="row">
+                                                <?php $cardCount = count($portfolioCards); ?>
+                                                <?php foreach ($portfolioCards as $idx => $card): ?>
+                                                <div class="<?= ($cardCount % 2 === 1 && $idx === $cardCount - 1) ? 'col-12' : 'col-md-6' ?> mb-25 d-flex">
+                                                    <div class="sx-card w-100" data-cue="slideInUp" data-delay="<?= ($idx % 2) * 150 ?>">
+                                                        <span class="sx-num"><?= e(str_pad((string)($idx + 1), 2, '0', STR_PAD_LEFT)) ?></span>
+                                                        <span class="sx-icon"><i class="<?= e($card['icon'] ?: 'ri-checkbox-circle-line') ?>"></i></span>
+                                                        <h4><?= e($card['title']) ?></h4>
+                                                        <p><?= e($card['desc']) ?></p>
+                                                        <span class="sx-bar"></span>
+                                                    </div>
+                                                </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
                                         <?php elseif (!empty($item['published']) && !empty($portfolioCards)): ?>
                                         <div class="single-para">
                                             <h5><?= e($item['portfolio_heading']) ?></h5>
@@ -869,7 +1244,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                         </div>
                                         <?php endif; ?>
 
-                                        <?php if (!empty($item['published']) && !empty($whatWeDoItems)): ?>
+                                        <?php if (!empty($item['published']) && !empty($whatWeDoItems) && $useAnimatedWhy): ?>
+                                        <div class="sx-why">
+                                            <div class="sx-why-head" data-cue="slideInUp">
+                                                <span class="sx-label sx-label-light"><i class="ri-shield-star-line"></i>Why Octel</span>
+                                                <h3 class="sx-title"><?= e(($item['whatwedo_heading'] ?? '') ?: 'What Octel Networks Does') ?></h3>
+                                                <?php if (!empty($item['whatwedo_intro'])): ?>
+                                                <p class="sx-sub"><?= e(rtrim($item['whatwedo_intro'], " :")) ?></p>
+                                                <?php endif; ?>
+                                            </div>
+                                            <div class="row">
+                                                <?php $whyCount = count($whatWeDoItems); ?>
+                                                <?php foreach ($whatWeDoItems as $idx => $wItem): ?>
+                                                <div class="<?= ($whyCount % 2 === 1 && $idx === $whyCount - 1) ? 'col-12' : 'col-md-6' ?> mb-20 d-flex">
+                                                    <div class="sx-step w-100" data-cue="slideInUp" data-delay="<?= $idx * 100 ?>">
+                                                        <span class="sx-step-num"><?= e(str_pad((string)($idx + 1), 2, '0', STR_PAD_LEFT)) ?></span>
+                                                        <div>
+                                                            <h5><?= e($wItem['title']) ?></h5>
+                                                            <?php if (!empty($wItem['desc'])): ?>
+                                                            <p><?= e($wItem['desc']) ?></p>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                            <?php if (!empty($item['built_for']) || !empty($item['outcome'])): ?>
+                                            <div class="row sx-summary">
+                                                <?php if (!empty($item['built_for'])): ?>
+                                                <div class="<?= !empty($item['outcome']) ? 'col-md-5' : 'col-12' ?> mb-20 d-flex">
+                                                    <div class="sx-built w-100" data-cue="slideInUp">
+                                                        <h6>Built for</h6>
+                                                        <div class="sx-chips">
+                                                            <?php foreach (array_filter(array_map('trim', explode('|', $item['built_for']))) as $cIdx => $chip): ?>
+                                                            <span style="--i:<?= (int) $cIdx ?>"><i class="ri-check-line"></i><?= e($chip) ?></span>
+                                                            <?php endforeach; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php endif; ?>
+                                                <?php if (!empty($item['outcome'])): ?>
+                                                <div class="<?= !empty($item['built_for']) ? 'col-md-7' : 'col-12' ?> mb-20 d-flex">
+                                                    <div class="sx-outcome w-100" data-cue="slideInUp" data-delay="150">
+                                                        <i class="ri-double-quotes-l sx-quote"></i>
+                                                        <h6>Outcome</h6>
+                                                        <p><?= e($item['outcome']) ?></p>
+                                                    </div>
+                                                </div>
+                                                <?php endif; ?>
+                                            </div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <?php elseif (!empty($item['published']) && !empty($whatWeDoItems)): ?>
                                         <div class="single-para">
                                             <h5><?= e(($item['whatwedo_heading'] ?? '') ?: 'What Octel Networks Does') ?></h5>
                                             <?php if (!empty($item['whatwedo_intro'])): ?>
@@ -978,57 +1404,87 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                 <!-- Footer Section Start -->
                 <footer class="footer-area style-one">
                     <div class="container style-one">
-                        <div class="footer-top pt-115">
-                            <div class="row">
-                                <div class="col-xxl-5 col-lg-4 col-md-5">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft">
-                                        <a href="index.html" class="logo d-block mb-50">
-                                            <img src="assets/img/new/logo-white.png" alt="Image">
+                        <div class="footer-top">
+                            <div class="row g-4 g-xl-5">
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft">
+                                        <a href="index.html" class="logo d-inline-block mb-20">
+                                            <img src="assets/img/new/logo-white.png" alt="Octel Networks">
                                         </a>
-                                        <a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary mb-18">+1 (808) 360-9282</a>
-                                        <a href="mailto:info@octelnetworks.com" class="contact-mail fs-xxl-18 fw-bold text-black d-inline-block hover-text-secondary">info@octelnetworks.com</a>
-                                        <ul class="social-profile style-one list-unstyled mt-4 mb-0">
+                                        <p class="footer-about mb-25">Building the IT, network and security infrastructure businesses rely on, since 1999.</p>
+                                        <ul class="social-profile style-one list-unstyled mb-0">
                                             <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
                                             <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
                                             <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xxl-4 col-lg-4 col-md-7 ps-xxl-4">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="100">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Quick Links</h3>
-                                        <ul class="footer-menu style-one list-unstyled mb-0">
-                                            <li class="d-block fs-xxl-18"><a href="index.html">Home</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="about.html">About Us</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="services.html">Solutions</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="distribution.html">Distribution</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="partners.html">Our Partners</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="careers.html">Careers</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="contact.html">Contact</a></li>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="100">
+                                        <h3 class="footer-widget-title">Our Solutions</h3>
+                                        <ul class="footer-menu list-unstyled mb-0">
+                                            <li><a href="cyber-security.html">Cybersecurity</a></li>
+                                            <li><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
+                                            <li><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
+                                            <li><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
+                                            <li><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="services.html" class="footer-menu-more">View All Solutions <i class="ri-arrow-right-line"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xxl-3 col-lg-4 col-md-6">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="200">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Our Solutions</h3>
+                                <div class="col-xl-2 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="200">
+                                        <h3 class="footer-widget-title">Distribution</h3>
                                         <ul class="footer-menu list-unstyled mb-0">
-                                            <li class="d-block fs-xxl-18"><a href="cyber-security.html">Cybersecurity</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="matrix-details.html">Matrix</a></li>
+                                            <li><a href="rm-details.html">R&amp;M</a></li>
+                                            <li><a href="rittal-details.html">Rittal</a></li>
+                                            <li><a href="netka-details.html">NETKA System</a></li>
+                                            <li><a href="distribution.html" class="footer-menu-more">View All <i class="ri-arrow-right-line"></i></a></li>
                                         </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="300">
+                                        <h3 class="footer-widget-title">Contact Us</h3>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-shopping-bag-3-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Sales</span>
+                                                <a href="tel:+918041155349" class="contact-num d-block">080 41155349</a>
+                                                <a href="mailto:info@octelnetworks.com" class="contact-mail d-inline-block">info@octelnetworks.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-customer-service-2-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Service</span>
+                                                <a href="tel:+918049574038" class="contact-num d-block">080 49574038</a>
+                                                <a href="mailto:helpdesk@octelnetworks.com" class="contact-mail d-inline-block">helpdesk@octelnetworks.com</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="footer-links">
+                            <ul class="footer-bottom-menu list-unstyled text-center mb-0">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="services.html">Solutions</a></li>
+                                <li><a href="distribution.html">Distribution</a></li>
+                                <li><a href="partners.html">Our Partners</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
                         <div class="footer-bottom">
-                            <div class="row align-items-center">
-                                <div class="col-md-7 pe-md-0 mb-sm-10">
-                                    <p class="copyright-text fs-xxl-10 text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
+                            <div class="row align-items-center g-2">
+                                <div class="col-md-7">
+                                    <p class="copyright-text text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
                                 </div>
                                 <div class="col-md-5">
-                                    <p class="copyright-text fs-xxl-10 text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
+                                    <p class="copyright-text text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/content.php';
+require_once __DIR__ . '/mailer.php';
 
 date_default_timezone_set('Asia/Kolkata');
 
@@ -71,7 +72,7 @@ function submit_contact(array $post, string $source, string $pageUrl = ''): arra
     if ($errors) return ['ok' => false, 'errors' => $errors, 'old' => $old];
 
     $items = load_items(CONTACTS_FILE);
-    $items[] = $old + [
+    $contact = $old + [
         'id'         => date('YmdHis') . '-' . bin2hex(random_bytes(4)),
         'source'     => $source,
         'page_url'   => $pageUrl,
@@ -79,10 +80,67 @@ function submit_contact(array $post, string $source, string $pageUrl = ''): arra
         'notes'      => '',
         'created_at' => date('c'),
     ];
+    $items[] = $contact;
     if (!save_contacts($items)) {
         return ['ok' => false, 'errors' => ['Could not send your message. Please try again later.'], 'old' => $old];
     }
+    // The enquiry is already saved for the admin panel, so a mail failure is only logged
+    // and recorded on the enquiry, where the admin Contacts page shows it.
+    $sent = send_contact_email($contact);
+    foreach ($items as $i => $it) {
+        if (($it['id'] ?? '') === $contact['id']) {
+            $items[$i]['email_status'] = $sent ? 'sent' : 'failed';
+            $items[$i]['email_to'] = contact_desk_email($contact);
+        }
+    }
+    save_contacts($items);
     return ['ok' => true];
+}
+
+/** The desk address from .env that an enquiry is emailed to: Support or Sales. */
+function contact_desk_email(array $c): string {
+    return ($c['interest'] ?? '') === 'Support' ? env('SUPPORT_EMAIL') : env('SALES_EMAIL');
+}
+
+/** Email a new enquiry to the Sales or Support desk address set in .env. */
+function send_contact_email(array $c): bool {
+    $isSupport = ($c['interest'] ?? '') === 'Support';
+    $to = contact_desk_email($c);
+    $desk = $isSupport ? 'Support' : 'Sales';
+
+    $fields = [
+        'Name'     => $c['name'],
+        'Email'    => $c['email'],
+        'Phone'    => $c['phone'],
+        'Interest' => $c['interest'] !== '' ? $c['interest'] : 'Not specified',
+        'Source'   => $c['source'],
+        'Page'     => $c['page_url'],
+        'Received' => format_contact_date($c['created_at']),
+    ];
+
+    $text = "New $desk enquiry from the Octel Networks website\n\n";
+    $rows = '';
+    foreach ($fields as $label => $value) {
+        $text .= "$label: $value\n";
+        $rows .= '<tr><td style="padding:6px 14px 6px 0;color:#777;white-space:nowrap;vertical-align:top">' . $label
+               . '</td><td style="padding:6px 0;color:#00252C;font-weight:600">' . e($value) . '</td></tr>';
+    }
+    $text .= "\nMessage:\n" . ($c['message'] !== '' ? $c['message'] : '(no message)') . "\n";
+
+    $html = '<div style="font-family:Arial,sans-serif;font-size:15px;max-width:600px">'
+          . '<h2 style="margin:0 0 4px;color:#e30016">New ' . $desk . ' Enquiry</h2>'
+          . '<p style="margin:0 0 18px;color:#777">Submitted via the Octel Networks website</p>'
+          . '<table style="border-collapse:collapse;margin-bottom:18px">' . $rows . '</table>'
+          . '<p style="margin:0 0 6px;color:#777">Message</p>'
+          . '<div style="padding:14px;background:#f5f5f5;border-left:3px solid #e30016;white-space:pre-wrap">'
+          . e($c['message'] !== '' ? $c['message'] : '(no message)') . '</div>'
+          . '<p style="margin-top:18px;color:#999;font-size:13px">Reply to this email to respond to ' . e($c['name']) . ' directly.</p>'
+          . '</div>';
+
+    $subject = "New $desk Enquiry – " . $c['name'];
+    // Name is already validated; strip line breaks so it can't inject headers.
+    $replyTo = str_replace(["\r", "\n"], '', $c['email']);
+    return send_mail($to, $subject, $html, $text, $replyTo);
 }
 
 function delete_contact(string $id): bool {

@@ -1,0 +1,105 @@
+[
+    {
+        "slug": "netka-launch-india",
+        "published": true,
+        "title": "NETKA Launch: India",
+        "type": "Product Launch",
+        "subtitle": "Introducing a new platform to the Indian market",
+        "images": [
+            "assets/img/netka/687105692-fc1b2bfd-efe5-4e14-bcff-0116ce8cd0ae.png"
+        ],
+        "gallery": [
+            {
+                "title": "Chennai",
+                "images": [
+                    "assets/img/netka-chen/01_RAVI0988_resized.jpg",
+                    "assets/img/netka-chen/02_RAVI1125_resized.jpg",
+                    "assets/img/netka-chen/03_RAVI1174_resized.jpg",
+                    "assets/img/netka-chen/04_RAVI0995_resized.jpg",
+                    "assets/img/netka-chen/05_RAVI1015_resized.jpg",
+                    "assets/img/netka-chen/06_RAVI1070_resized.jpg",
+                    "assets/img/netka-chen/07_RAVI1090_resized.jpg",
+                    "assets/img/netka-chen/08_RAVI1095_resized.jpg",
+                    "assets/img/netka-chen/09_RAVI1109_resized.jpg",
+                    "assets/img/netka-chen/10_RAVI1126_resized.jpg",
+                    "assets/img/netka-chen/11_RAVI1128_resized.jpg",
+                    "assets/img/netka-chen/12_RAVI1258_resized.jpg",
+                    "assets/img/netka-chen/13_RAVI1266_resized.jpg",
+                    "assets/img/netka-chen/14_RAVI1261_resized.jpg",
+                    "assets/img/netka-chen/15_RAVI0927_resized.jpg",
+                    "assets/img/netka-chen/16_RAVI1086_resized.jpg"
+                ]
+            },
+            {
+                "title": "Bengaluru",
+                "images": [
+                    "assets/img/netka-bang/01_DSC_9817 (1)_resized.jpg",
+                    "assets/img/netka-bang/02_DSC_9949_resized.jpg",
+                    "assets/img/netka-bang/03_DSC_9800_resized.jpg",
+                    "assets/img/netka-bang/04_DSC_9950_resized.jpg",
+                    "assets/img/netka-bang/05_DSC_9876_resized.jpg",
+                    "assets/img/netka-bang/06_DSC_9892_resized.jpg",
+                    "assets/img/netka-bang/07_DSC_9900_resized.jpg",
+                    "assets/img/netka-bang/08_DSC_9838_resized.jpg",
+                    "assets/img/netka-bang/09_DSC_9940 (1)_resized.jpg",
+                    "assets/img/netka-bang/10_DSC_9904_resized.jpg",
+                    "assets/img/netka-bang/11_DSC_9938_resized.jpg"
+                ]
+            }
+        ],
+        "body": "Octel Networks proudly introduced NETKA to India as its exclusive distributor, bringing the platform to enterprise and infrastructure audiences for the first time. The launch gave businesses a direct look at what NETKA offers and how it fits into the network and infrastructure environments they run today.\n\nThe launch was hosted across two cities, Chennai and Bengaluru, in 2026. Each session brought together enterprise teams, infrastructure professionals and industry stakeholders for product introductions, discussions and conversations with the people who will deploy and support the platform.\n\nBy leading the launch, Octel took on more than a distribution role. We took responsibility for how NETKA is understood and adopted across the region, helping organizations evaluate it clearly and move forward with confidence.",
+        "facts": [
+            { "label": "Cities", "value": "Chennai | Bengaluru", "icon": "ri-map-pin-2-line" },
+            { "label": "Year", "value": "2026", "icon": "ri-calendar-event-line" },
+            { "label": "Role", "value": "Exclusive Distributor, India", "icon": "ri-award-line" }
+        ],
+        "related_label": "Explore NETKA",
+        "related_url": "netka-details.html"
+    },
+    {
+        "slug": "matrix-event-bengaluru",
+        "published": true,
+        "title": "MATRIX Event: Bengaluru",
+        "type": "Industry Event",
+        "subtitle": "Network infrastructure, explored with the people who run it",
+        "images": [
+            "assets/img/distributors/matrix-camera-dark.jpg"
+        ],
+        "gallery": [
+            {
+                "title": "Bengaluru",
+                "images": [
+                    "assets/img/matrix-events/01_IMG_20260731_223331.jpg_resized.jpg",
+                    "assets/img/matrix-events/02_2Q4A9067_resized.jpg",
+                    "assets/img/matrix-events/03_2Q4A9074_resized.jpg",
+                    "assets/img/matrix-events/04_2Q4A9079_resized.jpg",
+                    "assets/img/matrix-events/05_2Q4A9090_resized.jpg",
+                    "assets/img/matrix-events/06_IMG_20260731_223754.jpg_resized.jpg",
+                    "assets/img/matrix-events/07_IMG_20260731_223752.jpg_resized.jpg",
+                    "assets/img/matrix-events/08_2Q4A9069_resized.jpg",
+                    "assets/img/matrix-events/09_2Q4A9071_resized.jpg",
+                    "assets/img/matrix-events/10_2Q4A9075_resized.jpg",
+                    "assets/img/matrix-events/11_2Q4A9115_resized.jpg",
+                    "assets/img/matrix-events/12_2Q4A9122_resized.jpg",
+                    "assets/img/matrix-events/13_2Q4A9121_resized.jpg",
+                    "assets/img/matrix-events/14_2Q4A9287_resized.jpg",
+                    "assets/img/matrix-events/15_2Q4A9286_resized.jpg",
+                    "assets/img/matrix-events/16_2Q4A9270_resized.jpg",
+                    "assets/img/matrix-events/17_2Q4A9288_resized.jpg",
+                    "assets/img/matrix-events/18_2Q4A9272_resized.jpg",
+                    "assets/img/matrix-events/19_2Q4A9123_resized.jpg",
+                    "assets/img/matrix-events/20_2Q4A9279_resized.jpg",
+                    "assets/img/matrix-events/21_2Q4A9275_resized.jpg",
+                    "assets/img/matrix-events/22_2Q4A9136_resized.jpg"
+                ]
+            }
+        ],
+        "body": "Held in Bengaluru on July 31, 2026, the MATRIX event brought together industry professionals and clients to explore the latest in network infrastructure solutions. The focus was on practical insight: what is changing in the technology, and what it means for the networks businesses depend on every day.\n\nThe day was built around open conversation between technology experts and the teams who design, secure and manage infrastructure in real environments. Attendees left with a clearer view of current solutions and ideas they could apply to their own deployments.\n\nMATRIX reflects Octel’s commitment to staying at the forefront of technology adoption, and to bringing clients and the wider industry into that conversation.",
+        "facts": [
+            { "label": "Location", "value": "Bengaluru", "icon": "ri-map-pin-2-line" },
+            { "label": "Date", "value": "July 31, 2026", "icon": "ri-calendar-event-line" }
+        ],
+        "related_label": "Explore MATRIX",
+        "related_url": "matrix-details.html"
+    }
+]

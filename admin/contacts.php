@@ -78,6 +78,11 @@ require __DIR__ . '/includes/layout-top.php';
                 <span><i class="ri-mail-line"></i><?= e($c['email']) ?></span>
                 <span><i class="ri-phone-line"></i><?= e($c['phone']) ?></span>
                 <span><i class="ri-calendar-line"></i><?= e(format_contact_date($c['created_at'] ?? '')) ?></span>
+                <?php if (($c['email_status'] ?? '') === 'sent'): ?>
+                    <span class="email-sent" title="Notification emailed to <?= e($c['email_to'] ?? '') ?>"><i class="ri-mail-check-line"></i>Emailed to <?= e($c['email_to'] ?? '') ?></span>
+                <?php elseif (($c['email_status'] ?? '') === 'failed'): ?>
+                    <span class="email-failed" title="Check the SMTP settings in .env"><i class="ri-mail-close-line"></i>Email not sent</span>
+                <?php endif; ?>
             </div>
         </div>
         <div class="item-actions">

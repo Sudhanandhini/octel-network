@@ -1,0 +1,32 @@
+[
+    {
+        "slug": "vk-raju",
+        "published": true,
+        "name": "VK Raju",
+        "role": "Founder, Managing Director & CEO",
+        "image": "assets/img/ceo.jpg",
+        "expertise": [
+            "Strategic Planning",
+            "Network Architecture",
+            "Business Growth",
+            "Strategic Partnerships"
+        ],
+        "bio": "VK Raju is the Founder, Managing Director and CEO of Octel Networks. Since establishing the company in 1999, he has built it into one of Bengaluru’s established technology integration firms, serving enterprises across India for more than 27 years and now working with global partners and customers.\n\nUnder his leadership, Octel has grown from a networking specialist into a full-spectrum IT infrastructure partner. Its portfolio spans network integration, cybersecurity, enterprise IT, cloud, surveillance, unified communications and managed services. He has built lasting alliances with global technology leaders, and a certified engineering team that delivers large-scale turnkey projects for clients in financial services, media, healthcare, retail and the wider enterprise market.\n\nVK Raju leads Octel with a clear philosophy: “Simplify Your IT Needs.” His focus on customer trust, delivery excellence and strategic partnerships continues to drive the company’s growth and its vision of secure, future-ready infrastructure for every enterprise."
+    },
+    {
+        "slug": "rajeev-pillai",
+        "published": true,
+        "name": "Rajeev Pillai",
+        "role": "Chief Operating Officer (COO)",
+        "image": "assets/img/team-2.jpg",
+        "expertise": [
+            "Business Growth",
+            "Client Engagement",
+            "Partner Strategy",
+            "Service Delivery",
+            "Managed Services",
+            "Product Management"
+        ],
+        "bio": "Rajeev leads business growth, client engagement and partner strategy at Octel Networks. He brings over 35 years of experience in enterprise networking, telecom and IT services.\n\nOver his career, Rajeev has built and scaled enterprise businesses in India. He has developed new market segments, set up channel and reseller networks across major cities, and run joint go-to-market programmes with large enterprise customers. At Cable & Wireless he grew the system integration business and led the company to Cisco Gold Partner status in India. At Pacnet he established the enterprise business in India from the ground up.\n\nClient experience has been central to his leadership. As Director, Service Delivery at Cable & Wireless, he was accountable for customer satisfaction across India and the SAARC region, leading presales, project, service and product management teams. He also served on the company’s India board.\n\nAt Octel, Rajeev focuses on building long-term client partnerships, expanding into new industries and markets, and strengthening alliances with leading technology partners. His approach combines business acumen with a strong customer-service culture."
+    }
+]

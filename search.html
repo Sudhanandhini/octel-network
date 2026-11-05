@@ -1,0 +1,413 @@
+<?php
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/search.php';
+
+$query = trim(mb_substr((string)($_GET['q'] ?? ''), 0, 100));
+$terms = search_terms($query);
+$results = $terms ? search_run($query) : [];
+?>
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Link of CSS files -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets/css/scrollcue.min.css">
+        <link rel="stylesheet" href="assets/css/remixicon.css">
+        <link rel="stylesheet" href="assets/css/header.css?v=20261105">
+        <link rel="stylesheet" href="assets/css/style.css?v=20261028b">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261105c">
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
+
+        <title><?= $query !== '' ? e($query) . ' – ' : '' ?>Search – Octel Networks</title>
+        <link rel="icon" type="image/png" href="assets/img/octel-favicon.png">
+        <style>
+            a.navbar-brand {
+                position: relative;
+                display: inline-block;
+            }
+            a.navbar-brand .logo-default,
+            a.navbar-brand .logo-hover {
+                transition: opacity 0.4s ease, transform 0.4s ease;
+            }
+            a.navbar-brand .logo-hover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-default,
+            .navbar-area.sticky a.navbar-brand .logo-default {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-hover,
+            .navbar-area.sticky a.navbar-brand .logo-hover {
+                opacity: 1;
+                transform: scale(1);
+            }
+            /* Darken the gold chess banner so the white title stays readable */
+            .leader-hero-bg::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.45) 55%, rgba(0, 0, 0, 0.25) 100%);
+            }
+            .sr-form {
+                max-width: 760px;
+            }
+            .sr-form input {
+                height: 64px;
+                padding: 0 70px 0 24px;
+                border: 1px solid #dcdcdc;
+                border-radius: 50px;
+                font-size: 18px;
+                color: var(--titleColor);
+                background: var(--whiteColor);
+                outline: 0;
+            }
+            .sr-form input:focus {
+                border-color: var(--secondaryColor);
+            }
+            .sr-form button {
+                top: 7px;
+                right: 7px;
+                width: 50px;
+                height: 50px;
+                border: 0;
+                border-radius: 50%;
+                font-size: 22px;
+                color: var(--whiteColor);
+                background: var(--secondaryColor);
+            }
+            .sr-item {
+                display: block;
+                padding: 26px 30px;
+                margin-bottom: 20px;
+                border-radius: 16px;
+                background: var(--whiteColor);
+                border-left: 3px solid transparent;
+                transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            }
+            .sr-item:hover {
+                transform: translateY(-3px);
+                border-color: var(--secondaryColor);
+                box-shadow: 0 15px 35px rgba(0, 37, 44, 0.08);
+            }
+            .sr-type {
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: var(--secondaryColor);
+            }
+            .sr-item h3 {
+                color: var(--titleColor);
+                transition: color 0.3s ease;
+            }
+            .sr-item:hover h3 {
+                color: var(--secondaryColor);
+            }
+            .sr-item p {
+                color: var(--paraColor);
+                overflow-wrap: anywhere;
+            }
+            .sr-item mark {
+                padding: 0 2px;
+                color: var(--titleColor);
+                background: rgba(227, 0, 22, 0.14);
+            }
+            @media (max-width: 575px) {
+                .sr-form input {
+                    height: 56px;
+                    font-size: 16px;
+                }
+                .sr-form button {
+                    width: 42px;
+                    height: 42px;
+                }
+                .sr-item {
+                    padding: 20px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+       <!--  Preloader Start -->
+        <div class="preloader-area" id="preloader">
+            <div class="spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!--  Preloader End -->
+
+        <!-- Custom Cursor -->
+        <div class="cursor">
+            <span class="cursor-text d-flex flex-column align-items-center justify-content-center rounded-circle bg-white text-title fs-14 fw-semibold"></span>
+        </div>
+        <div class="cursor-inner"></div>
+
+        <div id="smooth-wrapper">
+            <div id="smooth-content">
+
+                <div class="bg-albastor position-relative z-1">
+
+                    <!-- Navbar Area Start -->
+                    <div class="navbar-area style-one position-relative z-2" id="navbar">
+                        <div class="container style-two">
+                            <div class="navbar-wrapper d-flex justify-content-between align-items-center">
+                                <a href="index.html" class="navbar-brand">
+                                    <img src="assets/img/logo-white.png" alt="Logo" class="logo-default">
+                                    <img src="assets/img/new/logo-white.png" alt="Logo" class="logo-hover">
+                                </a>
+                                <div class="menu-area mx-auto">
+                                    <div class="overlay"></div>
+                                    <nav class="menu">
+                                        <div class="menu-mobile-header">
+                                            <button type="button" class="menu-mobile-arrow bg-transparent border-0"><i class="ri-arrow-left-s-line"></i></button>
+                                            <div class="menu-mobile-title"></div>
+                                            <button type="button" class="menu-mobile-close bg-transparent border-0"><i class="ri-close-line"></i></button>
+                                        </div>
+                                        <ul class="menu-section p-0 mb-0 lh-1">
+                                            <li class="menu-item-has-children">
+                                                <a href="services.html">SOLUTIONS</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="distribution.html">DISTRIBUTION</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="partners.html">OUR PARTNERS</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="javascript:void(0)">WHY OCTEL?<i class="ri-arrow-down-s-line"></i></a>
+                                                <ul class="menu-subs menu-column-1">
+                                                    <li><a href="why-octel.html">Why Octel</a></li>
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="our-leaders.html">Our Leaders</a></li>
+                                                    <li><a href="case-studies.html">Case Studies</a></li>
+                                                    <li><a href="careers.html">Careers</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="other-options d-flex flex-wrap align-items-center justify-content-end">
+                                    <div class="option-item position-relative d-flex align-items-center">
+                                        <div class="mobile-options position-relative d-lg-none me-3">
+                                            <button class="dropdown-toggle  text-center bg-transparent border-0 p-0 transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                                <i class="ri-more-fill"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-centered mobile-option-list top-1 border-0" data-bs-popper="static">
+                                                <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
+                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                    <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
+                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <button class="search-btn bg_gradient border-0 rounded-circle d-flex flex-column align-items-center justify-content-center dropdown-toggle transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                            <i class="ri-search-line"></i>
+                                            <i class="ri-close-line"></i>
+                                        </button>
+                                        <div class="search-dropdown dropdown-menu dropdown-menu-right top-1 border-0" data-bs-popper="static">
+                                            <form class="search-popup position-relative" action="search.html" method="get" role="search">
+                                                <input type="search" name="q" class="form-control text-para" placeholder="Search Here" aria-label="Search the site" required>
+                                                <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent d-flex flex-column align-items-center justify-content-center"><i class="ri-search-2-line"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="option-item d-lg-block d-none">
+                                        <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
+                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
+                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                        </a>
+                                    </div>
+                                    <div class="option-item d-lg-none">
+                                        <button type="button" class="menu-mobile-trigger">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Navbar Area End -->
+
+                    <!-- Breadcrumb Area Start -->
+                    <div class="breadcrumb-area style-one position-relative z-1">
+                        <div class="br-bg img-container position-absolute top-0 start-0 w-100">
+                            <img src="assets/img/leaders/leaders-banner.jpg" alt="Connected network nodes" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <div class="container style-one">
+                            <div class="row">
+                                <div class="col-xxl-10 col-lg-8">
+                                    <h2 class="section-title style-three text-white fw-bold mb-20">Search</h2>
+                                    <ul class="br-menu list-unstyled mb-0">
+                                        <li class="fs-xxl-18"><a href="index.html">Home</a></li>
+                                        <li class="fs-xxl-18">Search</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Breadcrumb Area End -->
+
+                    <!-- Search Results Start -->
+                    <div class="container style-one ptb-120">
+                        <form action="search.html" method="get" class="sr-form position-relative mx-auto mb-45" role="search">
+                            <input type="search" name="q" value="<?= e($query) ?>" class="w-100" placeholder="Search solutions, partners, leaders, events…" aria-label="Search the site" autofocus>
+                            <button type="submit" class="position-absolute d-flex align-items-center justify-content-center" aria-label="Search"><i class="ri-search-line"></i></button>
+                        </form>
+                        <div class="mx-auto" style="max-width: 900px;">
+                            <?php if ($query === ''): ?>
+                            <p class="fs-xxl-18 text-center mb-0">Type a word or two above, for example <em>cybersecurity</em>, <em>Rittal</em> or <em>careers</em>.</p>
+                            <?php elseif (!$terms): ?>
+                            <p class="fs-xxl-18 text-center mb-0">Please enter at least two letters to search.</p>
+                            <?php elseif (!$results): ?>
+                            <h3 class="fs-24 text-center mb-15">No results for “<?= e($query) ?>”</h3>
+                            <p class="fs-xxl-18 text-center mb-0">Try a different or shorter word, or <a href="contact.html" class="text_secondary">contact our team</a> and we will help.</p>
+                            <?php else: ?>
+                            <p class="fs-xxl-18 mb-30"><?= count($results) ?> result<?= count($results) === 1 ? '' : 's' ?> for “<span class="text-title fw-semibold"><?= e($query) ?></span>”</p>
+                            <?php foreach ($results as $r): ?>
+                            <a href="<?= e($r['url']) ?>" class="sr-item">
+                                <span class="sr-type d-block fs-14 fw-semibold mb-6"><?= e($r['type']) ?></span>
+                                <h3 class="fs-24 mb-10"><?= e($r['title']) ?></h3>
+                                <p class="fs-xxl-18 mb-0"><?= search_highlight($r['snippet'], $terms) ?></p>
+                            </a>
+                            <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <!-- Search Results End -->
+                </div>
+
+                <!-- Footer Section Start -->
+                <footer class="footer-area style-one">
+                    <div class="container style-one">
+                        <div class="footer-top">
+                            <div class="row g-4 g-xl-5">
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft">
+                                        <a href="index.html" class="logo d-inline-block mb-20">
+                                            <img src="assets/img/new/logo-white.png" alt="Octel Networks">
+                                        </a>
+                                        <p class="footer-about mb-25">Building the IT, network and security infrastructure businesses rely on, since 1999.</p>
+                                        <ul class="social-profile style-one list-unstyled mb-0">
+                                            <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
+                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="100">
+                                        <h3 class="footer-widget-title">Our Solutions</h3>
+                                        <ul class="footer-menu list-unstyled mb-0">
+                                            <li><a href="cyber-security.html">Cybersecurity</a></li>
+                                            <li><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
+                                            <li><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
+                                            <li><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
+                                            <li><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="services.html" class="footer-menu-more">View All Solutions <i class="ri-arrow-right-line"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="200">
+                                        <h3 class="footer-widget-title">Distribution</h3>
+                                        <ul class="footer-menu list-unstyled mb-0">
+                                            <li><a href="matrix-details.html">Matrix</a></li>
+                                            <li><a href="rm-details.html">R&amp;M</a></li>
+                                            <li><a href="rittal-details.html">Rittal</a></li>
+                                            <li><a href="netka-details.html">NETKA System</a></li>
+                                            <li><a href="distribution.html" class="footer-menu-more">View All <i class="ri-arrow-right-line"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="300">
+                                        <h3 class="footer-widget-title">Contact Us</h3>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-shopping-bag-3-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Sales</span>
+                                                <a href="tel:+918041155349" class="contact-num d-block">080 41155349</a>
+                                                <a href="mailto:info@octelnetworks.com" class="contact-mail d-inline-block">info@octelnetworks.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-customer-service-2-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Service</span>
+                                                <a href="tel:+918049574038" class="contact-num d-block">080 49574038</a>
+                                                <a href="mailto:helpdesk@octelnetworks.com" class="contact-mail d-inline-block">helpdesk@octelnetworks.com</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-links">
+                            <ul class="footer-bottom-menu list-unstyled text-center mb-0">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="services.html">Solutions</a></li>
+                                <li><a href="distribution.html">Distribution</a></li>
+                                <li><a href="partners.html">Our Partners</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-bottom">
+                            <div class="row align-items-center g-2">
+                                <div class="col-md-7">
+                                    <p class="copyright-text text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
+                                </div>
+                                <div class="col-md-5">
+                                    <p class="copyright-text text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- Footer End -->
+
+            </div>
+        </div>
+        <!-- Back to Top -->
+        <div id="progress-wrap" class="progress-wrap style-one">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+              <path id="progress-path" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+            </svg>
+        </div>
+
+        <!-- Link of JS files -->
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/megamenu.js"></script>
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <script src="assets/js/fslightbox.js"></script>
+        <script src="assets/js/gsap.min.js"></script>
+        <script src="assets/js/scrollTrigger.min.js"></script>
+        <script src="assets/js/lenis.min.js"></script>
+        <script src="assets/js/scrollToPlugin.js"></script>
+        <script src="assets/js/SplitText.min.js"></script>
+        <script src="assets/js/customEase.js"></script>
+        <script src="assets/js/scrollcue.min.js"></script>
+        <script src="assets/js/main.js?v=20261028b"></script>
+        <script src="assets/js/chatbot.js"></script>
+        <script src="assets/js/cookie-consent.js?v=20261029"></script>
+    </body>
+</html>

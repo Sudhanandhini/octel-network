@@ -225,9 +225,9 @@ a.navbar-brand img {
 }
 .menu > ul > li .menu-subs li a:hover, .menu > ul > li .menu-subs li a.active {
   padding-left: 25px;
-  color: var(--primaryColor);
+  color: #000;
   font-weight: 500;
-  border-left-color: var(--primaryColor);
+  border-left-color: #000;
 }
 .menu > ul > li .menu-subs li .menu-subs:before {
   display: none;
@@ -588,7 +588,7 @@ a.navbar-brand img {
     color: var(--titleColor);
   }
   .navbar-area.style-one ul li a.active, .navbar-area.style-one ul li a:hover, .navbar-area.style-two ul li a.active, .navbar-area.style-two ul li a:hover, .navbar-area.style-three ul li a.active, .navbar-area.style-three ul li a:hover, .navbar-area.style-four ul li a.active, .navbar-area.style-four ul li a:hover {
-    color: var(--primaryColor);
+    color: #000;
   }
   .navbar-area.style-one {
     background-color: transparent;

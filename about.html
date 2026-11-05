@@ -10,9 +10,9 @@
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/scrollcue.min.css">
         <link rel="stylesheet" href="assets/css/remixicon.css">
-        <link rel="stylesheet" href="assets/css/header.css">
+        <link rel="stylesheet" href="assets/css/header.css?v=20261105">
         <link rel="stylesheet" href="assets/css/style.css?v=20261028b">
-        <link rel="stylesheet" href="assets/css/footer.css?v=20261028b">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261105c">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
 
@@ -55,6 +55,737 @@
             .feature-icon i {
                 font-size: 26px;
                 color: var(--secondaryColor);
+            }
+
+            /* About Intro */
+            .ai-img {
+                min-height: 520px;
+            }
+            .ai-img-inner img {
+                animation: aiZoom 18s ease-in-out infinite alternate;
+            }
+            .ai-img-inner::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(180deg, rgba(0, 37, 44, 0) 50%, rgba(0, 37, 44, 0.55) 100%);
+            }
+            .ai-badge {
+                position: absolute;
+                z-index: 2;
+                gap: 12px;
+                padding: 14px 18px;
+                border-radius: 14px;
+                font-size: 14px;
+                color: var(--paraColor);
+                background: var(--whiteColor);
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+                animation: gpFloat 4s ease-in-out infinite;
+            }
+            .ai-badge strong {
+                font-size: 18px;
+                color: var(--titleColor);
+            }
+            .ai-badge-top {
+                top: 30px;
+                right: -20px;
+            }
+            .ai-badge-bottom {
+                bottom: 30px;
+                left: -20px;
+                animation-delay: 2s;
+            }
+            .ai-badge-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                font-size: 22px;
+                color: var(--whiteColor);
+                background: var(--secondaryColor);
+            }
+            .ai-label {
+                gap: 8px;
+                padding: 8px 16px;
+                border-radius: 50px;
+                letter-spacing: 1.5px;
+                color: var(--secondaryColor);
+                background: rgba(227, 0, 22, 0.08);
+            }
+            .ai-label i {
+                font-size: 16px;
+            }
+            .ai-lead {
+                font-size: 20px;
+                line-height: 1.7;
+                font-weight: 500;
+                padding-left: 20px;
+                border-left: 3px solid var(--secondaryColor);
+            }
+            .ai-reach {
+                gap: 16px;
+                padding: 20px;
+                border-radius: 16px;
+                background: var(--whiteColor);
+                border: 1px dashed rgba(227, 0, 22, 0.35);
+            }
+            .ai-reach-icon {
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                font-size: 24px;
+                color: var(--secondaryColor);
+                background: rgba(227, 0, 22, 0.08);
+            }
+            .ai-reach-icon i {
+                animation: gpRotate 12s linear infinite;
+            }
+            .ai-stat {
+                padding: 24px 14px;
+                border-radius: 16px;
+                background: var(--whiteColor);
+                border-bottom: 3px solid transparent;
+                transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+            }
+            .ai-stat:hover {
+                transform: translateY(-8px);
+                border-color: var(--secondaryColor);
+                box-shadow: 0 20px 40px rgba(0, 37, 44, 0.1);
+            }
+            .ai-stat i {
+                display: inline-block;
+                margin-bottom: 8px;
+                font-size: 28px;
+                color: var(--secondaryColor);
+                transition: transform 0.35s ease;
+            }
+            .ai-stat:hover i {
+                transform: scale(1.2) rotate(-8deg);
+            }
+            .ai-stat h4 {
+                font-size: 44px;
+                line-height: 1.1;
+                color: var(--titleColor);
+            }
+            .ai-stat > span {
+                font-size: 15px;
+            }
+            .ai-milestones {
+                padding: 35px 30px;
+                background: linear-gradient(90deg, #FFFFFF 0%, #F7F7F7 100%);
+            }
+            .ai-timeline li {
+                position: relative;
+                gap: 20px;
+                padding-bottom: 24px;
+            }
+            .ai-timeline li:last-child {
+                padding-bottom: 0;
+            }
+            .ai-timeline li::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 45px;
+                width: 2px;
+                z-index: 0;
+                background: linear-gradient(180deg, var(--secondaryColor), rgba(227, 0, 22, 0.1));
+            }
+            .ai-timeline li:last-child::before {
+                display: none;
+            }
+            .ai-year {
+                position: relative;
+                z-index: 1;
+                flex-shrink: 0;
+                width: 92px;
+                padding: 10px 6px;
+                border-radius: 50px;
+                text-align: center;
+                font-size: 15px;
+                font-weight: 700;
+                color: var(--whiteColor);
+                background: var(--secondaryColor);
+                transition: transform 0.35s ease;
+            }
+            .ai-timeline li:hover .ai-year {
+                transform: scale(1.08);
+            }
+            .about-intro .founders-box .ai-quote {
+                padding: 0 30px 25px;
+                color: var(--whiteColor);
+            }
+            .about-intro .founders-box .ai-quote i {
+                font-size: 36px;
+                line-height: 1;
+                opacity: 0.7;
+            }
+            .about-intro .founders-box .ai-quote p {
+                font-size: 22px;
+                line-height: 1.5;
+                font-weight: 600;
+                color: var(--whiteColor);
+            }
+            .about-area.about-intro .row.about-content {
+                padding-left: 0;
+            }
+            .about-area.about-intro .about-content .founders-box .ceo-info-wrap {
+                padding: 0 30px 30px;
+            }
+            .about-intro .founders-box .ceo-img img {
+                border: 3px solid rgba(255, 255, 255, 0.6);
+            }
+            .theme-dark .ai-reach,
+            .theme-dark .ai-stat,
+            .theme-dark .ai-milestones {
+                background: #171717;
+            }
+            .theme-dark .ai-stat h4 {
+                color: var(--whiteColor);
+            }
+            @keyframes aiZoom {
+                from { transform: scale(1); }
+                to { transform: scale(1.12); }
+            }
+            @media (max-width: 1199px) {
+                .ai-badge-top { right: 15px; }
+                .ai-badge-bottom { left: 15px; }
+            }
+            @media (max-width: 991px) {
+                .ai-img {
+                    min-height: 420px;
+                }
+            }
+            @media (max-width: 575px) {
+                .ai-img {
+                    min-height: 340px;
+                }
+                .ai-lead {
+                    font-size: 17px;
+                    padding-left: 14px;
+                }
+                .ai-reach {
+                    padding: 16px;
+                }
+                .ai-stat {
+                    padding: 16px 6px;
+                }
+                .ai-stat i {
+                    font-size: 22px;
+                    margin-bottom: 4px;
+                }
+                .ai-stat h4 {
+                    font-size: 26px;
+                }
+                .ai-stat > span {
+                    font-size: 12px;
+                    line-height: 1.4;
+                }
+                .ai-milestones {
+                    padding: 28px 20px;
+                }
+                .ai-timeline li {
+                    gap: 14px;
+                }
+                .ai-year {
+                    width: 78px;
+                    font-size: 13px;
+                }
+                .ai-timeline li::before {
+                    left: 38px;
+                }
+                .about-intro .founders-box .ai-quote p {
+                    font-size: 18px;
+                }
+                .about-intro .founders-box .ai-quote,
+                .about-area.about-intro .about-content .founders-box .ceo-info-wrap {
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+            }
+
+            /* Global Presence */
+            .global-presence {
+                padding: 70px 60px;
+                background:
+                    radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.16), transparent 45%),
+                    radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px) 0 0 / 22px 22px,
+                    #737474;
+            }
+            .gp-label {
+                gap: 10px;
+                padding: 8px 16px;
+                border-radius: 50px;
+                letter-spacing: 1.5px;
+                color: var(--whiteColor);
+                background: rgba(0, 0, 0, 0.18);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+            .gp-live {
+                position: relative;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--secondaryColor);
+            }
+            .gp-live::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: 50%;
+                background: var(--secondaryColor);
+                animation: gpPing 1.8s ease-out infinite;
+            }
+            .gp-text {
+                color: rgba(255, 255, 255, 0.95);
+            }
+            .gp-item {
+                gap: 16px;
+                padding: 14px 18px;
+                margin-bottom: 12px;
+                border-radius: 12px;
+                color: var(--whiteColor);
+                background: rgba(0, 0, 0, 0.14);
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+            }
+            .gp-item:last-child {
+                margin-bottom: 0;
+            }
+            .gp-item:hover {
+                transform: translateX(8px);
+                background: rgba(0, 0, 0, 0.25);
+                border-color: var(--secondaryColor);
+            }
+            .gp-icon {
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 46px;
+                height: 46px;
+                border-radius: 10px;
+                font-size: 22px;
+                color: var(--whiteColor);
+                background: var(--secondaryColor);
+                transition: transform 0.35s ease;
+            }
+            .gp-item:hover .gp-icon {
+                transform: rotate(-10deg) scale(1.08);
+            }
+            .gp-globe-wrap {
+                max-width: 500px;
+            }
+            .gp-globe {
+                display: block;
+                width: 100%;
+                height: auto;
+                overflow: visible;
+            }
+            .gp-sphere {
+                fill: rgba(255, 255, 255, 0.06);
+                stroke: rgba(255, 255, 255, 0.5);
+                stroke-width: 1.2;
+            }
+            .gp-grid ellipse,
+            .gp-grid line {
+                fill: none;
+                stroke: rgba(255, 255, 255, 0.28);
+                stroke-width: 1;
+            }
+            .gp-meridians {
+                transform-origin: 250px 250px;
+                animation: gpSpin3d 8s linear infinite;
+            }
+            .gp-orbit {
+                fill: none;
+                stroke: rgba(255, 255, 255, 0.35);
+                stroke-width: 1;
+                transform-origin: 250px 250px;
+            }
+            .gp-orbit-one {
+                stroke-dasharray: 4 10;
+                animation: gpRotate 40s linear infinite;
+            }
+            .gp-orbit-two {
+                stroke-dasharray: 1 14;
+                stroke-linecap: round;
+                stroke-width: 2;
+                animation: gpRotate 60s linear infinite reverse;
+            }
+            .gp-arcs path {
+                fill: none;
+                stroke: var(--secondaryColor);
+                stroke-width: 2.2;
+                stroke-linecap: round;
+                stroke-dasharray: 320;
+                stroke-dashoffset: 320;
+                opacity: 1;
+                animation: gpDraw 6s ease-in-out infinite;
+            }
+            .gp-arcs path:nth-child(2) { animation-delay: .5s; }
+            .gp-arcs path:nth-child(3) { animation-delay: 1s; }
+            .gp-arcs path:nth-child(4) { animation-delay: 1.5s; }
+            .gp-arcs path:nth-child(5) { animation-delay: 2s; }
+            .gp-arcs path:nth-child(6) { animation-delay: 2.5s; }
+            .gp-packets circle {
+                fill: var(--whiteColor);
+                filter: drop-shadow(0 0 4px #fff);
+            }
+            .gp-nodes circle {
+                fill: var(--whiteColor);
+                stroke: var(--secondaryColor);
+                stroke-width: 3;
+                transform-box: fill-box;
+                transform-origin: center;
+                animation: gpPulse 2.4s ease-in-out infinite;
+                animation-delay: var(--d);
+            }
+            .gp-hub {
+                fill: var(--secondaryColor);
+                stroke: var(--whiteColor);
+                stroke-width: 3;
+            }
+            .gp-hub-ring {
+                fill: none;
+                stroke: var(--secondaryColor);
+                stroke-width: 2;
+                transform-box: fill-box;
+                transform-origin: center;
+                animation: gpRipple 2.6s ease-out infinite;
+            }
+            .gp-hub-ring-late {
+                animation-delay: 1.3s;
+            }
+            .gp-tag {
+                position: absolute;
+                border-radius: 12px;
+                font-size: 14px;
+                color: var(--paraColor);
+                background: var(--whiteColor);
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+                animation: gpFloat 4s ease-in-out infinite;
+            }
+            .gp-tag strong {
+                font-size: 16px;
+                color: var(--titleColor);
+            }
+            .gp-tag-hub {
+                gap: 10px;
+                right: 0;
+                bottom: 18%;
+                padding: 12px 16px;
+            }
+            .gp-tag-hub i {
+                font-size: 26px;
+                color: var(--secondaryColor);
+            }
+            .gp-tag-stat {
+                top: 6%;
+                left: 0;
+                padding: 14px 20px;
+                color: var(--whiteColor);
+                background: var(--secondaryColor);
+                animation-delay: 2s;
+            }
+            .gp-tag-stat strong {
+                font-size: 30px;
+                line-height: 1.1;
+                color: var(--whiteColor);
+            }
+            @keyframes gpDraw {
+                0% { stroke-dashoffset: 320; }
+                40%, 70% { stroke-dashoffset: 0; }
+                100% { stroke-dashoffset: -320; }
+            }
+            @keyframes gpPulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.5); }
+            }
+            @keyframes gpRipple {
+                0% { transform: scale(1); opacity: 1; }
+                100% { transform: scale(4.5); opacity: 0; }
+            }
+            @keyframes gpPing {
+                0% { transform: scale(1); opacity: 0.8; }
+                100% { transform: scale(3); opacity: 0; }
+            }
+            @keyframes gpRotate {
+                to { transform: rotate(360deg); }
+            }
+            @keyframes gpSpin3d {
+                0% { transform: scaleX(1); }
+                50% { transform: scaleX(0.05); }
+                100% { transform: scaleX(1); }
+            }
+            @keyframes gpFloat {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+            @media (max-width: 991px) {
+                .global-presence {
+                    padding: 50px 30px;
+                }
+            }
+            @media (max-width: 575px) {
+                .global-presence {
+                    padding: 40px 18px;
+                }
+                .gp-item {
+                    padding: 12px 14px;
+                }
+                .gp-tag {
+                    font-size: 12px;
+                }
+                .gp-tag strong {
+                    font-size: 14px;
+                }
+                .gp-tag-stat strong {
+                    font-size: 22px;
+                }
+            }
+
+            /* Beyond Deployments */
+            .bd-label {
+                gap: 8px;
+                padding: 8px 16px;
+                border-radius: 50px;
+                letter-spacing: 1.5px;
+                color: var(--secondaryColor);
+                background: rgba(227, 0, 22, 0.08);
+            }
+            .bd-label i {
+                font-size: 16px;
+                animation: gpPulse 2s ease-in-out infinite;
+            }
+            .bd-ticker {
+                overflow: hidden;
+                padding: 16px 0;
+                margin: 0 -10px 60px;
+                transform: rotate(-1.5deg);
+                background: var(--secondaryColor);
+            }
+            .bd-ticker-track {
+                width: max-content;
+                animation: bdMarquee 28s linear infinite;
+            }
+            .bd-ticker-track span {
+                display: inline-flex;
+                align-items: center;
+                font-size: 22px;
+                font-weight: 700;
+                white-space: nowrap;
+                text-transform: uppercase;
+                color: var(--whiteColor);
+            }
+            .bd-ticker-track span::after {
+                content: "\2726";
+                margin: 0 30px;
+                font-size: 16px;
+                color: rgba(255, 255, 255, 0.6);
+            }
+            .bd-card {
+                position: relative;
+                z-index: 1;
+                padding: 2px;
+                border-radius: 22px;
+                overflow: hidden;
+                isolation: isolate;
+                background: rgba(0, 37, 44, 0.08);
+                transition: transform 0.4s ease, box-shadow 0.4s ease;
+            }
+            .bd-card::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 200%;
+                aspect-ratio: 1;
+                z-index: -1;
+                background: conic-gradient(from 0deg, transparent 0 70%, var(--secondaryColor) 85%, var(--primaryColor) 100%);
+                transform: translate(-50%, -50%) rotate(0deg);
+                animation: bdSpin 6s linear infinite;
+            }
+            .bd-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 25px 50px rgba(0, 37, 44, 0.15);
+            }
+            .bd-card:hover::before {
+                animation-duration: 2s;
+            }
+            .bd-card-inner {
+                position: relative;
+                padding: 40px;
+                border-radius: 20px;
+                overflow: hidden;
+                background: var(--whiteColor);
+            }
+            .bd-card-inner::after {
+                content: "";
+                position: absolute;
+                top: -60px;
+                right: -60px;
+                width: 180px;
+                height: 180px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(227, 0, 22, 0.1), transparent 70%);
+                transition: transform 0.6s ease;
+            }
+            .bd-card:hover .bd-card-inner::after {
+                transform: scale(2.2);
+            }
+            .bd-icon {
+                position: relative;
+                z-index: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 64px;
+                height: 64px;
+                border-radius: 18px;
+                font-size: 30px;
+                color: var(--whiteColor);
+                background: var(--secondaryColor);
+                box-shadow: 0 12px 25px rgba(227, 0, 22, 0.3);
+                animation: gpFloat 3.5s ease-in-out infinite;
+            }
+            .bd-num {
+                position: relative;
+                z-index: 1;
+                font-size: 64px;
+                font-weight: 800;
+                line-height: 0.9;
+                color: transparent;
+                -webkit-text-stroke: 1.5px rgba(0, 37, 44, 0.2);
+                transition: color 0.4s ease, -webkit-text-stroke-color 0.4s ease;
+            }
+            .bd-card:hover .bd-num {
+                color: var(--secondaryColor);
+                -webkit-text-stroke-color: var(--secondaryColor);
+            }
+            .bd-type {
+                letter-spacing: 1.5px;
+                color: var(--secondaryColor);
+            }
+            .bd-meta {
+                gap: 8px;
+            }
+            .bd-meta span {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 6px 12px;
+                border-radius: 50px;
+                font-size: 14px;
+                color: var(--titleColor);
+                background: var(--ashColor);
+            }
+            .bd-meta i {
+                color: var(--secondaryColor);
+            }
+            .bd-link {
+                position: relative;
+                z-index: 1;
+                gap: 8px;
+                color: var(--titleColor);
+            }
+            .bd-link i {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                color: var(--whiteColor);
+                background: var(--primaryColor);
+                transition: transform 0.35s ease, background 0.35s ease;
+            }
+            .bd-link:hover {
+                color: var(--secondaryColor);
+            }
+            .bd-link:hover i {
+                transform: rotate(45deg);
+                background: var(--secondaryColor);
+            }
+            .theme-dark .bd-card-inner {
+                background: #171717;
+            }
+            .theme-dark .bd-card {
+                background: rgba(255, 255, 255, 0.08);
+            }
+            .theme-dark .bd-num {
+                -webkit-text-stroke-color: rgba(255, 255, 255, 0.25);
+            }
+            .theme-dark .bd-meta span {
+                color: var(--darkParaColor);
+                background: rgba(255, 255, 255, 0.06);
+            }
+            .theme-dark .bd-link {
+                color: var(--whiteColor);
+            }
+            @keyframes bdMarquee {
+                to { transform: translateX(-50%); }
+            }
+            @keyframes bdSpin {
+                to { transform: translate(-50%, -50%) rotate(360deg); }
+            }
+            @media (max-width: 575px) {
+                .bd-card-inner {
+                    padding: 28px 22px;
+                }
+                .bd-num {
+                    font-size: 48px;
+                }
+                .bd-ticker-track span {
+                    font-size: 16px;
+                }
+                .bd-ticker-track span::after {
+                    margin: 0 18px;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .about-intro *,
+                .beyond-area *,
+                .beyond-area *::before,
+                .global-presence *,
+                .global-presence *::after {
+                    animation: none !important;
+                }
+                .gp-arcs path {
+                    stroke-dashoffset: 0;
+                }
+                .gp-packets {
+                    display: none;
+                }
+            }
+            /* Trust Builders: let the landscape photo fill the full height beside the list */
+            .about-area.style-two .about-content .features-wrap {
+                align-items: stretch !important;
+            }
+            .about-area.style-two .about-content .features-wrap .feature-img {
+                overflow: hidden;
+            }
+            .about-area.style-two .about-content .features-wrap .feature-img img {
+                width: 100%;
+                height: 100%;
+                min-height: 220px;
+                object-fit: cover;
+                object-position: 30% center;
+            }
+            @media only screen and (max-width: 767px) {
+                .about-area.style-two .about-content .features-wrap .feature-img img {
+                    height: auto;
+                    min-height: 0;
+                    aspect-ratio: 16 / 10;
+                }
             }
         </style>
     </head>
@@ -141,8 +872,8 @@
                                             <i class="ri-close-line"></i>
                                         </button>
                                         <div class="search-dropdown dropdown-menu dropdown-menu-right top-1 border-0" data-bs-popper="static">
-                                            <form class="search-popup position-relative" action="#">
-                                                <input type="search" class="form-control text-para" placeholder="Search Here">
+                                            <form class="search-popup position-relative" action="search.html" method="get" role="search">
+                                                <input type="search" name="q" class="form-control text-para" placeholder="Search Here" aria-label="Search the site" required>
                                                 <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent d-flex flex-column align-items-center justify-content-center"><i class="ri-search-2-line"></i></button>
                                             </form>
                                         </div>
@@ -171,7 +902,7 @@
                     <!-- Breadcrumb Area Start -->
                     <div class="breadcrumb-area style-one position-relative z-1">
                         <div class="br-bg img-container position-absolute top-0 start-0 w-100">
-                            <img src="assets/img/about-new/about-banner.jpg" alt="Circuit design" class="w-100 h-100 object-fit-cover">
+                            <img src="assets/img/about-new/about-hero.jpg" alt="Team meeting in a boardroom" class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="container style-one">
                             <div class="row">
@@ -188,78 +919,124 @@
                     <!-- Breadcrumb Area End -->
 
                     <!-- About Us Section Start -->
-                    <div class="about-area style-one ptb-120">
+                    <div class="about-area style-one about-intro ptb-120">
                         <div class="container style-one">
                             <div class="row">
                                 <div class="col-12">
-                                    <h2 class="section-title style-one fw-semibold text-center title-anim mb-35">
+                                    <h2 class="section-title style-one fw-semibold text-center title-anim mb-60">
                                         Founded in 1999 by Vijay Kumar Raju, Octel Networks began as a specialized network infrastructure provider serving businesses across Bengaluru. After recognizing that clients needed both technical depth and end-to-end accountability, we evolved into a full-service network and IT infrastructure partner.
                                     </h2>
                                 </div>
                             </div>
-                            <div class="row align-items-center">
-                                <div class="col-lg-5 col-lg-5 pe-xxl-2 mb-md-30">
-                                    <div class="about-img-wrap img-container position-relative overflow-hidden round-20" data-cue="anim-left" data-delay="400" data-duration="1200">
-                                        <img src="assets/img/about-new/patch-cables-tall.jpg" alt="Network patch cables" class="w-100 round-20">
+                            <div class="row align-items-stretch">
+                                <div class="col-lg-5 mb-30">
+                                    <div class="ai-img position-relative h-100 round-20" data-cue="slideInLeft" data-delay="100">
+                                        <div class="ai-img-inner position-absolute top-0 start-0 w-100 h-100 overflow-hidden round-20">
+                                            <img src="assets/img/about-new/patch-cables-tall.jpg" alt="Network patch cables" class="w-100 h-100 object-fit-cover">
+                                        </div>
+                                        <div class="ai-badge ai-badge-top d-flex align-items-center">
+                                            <span class="ai-badge-icon"><i class="ri-calendar-check-line"></i></span>
+                                            <span><strong class="d-block">Since 1999</strong>25+ years of delivery</span>
+                                        </div>
+                                        <div class="ai-badge ai-badge-bottom d-flex align-items-center">
+                                            <span class="ai-badge-icon"><i class="ri-customer-service-2-line"></i></span>
+                                            <span><strong class="d-block">24x7</strong>Single point of contact</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-7 ps-xl-5">
-                                    <div class="about-content">
-                                        <h3 class="reveal-text-bottom">Today, we serve 15,000+ clients across enterprise, retail, and mall environments with a team of network engineers, field technicians, and infrastructure specialists, delivering solutions across LAN/WAN, SD-WAN, cybersecurity (including air-gapped environments), data center and cloud infrastructure, network management and monitoring, surveillance, unified communications, and managed IT operations. From the first assessment to ongoing support, you get a single point of contact and 24x7 assistance, so every project is delivered and run as one connected environment.</h3>
-                                        <div class="counter-card-wrap d-flex flex-wrap justify-content-md-between justify-content-center">
-                                            <div class="counter-card text-center mb-30" data-cue="slideInLeft" data-delay="100">
-                                                <h4 class="text-title fw-semibold"><span class="counter fw-bold transition">75</span>%</h4>
-                                                <span class="fs-xxl-18 d-block">Certified Network Engineers</span>
+                                <div class="col-lg-7 ps-xl-5 mb-30">
+                                    <div class="ai-content h-100 d-flex flex-column">
+                                        <span class="ai-label d-inline-flex align-items-center fs-14 fw-semibold mb-20 align-self-start"><i class="ri-building-4-line"></i>WHO WE ARE TODAY</span>
+                                        <p class="ai-lead text-title mb-25" data-cue="slideInUp" data-delay="100">Today, we serve 15,000+ clients across enterprise, retail, and mall environments with a team of network engineers, field technicians, and infrastructure specialists, delivering solutions across LAN/WAN, SD-WAN, cybersecurity (including air-gapped environments), data center and cloud infrastructure, network management and monitoring, surveillance, unified communications, and managed IT operations. From the first assessment to ongoing support, you get a single point of contact and 24x7 assistance, so every project is delivered and run as one connected environment.</p>
+                                        <div class="ai-reach d-flex align-items-start mb-30" data-cue="slideInUp" data-delay="200">
+                                            <span class="ai-reach-icon"><i class="ri-global-line"></i></span>
+                                            <p class="fs-xxl-18 mb-0">Our presence is global. Working with partners and customers across continents and countries, we support deployments end to end, spanning data center and networking infrastructure, cybersecurity, enterprise Wi-Fi and structured cabling for their projects.</p>
+                                        </div>
+                                        <div class="row gx-2 gx-sm-4 mt-auto">
+                                            <div class="col-4">
+                                                <div class="ai-stat h-100 text-center" data-cue="slideInUp" data-delay="300">
+                                                    <i class="ri-medal-line"></i>
+                                                    <h4 class="fw-bold mb-6"><span class="counter">75</span>%</h4>
+                                                    <span class="d-block">Certified Network Engineers</span>
+                                                </div>
                                             </div>
-                                            <div class="counter-card text-center mb-30" data-cue="slideInLeft" data-delay="300">
-                                                <h4 class="text-title fw-semibold"><span class="counter fw-bold transition">98</span>%</h4>
-                                                <span class="fs-xxl-18 d-block">Client Retention</span>
+                                            <!-- Add once the figure is confirmed: [X]+ Infrastructure Projects Delivered
+                                            <div class="col-4">
+                                                <div class="ai-stat h-100 text-center" data-cue="slideInUp" data-delay="450">
+                                                    <i class="ri-building-2-line"></i>
+                                                    <h4 class="fw-bold mb-6"><span class="counter">0</span>+</h4>
+                                                    <span class="d-block">Infrastructure Projects Delivered</span>
+                                                </div>
+                                            </div> -->
+                                            <div class="col-4">
+                                                <div class="ai-stat h-100 text-center" data-cue="slideInUp" data-delay="450">
+                                                    <i class="ri-heart-pulse-line"></i>
+                                                    <h4 class="fw-bold mb-6"><span class="counter">98</span>%</h4>
+                                                    <span class="d-block">Client Retention</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="ai-stat h-100 text-center" data-cue="slideInUp" data-delay="600">
+                                                    <i class="ri-earth-line"></i>
+                                                    <h4 class="fw-bold mb-6"><span class="counter">23</span>+</h4>
+                                                    <span class="d-block">Countries Served</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-xxl-6 col-lg-5 col-md-6 pe-xxl-4">
-                                                <div class="achievement-box position-relative z-1 move-right-full round-20 mb-md-30" data-cue="slideInLeft" data-delay="400">
-                                                    <h6 class="fs-18 font-primary fw-normal text-title mb-40">OUR MILESTONES</h6>
-                                                    <ul class="list-unstyled mb-0">
-                                                        <li class="d-flex flex-wrap align-items-start justify-content-between">
-                                                            <span class="fs-18 fw-semibold">Milestone</span>
-                                                            <span class="fs-18 fw-semibold">Since</span>
-                                                        </li>
-                                                        <li class="d-flex flex-wrap align-items-start justify-content-between">
-                                                            <span class="fs-20 font-secondary fw-semibold text-title">Founded in Bengaluru</span>
-                                                            <span class="fs-20 font-secondary fw-semibold text-title">1999</span>
-                                                        </li>
-                                                        <li class="d-flex flex-wrap align-items-start justify-content-between">
-                                                            <span class="fs-20 font-secondary fw-semibold text-title">Authorized Distributor: Rittal, R&amp;M, NETKA &amp; MATRIX</span>
-                                                            <span class="fs-20 font-secondary fw-semibold text-title">4 Brands</span>
-                                                        </li>
-                                                        <li class="d-flex flex-wrap align-items-start justify-content-between">
-                                                            <span class="fs-20 font-secondary fw-semibold text-title">Clients Served</span>
-                                                            <span class="fs-20 font-secondary fw-semibold text-title">15,000+</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-stretch about-content">
+                                <div class="col-lg-6 mb-30">
+                                    <div class="ai-milestones h-100 round-20" data-cue="slideInLeft" data-delay="100">
+                                        <h6 class="fs-18 font-primary fw-normal text-title mb-30">ACHIEVEMENTS</h6>
+                                        <ul class="ai-timeline list-unstyled mb-0">
+                                            <li class="d-flex align-items-center">
+                                                <span class="ai-year">2026</span>
+                                                <span class="fs-20 font-secondary fw-semibold text-title">Exceptional Contribution</span>
+                                            </li>
+                                            <!-- Add more achievements in the same format:
+                                            <li class="d-flex align-items-center">
+                                                <span class="ai-year">[Year]</span>
+                                                <span class="fs-20 font-secondary fw-semibold text-title">[Award/Recognition Name]</span>
+                                            </li> -->
+                                        </ul>
+                                        <h6 class="fs-18 font-primary fw-normal text-title mt-5 mb-30">OUR MILESTONES</h6>
+                                        <ul class="ai-timeline list-unstyled mb-0">
+                                            <li class="d-flex align-items-center">
+                                                <span class="ai-year">1999</span>
+                                                <span class="fs-20 font-secondary fw-semibold text-title">Founded in Bengaluru</span>
+                                            </li>
+                                            <li class="d-flex align-items-center">
+                                                <span class="ai-year">4 Brands</span>
+                                                <span class="fs-20 font-secondary fw-semibold text-title">Authorized Distributor: MATRIX, R&amp;M, Rittal &amp; NETKA</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-30">
+                                    <div class="founders-box bg_secondary round-20 h-100 d-flex flex-column" data-cue="slideInRight" data-delay="200">
+                                        <div class="ai-quote">
+                                            <i class="ri-double-quotes-l d-block mb-10"></i>
+                                            <p class="mb-0">"We don't just build networks — we build infrastructure businesses can rely on."</p>
+                                        </div>
+                                        <div class="ceo-info-wrap d-flex flex-wrap align-items-center">
+                                            <div class="ceo-img rounded-circle">
+                                                <img src="assets/img/ceo.jpg" alt="Vijay Kumar Raju" class="rounded-circle">
                                             </div>
-                                            <div class="col-xxl-6 col-lg-7 col-md-6 ps-xxl-2">
-                                                <div class="founders-box bg_secondary round-20" data-cue="slideInRight" data-delay="400">
-                                                    <div class="ceo-info-wrap d-flex flex-wrap align-items-center">
-                                                        <div class="ceo-img rounded-circle">
-                                                            <img src="assets/img/ceo.jpg" alt="Image" class="rounded-circle">
-                                                        </div>
-                                                        <div class="ceo-info">
-                                                            <h5 class="fs-20 fw-bold mb-6" style="color:white">Vijay Kumar Raju</h5>
-                                                            <span class="text-title fs-xxl-18" style="color:white">Founder & CEO</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="support-box round-20 overflow-hidden">
-                                                        <div class="move-text style-one position-relative z-1">
-                                                            <ul class="d-flex align-items-center list-unstyled mb-0">
-                                                                <li class="font-secondary fw-normal text-white">24/7 CALL US: <a href="tel:18083609282" class="text-white fw-semibold">+1 (808) 360-9282 </a></li>
-                                                                <li class="font-secondary fw-normal text-white">24/7 CALL US: <a href="tel:18083609282" class="text-white fw-semibold">+1 (808) 360-9282 </a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="ceo-info">
+                                                <h5 class="fs-20 fw-bold mb-6" style="color:white">Vijay Kumar Raju</h5>
+                                                <span class="fs-xxl-18" style="color:white">Founder & CEO</span>
+                                            </div>
+                                        </div>
+                                        <div class="support-box round-20 overflow-hidden mt-auto">
+                                            <div class="move-text style-one position-relative z-1">
+                                                <ul class="d-flex align-items-center list-unstyled mb-0">
+                                                    <li class="font-secondary fw-normal text-white">SALES: <a href="tel:+918041155349" class="text-white fw-semibold">080 41155349</a></li>
+                                                    <li class="font-secondary fw-normal text-white">SERVICE: <a href="tel:+918049574038" class="text-white fw-semibold">080 49574038</a></li>
+                                                    <li class="font-secondary fw-normal text-white">SALES: <a href="tel:+918041155349" class="text-white fw-semibold">080 41155349</a></li>
+                                                    <li class="font-secondary fw-normal text-white">SERVICE: <a href="tel:+918049574038" class="text-white fw-semibold">080 49574038</a></li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -268,6 +1045,112 @@
                         </div>
                     </div>
                     <!-- About Us Section End -->
+
+                    <!-- Global Presence Section Start -->
+                    <div class="container style-one pb-90">
+                        <div class="global-presence position-relative overflow-hidden round-20">
+                            <div class="row align-items-center position-relative z-1">
+                                <div class="col-lg-6 pe-xl-5 mb-md-30">
+                                    <span class="gp-label d-inline-flex align-items-center fs-14 fw-semibold mb-20"><span class="gp-live"></span>OUR GLOBAL PRESENCE</span>
+                                    <h2 class="section-title style-two fw-semibold text-white mb-25 reveal-text-bottom">Local expertise, delivered wherever the network needs to be</h2>
+                                    <p class="fs-xxl-18 gp-text mb-35">Octel’s engineering approach is now global, reaching well beyond India. Working with global partners and customers across continents and countries, we deliver data center and networking infrastructure, from the first site survey through installation and cabling to security. The same discipline applies on every site worldwide: assess first, build in sequence, and hand over an environment that works as designed.</p>
+                                    <ul class="gp-list list-unstyled mb-0">
+                                        <li class="gp-item d-flex align-items-center" data-cue="slideInLeft" data-delay="100">
+                                            <span class="gp-icon"><i class="ri-server-line"></i></span>
+                                            <span class="fs-xxl-18 fw-semibold">Global Data Center &amp; Networking Infrastructure</span>
+                                        </li>
+                                        <li class="gp-item d-flex align-items-center" data-cue="slideInLeft" data-delay="250">
+                                            <span class="gp-icon"><i class="ri-router-line"></i></span>
+                                            <span class="fs-xxl-18 fw-semibold">Router, Switch, Access Point &amp; Firewall Installation</span>
+                                        </li>
+                                        <li class="gp-item d-flex align-items-center" data-cue="slideInLeft" data-delay="400">
+                                            <span class="gp-icon"><i class="ri-shield-keyhole-line"></i></span>
+                                            <span class="fs-xxl-18 fw-semibold">Network &amp; Cybersecurity</span>
+                                        </li>
+                                        <li class="gp-item d-flex align-items-center" data-cue="slideInLeft" data-delay="550">
+                                            <span class="gp-icon"><i class="ri-wifi-line"></i></span>
+                                            <span class="fs-xxl-18 fw-semibold">Wi-Fi &amp; Network Site Surveys</span>
+                                        </li>
+                                        <li class="gp-item d-flex align-items-center" data-cue="slideInLeft" data-delay="700">
+                                            <span class="gp-icon"><i class="ri-git-merge-line"></i></span>
+                                            <span class="fs-xxl-18 fw-semibold">Structured Cabling</span>
+                                        </li>
+                                        <li class="gp-item d-flex align-items-center" data-cue="slideInLeft" data-delay="850">
+                                            <span class="gp-icon"><i class="ri-shield-check-line"></i></span>
+                                            <span class="fs-xxl-18 fw-semibold">Consistent Global Standards Across Every Site</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="gp-globe-wrap position-relative mx-auto" data-cue="zoomIn" data-delay="200">
+                                        <svg class="gp-globe" viewBox="0 0 500 500" aria-hidden="true">
+                                            <defs>
+                                                <radialGradient id="gpGlow" cx="50%" cy="50%" r="50%">
+                                                    <stop offset="0%" stop-color="#e30016" stop-opacity="0.35"/>
+                                                    <stop offset="100%" stop-color="#e30016" stop-opacity="0"/>
+                                                </radialGradient>
+                                            </defs>
+                                            <!-- Globe grid -->
+                                            <circle cx="250" cy="250" r="170" class="gp-sphere"/>
+                                            <g class="gp-grid">
+                                                <ellipse cx="250" cy="250" rx="170" ry="60"/>
+                                                <ellipse cx="250" cy="250" rx="170" ry="120"/>
+                                                <line x1="80" y1="250" x2="420" y2="250"/>
+                                                <g class="gp-meridians">
+                                                    <ellipse cx="250" cy="250" rx="60" ry="170"/>
+                                                    <ellipse cx="250" cy="250" rx="120" ry="170"/>
+                                                    <line x1="250" y1="80" x2="250" y2="420"/>
+                                                </g>
+                                            </g>
+                                            <!-- Orbits -->
+                                            <circle cx="250" cy="250" r="205" class="gp-orbit gp-orbit-one"/>
+                                            <circle cx="250" cy="250" r="235" class="gp-orbit gp-orbit-two"/>
+                                            <!-- Connection arcs from the India hub -->
+                                            <g class="gp-arcs">
+                                                <path id="gpArc1" d="M290 270 Q 230 120 120 160"/>
+                                                <path id="gpArc2" d="M290 270 Q 360 140 395 175"/>
+                                                <path id="gpArc3" d="M290 270 Q 200 300 140 330"/>
+                                                <path id="gpArc4" d="M290 270 Q 380 300 370 360"/>
+                                                <path id="gpArc5" d="M290 270 Q 300 160 250 110"/>
+                                                <path id="gpArc6" d="M290 270 Q 270 360 230 395"/>
+                                            </g>
+                                            <!-- Data packets -->
+                                            <g class="gp-packets">
+                                                <circle r="3.5"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#gpArc1"/></animateMotion></circle>
+                                                <circle r="3.5"><animateMotion dur="3.6s" begin="0.6s" repeatCount="indefinite"><mpath href="#gpArc2"/></animateMotion></circle>
+                                                <circle r="3.5"><animateMotion dur="3.2s" begin="1.2s" repeatCount="indefinite"><mpath href="#gpArc3"/></animateMotion></circle>
+                                                <circle r="3.5"><animateMotion dur="3.8s" begin="0.3s" repeatCount="indefinite"><mpath href="#gpArc4"/></animateMotion></circle>
+                                                <circle r="3.5"><animateMotion dur="3.4s" begin="0.9s" repeatCount="indefinite"><mpath href="#gpArc5"/></animateMotion></circle>
+                                                <circle r="3.5"><animateMotion dur="3s" begin="1.5s" repeatCount="indefinite"><mpath href="#gpArc6"/></animateMotion></circle>
+                                            </g>
+                                            <!-- Remote sites -->
+                                            <g class="gp-nodes">
+                                                <circle cx="120" cy="160" r="5" style="--d:0s"/>
+                                                <circle cx="395" cy="175" r="5" style="--d:.4s"/>
+                                                <circle cx="140" cy="330" r="5" style="--d:.8s"/>
+                                                <circle cx="370" cy="360" r="5" style="--d:1.2s"/>
+                                                <circle cx="250" cy="110" r="5" style="--d:1.6s"/>
+                                                <circle cx="230" cy="395" r="5" style="--d:2s"/>
+                                            </g>
+                                            <!-- India hub -->
+                                            <circle cx="290" cy="270" r="60" fill="url(#gpGlow)"/>
+                                            <circle cx="290" cy="270" r="9" class="gp-hub-ring"/>
+                                            <circle cx="290" cy="270" r="9" class="gp-hub-ring gp-hub-ring-late"/>
+                                            <circle cx="290" cy="270" r="8" class="gp-hub"/>
+                                        </svg>
+                                        <div class="gp-tag gp-tag-hub d-flex align-items-center">
+                                            <i class="ri-map-pin-2-fill"></i>
+                                            <span><strong class="d-block">Bengaluru, India</strong>Engineering hub</span>
+                                        </div>
+                                        <div class="gp-tag gp-tag-stat text-center">
+                                            <strong class="d-block"><span class="counter">23</span>+</strong>Countries Served
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Global Presence Section End -->
 
                     <!-- About Section Start -->
                     <div class="about-area style-two pb-90">
@@ -286,13 +1169,13 @@
                                             <div class="col-md-6">
                                                 <div class="about-card style-one round-10 bg_secondary mb-25">
                                                     <h3 class="fs-24 mb-12" style="color:white">Our Vision</h3>
-                                                    <p class="fs-xxl-18 text-title mb-0" style="color:white ">To be India’s most trusted technology integration partner, helping enterprises and commercial spaces build secure, intelligent and future-ready digital infrastructure, from the network edge to the cloud.</p>
+                                                    <p class="fs-xxl-18 text-title mb-0" style="color:white ">To be a trusted technology integration partner, from India to the world, helping enterprises and commercial spaces build secure, intelligent and future-ready digital infrastructure, from the network edge to the cloud.</p>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="features-wrap d-flex flex-wrap align-items-center mb-25">
                                                     <div class="feature-img round-15">
-                                                        <img src="assets/img/about-new/engineer-workstation.jpg" alt="Engineer at a technical workstation" class="round-15">
+                                                        <img src="assets/img/trust.avif" alt="Professional using a tablet with service and support icons" class="round-15">
                                                     </div>
                                                     <div class="feature-info">
                                                         <h3 class="fs-24">Trust Builders</h3>
@@ -301,6 +1184,7 @@
                                                             <li class="fs-xxl-18 position-relative"><img src="assets/img/new/check.svg" alt="Icon" class="position-absolute start-0">End-to-End Design, Deployment & Management</li>
                                                             <li class="fs-xxl-18 position-relative"><img src="assets/img/new/check.svg" alt="Icon" class="position-absolute start-0">Transparent, Scalable Project Pricing</li>
                                                             <li class="fs-xxl-18 position-relative"><img src="assets/img/new/check.svg" alt="Icon" class="position-absolute start-0">25+ Years of Infrastructure Deployment Experience</li>
+                                                            <li class="fs-xxl-18 position-relative"><img src="assets/img/new/check.svg" alt="Icon" class="position-absolute start-0">Global Delivery Experience Through NEECO</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -309,7 +1193,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-6 mb-30">
-                                    <div class="about-img-wrap position-relative z-1 h-100 overflow-hidden bg_primary">
+                                    <div class="about-img-wrap position-relative z-1 h-100 overflow-hidden bg_primary" style="background-color: #737474 !important;">
                                         <h3 class="text-white fs-24 fw-bold mb-32">A growing team of 50+ professionals, including network engineers, NOC/SOC specialists, and field technicians.</h3>
                                         <img src="assets/img/about-new/tech-rack.png" alt="Network switch with patch cables" class="about-img move-left-two">
                                     </div>
@@ -435,7 +1319,7 @@
                                                 </span>
                                                 <div class="feature-info">
                                                     <h3 class="fs-24 fw-bold">6. Proven Delivery</h3>
-                                                    <p class="fs-xxl-18 mb-0">A track record of on-time, on-spec deployments across enterprise and multi-site environments.</p>
+                                                    <p class="fs-xxl-18 mb-0">A track record of on-time, on-spec deployments across enterprise, multi-site, and international environments.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -462,7 +1346,7 @@
                                         <img src="assets/img/team-2.jpg" alt="Team Member" class="transition round-20">
                                         <div class="team-info d-flex flex-wrap align-items-center justify-content-between">
                                             <div>
-                                                <h3 class="fs-20 fw-bold mb-10"><a href="leader-details.html" class="text-white link-hover-white transition">Vijaya Kumar Raju</a></h3>
+                                                <h3 class="fs-20 fw-bold mb-10"><a href="leader-details.html?slug=vk-raju" class="text-white link-hover-white transition">Vijaya Kumar Raju</a></h3>
                                                 <span class="fs-xxl-18 text-gray d-block lh-1">Founder & CEO</span>
                                             </div>
                                             <a href="/cdn-cgi/l/email-protection#592b362a3c34382b20193c212b3621773a3634" class="mail-link d-flex flex-column align-items-center justify-content-center rounded-circle transition"><i class="ri-mail-fill"></i></a>
@@ -482,7 +1366,7 @@
                                         <img src="assets/img/team-2.jpg" alt="Team Member" class="transition round-20">
                                         <div class="team-info d-flex flex-wrap align-items-center justify-content-between">
                                             <div>
-                                                <h3 class="fs-20 fw-bold mb-10"><a href="leader-details.html" class="text-white link-hover-white transition">Rajeev Pillai</a></h3>
+                                                <h3 class="fs-20 fw-bold mb-10"><a href="leader-details.html?slug=rajeev-pillai" class="text-white link-hover-white transition">Rajeev Pillai</a></h3>
                                                 <span class="fs-xxl-18 text-gray d-block lh-1">Business Head</span>
                                             </div>
                                             <a href="/cdn-cgi/l/email-protection#17657864727a76656e57726f65786f3974787a" class="mail-link d-flex flex-column align-items-center justify-content-center rounded-circle transition"><i class="ri-mail-fill"></i></a>
@@ -503,26 +1387,65 @@
                     <!-- Team Section End -->
 
                     <!-- Beyond Deployments Section Start -->
-                    <div class="container style-one pb-90">
-                        <div class="row">
-                            <div class="col-xl-8 offset-xl-2">
-                                <h2 class="section-title style-two fw-semibold text-center reveal-text-bottom mb-15">Beyond Deployments</h2>
-                                <p class="fs-xxl-18 text-center mb-45">Octel doesn't just deploy infrastructure — we help shape the conversations around it. Through the events we host and lead, we bring new technologies and industry insight directly to the businesses and professionals who rely on them.</p>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6 mb-30">
-                                <div class="about-card style-one round-10 bg-albastor h-100">
-                                    <h6 class="fs-18 font-primary fw-normal text-title mb-15">EVENTS WE'VE LED</h6>
-                                    <h3 class="fs-24 mb-12">NETKA Launch — India</h3>
-                                    <p class="fs-xxl-18 mb-0">Octel Networks proudly introduced NETKA to the Indian market as its exclusive distributor, bringing the platform to enterprise and infrastructure audiences for the first time. The launch was hosted across two cities — Chennai and Bengaluru — in 2026, marking Octel's role in shaping how the technology is adopted across the region.</p>
+                    <div class="beyond-area position-relative overflow-hidden pb-90" id="events">
+                        <div class="container style-one">
+                            <div class="row">
+                                <div class="col-xl-8 offset-xl-2 text-center">
+                                    <span class="bd-label d-inline-flex align-items-center fs-14 fw-semibold mb-20"><i class="ri-mic-2-line"></i>EVENTS WE'VE LED</span>
+                                    <h2 class="section-title style-two fw-semibold text-center reveal-text-bottom mb-15">Beyond Deployments</h2>
+                                    <p class="fs-xxl-18 text-center mb-45">Octel doesn't just deploy infrastructure — we help shape the conversations around it. Through the events we host and lead, we bring new technologies and industry insight directly to the businesses and professionals who rely on them.</p>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mb-30 " >
-                                <div class="about-card style-one round-10 bg_secondary h-100" style="padding: 20px">
-                                    <h6 class="fs-18 font-primary fw-normal text-title mb-15" style="color:white">EVENTS WE'VE LED</h6>
-                                    <h3 class="fs-24 mb-12" style="color:white">MATRIX Event — Bengaluru</h3>
-                                    <p class="fs-xxl-18  mb-0" style="color:white">Held in Bengaluru on July 31, 2026, the MATRIX event brought together industry professionals and clients to explore the latest in network infrastructure solutions, reinforcing Octel's position at the forefront of technology adoption in space.</p>
+                        </div>
+
+                        <div class="bd-ticker" aria-hidden="true">
+                            <div class="bd-ticker-track d-flex">
+                                <span>Product Launches</span><span>Industry Events</span><span>Technology Showcases</span><span>Client Meetups</span><span>Chennai</span><span>Bengaluru</span>
+                                <span>Product Launches</span><span>Industry Events</span><span>Technology Showcases</span><span>Client Meetups</span><span>Chennai</span><span>Bengaluru</span>
+                            </div>
+                        </div>
+
+                        <div class="container style-one">
+                            <div class="bd-timeline position-relative">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-30">
+                                        <div class="bd-card h-100" data-cue="slideInUp" data-delay="100">
+                                            <div class="bd-card-inner h-100 d-flex flex-column">
+                                                <div class="d-flex align-items-start justify-content-between mb-25">
+                                                    <span class="bd-icon"><i class="ri-rocket-2-line"></i></span>
+                                                    <span class="bd-num">01</span>
+                                                </div>
+                                                <span class="bd-type fs-14 fw-semibold mb-12">PRODUCT LAUNCH · 2026</span>
+                                                <h3 class="fs-24 fw-bold mb-15"><a href="event-details.html?slug=netka-launch-india" class="text-title link-hover-primary transition">NETKA Launch — India</a></h3>
+                                                <div class="bd-meta d-flex flex-wrap mb-20">
+                                                    <span><i class="ri-map-pin-2-line"></i>Chennai</span>
+                                                    <span><i class="ri-map-pin-2-line"></i>Bengaluru</span>
+                                                    <span><i class="ri-award-line"></i>Exclusive Distributor</span>
+                                                </div>
+                                                <p class="fs-xxl-18 mb-25">Octel Networks proudly introduced NETKA to the Indian market as its exclusive distributor, bringing the platform to enterprise and infrastructure audiences for the first time. The launch was hosted across two cities — Chennai and Bengaluru — in 2026, marking Octel's role in shaping how the technology is adopted across the region.</p>
+                                                <a href="event-details.html?slug=netka-launch-india" class="bd-link d-inline-flex align-items-center fw-semibold mt-auto">View Event Details <i class="ri-arrow-right-up-line"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-30">
+                                        <div class="bd-card h-100" data-cue="slideInUp" data-delay="300">
+                                            <div class="bd-card-inner h-100 d-flex flex-column">
+                                                <div class="d-flex align-items-start justify-content-between mb-25">
+                                                    <span class="bd-icon"><i class="ri-team-line"></i></span>
+                                                    <span class="bd-num">02</span>
+                                                </div>
+                                                <span class="bd-type fs-14 fw-semibold mb-12">INDUSTRY EVENT · JULY 31, 2026</span>
+                                                <h3 class="fs-24 fw-bold mb-15"><a href="event-details.html?slug=matrix-event-bengaluru" class="text-title link-hover-primary transition">MATRIX Event — Bengaluru</a></h3>
+                                                <div class="bd-meta d-flex flex-wrap mb-20">
+                                                    <span><i class="ri-map-pin-2-line"></i>Bengaluru</span>
+                                                    <span><i class="ri-calendar-event-line"></i>31 Jul 2026</span>
+                                                    <span><i class="ri-group-line"></i>Professionals &amp; Clients</span>
+                                                </div>
+                                                <p class="fs-xxl-18 mb-25">Held in Bengaluru on July 31, 2026, the MATRIX event brought together industry professionals and clients to explore the latest in network infrastructure solutions, reinforcing Octel's position at the forefront of technology adoption in space.</p>
+                                                <a href="event-details.html?slug=matrix-event-bengaluru" class="bd-link d-inline-flex align-items-center fw-semibold mt-auto">View Event Details <i class="ri-arrow-right-up-line"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -811,57 +1734,87 @@
                 <!-- Footer Section Start -->
                 <footer class="footer-area style-one">
                     <div class="container style-one">
-                        <div class="footer-top pt-115">
-                            <div class="row">
-                                <div class="col-xxl-5 col-lg-4 col-md-5">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft">
-                                        <a href="index.html" class="logo d-block mb-50">
-                                            <img src="assets/img/new/logo-white.png" alt="Image">
+                        <div class="footer-top">
+                            <div class="row g-4 g-xl-5">
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft">
+                                        <a href="index.html" class="logo d-inline-block mb-20">
+                                            <img src="assets/img/new/logo-white.png" alt="Octel Networks">
                                         </a>
-                                        <a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary mb-18">+1 (808) 360-9282</a>
-                                        <a href="mailto:info@octelnetworks.com" class="contact-mail fs-xxl-18 fw-bold text-black d-inline-block hover-text-secondary">info@octelnetworks.com</a>
-                                        <ul class="social-profile style-one list-unstyled mt-4 mb-0">
+                                        <p class="footer-about mb-25">Building the IT, network and security infrastructure businesses rely on, since 1999.</p>
+                                        <ul class="social-profile style-one list-unstyled mb-0">
                                             <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
                                             <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
                                             <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xxl-4 col-lg-4 col-md-7 ps-xxl-4">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="100">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Quick Links</h3>
-                                        <ul class="footer-menu style-one list-unstyled mb-0">
-                                            <li class="d-block fs-xxl-18"><a href="index.html">Home</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="about.html">About Us</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="services.html">Solutions</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="distribution.html">Distribution</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="partners.html">Our Partners</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="careers.html">Careers</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="contact.html">Contact</a></li>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="100">
+                                        <h3 class="footer-widget-title">Our Solutions</h3>
+                                        <ul class="footer-menu list-unstyled mb-0">
+                                            <li><a href="cyber-security.html">Cybersecurity</a></li>
+                                            <li><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
+                                            <li><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
+                                            <li><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
+                                            <li><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="services.html" class="footer-menu-more">View All Solutions <i class="ri-arrow-right-line"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xxl-3 col-lg-4 col-md-6">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="200">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Our Solutions</h3>
+                                <div class="col-xl-2 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="200">
+                                        <h3 class="footer-widget-title">Distribution</h3>
                                         <ul class="footer-menu list-unstyled mb-0">
-                                            <li class="d-block fs-xxl-18"><a href="cyber-security.html">Cybersecurity</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="matrix-details.html">Matrix</a></li>
+                                            <li><a href="rm-details.html">R&amp;M</a></li>
+                                            <li><a href="rittal-details.html">Rittal</a></li>
+                                            <li><a href="netka-details.html">NETKA System</a></li>
+                                            <li><a href="distribution.html" class="footer-menu-more">View All <i class="ri-arrow-right-line"></i></a></li>
                                         </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="300">
+                                        <h3 class="footer-widget-title">Contact Us</h3>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-shopping-bag-3-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Sales</span>
+                                                <a href="tel:+918041155349" class="contact-num d-block">080 41155349</a>
+                                                <a href="mailto:info@octelnetworks.com" class="contact-mail d-inline-block">info@octelnetworks.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-customer-service-2-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Service</span>
+                                                <a href="tel:+918049574038" class="contact-num d-block">080 49574038</a>
+                                                <a href="mailto:helpdesk@octelnetworks.com" class="contact-mail d-inline-block">helpdesk@octelnetworks.com</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="footer-links">
+                            <ul class="footer-bottom-menu list-unstyled text-center mb-0">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="services.html">Solutions</a></li>
+                                <li><a href="distribution.html">Distribution</a></li>
+                                <li><a href="partners.html">Our Partners</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
                         <div class="footer-bottom">
-                            <div class="row align-items-center">
-                                <div class="col-md-7 pe-md-0 mb-sm-10">
-                                    <p class="copyright-text fs-xxl-10 text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
+                            <div class="row align-items-center g-2">
+                                <div class="col-md-7">
+                                    <p class="copyright-text text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
                                 </div>
                                 <div class="col-md-5">
-                                    <p class="copyright-text fs-xxl-10 text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
+                                    <p class="copyright-text text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                         </div>

@@ -1,24 +1,90 @@
+<?php
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/leaders.php';
 
+$leader = get_leader((string)($_GET['slug'] ?? ''));
+if (!$leader || (empty($leader['published']) && !is_logged_in())) {
+    header('Location: our-leaders.html');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="zxx">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <!-- Link of CSS files -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/scrollcue.min.css">
         <link rel="stylesheet" href="assets/css/remixicon.css">
-        <link rel="stylesheet" href="assets/css/header.css">
+        <link rel="stylesheet" href="assets/css/header.css?v=20261105">
         <link rel="stylesheet" href="assets/css/style.css?v=20261028b">
-        <link rel="stylesheet" href="assets/css/footer.css?v=20261028b">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261105c">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
-        
-        <title>Leader Details – Octel Networks</title>
+
+        <title><?= e($leader['name']) ?> – Our Leaders – Octel Networks</title>
         <link rel="icon" type="image/png" href="assets/img/octel-favicon.png">
+        <style>
+            a.navbar-brand {
+                position: relative;
+                display: inline-block;
+            }
+            a.navbar-brand .logo-default,
+            a.navbar-brand .logo-hover {
+                transition: opacity 0.4s ease, transform 0.4s ease;
+            }
+            a.navbar-brand .logo-hover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-default,
+            .navbar-area.sticky a.navbar-brand .logo-default {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-hover,
+            .navbar-area.sticky a.navbar-brand .logo-hover {
+                opacity: 1;
+                transform: scale(1);
+            }
+            .leader-photo img {
+                width: 100%;
+                aspect-ratio: 4 / 5;
+                object-fit: cover;
+            }
+            .leader-role {
+                color: var(--secondaryColor);
+            }
+            .leader-skills li {
+                display: inline-block;
+                margin: 0 10px 10px 0;
+            }
+            .leader-skills li span {
+                display: inline-block;
+                padding: 5px 19px;
+                border-radius: 50px;
+                color: var(--titleColor);
+                background-color: var(--whiteColor);
+            }
+            .leader-bio p {
+                font-size: 18px;
+                line-height: 1.75;
+            }
+            /* Darken the gold chess banner so the white title stays readable */
+            .leader-hero-bg::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.45) 55%, rgba(0, 0, 0, 0.25) 100%);
+            }
+        </style>
     </head>
     <body>
 
@@ -43,35 +109,15 @@
         <div id="smooth-wrapper">
             <div id="smooth-content">
 
-                <div class="position-relative z-1">
-                    <!-- Navbar To Start -->
-                    <div class="navbar-top style-two position-relative z-2">
-                        <div class="container style-two">
-                            <div class="row">
-                                <div class="col-md-7 mb-sm-6">
-                                    <ul class="contact-info list-unstyled text-md-start text-center mb-0">
-                                        <li class="d-inline-block"><a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary link-hover-secondary">+1 (808) 360-9282</a></li>
-                                        <li class="d-inline-block"><a href="mailto:info@octelnetworks.com" class="contact-mail fw-normal text-white hover-text-secondary d-inline-block">info<span class="text_secondary">@</span>octelnetworks.com</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-5">
-                                    <ul class="social-profile style-two list-unstyled text-md-end text-center mb-0">
-                                            <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
-                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
-                                            <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Navbar Top End -->
+                <div class="bg-albastor position-relative z-1">
 
                     <!-- Navbar Area Start -->
-                    <div class="navbar-area style-four position-relative z-2" id="navbar">
+                    <div class="navbar-area style-one position-relative z-2" id="navbar">
                         <div class="container style-two">
                             <div class="navbar-wrapper d-flex justify-content-between align-items-center">
                                 <a href="index.html" class="navbar-brand">
-                                    <img src="assets/img/logo-white.png" alt="Logo">
+                                    <img src="assets/img/logo-white.png" alt="Logo" class="logo-default">
+                                    <img src="assets/img/new/logo-white.png" alt="Logo" class="logo-hover">
                                 </a>
                                 <div class="menu-area mx-auto">
                                     <div class="overlay"></div>
@@ -83,99 +129,28 @@
                                         </div>
                                         <ul class="menu-section p-0 mb-0 lh-1">
                                             <li class="menu-item-has-children">
-                                                <a href="javascript:void(0)">Home<i class="ri-arrow-down-s-line"></i></a>
-                                                <ul class="menu-subs menu-column-1">
-                                                    <li class="list-item">
-                                                        <a href="index.html">Home - Accounting & Consulting</a>
-                                                    </li>
-                                                    <li class="list-item">
-                                                        <a href="index-2.html">Home - Tax Audit Consulting</a>
-                                                    </li>
-                                                    <li class="list-item">
-                                                        <a href="index-3.html">Home - Accounting & Business Advisory</a>
-                                                    </li>
-                                                </ul>
+                                                <a href="services.html">SOLUTIONS</a>
                                             </li>
                                             <li class="menu-item-has-children">
-                                                <a href="javascript:void(0)" class="active">Pages<i class="ri-arrow-down-s-line"></i></a>
-                                                <ul class="menu-subs menu-column-1">
-                                                    <li><a href="about-us.html">About Us</a></li>
-                                                    <li class="menu-item-has-children">
-                                                        <a href="javascript:void(0)" class="active">Leaders<i class="ri-arrow-right-s-line"></i></a>
-                                                        <ul class="menu-subs menu-column-1">
-                                                            <li><a href="our-leaders.html">Our Leaders</a></li>
-                                                            <li><a href="leader-details.html" class="active">Leader Details</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-has-children">
-                                                        <a href="javascript:void(0)">Careers<i class="ri-arrow-right-s-line"></i></a>
-                                                        <ul class="menu-subs menu-column-1">
-                                                            <li><a href="careers.html">Careers</a></li>
-                                                            <li><a href="career-details.html">Career Details</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="appointment.html">Appointment</a></li>
-                                                    <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                                    <li><a href="faq.html">FAQ</a></li>
-                                                    <li><a href="testimonials.html">Testimonials</a></li>
-                                                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                                    <li><a href="error-404.html">Error 404</a></li>
-                                                </ul>
+                                                <a href="distribution.html">DISTRIBUTION</a>
                                             </li>
                                             <li class="menu-item-has-children">
-                                                <a href="javascript:void(0)">Services<i class="ri-arrow-down-s-line"></i></a>
-                                                <ul class="menu-subs menu-column-1">
-                                                    <li><a href="services.html">Our Services</a></li>
-                                                    <li><a href="service-details.html">Service Details</a></li>
-                                                </ul>
+                                                <a href="partners.html">OUR PARTNERS</a>
                                             </li>
                                             <li class="menu-item-has-children">
-                                                <a href="javascript:void(0)">Case Studies<i class="ri-arrow-down-s-line"></i></a>
+                                                <a href="javascript:void(0)">WHY OCTEL?<i class="ri-arrow-down-s-line"></i></a>
                                                 <ul class="menu-subs menu-column-1">
+                                                    <li><a href="why-octel.html">Why Octel</a></li>
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="our-leaders.html">Our Leaders</a></li>
                                                     <li><a href="case-studies.html">Case Studies</a></li>
-                                                    <li><a href="case-details.html">Case Details</a></li>
+                                                    <li><a href="careers.html">Careers</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="menu-item-has-children">
-                                                <a href="javascript:void(0)">Blog<i class="ri-arrow-down-s-line"></i></a>
-                                                <ul class="menu-subs menu-column-1">
-                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Blog Layout<i class="ri-arrow-right-s-line"></i></a>
-                                                        <ul class="menu-subs menu-column-1">
-                                                            <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                                            <li><a href="blog-standard.html">Blog Standard</a></li>
-                                                            <li><a href="blog-columns.html">Blog Columns</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Blog Details Layout<i class="ri-arrow-right-s-line"></i></a>
-                                                        <ul class="menu-subs menu-column-1">
-                                                            <li><a href="blog-details-left-sidebar.html">Blog Details Left Sidebar</a></li>
-                                                            <li><a href="blog-details-right-sidebar.html">Blog Details Right Sidebar</a></li>
-                                                            <li><a href="blog-details-no-sidebar.html">Blog Details No Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Others<i class="ri-arrow-right-s-line"></i></a>
-                                                        <ul class="menu-subs menu-column-1">
-                                                            <li><a href="posts-by-author.html">Posts By Author</a></li>
-                                                            <li><a href="posts-by-date.html">Posts By Date</a></li>
-                                                            <li><a href="posts-by-category.html">Posts By Category</a></li>
-                                                            <li><a href="posts-by-tag.html">Posts By Tag</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                                 <div class="other-options d-flex flex-wrap align-items-center justify-content-end">
-                                    <div class="option-item d-lg-block d-none">
-                                        <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
-                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon"></span>
-                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
-                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon"></span>
-                                        </a>
-                                    </div>
                                     <div class="option-item position-relative d-flex align-items-center">
                                         <div class="mobile-options position-relative d-lg-none me-3">
                                             <button class="dropdown-toggle  text-center bg-transparent border-0 p-0 transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
@@ -183,22 +158,29 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-centered mobile-option-list top-1 border-0" data-bs-popper="static">
                                                 <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
-                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon"></span>
+                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
                                                     <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
-                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon"></span>
+                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
                                                 </a>
                                             </div>
                                         </div>
-                                        <button class="search-btn border-0 rounded-circle d-flex flex-column align-items-center justify-content-center dropdown-toggle transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                        <button class="search-btn bg_gradient border-0 rounded-circle d-flex flex-column align-items-center justify-content-center dropdown-toggle transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
                                             <i class="ri-search-line"></i>
                                             <i class="ri-close-line"></i>
                                         </button>
                                         <div class="search-dropdown dropdown-menu dropdown-menu-right top-1 border-0" data-bs-popper="static">
-                                            <form class="search-popup position-relative" action="#">
-                                                <input type="search" class="form-control text-para" placeholder="Search Here">
+                                            <form class="search-popup position-relative" action="search.html" method="get" role="search">
+                                                <input type="search" name="q" class="form-control text-para" placeholder="Search Here" aria-label="Search the site" required>
                                                 <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent d-flex flex-column align-items-center justify-content-center"><i class="ri-search-2-line"></i></button>
                                             </form>
                                         </div>
+                                    </div>
+                                    <div class="option-item d-lg-block d-none">
+                                        <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
+                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
+                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                        </a>
                                     </div>
                                     <div class="option-item d-lg-none">
                                         <button type="button" class="menu-mobile-trigger">
@@ -216,17 +198,17 @@
 
                     <!-- Breadcrumb Area Start -->
                     <div class="breadcrumb-area style-one position-relative z-1">
-                        <div class="br-bg img-container position-absolute top-0 start-0 w-100">
-                            <img src="assets/img/breadcrumb/br-3.jpg" alt="Image" class="w-100 h-100 object-fit-cover">
+                        <div class="br-bg img-container position-absolute top-0 start-0 w-100 leader-hero-bg">
+                            <img src="assets/img/leaders/leader-hero.jpg" alt="Gold chess queen leading a row of pawns" class="w-100 h-100 object-fit-cover" style="object-position: center 65%;">
                         </div>
                         <div class="container style-one">
                             <div class="row">
                                 <div class="col-xxl-10 col-lg-8">
-                                    <h2 class="section-title style-three text-white fw-bold mb-20 reveal-text">Rosemary Turk</h2>
+                                    <h2 class="section-title style-three text-white fw-bold mb-20 reveal-text"><?= e($leader['name']) ?></h2>
                                     <ul class="br-menu list-unstyled mb-0">
                                         <li class="fs-xxl-18"><a href="index.html">Home</a></li>
                                         <li class="fs-xxl-18"><a href="our-leaders.html">Our Leaders</a></li>
-                                        <li class="fs-xxl-18">Leader Details</li>
+                                        <li class="fs-xxl-18"><?= e($leader['name']) ?></li>
                                     </ul>
                                 </div>
                             </div>
@@ -235,180 +217,122 @@
                     <!-- Breadcrumb Area End -->
 
                     <!-- Leader Details Start -->
-                    <div class="bg-albastor">
-                        <div class="container ptb-120">
-                            <div class="row">
-                                <div class="col-xl-4">
-                                    <div class="team-img round-20 mb-22">
-                                        <img src="assets/img/team/team-1.jpg" alt="Image" class="round-20">
-                                    </div>
-                                    <div class="team-info">
-                                        <h6 class="fs-24 mb-15">Contact Information</h6>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="fs-xxl-18 mb-6"><span class="text-title fw-semibold me-1">Email Address:</span><a href="/cdn-cgi/l/email-protection#0b7f7e79604b6e7379647325686466" class="text-para link-hover-primary transition"><span class="__cf_email__" data-cfemail="4b3f3e39200b2e3339243365282426">[email&#160;protected]</span></a></li>
-                                            <li class="fs-xxl-18 text-title fw-semibold mb-6"><span class="text-title fw-semibold me-1">Phone Number:</span><a href="tel:14443609282" class="text-para link-hover-primary transition">+1 (444) 360-9282</a></li>
-                                        </ul>
-                                        <span class="fs-xxl-18 d-block text-title fw-semibold mb-10">Connect:</span>
-                                         <ul class="social-profile style-three list-unstyled mb-0">
-                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
-                                            <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
-                                            <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
-                                        </ul>
-                                    </div>
+                    <div class="container style-one ptb-120">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 mb-md-30">
+                                <div class="leader-photo round-20 overflow-hidden mb-30" data-cue="slideInLeft">
+                                    <img src="<?= e($leader['image']) ?>" alt="<?= e($leader['name']) ?>" class="round-20">
                                 </div>
-                                <div class="col-xl-7 offset-xl-1">
-                                    <div class="case-desc">
-                                        <div class="single-para mb-3">
-                                            <h1 class="text-title mb-0">Rosemary Turk</h1>
-                                            <p>Founder & CEO</p>
-                                        </div>
-                                        <div class="single-para mb-4">
-                                            <p class="mb-0"><span class="text-title fw-semibold me-1">Credentials:</span>CPA, CGMA</p>
-                                            <p class="mb-0"><span class="text-title fw-semibold me-1">Experience:</span>15+ years</p>
-                                        </div>
-                                        <div class="single-para">
-                                            <h6 class="fs-18 fw-semibold mb-2">Personal Info: </h6>
-                                            <p>Rosemary founded Exrox in 2005 after a decade at a Big 4 accounting firm, where she led audits for mid-market businesses. She pioneered Exrox’s signature "Financial Health Assessment" framework, now used by 200+ clients to streamline operations. Under her leadership, Exrox has been recognized as a Top 50 Accounting Firm by Accounting Today (2020–2023).</p>
-                                        </div>
-                                        <div class="single-para">
-                                            <h6 class="fs-18 fw-semibold">Expertise Areas: </h6>
-                                            <ul class="features-list style-one list-unstyled mb-0">
-                                                <li class="position-relative">Financial strategy & forecasting</li>
-                                                <li class="position-relative">Business advisory for startups & scaleups</li>
-                                                <li class="position-relative">Tax planning and regulatory compliance</li>
-                                               <li class="position-relative">Cloud accounting implementation (Xero, QuickBooks)</li>
-                                                <li class="position-relative">Fundraising & investor reporting</li>
-                                                <li class="position-relative">Virtual CFO services</li>
-                                            </ul>
-                                        </div>
-                                        <div class="single-para">
-                                            <h6 class="fs-18 mb-1">Key Achievements: </h6>
-                                            <ul class="features-list style-one list-unstyled">
-                                                <li class="position-relative">Saved clients $28M+ in cumulative tax liabilities</li>
-                                                <li class="position-relative">Developed Exrox’s proprietary cloud accounting integration tools</li>
-                                                <li class="position-relative">Frequent speaker at AICPA and state CPA society events</li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <h6 class="fs-18 font-primary fw-normal text-title mb-15">AREAS OF EXPERTISE</h6>
+                                <ul class="leader-skills list-unstyled mb-0">
+                                    <?php foreach ($leader['expertise'] as $skill): ?>
+                                    <li class="fs-xxl-18 d-inline-block"><span><?= e($skill) ?></span></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                            <div class="col-xl-7 offset-xl-1 col-lg-7">
+                                <h1 class="section-title style-two fw-semibold text-title mb-10"><?= e($leader['name']) ?></h1>
+                                <span class="leader-role d-block fs-20 fw-semibold mb-35"><?= e($leader['role']) ?></span>
+                                <div class="leader-bio">
+                                    <?php foreach (parse_paragraphs($leader['bio'] ?? '') as $para): ?>
+                                    <p class="mb-20"><?= e($para) ?></p>
+                                    <?php endforeach; ?>
                                 </div>
+                                <a href="our-leaders.html" class="btn style-one d-inline-flex align-items-center mt-3">
+                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                    <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">All Leaders</span>
+                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <!-- Leader Details End -->
-
-                    <!-- Contact Section Start -->
-                    <div class="contact-area style-one pt-120 pb-120">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-6 col-md-5 mb-sm-30">
-                                    <div class="d-flex flex-column justify-content-between h-100">
-                                        <h2 class="section-title style-two fw-semibold reveal-text-bottom mb-45">
-                                            <span class="position-relative z-1">Get In Touch</span> For A Free Consultation
-                                        </h2>
-                                        <div class="contact-address style-one d-flex flex-wrap align-items-center me-xxl-5 w-xxl-50 w-xl-75">
-                                            <span class="contact-icon d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-map-pin-line"></i></span>
-                                            <p class="fs-xxl-18 text-title mb-0">350 5th Avenue, Suite 701, NY 10118, New York, USA</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-md-7 ps-xxl-4">
-                                    <form action="#" class="contact-form style-one">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group mb-45">
-                                                    <input type="text" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Full Name*" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mb-45">
-                                                    <input type="email" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Email*" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mb-45">
-                                                    <input type="email" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Phone Number">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mb-45">
-                                                    <input type="text" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Type Service Name*" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group mb-22">
-                                                    <textarea class="w-100 bg-transparent fs-xxl-18 text-title outline-0 resize-0" placeholder="Your Message"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <button class="btn style-two d-flex align-items-center" data-cue="slideInLeft" data-delay="300">
-                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
-                                                    <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Send Message</span>
-                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/icons/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Contact Section End -->
                 </div>
 
                 <!-- Footer Section Start -->
                 <footer class="footer-area style-one">
                     <div class="container style-one">
-                        <div class="footer-top pt-115">
-                            <div class="row">
-                                <div class="col-xxl-5 col-lg-4 col-md-5">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft">
-                                        <a href="index.html" class="logo d-block mb-50">
-                                            <img src="assets/img/new/logo-white.png" alt="Image">
+                        <div class="footer-top">
+                            <div class="row g-4 g-xl-5">
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft">
+                                        <a href="index.html" class="logo d-inline-block mb-20">
+                                            <img src="assets/img/new/logo-white.png" alt="Octel Networks">
                                         </a>
-                                        <a href="tel:18083609282" class="contact-num d-block fw-bold text_secondary mb-18">+1 (808) 360-9282</a>
-                                        <a href="mailto:info@octelnetworks.com" class="contact-mail fs-xxl-18 fw-bold text-black d-inline-block hover-text-secondary">info@octelnetworks.com</a>
-                                        <ul class="social-profile style-one list-unstyled mt-4 mb-0">
+                                        <p class="footer-about mb-25">Building the IT, network and security infrastructure businesses rely on, since 1999.</p>
+                                        <ul class="social-profile style-one list-unstyled mb-0">
                                             <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
                                             <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
                                             <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xxl-4 col-lg-4 col-md-7 ps-xxl-4">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="100">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Quick Links</h3>
-                                        <ul class="footer-menu style-one list-unstyled mb-0">
-                                            <li class="d-block fs-xxl-18"><a href="index.html">Home</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="about.html">About Us</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="services.html">Solutions</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="distribution.html">Distribution</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="partners.html">Our Partners</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="careers.html">Careers</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="contact.html">Contact</a></li>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="100">
+                                        <h3 class="footer-widget-title">Our Solutions</h3>
+                                        <ul class="footer-menu list-unstyled mb-0">
+                                            <li><a href="cyber-security.html">Cybersecurity</a></li>
+                                            <li><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
+                                            <li><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
+                                            <li><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
+                                            <li><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="services.html" class="footer-menu-more">View All Solutions <i class="ri-arrow-right-line"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xxl-3 col-lg-4 col-md-6">
-                                    <div class="footer-widget mb-30" data-cue="slideInLeft" data-delay="200">
-                                        <h3 class="footer-widget-title fs-24 text-black mb-20">Our Solutions</h3>
+                                <div class="col-xl-2 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="200">
+                                        <h3 class="footer-widget-title">Distribution</h3>
                                         <ul class="footer-menu list-unstyled mb-0">
-                                            <li class="d-block fs-xxl-18"><a href="cyber-security.html">Cybersecurity</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
-                                            <li class="d-block fs-xxl-18"><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="matrix-details.html">Matrix</a></li>
+                                            <li><a href="rm-details.html">R&amp;M</a></li>
+                                            <li><a href="rittal-details.html">Rittal</a></li>
+                                            <li><a href="netka-details.html">NETKA System</a></li>
+                                            <li><a href="distribution.html" class="footer-menu-more">View All <i class="ri-arrow-right-line"></i></a></li>
                                         </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="300">
+                                        <h3 class="footer-widget-title">Contact Us</h3>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-shopping-bag-3-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Sales</span>
+                                                <a href="tel:+918041155349" class="contact-num d-block">080 41155349</a>
+                                                <a href="mailto:info@octelnetworks.com" class="contact-mail d-inline-block">info@octelnetworks.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-customer-service-2-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Service</span>
+                                                <a href="tel:+918049574038" class="contact-num d-block">080 49574038</a>
+                                                <a href="mailto:helpdesk@octelnetworks.com" class="contact-mail d-inline-block">helpdesk@octelnetworks.com</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="footer-links">
+                            <ul class="footer-bottom-menu list-unstyled text-center mb-0">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="services.html">Solutions</a></li>
+                                <li><a href="distribution.html">Distribution</a></li>
+                                <li><a href="partners.html">Our Partners</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
                         <div class="footer-bottom">
-                            <div class="row align-items-center">
-                                <div class="col-md-7 pe-md-0 mb-sm-10">
-                                    <p class="copyright-text fs-xxl-10 text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
+                            <div class="row align-items-center g-2">
+                                <div class="col-md-7">
+                                    <p class="copyright-text text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
                                 </div>
                                 <div class="col-md-5">
-                                    <p class="copyright-text fs-xxl-10 text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
+                                    <p class="copyright-text text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                         </div>
@@ -440,5 +364,5 @@
         <script src="assets/js/main.js?v=20261028b"></script>
         <script src="assets/js/chatbot.js"></script>
         <script src="assets/js/cookie-consent.js?v=20261029"></script>
-    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3185fc1ea4017b3',t:'MTc4NzgwNTM3Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    </body>
 </html>
