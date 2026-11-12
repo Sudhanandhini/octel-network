@@ -317,7 +317,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $items[$index] = $updated;
             }
             if ($saveFn($items)) {
-                header('Location: dashboard.php?saved=1');
+                header('Location: ' . ($type === 'partners' ? 'partners.php' : 'dashboard.php') . '?saved=1');
                 exit;
             }
             $errors[] = 'Could not save changes. Check file permissions on the data folder.';
@@ -548,7 +548,7 @@ Inside any line: **bold text** and [[source tag]]</pre>
 
         <div class="form-actions">
             <button type="submit" class="btn"><?= $isNew ? 'Create' : 'Save Changes' ?></button>
-            <a href="dashboard.php" class="btn btn-secondary">Cancel</a>
+            <a href="<?= $type === 'partners' ? 'partners.php' : 'dashboard.php' ?>" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>

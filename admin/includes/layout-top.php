@@ -1,7 +1,7 @@
 <?php
 /**
  * Shared admin chrome. Expects $pageTitle to be set before including.
- * Optionally set $activeNav to one of: dashboard, distributors, solutions, partners, contacts, jobs, applications, password.
+ * Optionally set $activeNav to one of: dashboard, distributors, solutions, partners, clients, contacts, jobs, applications, password.
  * Requires ../../includes/auth.php to already be loaded (for e(), is_logged_in()).
  */
 $pageTitle = $pageTitle ?? 'Admin';
@@ -10,7 +10,8 @@ $navItems = [
     'dashboard'   => ['label' => 'Dashboard',            'href' => 'dashboard.php',                          'icon' => 'ri-dashboard-line'],
     'distributors'=> ['label' => 'Distribution Partners', 'href' => 'dashboard.php#distribution-partners',    'icon' => 'ri-truck-line'],
     'solutions'   => ['label' => 'Solutions',             'href' => 'dashboard.php#solutions',                'icon' => 'ri-stack-line'],
-    'partners'    => ['label' => 'Our Partners',          'href' => 'dashboard.php#our-partners',             'icon' => 'ri-team-line'],
+    'partners'    => ['label' => 'Our Partners',          'href' => 'partners.php',                           'icon' => 'ri-team-line'],
+    'clients'     => ['label' => 'Our Clients',           'href' => 'clients.php',                            'icon' => 'ri-building-2-line'],
 ];
 $careerNavItems = [
     'jobs'        => ['label' => 'Current Openings',      'href' => 'careers.php',                            'icon' => 'ri-briefcase-line'],

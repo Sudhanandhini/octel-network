@@ -1,0 +1,334 @@
+[
+    {
+        "slug": "it-technology",
+        "published": true,
+        "nav_name": "IT, Software & Technology Services",
+        "short_name": "IT & Technology",
+        "clients": [
+            {
+                "name": "Netradyne",
+                "image": "assets/img/clients/all/netradyne.png"
+            },
+            {
+                "name": "Zafin",
+                "image": "assets/img/clients/all/zafin.png"
+            },
+            {
+                "name": "L&T Technology Services",
+                "image": "assets/img/clients/top/lnt.png"
+            },
+            {
+                "name": "Xemplar Insights",
+                "image": "assets/img/clients/all/xemplar.png"
+            },
+            {
+                "name": "Bay6.ai",
+                "image": "assets/img/clients/all/bay6ai.png"
+            },
+            {
+                "name": "Blute Technologies",
+                "image": "assets/img/clients/all/blute.png"
+            }
+        ]
+    },
+    {
+        "slug": "tech-telecom",
+        "published": true,
+        "nav_name": "Global Tech & Telecom",
+        "short_name": "Tech & Telecom",
+        "clients": [
+            {
+                "name": "Google",
+                "image": "assets/img/clients/all/google.svg"
+            },
+            {
+                "name": "Bharti Airtel",
+                "image": "assets/img/clients/all/airtel.png"
+            },
+            {
+                "name": "HFCL",
+                "image": "assets/img/clients/all/hfcl.svg"
+            }
+        ]
+    },
+    {
+        "slug": "healthcare",
+        "published": true,
+        "nav_name": "Healthcare & Healthcare BPO",
+        "short_name": "Healthcare",
+        "clients": [
+            {
+                "name": "Omega Healthcare",
+                "image": "assets/img/clients/all/omega-healthcare.png"
+            },
+            {
+                "name": "CorroHealth",
+                "image": "assets/img/clients/all/corrohealth.png"
+            },
+            {
+                "name": "Kauvery Hospital",
+                "image": "assets/img/clients/all/kauvery-hospital.png"
+            }
+        ]
+    },
+    {
+        "slug": "manufacturing",
+        "published": true,
+        "nav_name": "Manufacturing & Engineering",
+        "short_name": "Manufacturing",
+        "clients": [
+            {
+                "name": "Carl Zeiss",
+                "image": "assets/img/clients/top/carl-zeiss.png"
+            },
+            {
+                "name": "Denso Kirloskar",
+                "image": "assets/img/clients/all/denso.png"
+            },
+            {
+                "name": "Kennametal",
+                "image": "assets/img/clients/all/kennametal.svg"
+            }
+        ]
+    },
+    {
+        "slug": "cement-metals",
+        "published": true,
+        "nav_name": "Cement, Steel, Metals & Chemicals",
+        "short_name": "Cement & Metals",
+        "clients": [
+            {
+                "name": "Aditya Birla Group",
+                "image": "assets/img/clients/all/aditya-birla.png"
+            }
+        ]
+    },
+    {
+        "slug": "energy-power",
+        "published": true,
+        "nav_name": "Energy & Power",
+        "short_name": "Energy & Power",
+        "clients": [
+            {
+                "name": "Kohima-Mariani Transmission",
+                "image": ""
+            },
+            {
+                "name": "SKM Powertech",
+                "image": ""
+            },
+            {
+                "name": "Sunleo Power Networks",
+                "image": ""
+            },
+            {
+                "name": "Aban Offshore",
+                "image": "assets/img/clients/all/aban-offshore.png"
+            }
+        ]
+    },
+    {
+        "slug": "government-defence",
+        "published": true,
+        "nav_name": "Government, Defence & Public Sector",
+        "short_name": "Government & Defence",
+        "clients": [
+            {
+                "name": "Airports Authority of India",
+                "image": "assets/img/clients/top/aai.png"
+            },
+            {
+                "name": "South Western Railway",
+                "image": "assets/img/clients/top/indian-railways.png"
+            },
+            {
+                "name": "Maha Metro",
+                "image": "assets/img/clients/top/maha-metro.png"
+            },
+            {
+                "name": "High Court for the State of Telangana",
+                "image": "assets/img/clients/top/telangana-high-court.png"
+            },
+            {
+                "name": "High Court of Karnataka",
+                "image": "assets/img/clients/all/high-court-karnataka.png"
+            },
+            {
+                "name": "High Court of Sikkim",
+                "image": "assets/img/clients/all/high-court-sikkim.png"
+            },
+            {
+                "name": "Corps of Military Police Records",
+                "image": "assets/img/clients/top/cmp-records.png"
+            },
+            {
+                "name": "DIAT",
+                "image": "assets/img/clients/all/diat-emblem.png"
+            },
+            {
+                "name": "BEML",
+                "image": "assets/img/clients/all/beml.png"
+            },
+            {
+                "name": "C-DAC",
+                "image": "assets/img/clients/all/cdac.png"
+            }
+        ]
+    },
+    {
+        "slug": "education-research",
+        "published": true,
+        "nav_name": "Education & Research",
+        "short_name": "Education & Research",
+        "clients": [
+            {
+                "name": "IIT Madras & its Lab-Grown Diamonds Centre",
+                "image": "assets/img/clients/all/iitm.png"
+            },
+            {
+                "name": "Sri Ramachandra Institute of Higher Education & Research",
+                "image": "assets/img/clients/all/srmc.png"
+            },
+            {
+                "name": "CSTEP",
+                "image": "assets/img/clients/all/cstep.png"
+            },
+            {
+                "name": "Tata Institute for Genetics and Society",
+                "image": "assets/img/clients/all/tigs.png"
+            },
+            {
+                "name": "Sreenidhi Institute",
+                "image": "assets/img/clients/all/sreenidhi-snist.jpg"
+            },
+            {
+                "name": "Ramakrishna Mission Vidyapith",
+                "image": "assets/img/clients/all/rkm-vidyapith.svg"
+            }
+        ]
+    },
+    {
+        "slug": "banking-finance",
+        "published": true,
+        "nav_name": "Banking, Finance & Forex",
+        "short_name": "Banking & Finance",
+        "clients": [
+            {
+                "name": "Al Ansari",
+                "image": "assets/img/clients/all/al-ansari.png"
+            },
+            {
+                "name": "BFC Forex",
+                "image": "assets/img/clients/all/bfc-forex.svg"
+            },
+            {
+                "name": "Repco Home Finance",
+                "image": "assets/img/clients/all/repco.png"
+            },
+            {
+                "name": "Can Fin Homes",
+                "image": "assets/img/clients/all/canfin-homes.jpg"
+            },
+            {
+                "name": "IDFC First Bank",
+                "image": "assets/img/clients/all/idfc-first-bank.svg"
+            },
+            {
+                "name": "Jupiter Capital",
+                "image": ""
+            }
+        ]
+    },
+    {
+        "slug": "media",
+        "published": true,
+        "nav_name": "Media & Entertainment",
+        "short_name": "Media",
+        "clients": [
+            {
+                "name": "JioStar",
+                "image": "assets/img/clients/top/jiostar.png"
+            },
+            {
+                "name": "Star India",
+                "image": "assets/img/clients/all/star-india.svg"
+            }
+        ]
+    },
+    {
+        "slug": "bpo-staffing",
+        "published": true,
+        "nav_name": "BPO, Call Centres & Staffing",
+        "short_name": "BPO & Staffing",
+        "clients": [
+            {
+                "name": "Expert Callers",
+                "image": "assets/img/clients/all/expert-callers.webp"
+            },
+            {
+                "name": "ETC Management Services",
+                "image": ""
+            }
+        ]
+    },
+    {
+        "slug": "ecommerce-logistics",
+        "published": true,
+        "nav_name": "E-commerce, Logistics & Mobility",
+        "short_name": "E-commerce & Logistics",
+        "clients": [
+            {
+                "name": "Instakart",
+                "image": "assets/img/clients/all/instakart-ekart.svg"
+            },
+            {
+                "name": "Flipkart",
+                "image": "assets/img/clients/all/flipkart.svg"
+            }
+        ]
+    },
+    {
+        "slug": "construction-real-estate",
+        "published": true,
+        "nav_name": "Construction, Real Estate & Interiors",
+        "short_name": "Construction & Real Estate",
+        "clients": [
+            {
+                "name": "Deepam Constructions",
+                "image": ""
+            },
+            {
+                "name": "Nirmaan (Stratos Infra)",
+                "image": ""
+            },
+            {
+                "name": "L&T Construction Smart World",
+                "image": "assets/img/clients/top/lnt.png"
+            },
+            {
+                "name": "Nexus Shantiniketan",
+                "image": "assets/img/clients/all/nexus.png"
+            },
+            {
+                "name": "Kolab Interiors",
+                "image": "assets/img/clients/all/kolab-interiors.png"
+            },
+            {
+                "name": "Sai Interiors",
+                "image": ""
+            }
+        ]
+    },
+    {
+        "slug": "hospitality",
+        "published": true,
+        "nav_name": "Hospitality & Clubs",
+        "short_name": "Hospitality",
+        "clients": [
+            {
+                "name": "Domlur Club",
+                "image": "assets/img/clients/all/domlur-club.png"
+            }
+        ]
+    }
+]

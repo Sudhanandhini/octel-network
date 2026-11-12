@@ -1,3 +1,11 @@
+<?php
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/clients.php';
+$isAdmin = is_logged_in();
+$clientSectors = array_values(array_filter(get_published_client_sectors(), function ($s) {
+    return !empty($s['clients']);
+}));
+?>
 <!DOCTYPE html>
 <html lang="zxx">
     <head>
@@ -64,25 +72,22 @@
             .client-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border-bottom: 1px solid #D9D9D9; padding-bottom: 12px; margin-bottom: 20px; }
             .client-group-head h3 { font-size: 22px; font-weight: 600; margin: 0; position: relative; padding-left: 16px; }
             .client-group-head h3:before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 4px; height: 70%; background: var(--secondaryColor); border-radius: 2px; }
-            .client-group-head span { color: var(--paraColor); font-size: 14px; white-space: nowrap; }
+            .client-group-head span { color: var(--paraColor); font-size: 14px; white-space: nowrap; margin-left: auto; }
+            .admin-edit-badge { width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: #e30016; color: #fff !important; font-size: 14px; flex-shrink: 0; }
+            .admin-edit-badge:hover { background: #14161a; }
             .client-mono { width: 84px; height: 84px; margin: 8px 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700; letter-spacing: .5px; color: var(--secondaryColor); background: rgba(227, 0, 22, .07); border: 1px solid rgba(227, 0, 22, .18); transition: all .3s ease; }
             .client-card:hover .client-mono { background: var(--secondaryColor); color: #fff; }
-            .client-card span { font-weight: 500; }
-            .theme-dark .client-group-head { border-color: var(--borderColor); }
-            @media (max-width: 575px) { .client-mono { width: 64px; height: 64px; font-size: 20px; } .client-group-head h3 { font-size: 18px; } }
             .client-grid { --cols: 5; --gap: 16px; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: var(--gap); }
             .client-grid .client-card { flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)); }
             .client-card { background: #fff; border: 1px solid #D9D9D9; min-height: 160px; padding: 20px 16px 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; transition: all .3s ease; }
             .client-card:hover { border-color: var(--secondaryColor); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 0, 0, .06); }
             .client-card img { width: 100%; max-width: 190px; height: 100px; padding: 0 6px; box-sizing: border-box; object-fit: contain; transition: all .3s ease; }
-            .client-card span { font-size: 13px; line-height: 1.35; color: var(--paraColor); }
-            .client-card.is-hidden { display: none; }
-            .client-wordmark { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 700; font-style: italic; color: var(--titleColor, #111); }
-            @media (max-width: 575px) { .client-wordmark { height: 80px; font-size: 24px; } }
+            .client-card span { font-size: 13px; line-height: 1.35; color: var(--paraColor); font-weight: 500; }
             .theme-dark .client-card, .theme-dark .client-stat, .theme-dark .client-filter button:not(.active) { background: var(--charcoalColor); border-color: var(--borderColor); }
+            .theme-dark .client-group-head { border-color: var(--borderColor); }
             @media (max-width: 1199px) { .client-grid { --cols: 4; } }
             @media (max-width: 991px)  { .client-grid { --cols: 3; } }
-            @media (max-width: 575px)  { .client-grid { --cols: 2; --gap: 12px; } .client-card { min-height: 140px; } .client-card img { height: 80px; } }
+            @media (max-width: 575px)  { .client-grid { --cols: 2; --gap: 12px; } .client-card { min-height: 140px; } .client-card img { height: 80px; } .client-mono { width: 64px; height: 64px; font-size: 20px; } .client-group-head h3 { font-size: 18px; } }
         </style>
     </head>
     <body>
@@ -227,319 +232,41 @@
                                 <div class="col-lg-5">
                                     <div class="client-stats">
                                         <div class="client-stat round-20"><strong>15,000+</strong><span>Clients served</span></div>
-                                        <div class="client-stat round-20"><strong>14</strong><span>Industries served</span></div>
+                                        <div class="client-stat round-20"><strong><?= count($clientSectors) ?></strong><span>Industries served</span></div>
                                         <div class="client-stat round-20"><strong>25+</strong><span>Years, since 1999</span></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="client-filter mb-40" role="group" aria-label="Filter clients by sector">
-                                <button type="button" class="active" data-filter="all">All Sectors</button>
-                                <button type="button" data-filter="it">IT &amp; Technology <em>6</em></button>
-                                <button type="button" data-filter="telecom">Tech &amp; Telecom <em>3</em></button>
-                                <button type="button" data-filter="health">Healthcare <em>3</em></button>
-                                <button type="button" data-filter="mfg">Manufacturing <em>3</em></button>
-                                <button type="button" data-filter="metals">Cement &amp; Metals <em>1</em></button>
-                                <button type="button" data-filter="energy">Energy &amp; Power <em>4</em></button>
-                                <button type="button" data-filter="gov">Government &amp; Defence <em>10</em></button>
-                                <button type="button" data-filter="edu">Education &amp; Research <em>6</em></button>
-                                <button type="button" data-filter="fin">Banking &amp; Finance <em>6</em></button>
-                                <button type="button" data-filter="media">Media <em>2</em></button>
-                                <button type="button" data-filter="bpo">BPO &amp; Staffing <em>2</em></button>
-                                <button type="button" data-filter="ecom">E-commerce &amp; Logistics <em>2</em></button>
-                                <button type="button" data-filter="construct">Construction &amp; Real Estate <em>6</em></button>
-                                <button type="button" data-filter="hosp">Hospitality <em>1</em></button>
+                                <button type="button" class="active" data-filter="all" aria-pressed="true">All Sectors</button>
+                                <?php foreach ($clientSectors as $sector): ?>
+                                <button type="button" data-filter="<?= e($sector['slug']) ?>" aria-pressed="false"><?= e($sector['short_name'] ?: $sector['nav_name']) ?> <em><?= count($sector['clients'] ?? []) ?></em></button>
+                                <?php endforeach; ?>
                             </div>
                             <div id="clientGroups">
-                                <section class="client-group" data-cat="it">
-                                    <div class="client-group-head"><h3>IT, Software &amp; Technology Services</h3><span>6 clients</span></div>
+                                <?php foreach ($clientSectors as $sector): $count = count($sector['clients'] ?? []); ?>
+                                <section class="client-group" data-cat="<?= e($sector['slug']) ?>">
+                                    <div class="client-group-head">
+                                        <h3><?= e($sector['nav_name']) ?></h3>
+                                        <span><?= $count ?> <?= $count === 1 ? 'client' : 'clients' ?></span>
+                                        <?php if ($isAdmin): ?>
+                                        <a href="admin/client-edit.php?slug=<?= e($sector['slug']) ?>" class="admin-edit-badge" target="_blank" rel="noopener" title="Edit in admin panel"><i class="ri-pencil-line"></i></a>
+                                        <?php endif; ?>
+                                    </div>
                                     <div class="client-grid">
+                                        <?php foreach ($sector['clients'] ?? [] as $client): ?>
                                         <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/netradyne.png" alt="Netradyne" loading="lazy">
-                                            <span>Netradyne</span>
+                                            <?php if (!empty($client['image'])): ?>
+                                            <img src="<?= e($client['image']) ?>" alt="<?= e($client['name']) ?>" loading="lazy">
+                                            <?php else: ?>
+                                            <div class="client-mono" aria-hidden="true"><?= e(client_initials($client['name'])) ?></div>
+                                            <?php endif; ?>
+                                            <span><?= e($client['name']) ?></span>
                                         </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/zafin.png" alt="Zafin" loading="lazy">
-                                            <span>Zafin</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/top/lnt.png" alt="L&amp;T Technology Services" loading="lazy">
-                                            <span>L&amp;T Technology Services</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/xemplar.png" alt="Xemplar Insights" loading="lazy">
-                                            <span>Xemplar Insights</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/bay6ai.png" alt="Bay6.ai" loading="lazy">
-                                            <span>Bay6.ai</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/blute.png" alt="Blute Technologies" loading="lazy">
-                                            <span>Blute Technologies</span>
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </section>
-                                <section class="client-group" data-cat="telecom">
-                                    <div class="client-group-head"><h3>Global Tech &amp; Telecom</h3><span>3 clients</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">GO</div>
-                                            <span>Google</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/airtel.png" alt="Bharti Airtel" loading="lazy">
-                                            <span>Bharti Airtel</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">HFC</div>
-                                            <span>HFCL</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="health">
-                                    <div class="client-group-head"><h3>Healthcare &amp; Healthcare BPO</h3><span>3 clients</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/omega-healthcare.png" alt="Omega Healthcare" loading="lazy">
-                                            <span>Omega Healthcare</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/corrohealth.png" alt="CorroHealth" loading="lazy">
-                                            <span>CorroHealth</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/kauvery-hospital.png" alt="Kauvery Hospital" loading="lazy">
-                                            <span>Kauvery Hospital</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="mfg">
-                                    <div class="client-group-head"><h3>Manufacturing &amp; Engineering</h3><span>3 clients</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/top/carl-zeiss.png" alt="Carl Zeiss" loading="lazy">
-                                            <span>Carl Zeiss</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/denso.png" alt="Denso Kirloskar" loading="lazy">
-                                            <span>Denso Kirloskar</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">KE</div>
-                                            <span>Kennametal</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="metals">
-                                    <div class="client-group-head"><h3>Cement, Steel, Metals &amp; Chemicals</h3><span>1 client</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/aditya-birla.png" alt="Aditya Birla Group" loading="lazy">
-                                            <span>Aditya Birla Group</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="energy">
-                                    <div class="client-group-head"><h3>Energy &amp; Power</h3><span>4 clients</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">KM</div>
-                                            <span>Kohima-Mariani Transmission</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">SP</div>
-                                            <span>SKM Powertech</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">SP</div>
-                                            <span>Sunleo Power Networks</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">AO</div>
-                                            <span>Aban Offshore</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="gov">
-                                    <div class="client-group-head"><h3>Government, Defence &amp; Public Sector</h3><span>10 clients</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/top/aai.png" alt="Airports Authority of India" loading="lazy">
-                                            <span>Airports Authority of India</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/top/indian-railways.png" alt="South Western Railway" loading="lazy">
-                                            <span>South Western Railway</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/top/maha-metro.png" alt="Maha Metro" loading="lazy">
-                                            <span>Maha Metro</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/top/telangana-high-court.png" alt="High Court for the State of Telangana" loading="lazy">
-                                            <span>High Court for the State of Telangana</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/high-court-karnataka.png" alt="High Court of Karnataka" loading="lazy">
-                                            <span>High Court of Karnataka</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/high-court-sikkim.png" alt="High Court of Sikkim" loading="lazy">
-                                            <span>High Court of Sikkim</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/top/cmp-records.png" alt="Corps of Military Police Records" loading="lazy">
-                                            <span>Corps of Military Police Records</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">DIA</div>
-                                            <span>DIAT</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">BEM</div>
-                                            <span>BEML</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/cdac.png" alt="C-DAC" loading="lazy">
-                                            <span>C-DAC</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="edu">
-                                    <div class="client-group-head"><h3>Education &amp; Research</h3><span>6 clients</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/iitm.png" alt="IIT Madras &amp; its Lab-Grown Diamonds Centre" loading="lazy">
-                                            <span>IIT Madras &amp; its Lab-Grown Diamonds Centre</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/srmc.png" alt="Sri Ramachandra Institute of Higher Education &amp; Research" loading="lazy">
-                                            <span>Sri Ramachandra Institute of Higher Education &amp; Research</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/cstep.png" alt="CSTEP" loading="lazy">
-                                            <span>CSTEP</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/tigs.png" alt="Tata Institute for Genetics and Society" loading="lazy">
-                                            <span>Tata Institute for Genetics and Society</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">SI</div>
-                                            <span>Sreenidhi Institute</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">RM</div>
-                                            <span>Ramakrishna Mission Vidyapith</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="fin">
-                                    <div class="client-group-head"><h3>Banking, Finance &amp; Forex</h3><span>6 clients</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/al-ansari.png" alt="Al Ansari" loading="lazy">
-                                            <span>Al Ansari</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">BF</div>
-                                            <span>BFC Forex</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/all/repco.png" alt="Repco Home Finance" loading="lazy">
-                                            <span>Repco Home Finance</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">CH</div>
-                                            <span>Canfin Homes</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">IF</div>
-                                            <span>IDFC First Bank</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">JC</div>
-                                            <span>Jupiter Capital</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="media">
-                                    <div class="client-group-head"><h3>Media &amp; Entertainment</h3><span>2 clients</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <img src="assets/img/clients/top/jiostar.png" alt="JioStar" loading="lazy">
-                                            <span>JioStar</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">ST</div>
-                                            <span>Star India</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="bpo">
-                                    <div class="client-group-head"><h3>BPO, Call Centres &amp; Staffing</h3><span>2 clients</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">EC</div>
-                                            <span>Expert Callers</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">EM</div>
-                                            <span>ETC Management Services</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="ecom">
-                                    <div class="client-group-head"><h3>E-commerce, Logistics &amp; Mobility</h3><span>2 clients</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">IN</div>
-                                            <span>Instakart</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">FL</div>
-                                            <span>Flipkart</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="construct">
-                                    <div class="client-group-head"><h3>Construction, Real Estate &amp; Interiors</h3><span>6 clients</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">DC</div>
-                                            <span>Deepam Constructions</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">NI</div>
-                                            <span>Nirmaan (Stratos Infra)</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">LC</div>
-                                            <span>L&amp;T Construction Smart World</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">NS</div>
-                                            <span>Nexus Shantiniketan</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">KI</div>
-                                            <span>Kolab Interiors</span>
-                                        </div>
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">SI</div>
-                                            <span>Sai Interiors</span>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="client-group" data-cat="hosp">
-                                    <div class="client-group-head"><h3>Hospitality &amp; Clubs</h3><span>1 client</span></div>
-                                    <div class="client-grid">
-                                        <div class="client-card round-20">
-                                            <div class="client-mono" aria-hidden="true">DC</div>
-                                            <span>Domlur Club</span>
-                                        </div>
-                                    </div>
-                                </section>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
