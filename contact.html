@@ -3,9 +3,10 @@ require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/contacts.php';
 
 $contactErrors = [];
-$contactOld = array_fill_keys(['name', 'email', 'phone', 'interest', 'message'], '');
+$contactOld = array_fill_keys(['name', 'organization', 'email', 'phone', 'interest', 'message'], '');
+$contactOld['phone_country'] = 'IN';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
-    $result = submit_contact($_POST, 'Contact Page', 'contact.html');
+    $result = submit_contact($_POST, 'Contact Page', 'contact.html', ['verify_email' => true, 'require_organization' => true, 'require_all' => true]);
     if ($result['ok']) {
         header('Location: ' . contact_redirect_url('contact-form'));
         exit;
@@ -27,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         <link rel="stylesheet" href="assets/css/scrollcue.min.css">
         <link rel="stylesheet" href="assets/css/remixicon.css">
         <link rel="stylesheet" href="assets/css/header.css?v=20261105">
-        <link rel="stylesheet" href="assets/css/style.css?v=20261028b">
-        <link rel="stylesheet" href="assets/css/footer.css?v=20261105c">
+        <link rel="stylesheet" href="assets/css/style.css?v=20261110e">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261110">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
 
@@ -271,17 +272,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                 }
             }
         </style>
+        <style>
+            /* Contact form: country code + mobile number */
+            .phone-field { display: flex; align-items: flex-end; gap: 12px; border-bottom: 1px solid #D9D9D9; }
+            .contact-form.style-three .phone-field input { border-bottom: 0; flex: 1; min-width: 0; }
+            .phone-field .phone-code { flex: none; width: auto; max-width: 112px; border: 0; padding: 0 4px 18px 0; cursor: pointer; }
+            /* Contact form: business email + one-time code verification */
+            .email-verify .ev-field { position: relative; display: flex; align-items: flex-end; gap: 10px; border-bottom: 1px solid #D9D9D9; }
+            .contact-form.style-three .email-verify .ev-field input { border-bottom: 0; flex: 1; min-width: 0; }
+            .email-verify .ev-btn { flex: none; margin-bottom: 12px; border: 0; border-radius: 50px; padding: 4px 14px; font-size: 13px; line-height: 20px; font-weight: 600; color: #fff; background: var(--secondaryColor); transition: opacity .3s ease; white-space: nowrap; }
+            .email-verify .ev-btn:hover { opacity: .88; }
+            .email-verify .ev-btn:disabled { opacity: .55; cursor: not-allowed; }
+            .email-verify .ev-badge, .email-verify .ev-change { display: none; flex: none; margin-bottom: 14px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+            .email-verify .ev-badge { color: #198754; }
+            .email-verify .ev-change { border: 0; background: none; padding: 0; color: var(--secondaryColor); text-decoration: underline; }
+            .email-verify.is-verified #evSend { display: none; }
+            .email-verify.is-verified .ev-badge, .email-verify.is-verified .ev-change { display: inline-flex; align-items: center; gap: 4px; }
+            .email-verify.is-verified .ev-field { border-bottom-color: #198754; }
+            .email-verify .ev-otp { display: flex; align-items: flex-end; gap: 10px; margin-top: 16px; border-bottom: 1px solid #D9D9D9; }
+            .email-verify .ev-otp[hidden] { display: none; }
+            .contact-form.style-three .email-verify .ev-otp input { border-bottom: 0; flex: 1; min-width: 0; letter-spacing: 4px; padding-bottom: 14px; }
+            .contact-form.style-three .email-verify .ev-otp input::placeholder { letter-spacing: 0; color: #8a8a8a; }
+            .email-verify .ev-msg { margin-top: 8px; font-size: 14px; line-height: 1.45; }
+            .email-verify .ev-msg:empty { display: none !important; }
+            .email-verify .ev-msg.is-error { color: var(--secondaryColor); }
+            .email-verify .ev-msg.is-ok { color: #198754; }
+            .email-verify .ev-msg.is-info { color: var(--paraColor); }
+            .email-verify .ev-msg button { border: 0; background: none; padding: 0; color: var(--secondaryColor); text-decoration: underline; font-weight: 600; }
+            .email-verify .ev-msg button:disabled { color: var(--paraColor); text-decoration: none; cursor: default; }
+        </style>
     </head>
     <body>
 
        <!--  Preloader Start -->
         <div class="preloader-area" id="preloader">
-            <div class="spinner">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="preloader-inner">
+                <img src="assets/img/new/logo-white.png" alt="Octel Networks" class="preloader-logo" width="220" height="68">
+                <div class="preloader-bar"><span></span></div>
             </div>
         </div>
         <!--  Preloader End -->
@@ -329,6 +356,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                                     <li><a href="why-octel.html">Why Octel</a></li>
                                                     <li><a href="about.html">About Us</a></li>
                                                     <li><a href="our-leaders.html">Our Leaders</a></li>
+                                                    <li><a href="clients.html">Our Clients</a></li>
                                                     <li><a href="case-studies.html">Case Studies</a></li>
                                                     <li><a href="careers.html">Careers</a></li>
                                                 </ul>
@@ -442,24 +470,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group mb-45">
-                                                    <input type="text" name="name" value="<?= e($contactOld['name']) ?>" maxlength="120" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Full Name*" required>
+                                                    <input type="text" name="name" value="<?= e($contactOld['name']) ?>" maxlength="120" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Full Name*" autocomplete="name" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group mb-45">
-                                                    <input type="email" name="email" value="<?= e($contactOld['email']) ?>" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Email*" required>
+                                                    <input type="text" name="organization" value="<?= e($contactOld['organization']) ?>" maxlength="150" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Organization Name*" autocomplete="organization" required>
+                                                </div>
+                                            </div>
+                                            <?php $emailVerified = $contactOld['email'] !== '' && otp_is_verified($contactOld['email']); ?>
+                                            <div class="col-md-6">
+                                                <div class="form-group email-verify mb-45<?= $emailVerified ? ' is-verified' : '' ?>" id="emailVerify">
+                                                    <div class="ev-field">
+                                                        <input type="email" name="email" id="cfEmail" value="<?= e($contactOld['email']) ?>" maxlength="190" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Business Email*" autocomplete="email" required<?= $emailVerified ? ' readonly' : '' ?>>
+                                                        <button type="button" class="ev-btn" id="evSend">Send OTP</button>
+                                                        <span class="ev-badge"><i class="ri-checkbox-circle-fill"></i> Verified</span>
+                                                        <button type="button" class="ev-change" id="evChange" aria-label="Change email address">Change</button>
+                                                    </div>
+                                                    <div class="ev-otp" id="evOtp" hidden>
+                                                        <input type="text" id="evCode" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" class="bg-transparent fs-xxl-18 text-title outline-0" placeholder="Enter 6-digit code" aria-label="Verification code">
+                                                        <button type="button" class="ev-btn" id="evVerify">Verify</button>
+                                                    </div>
+                                                    <small class="ev-msg d-block" id="evMsg" role="status" aria-live="polite"></small>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group mb-45">
-                                                    <input type="tel" name="phone" value="<?= e($contactOld['phone']) ?>" maxlength="20" pattern="[0-9+\s\-]{7,20}" title="Enter a valid phone number" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Phone Number*" required>
+                                                    <div class="phone-field">
+                                                        <select name="phone_country" class="phone-code bg-transparent fs-xxl-18 text-title outline-0" aria-label="Country code" autocomplete="tel-country-code">
+                                                            <?php foreach (phone_country_codes() as $iso => [$country, $dial]): ?>
+                                                            <option value="<?= e($iso) ?>" title="<?= e($country) ?>"<?= $contactOld['phone_country'] === $iso ? ' selected' : '' ?>><?= e($iso . ' ' . $dial) ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                        <input type="tel" name="phone" value="<?= e($contactOld['phone']) ?>" maxlength="16" pattern="[0-9\s\-]{6,16}" inputmode="tel" title="Enter your mobile number without the country code" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Mobile Number*" autocomplete="tel-national" required>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <h6 class="font-primary fs-16 fw-semibold mb-15">Service Interest?</h6>
+                                                <h6 class="font-primary fs-16 fw-semibold mb-15">Service Interest?*</h6>
                                                 <div class="service-btn-wrap d-flex flex-wrap mb-20">
                                                     <div class="service-btn">
-                                                        <input type="radio" class="custom-control-input" id="sales_interest" name="interest" value="Sales" <?= $contactOld['interest'] !== 'Support' ? 'checked' : '' ?>>
+                                                        <input type="radio" class="custom-control-input" id="sales_interest" name="interest" value="Sales" required <?= $contactOld['interest'] !== 'Support' ? 'checked' : '' ?>>
                                                         <label class="fs-xxl-18 text-title text-center w-100 d-block transition round-5" for="sales_interest">Sales</label>
                                                     </div>
                                                     <div class="service-btn">
@@ -470,7 +521,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group mb-22">
-                                                    <textarea name="message" maxlength="5000" class="w-100 bg-transparent fs-xxl-18 text-title outline-0 resize-0" placeholder="How Can We help?"><?= e($contactOld['message']) ?></textarea>
+                                                    <textarea name="message" maxlength="5000" class="w-100 bg-transparent fs-xxl-18 text-title outline-0 resize-0" placeholder="How Can We Help?*" required><?= e($contactOld['message']) ?></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -653,17 +704,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                 </div>
                             </div>
                         </div>
-                        <div class="footer-links">
-                            <ul class="footer-bottom-menu list-unstyled text-center mb-0">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="services.html">Solutions</a></li>
-                                <li><a href="distribution.html">Distribution</a></li>
-                                <li><a href="partners.html">Our Partners</a></li>
-                                <li><a href="careers.html">Careers</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
                         <div class="footer-bottom">
                             <div class="row align-items-center g-2">
                                 <div class="col-md-7">
@@ -702,5 +742,143 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         <script src="assets/js/main.js?v=20261028b"></script>
         <script src="assets/js/chatbot.js"></script>
         <script src="assets/js/cookie-consent.js?v=20261029"></script>
+        <script>
+            // Contact form: verify the business email with a one-time code before submitting.
+            (function () {
+                var box = document.getElementById('emailVerify');
+                if (!box) return;
+                var form = document.getElementById('contact-form');
+                var email = document.getElementById('cfEmail');
+                var sendBtn = document.getElementById('evSend');
+                var otpRow = document.getElementById('evOtp');
+                var code = document.getElementById('evCode');
+                var verifyBtn = document.getElementById('evVerify');
+                var changeBtn = document.getElementById('evChange');
+                var msg = document.getElementById('evMsg');
+                var timer = null;
+                // Quick client-side hint only; the server holds the full list and has the final say.
+                var personal = ['gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.co.in', 'yahoo.in', 'ymail.com', 'rocketmail.com',
+                    'outlook.com', 'outlook.in', 'hotmail.com', 'hotmail.in', 'live.com', 'live.in', 'msn.com', 'icloud.com', 'me.com',
+                    'mac.com', 'aol.com', 'protonmail.com', 'proton.me', 'pm.me', 'zoho.com', 'zohomail.com', 'zohomail.in', 'yandex.com',
+                    'mail.com', 'gmx.com', 'rediffmail.com', 'rediff.com', 'mailinator.com', 'yopmail.com', 'tempmail.com', '10minutemail.com'];
+
+                function say(text, type) {
+                    msg.className = 'ev-msg d-block' + (type ? ' is-' + type : '');
+                    msg.textContent = text;
+                }
+                function clientError(value) {
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) return 'Please enter a valid email address.';
+                    var domain = value.split('@').pop().toLowerCase();
+                    if (personal.indexOf(domain) !== -1) return 'Please use your business email address. Personal email addresses (Gmail, Yahoo, Outlook, etc.) are not accepted.';
+                    return '';
+                }
+                function post(data) {
+                    return fetch('email-otp.php', {
+                        method: 'POST',
+                        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                        body: new URLSearchParams(data),
+                        credentials: 'same-origin'
+                    }).then(function (r) { return r.json(); })
+                      .catch(function () { return { ok: false, message: 'Network error. Please try again.' }; });
+                }
+                function startCooldown(seconds, text) {
+                    clearInterval(timer);
+                    say(text, 'info');
+                    var resend = document.createElement('button');
+                    resend.type = 'button';
+                    resend.setAttribute('data-resend', '');
+                    msg.appendChild(document.createTextNode(' '));
+                    msg.appendChild(resend);
+                    var left = seconds;
+                    function tick() {
+                        if (!resend.isConnected) { clearInterval(timer); return; }
+                        if (left <= 0) {
+                            resend.disabled = false;
+                            resend.textContent = 'Resend code';
+                            clearInterval(timer);
+                        } else {
+                            resend.disabled = true;
+                            resend.textContent = 'Resend in ' + left + 's';
+                        }
+                        left--;
+                    }
+                    tick();
+                    timer = setInterval(tick, 1000);
+                }
+                function sendCode() {
+                    var value = email.value.trim();
+                    var err = clientError(value);
+                    if (err) { say(err, 'error'); email.focus(); return; }
+                    sendBtn.disabled = true;
+                    sendBtn.textContent = 'Sending…';
+                    say('Sending a verification code…', 'info');
+                    post({ action: 'send', email: value }).then(function (res) {
+                        sendBtn.disabled = false;
+                        sendBtn.textContent = 'Resend OTP';
+                        if (!res.ok) {
+                            if (res.wait) { otpRow.hidden = false; startCooldown(res.wait, res.message); }
+                            else say(res.message, 'error');
+                            return;
+                        }
+                        otpRow.hidden = false;
+                        code.value = '';
+                        code.focus();
+                        startCooldown(res.wait || 60, res.message + ' Check your inbox (and spam folder).');
+                    });
+                }
+                function verifyCode() {
+                    var value = code.value.replace(/\D/g, '');
+                    if (value.length !== 6) { say('Please enter the 6-digit code from your email.', 'error'); code.focus(); return; }
+                    verifyBtn.disabled = true;
+                    verifyBtn.textContent = 'Verifying…';
+                    post({ action: 'verify', email: email.value.trim(), code: value }).then(function (res) {
+                        verifyBtn.disabled = false;
+                        verifyBtn.textContent = 'Verify';
+                        if (!res.ok) { say(res.message, 'error'); code.select(); return; }
+                        clearInterval(timer);
+                        box.classList.add('is-verified');
+                        email.readOnly = true;
+                        otpRow.hidden = true;
+                        say('Your email address is verified.', 'ok');
+                    });
+                }
+                function reset() {
+                    clearInterval(timer);
+                    box.classList.remove('is-verified');
+                    email.readOnly = false;
+                    otpRow.hidden = true;
+                    sendBtn.textContent = 'Send OTP';
+                    say('', '');
+                }
+
+                sendBtn.addEventListener('click', sendCode);
+                verifyBtn.addEventListener('click', verifyCode);
+                changeBtn.addEventListener('click', function () { reset(); email.focus(); email.select(); });
+                msg.addEventListener('click', function (e) {
+                    if (e.target.hasAttribute('data-resend') && !e.target.disabled) sendCode();
+                });
+                email.addEventListener('input', function () {
+                    if (!otpRow.hidden) { clearInterval(timer); otpRow.hidden = true; sendBtn.textContent = 'Send OTP'; say('', ''); }
+                });
+                email.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' && !box.classList.contains('is-verified')) { e.preventDefault(); sendCode(); }
+                });
+                code.addEventListener('input', function () {
+                    code.value = code.value.replace(/\D/g, '').slice(0, 6);
+                    if (code.value.length === 6) verifyCode();
+                });
+                code.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') { e.preventDefault(); verifyCode(); }
+                });
+                form.addEventListener('submit', function (e) {
+                    if (!box.classList.contains('is-verified')) {
+                        e.preventDefault();
+                        var err = clientError(email.value.trim());
+                        say(err || 'Please verify your email before sending your message: click "Send OTP" and enter the code we email you.', 'error');
+                        email.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                });
+            })();
+        </script>
     </body>
 </html>

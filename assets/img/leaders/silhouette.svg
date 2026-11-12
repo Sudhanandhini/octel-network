@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 672" width="570" height="672" role="img" aria-label="Leader silhouette">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef0f2"/>
+      <stop offset="1" stop-color="#cfd5d9"/>
+    </linearGradient>
+    <linearGradient id="fig" gradientUnits="userSpaceOnUse" x1="0" y1="130" x2="0" y2="672">
+      <stop offset="0" stop-color="#97a2a9"/>
+      <stop offset="1" stop-color="#5f6b72"/>
+    </linearGradient>
+  </defs>
+  <rect width="570" height="672" fill="url(#bg)"/>
+  <!-- neck + shoulders as one continuous shape -->
+  <path fill="url(#fig)" d="M240 360
+           C242 400 238 425 228 440
+           C130 458 52 520 36 640
+           L32 672 L538 672 L534 640
+           C518 520 440 458 342 440
+           C332 425 328 400 330 360 Z"/>
+  <!-- head -->
+  <path fill="url(#fig)" d="M285 128
+           C346 128 384 176 384 246
+           C384 330 340 398 285 398
+           C230 398 186 330 186 246
+           C186 176 224 128 285 128 Z"/>
+  <!-- subtle collar / lapel hint -->
+  <path fill="none" stroke="#eef0f2" stroke-opacity="0.35" stroke-width="6" stroke-linecap="round"
+        d="M228 446 L285 540 L342 446"/>
+</svg>

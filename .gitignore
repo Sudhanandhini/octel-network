@@ -5,3 +5,8 @@ data/contacts.json
 
 # Secrets (SMTP password, email routing); .env.example is the committed template.
 .env
+
+*.zip
+
+# Email verification rate-limit counters (created at runtime)
+data/otp-rate.json

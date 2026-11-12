@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Link of CSS files -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets/css/scrollcue.min.css">
+        <link rel="stylesheet" href="assets/css/remixicon.css">
+        <link rel="stylesheet" href="assets/css/header.css?v=20261105">
+        <link rel="stylesheet" href="assets/css/style.css?v=20261110e">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261110">
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
+
+        <title>Our Clients – Octel Networks</title>
+        <meta name="description" content="Government bodies, high courts, enterprises, hospitals and institutions across India trust Octel Networks with their IT and network infrastructure.">
+        <link rel="icon" type="image/png" href="assets/img/octel-favicon.png">
+        <style>
+            a.navbar-brand {
+                position: relative;
+                display: inline-block;
+            }
+            a.navbar-brand .logo-default,
+            a.navbar-brand .logo-hover {
+                transition: opacity 0.4s ease, transform 0.4s ease;
+            }
+            a.navbar-brand .logo-hover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-default,
+            .navbar-area.sticky a.navbar-brand .logo-default {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            a.navbar-brand:hover .logo-hover,
+            .navbar-area.sticky a.navbar-brand .logo-hover {
+                opacity: 1;
+                transform: scale(1);
+            }
+        </style>
+        <style>
+            .breadcrumb-area.style-one .br-bg:after { background: linear-gradient(90deg, rgba(0, 0, 0, .85) 0%, rgba(0, 0, 0, .55) 45%, rgba(0, 0, 0, .15) 100%); }
+            .client-intro p { color: var(--paraColor); font-size: 17px; line-height: 1.7; }
+            .client-stats { display: flex; flex-wrap: wrap; gap: 16px; }
+            .client-stat { flex: 1 1 140px; background: #fff; border: 1px solid #D9D9D9; padding: 22px 24px; }
+            .client-stat strong { display: block; font-size: 32px; font-weight: 700; color: var(--titleColor); line-height: 1.1; margin-bottom: 4px; }
+            .client-stat span { color: var(--paraColor); font-size: 15px; }
+            .client-filter { display: flex; flex-wrap: wrap; gap: 10px; }
+            .client-filter button { border: 1px solid #D9D9D9; background: #fff; color: var(--titleColor); padding: 10px 20px; border-radius: 50px; font-size: 15px; font-weight: 500; transition: all .3s ease; }
+            .client-filter button:hover { border-color: var(--secondaryColor); color: var(--secondaryColor); }
+            .client-filter button.active { background: var(--secondaryColor); border-color: var(--secondaryColor); color: #fff; }
+            .client-filter button em { font-style: normal; font-size: 12px; opacity: .65; margin-left: 4px; }
+            .client-group { margin-bottom: 50px; }
+            .client-group:last-child { margin-bottom: 0; }
+            .client-group.is-hidden { display: none; }
+            .client-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border-bottom: 1px solid #D9D9D9; padding-bottom: 12px; margin-bottom: 20px; }
+            .client-group-head h3 { font-size: 22px; font-weight: 600; margin: 0; position: relative; padding-left: 16px; }
+            .client-group-head h3:before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 4px; height: 70%; background: var(--secondaryColor); border-radius: 2px; }
+            .client-group-head span { color: var(--paraColor); font-size: 14px; white-space: nowrap; }
+            .client-mono { width: 84px; height: 84px; margin: 8px 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700; letter-spacing: .5px; color: var(--secondaryColor); background: rgba(227, 0, 22, .07); border: 1px solid rgba(227, 0, 22, .18); transition: all .3s ease; }
+            .client-card:hover .client-mono { background: var(--secondaryColor); color: #fff; }
+            .client-card span { font-weight: 500; }
+            .theme-dark .client-group-head { border-color: var(--borderColor); }
+            @media (max-width: 575px) { .client-mono { width: 64px; height: 64px; font-size: 20px; } .client-group-head h3 { font-size: 18px; } }
+            .client-grid { --cols: 5; --gap: 16px; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: var(--gap); }
+            .client-grid .client-card { flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)); }
+            .client-card { background: #fff; border: 1px solid #D9D9D9; min-height: 160px; padding: 20px 16px 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; transition: all .3s ease; }
+            .client-card:hover { border-color: var(--secondaryColor); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 0, 0, .06); }
+            .client-card img { width: 100%; max-width: 190px; height: 100px; padding: 0 6px; box-sizing: border-box; object-fit: contain; transition: all .3s ease; }
+            .client-card span { font-size: 13px; line-height: 1.35; color: var(--paraColor); }
+            .client-card.is-hidden { display: none; }
+            .client-wordmark { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 700; font-style: italic; color: var(--titleColor, #111); }
+            @media (max-width: 575px) { .client-wordmark { height: 80px; font-size: 24px; } }
+            .theme-dark .client-card, .theme-dark .client-stat, .theme-dark .client-filter button:not(.active) { background: var(--charcoalColor); border-color: var(--borderColor); }
+            @media (max-width: 1199px) { .client-grid { --cols: 4; } }
+            @media (max-width: 991px)  { .client-grid { --cols: 3; } }
+            @media (max-width: 575px)  { .client-grid { --cols: 2; --gap: 12px; } .client-card { min-height: 140px; } .client-card img { height: 80px; } }
+        </style>
+    </head>
+    <body>
+
+       <!--  Preloader Start -->
+        <div class="preloader-area" id="preloader">
+            <div class="preloader-inner">
+                <img src="assets/img/new/logo-white.png" alt="Octel Networks" class="preloader-logo" width="220" height="68">
+                <div class="preloader-bar"><span></span></div>
+            </div>
+        </div>
+        <!--  Preloader End -->
+
+        <!-- Custom Cursor -->
+        <div class="cursor">
+            <span class="cursor-text d-flex flex-column align-items-center justify-content-center rounded-circle bg-white text-title fs-14 fw-semibold"></span>
+        </div>
+        <div class="cursor-inner"></div>
+
+        <div id="smooth-wrapper">
+            <div id="smooth-content">
+
+                <div class="bg-albastor position-relative z-1">
+
+                    <!-- Navbar Area Start -->
+                    <div class="navbar-area style-one position-relative z-2" id="navbar">
+                        <div class="container style-two">
+                            <div class="navbar-wrapper d-flex justify-content-between align-items-center">
+                                <a href="index.html" class="navbar-brand">
+                                    <img src="assets/img/logo-white.png" alt="Logo" class="logo-default">
+                                    <img src="assets/img/new/logo-white.png" alt="Logo" class="logo-hover">
+                                </a>
+                                <div class="menu-area mx-auto">
+                                    <div class="overlay"></div>
+                                    <nav class="menu">
+                                        <div class="menu-mobile-header">
+                                            <button type="button" class="menu-mobile-arrow bg-transparent border-0"><i class="ri-arrow-left-s-line"></i></button>
+                                            <div class="menu-mobile-title"></div>
+                                            <button type="button" class="menu-mobile-close bg-transparent border-0"><i class="ri-close-line"></i></button>
+                                        </div>
+                                        <ul class="menu-section p-0 mb-0 lh-1">
+                                            <li class="menu-item-has-children">
+                                                <a href="services.html">SOLUTIONS</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="distribution.html">DISTRIBUTION</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="partners.html">OUR PARTNERS</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="javascript:void(0)">WHY OCTEL?<i class="ri-arrow-down-s-line"></i></a>
+                                                <ul class="menu-subs menu-column-1">
+                                                    <li><a href="why-octel.html">Why Octel</a></li>
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="our-leaders.html">Our Leaders</a></li>
+                                                    <li><a href="clients.html">Our Clients</a></li>
+                                                    <li><a href="case-studies.html">Case Studies</a></li>
+                                                    <li><a href="careers.html">Careers</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="other-options d-flex flex-wrap align-items-center justify-content-end">
+                                    <div class="option-item position-relative d-flex align-items-center">
+                                        <div class="mobile-options position-relative d-lg-none me-3">
+                                            <button class="dropdown-toggle  text-center bg-transparent border-0 p-0 transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                                <i class="ri-more-fill"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-centered mobile-option-list top-1 border-0" data-bs-popper="static">
+                                                <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
+                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                    <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
+                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <button class="search-btn bg_gradient border-0 rounded-circle d-flex flex-column align-items-center justify-content-center dropdown-toggle transition" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                            <i class="ri-search-line"></i>
+                                            <i class="ri-close-line"></i>
+                                        </button>
+                                        <div class="search-dropdown dropdown-menu dropdown-menu-right top-1 border-0" data-bs-popper="static">
+                                            <form class="search-popup position-relative" action="search.html" method="get" role="search">
+                                                <input type="search" name="q" class="form-control text-para" placeholder="Search Here" aria-label="Search the site" required>
+                                                <button type="submit" class="position-absolute top-0 end-0 h-100 border-0 bg-transparent d-flex flex-column align-items-center justify-content-center"><i class="ri-search-2-line"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="option-item d-lg-block d-none">
+                                        <a href="contact.html" class="btn style-one d-inline-flex align-items-center">
+                                            <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                            <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Contact Us</span>
+                                            <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon"></span>
+                                        </a>
+                                    </div>
+                                    <div class="option-item d-lg-none">
+                                        <button type="button" class="menu-mobile-trigger">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Navbar Area End -->
+
+                    <!-- Breadcrumb Area Start -->
+                    <div class="breadcrumb-area style-one position-relative z-1">
+                        <div class="br-bg img-container position-absolute top-0 start-0 w-100">
+                            <img src="assets/img/client.jpg" alt="Our clients" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <div class="container style-one">
+                            <div class="row">
+                                <div class="col-xxl-10 col-lg-8">
+                                    <h2 class="section-title style-three text-white fw-bold mb-20 reveal-text">Our Clients</h2>
+                                    <ul class="br-menu list-unstyled mb-0">
+                                        <li class="fs-xxl-18"><a href="index.html">Home</a></li>
+                                        <li class="fs-xxl-18"><a href="why-octel.html">Why Octel?</a></li>
+                                        <li class="fs-xxl-18">Our Clients</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Breadcrumb Area End -->
+
+                    <!-- Clients Start -->
+                    <div class="bg-albastor">
+                        <div class="container style-one ptb-120">
+                            <div class="row align-items-end mb-50">
+                                <div class="col-lg-7 mb-md-30 client-intro">
+                                    <h2 class="section-title style-one fw-semibold title-anim mb-20">
+                                        <small class="fs-18 fw-normal d-inline-block">OUR ESTEEMED CLIENTS</small>
+                                        Trusted by organisations that can't afford downtime
+                                    </h2>
+                                    <p class="mb-0">From defence establishments and high courts to hospitals, universities and global enterprises, Octel Networks designs, builds and supports the IT and network infrastructure our clients rely on every day.</p>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="client-stats">
+                                        <div class="client-stat round-20"><strong>15,000+</strong><span>Clients served</span></div>
+                                        <div class="client-stat round-20"><strong>14</strong><span>Industries served</span></div>
+                                        <div class="client-stat round-20"><strong>25+</strong><span>Years, since 1999</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="client-filter mb-40" role="group" aria-label="Filter clients by sector">
+                                <button type="button" class="active" data-filter="all">All Sectors</button>
+                                <button type="button" data-filter="it">IT &amp; Technology <em>6</em></button>
+                                <button type="button" data-filter="telecom">Tech &amp; Telecom <em>3</em></button>
+                                <button type="button" data-filter="health">Healthcare <em>3</em></button>
+                                <button type="button" data-filter="mfg">Manufacturing <em>3</em></button>
+                                <button type="button" data-filter="metals">Cement &amp; Metals <em>1</em></button>
+                                <button type="button" data-filter="energy">Energy &amp; Power <em>4</em></button>
+                                <button type="button" data-filter="gov">Government &amp; Defence <em>10</em></button>
+                                <button type="button" data-filter="edu">Education &amp; Research <em>6</em></button>
+                                <button type="button" data-filter="fin">Banking &amp; Finance <em>6</em></button>
+                                <button type="button" data-filter="media">Media <em>2</em></button>
+                                <button type="button" data-filter="bpo">BPO &amp; Staffing <em>2</em></button>
+                                <button type="button" data-filter="ecom">E-commerce &amp; Logistics <em>2</em></button>
+                                <button type="button" data-filter="construct">Construction &amp; Real Estate <em>6</em></button>
+                                <button type="button" data-filter="hosp">Hospitality <em>1</em></button>
+                            </div>
+                            <div id="clientGroups">
+                                <section class="client-group" data-cat="it">
+                                    <div class="client-group-head"><h3>IT, Software &amp; Technology Services</h3><span>6 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/netradyne.png" alt="Netradyne" loading="lazy">
+                                            <span>Netradyne</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/zafin.png" alt="Zafin" loading="lazy">
+                                            <span>Zafin</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/top/lnt.png" alt="L&amp;T Technology Services" loading="lazy">
+                                            <span>L&amp;T Technology Services</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/xemplar.png" alt="Xemplar Insights" loading="lazy">
+                                            <span>Xemplar Insights</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/bay6ai.png" alt="Bay6.ai" loading="lazy">
+                                            <span>Bay6.ai</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/blute.png" alt="Blute Technologies" loading="lazy">
+                                            <span>Blute Technologies</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="telecom">
+                                    <div class="client-group-head"><h3>Global Tech &amp; Telecom</h3><span>3 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">GO</div>
+                                            <span>Google</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/airtel.png" alt="Bharti Airtel" loading="lazy">
+                                            <span>Bharti Airtel</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">HFC</div>
+                                            <span>HFCL</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="health">
+                                    <div class="client-group-head"><h3>Healthcare &amp; Healthcare BPO</h3><span>3 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/omega-healthcare.png" alt="Omega Healthcare" loading="lazy">
+                                            <span>Omega Healthcare</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/corrohealth.png" alt="CorroHealth" loading="lazy">
+                                            <span>CorroHealth</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/kauvery-hospital.png" alt="Kauvery Hospital" loading="lazy">
+                                            <span>Kauvery Hospital</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="mfg">
+                                    <div class="client-group-head"><h3>Manufacturing &amp; Engineering</h3><span>3 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/top/carl-zeiss.png" alt="Carl Zeiss" loading="lazy">
+                                            <span>Carl Zeiss</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/denso.png" alt="Denso Kirloskar" loading="lazy">
+                                            <span>Denso Kirloskar</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">KE</div>
+                                            <span>Kennametal</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="metals">
+                                    <div class="client-group-head"><h3>Cement, Steel, Metals &amp; Chemicals</h3><span>1 client</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/aditya-birla.png" alt="Aditya Birla Group" loading="lazy">
+                                            <span>Aditya Birla Group</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="energy">
+                                    <div class="client-group-head"><h3>Energy &amp; Power</h3><span>4 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">KM</div>
+                                            <span>Kohima-Mariani Transmission</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">SP</div>
+                                            <span>SKM Powertech</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">SP</div>
+                                            <span>Sunleo Power Networks</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">AO</div>
+                                            <span>Aban Offshore</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="gov">
+                                    <div class="client-group-head"><h3>Government, Defence &amp; Public Sector</h3><span>10 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/top/aai.png" alt="Airports Authority of India" loading="lazy">
+                                            <span>Airports Authority of India</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/top/indian-railways.png" alt="South Western Railway" loading="lazy">
+                                            <span>South Western Railway</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/top/maha-metro.png" alt="Maha Metro" loading="lazy">
+                                            <span>Maha Metro</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/top/telangana-high-court.png" alt="High Court for the State of Telangana" loading="lazy">
+                                            <span>High Court for the State of Telangana</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/high-court-karnataka.png" alt="High Court of Karnataka" loading="lazy">
+                                            <span>High Court of Karnataka</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/high-court-sikkim.png" alt="High Court of Sikkim" loading="lazy">
+                                            <span>High Court of Sikkim</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/top/cmp-records.png" alt="Corps of Military Police Records" loading="lazy">
+                                            <span>Corps of Military Police Records</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">DIA</div>
+                                            <span>DIAT</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">BEM</div>
+                                            <span>BEML</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/cdac.png" alt="C-DAC" loading="lazy">
+                                            <span>C-DAC</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="edu">
+                                    <div class="client-group-head"><h3>Education &amp; Research</h3><span>6 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/iitm.png" alt="IIT Madras &amp; its Lab-Grown Diamonds Centre" loading="lazy">
+                                            <span>IIT Madras &amp; its Lab-Grown Diamonds Centre</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/srmc.png" alt="Sri Ramachandra Institute of Higher Education &amp; Research" loading="lazy">
+                                            <span>Sri Ramachandra Institute of Higher Education &amp; Research</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/cstep.png" alt="CSTEP" loading="lazy">
+                                            <span>CSTEP</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/tigs.png" alt="Tata Institute for Genetics and Society" loading="lazy">
+                                            <span>Tata Institute for Genetics and Society</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">SI</div>
+                                            <span>Sreenidhi Institute</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">RM</div>
+                                            <span>Ramakrishna Mission Vidyapith</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="fin">
+                                    <div class="client-group-head"><h3>Banking, Finance &amp; Forex</h3><span>6 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/al-ansari.png" alt="Al Ansari" loading="lazy">
+                                            <span>Al Ansari</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">BF</div>
+                                            <span>BFC Forex</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/all/repco.png" alt="Repco Home Finance" loading="lazy">
+                                            <span>Repco Home Finance</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">CH</div>
+                                            <span>Canfin Homes</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">IF</div>
+                                            <span>IDFC First Bank</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">JC</div>
+                                            <span>Jupiter Capital</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="media">
+                                    <div class="client-group-head"><h3>Media &amp; Entertainment</h3><span>2 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <img src="assets/img/clients/top/jiostar.png" alt="JioStar" loading="lazy">
+                                            <span>JioStar</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">ST</div>
+                                            <span>Star India</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="bpo">
+                                    <div class="client-group-head"><h3>BPO, Call Centres &amp; Staffing</h3><span>2 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">EC</div>
+                                            <span>Expert Callers</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">EM</div>
+                                            <span>ETC Management Services</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="ecom">
+                                    <div class="client-group-head"><h3>E-commerce, Logistics &amp; Mobility</h3><span>2 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">IN</div>
+                                            <span>Instakart</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">FL</div>
+                                            <span>Flipkart</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="construct">
+                                    <div class="client-group-head"><h3>Construction, Real Estate &amp; Interiors</h3><span>6 clients</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">DC</div>
+                                            <span>Deepam Constructions</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">NI</div>
+                                            <span>Nirmaan (Stratos Infra)</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">LC</div>
+                                            <span>L&amp;T Construction Smart World</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">NS</div>
+                                            <span>Nexus Shantiniketan</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">KI</div>
+                                            <span>Kolab Interiors</span>
+                                        </div>
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">SI</div>
+                                            <span>Sai Interiors</span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="client-group" data-cat="hosp">
+                                    <div class="client-group-head"><h3>Hospitality &amp; Clubs</h3><span>1 client</span></div>
+                                    <div class="client-grid">
+                                        <div class="client-card round-20">
+                                            <div class="client-mono" aria-hidden="true">DC</div>
+                                            <span>Domlur Club</span>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        (function () {
+                            var btns = document.querySelectorAll('.client-filter button');
+                            var groups = document.querySelectorAll('#clientGroups .client-group');
+                            btns.forEach(function (btn) {
+                                btn.addEventListener('click', function () {
+                                    var f = btn.getAttribute('data-filter');
+                                    btns.forEach(function (b) {
+                                        b.classList.toggle('active', b === btn);
+                                        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+                                    });
+                                    groups.forEach(function (g) {
+                                        g.classList.toggle('is-hidden', f !== 'all' && g.getAttribute('data-cat') !== f);
+                                    });
+                                    if (window.ScrollTrigger) { window.ScrollTrigger.refresh(); }
+                                });
+                            });
+                        })();
+                    </script>
+                    <!-- Clients End -->
+
+                    <div class="cta-area style-two" data-cue="slideInUp" style="padding-bottom: 60px;">
+                        <div class="container-fluid style-two">
+                            <div class="cta-box">
+                                <div class="container px-xl-0">
+                                    <div class="row align-items-center">
+                                        <div class="col-xxl-7 col-lg-7 mb-sm-20 mb-md-20">
+                                            <h6 class="fs-18 fw-bold text-white text-xl-center mb-0">Join 15,000+ clients who trust Octel Networks with their IT &amp; network infrastructure.</h6>
+                                        </div>
+                                        <div class="col-xxl-5 col-lg-5 ps-xxl-5">
+                                            <div class="text-xxl-center text-lg-end ms-xxl-2">
+                                                <a href="contact.html#contact-form" class="btn style-two d-inline-flex align-items-center">
+                                                    <span class="btn-icon-one d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                                    <span class="btn-text fw-bold d-flex flex-column align-items-center justify-content-center transition">Schedule Free Consultation</span>
+                                                    <span class="btn-icon-two d-flex flex-column align-items-center justify-content-center rounded-circle transition"><img src="assets/img/new/right-arrow.svg" alt="Icon" class="d-block mx-auto"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Footer Section Start -->
+                <footer class="footer-area style-one">
+                    <div class="container style-one">
+                        <div class="footer-top">
+                            <div class="row g-4 g-xl-5">
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft">
+                                        <a href="index.html" class="logo d-inline-block mb-20">
+                                            <img src="assets/img/new/logo-white.png" alt="Octel Networks">
+                                        </a>
+                                        <p class="footer-about mb-25">Building the IT, network and security infrastructure businesses rely on, since 1999.</p>
+                                        <ul class="social-profile style-one list-unstyled mb-0">
+                                            <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
+                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="100">
+                                        <h3 class="footer-widget-title">Our Solutions</h3>
+                                        <ul class="footer-menu list-unstyled mb-0">
+                                            <li><a href="cyber-security.html">Cybersecurity</a></li>
+                                            <li><a href="cloud-solutions-support.html">Cloud Services &amp; Migration</a></li>
+                                            <li><a href="it-network-infrastructure.html">Network Infrastructure</a></li>
+                                            <li><a href="ip-video-surveillance.html">IP Video Surveillance</a></li>
+                                            <li><a href="data-center-infrastructure.html">Data Center Infrastructure</a></li>
+                                            <li><a href="services.html" class="footer-menu-more">View All Solutions <i class="ri-arrow-right-line"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="200">
+                                        <h3 class="footer-widget-title">Distribution</h3>
+                                        <ul class="footer-menu list-unstyled mb-0">
+                                            <li><a href="matrix-details.html">Matrix</a></li>
+                                            <li><a href="rm-details.html">R&amp;M</a></li>
+                                            <li><a href="rittal-details.html">Rittal</a></li>
+                                            <li><a href="netka-details.html">NETKA System</a></li>
+                                            <li><a href="distribution.html" class="footer-menu-more">View All <i class="ri-arrow-right-line"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="footer-widget" data-cue="slideInLeft" data-delay="300">
+                                        <h3 class="footer-widget-title">Contact Us</h3>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-shopping-bag-3-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Sales</span>
+                                                <a href="tel:+918041155349" class="contact-num d-block">080 41155349</a>
+                                                <a href="mailto:info@octelnetworks.com" class="contact-mail d-inline-block">info@octelnetworks.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="footer-contact d-flex">
+                                            <span class="footer-contact-icon d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"><i class="ri-customer-service-2-line"></i></span>
+                                            <div>
+                                                <span class="footer-contact-label d-block">Service</span>
+                                                <a href="tel:+918049574038" class="contact-num d-block">080 49574038</a>
+                                                <a href="mailto:helpdesk@octelnetworks.com" class="contact-mail d-inline-block">helpdesk@octelnetworks.com</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-bottom">
+                            <div class="row align-items-center g-2">
+                                <div class="col-md-7">
+                                    <p class="copyright-text text-md-start text-center text-black mb-0"><i class="ri-copyright-line"></i><span class="text_secondary ms-1">2026 Octel Networks.</span> All Rights Reserved.</p>
+                                </div>
+                                <div class="col-md-5">
+                                    <p class="copyright-text text-md-end text-center text-black mb-0">Developed by <a href="https://www.sunsys.in" target="_blank" rel="noopener" class="text_secondary">Manithas Technologies Pvt. Ltd.</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- Footer End -->
+
+            </div>
+        </div>
+        <!-- Back to Top -->
+        <div id="progress-wrap" class="progress-wrap style-one">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+              <path id="progress-path" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+            </svg>
+        </div>
+
+        <!-- Link of JS files -->
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/megamenu.js"></script>
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <script src="assets/js/fslightbox.js"></script>
+        <script src="assets/js/gsap.min.js"></script>
+        <script src="assets/js/scrollTrigger.min.js"></script>
+        <script src="assets/js/lenis.min.js"></script>
+        <script src="assets/js/scrollToPlugin.js"></script>
+        <script src="assets/js/SplitText.min.js"></script>
+        <script src="assets/js/customEase.js"></script>
+        <script src="assets/js/scrollcue.min.js"></script>
+        <script src="assets/js/main.js?v=20261028b"></script>
+        <script src="assets/js/chatbot.js"></script>
+        <script src="assets/js/cookie-consent.js?v=20261029"></script>
+    </body>
+</html>

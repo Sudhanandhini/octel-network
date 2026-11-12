@@ -10,6 +10,13 @@ $slugImage = [
     'netka' => 'assets/img/services/img2.jpg',
     'matrix' => 'assets/img/services/img1.jpg',
 ];
+// Banner images used only in this page's hero slider (base path; .webp + .jpg exist).
+// They take priority over the admin banner_image, which still drives the home and detail pages.
+$distPageBanner = [
+    'matrix' => 'assets/img/distributors/banners/matrix-banner',
+    'rm'     => 'assets/img/distributors/banners/rm-banner',
+    'rittal' => 'assets/img/distributors/banners/rittal-banner',
+];
 $slugShortName = [
     'rittal' => 'Rittal',
     'rm' => 'R&M',
@@ -30,8 +37,8 @@ $slugShortName = [
         <link rel="stylesheet" href="assets/css/scrollcue.min.css">
         <link rel="stylesheet" href="assets/css/remixicon.css">
         <link rel="stylesheet" href="assets/css/header.css?v=20261105">
-        <link rel="stylesheet" href="assets/css/style.css?v=20261028b">
-        <link rel="stylesheet" href="assets/css/footer.css?v=20261105c">
+        <link rel="stylesheet" href="assets/css/style.css?v=20261110e">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261110">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
 
@@ -298,12 +305,9 @@ $slugShortName = [
 
        <!--  Preloader Start -->
         <div class="preloader-area" id="preloader">
-            <div class="spinner">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="preloader-inner">
+                <img src="assets/img/new/logo-white.png" alt="Octel Networks" class="preloader-logo" width="220" height="68">
+                <div class="preloader-bar"><span></span></div>
             </div>
         </div>
         <!--  Preloader End -->
@@ -351,6 +355,7 @@ $slugShortName = [
                                                     <li><a href="why-octel.html">Why Octel</a></li>
                                                     <li><a href="about.html">About Us</a></li>
                                                     <li><a href="our-leaders.html">Our Leaders</a></li>
+                                                    <li><a href="clients.html">Our Clients</a></li>
                                                     <li><a href="case-studies.html">Case Studies</a></li>
                                                     <li><a href="careers.html">Careers</a></li>
                                                 </ul>
@@ -413,7 +418,14 @@ $slugShortName = [
                                     $title = $slugShortName[$d['slug']] ?? $d['nav_name'];
                                 ?>
                                 <div class="swiper-slide">
+                                    <?php if (isset($distPageBanner[$d['slug']])): $b = $distPageBanner[$d['slug']]; ?>
+                                    <picture class="d-block w-100 h-100">
+                                        <source srcset="<?= e($b) ?>.webp" type="image/webp">
+                                        <img src="<?= e($b) ?>.jpg" alt="<?= e($title) ?> products" class="w-100 h-100 object-fit-cover" width="1920" height="641">
+                                    </picture>
+                                    <?php else: ?>
                                     <img src="<?= e($image) ?>" alt="<?= e($title) ?>" class="w-100 h-100 object-fit-cover">
+                                    <?php endif; ?>
                                 </div>
                                 <?php endforeach; ?>
                             </div>
@@ -591,17 +603,6 @@ $slugShortName = [
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="footer-links">
-                            <ul class="footer-bottom-menu list-unstyled text-center mb-0">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="services.html">Solutions</a></li>
-                                <li><a href="distribution.html">Distribution</a></li>
-                                <li><a href="partners.html">Our Partners</a></li>
-                                <li><a href="careers.html">Careers</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
                         </div>
                         <div class="footer-bottom">
                             <div class="row align-items-center g-2">

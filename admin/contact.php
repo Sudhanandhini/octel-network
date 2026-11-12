@@ -64,6 +64,9 @@ require __DIR__ . '/includes/layout-top.php';
     <?php endif; ?>
 
     <div class="detail-grid">
+        <?php if (($c['organization'] ?? '') !== ''): ?>
+        <div><div class="k">Organization</div><div class="v"><?= e($c['organization']) ?></div></div>
+        <?php endif; ?>
         <div><div class="k">Email</div><div class="v"><a href="mailto:<?= e($c['email']) ?>"><?= e($c['email']) ?></a></div></div>
         <div><div class="k">Phone</div><div class="v"><a href="tel:<?= e(preg_replace('/[^0-9+]/', '', $c['phone'])) ?>"><?= e($c['phone']) ?></a></div></div>
         <div><div class="k">Submitted From</div><div class="v">

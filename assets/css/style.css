@@ -1098,56 +1098,55 @@ body {
   bottom: 0;
   z-index: 9999;
   position: fixed;
-  text-align: center;
   overflow: hidden;
-  background-color: var(--primaryColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
 }
-.preloader-area .spinner {
-  width: 7px;
-  height: 7px;
+.preloader-area .preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.preloader-area .preloader-logo {
+  width: 220px;
+  max-width: 60vw;
+  height: auto;
+  animation: preloader-pulse 1.6s ease-in-out infinite;
+}
+.preloader-area .preloader-bar {
+  position: relative;
+  width: 180px;
+  max-width: 50vw;
+  height: 3px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: rgba(227, 0, 22, 0.15);
+}
+.preloader-area .preloader-bar span {
   position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
-  margin: auto;
-}
-.preloader-area .spinner div {
-  animation: spinner 1.875s infinite backwards;
-  background-color: var(--primaryColor);
-  border-radius: 50%;
   height: 100%;
-  position: absolute;
-  width: 100%;
+  width: 40%;
+  border-radius: 3px;
+  background-color: var(--secondaryColor);
+  animation: preloader-slide 1.2s ease-in-out infinite;
 }
-.preloader-area .spinner div:nth-child(1) {
-  animation-delay: 0.15s;
-  background-color: rgba(185, 248, 177, 0.9);
+@keyframes preloader-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
 }
-.preloader-area .spinner div:nth-child(2) {
-  animation-delay: 0.3s;
-  background-color: rgba(185, 248, 177, 0.8);
+@keyframes preloader-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(0.97); }
 }
-.preloader-area .spinner div:nth-child(3) {
-  animation-delay: 0.45s;
-  background-color: rgba(185, 248, 177, 0.7);
-}
-.preloader-area .spinner div:nth-child(4) {
-  animation-delay: 0.6s;
-  background-color: rgba(185, 248, 177, 0.6);
-}
-.preloader-area .spinner div:nth-child(5) {
-  animation-delay: 0.75s;
-  background-color: rgba(185, 248, 177, 0.5);
-}
-
-@keyframes spinner {
-  0% {
-    transform: rotate(0deg) translateY(-200%);
-  }
-  60%, 100% {
-    transform: rotate(360deg) translateY(-200%);
-  }
+@media (prefers-reduced-motion: reduce) {
+  .preloader-area .preloader-logo,
+  .preloader-area .preloader-bar span { animation: none; }
+  .preloader-area .preloader-bar span { width: 100%; }
 }
 /*--------------------------------------------------
     Back To Top CSS
@@ -2510,6 +2509,20 @@ body {
   flex: 1;
 }
 
+/* Client logos (home "Our Esteemed Clients"): each PNG is pre-normalised to a
+   300x200 transparent canvas, so a fixed box keeps them all visually equal. */
+.brand-logo img.client-logo {
+  width: 100%;
+  max-width: 150px;
+  padding: 0 6px;
+  box-sizing: border-box;
+  height: 100px;
+  object-fit: contain;
+}
+.theme-dark .brand-logo img.client-logo {
+  filter: none;
+}
+
 /*-------------------------------
     Industry Section CSS
 -------------------------------*/
@@ -3124,7 +3137,7 @@ body {
 }
 
 .cta-box.style-one {
-  background-color: #00252C;
+  background-color: #737474;
   padding: 40px 25px 48px;
   margin-top: 50px;
 }
@@ -3135,7 +3148,7 @@ body {
   right: 8%;
 }
 .cta-box.style-one p {
-  color: #99A8AB;
+  color: #fff;
   margin-bottom: 42px;
 }
 .cta-box.style-one .btn-wrap a:first-child {

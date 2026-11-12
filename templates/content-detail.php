@@ -70,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         <link rel="stylesheet" href="assets/css/scrollcue.min.css">
         <link rel="stylesheet" href="assets/css/remixicon.css">
         <link rel="stylesheet" href="assets/css/header.css?v=20261105">
-        <link rel="stylesheet" href="assets/css/style.css?v=20261028b">
-        <link rel="stylesheet" href="assets/css/footer.css?v=20261105c">
+        <link rel="stylesheet" href="assets/css/style.css?v=20261110e">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261110">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
 
@@ -982,12 +982,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
 
        <!--  Preloader Start -->
         <div class="preloader-area" id="preloader">
-            <div class="spinner">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="preloader-inner">
+                <img src="assets/img/new/logo-white.png" alt="Octel Networks" class="preloader-logo" width="220" height="68">
+                <div class="preloader-bar"><span></span></div>
             </div>
         </div>
         <!--  Preloader End -->
@@ -1035,6 +1032,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                                     <li><a href="why-octel.html">Why Octel</a></li>
                                                     <li><a href="about.html">About Us</a></li>
                                                     <li><a href="our-leaders.html">Our Leaders</a></li>
+                                                    <li><a href="clients.html">Our Clients</a></li>
                                                     <li><a href="case-studies.html">Case Studies</a></li>
                                                     <li><a href="careers.html">Careers</a></li>
                                                 </ul>
@@ -1466,17 +1464,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="footer-links">
-                            <ul class="footer-bottom-menu list-unstyled text-center mb-0">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="services.html">Solutions</a></li>
-                                <li><a href="distribution.html">Distribution</a></li>
-                                <li><a href="partners.html">Our Partners</a></li>
-                                <li><a href="careers.html">Careers</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
                         </div>
                         <div class="footer-bottom">
                             <div class="row align-items-center g-2">

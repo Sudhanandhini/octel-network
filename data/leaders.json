@@ -4,7 +4,7 @@
         "published": true,
         "name": "VK Raju",
         "role": "Founder, Managing Director & CEO",
-        "image": "assets/img/ceo.jpg",
+        "image": "assets/img/leaders/silhouette.svg",
         "expertise": [
             "Strategic Planning",
             "Network Architecture",
@@ -18,7 +18,7 @@
         "published": true,
         "name": "Rajeev Pillai",
         "role": "Chief Operating Officer (COO)",
-        "image": "assets/img/team-2.jpg",
+        "image": "assets/img/leaders/silhouette.svg",
         "expertise": [
             "Business Growth",
             "Client Engagement",

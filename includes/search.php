@@ -22,6 +22,7 @@ function search_static_pages(): array {
         'distribution.html' => 'Distribution',
         'partners.html' => 'Our Partners',
         'our-leaders.html' => 'Our Leaders',
+        'clients.html' => 'Our Clients',
         'case-studies.html' => 'Case Studies',
         'careers.html' => 'Careers',
         'contact.html' => 'Contact Us',

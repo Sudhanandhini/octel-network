@@ -36,32 +36,35 @@
   color: var(--titleColor);
   max-width: 300px;
 }
-/* social icons in their official brand colours */
-.footer-area .social-profile li a[href*="facebook.com"] {
-  background-color: #1877F2;
-}
-.footer-area .social-profile li a[href*="x.com"],
-.footer-area .social-profile li a[href*="twitter.com"] {
-  background-color: #000000;
-}
-.footer-area .social-profile li a[href*="linkedin.com"] {
-  background-color: #0A66C2;
-}
-.footer-area .social-profile li a[href*="instagram.com"] {
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-}
-.footer-area .social-profile li a[href*="youtube.com"] {
-  background-color: #FF0000;
-}
+/* social icons: theme colour by default, official brand colour on hover */
 .footer-area .social-profile li a {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--secondaryColor);
+  color: #fff;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 .footer-area .social-profile li a::after {
   display: none;
 }
 .footer-area .social-profile li a:hover {
+  color: #fff;
   transform: translateY(-4px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+.footer-area .social-profile li a[href*="facebook.com"]:hover {
+  background: #1877F2;
+}
+.footer-area .social-profile li a[href*="x.com"]:hover,
+.footer-area .social-profile li a[href*="twitter.com"]:hover {
+  background: #000000;
+}
+.footer-area .social-profile li a[href*="linkedin.com"]:hover {
+  background: #0A66C2;
+}
+.footer-area .social-profile li a[href*="instagram.com"]:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.footer-area .social-profile li a[href*="youtube.com"]:hover {
+  background: #FF0000;
 }
 .footer-widget .footer-widget-title {
   position: relative;

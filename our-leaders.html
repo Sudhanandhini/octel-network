@@ -16,8 +16,8 @@ $leaders = get_published_leaders();
         <link rel="stylesheet" href="assets/css/scrollcue.min.css">
         <link rel="stylesheet" href="assets/css/remixicon.css">
         <link rel="stylesheet" href="assets/css/header.css?v=20261105">
-        <link rel="stylesheet" href="assets/css/style.css?v=20261028b">
-        <link rel="stylesheet" href="assets/css/footer.css?v=20261105c">
+        <link rel="stylesheet" href="assets/css/style.css?v=20261110e">
+        <link rel="stylesheet" href="assets/css/footer.css?v=20261110">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/dark-theme.css?v=20261028b">
 
@@ -62,12 +62,9 @@ $leaders = get_published_leaders();
 
        <!--  Preloader Start -->
         <div class="preloader-area" id="preloader">
-            <div class="spinner">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="preloader-inner">
+                <img src="assets/img/new/logo-white.png" alt="Octel Networks" class="preloader-logo" width="220" height="68">
+                <div class="preloader-bar"><span></span></div>
             </div>
         </div>
         <!--  Preloader End -->
@@ -115,6 +112,7 @@ $leaders = get_published_leaders();
                                                     <li><a href="why-octel.html">Why Octel</a></li>
                                                     <li><a href="about.html">About Us</a></li>
                                                     <li><a href="our-leaders.html">Our Leaders</a></li>
+                                                    <li><a href="clients.html">Our Clients</a></li>
                                                     <li><a href="case-studies.html">Case Studies</a></li>
                                                     <li><a href="careers.html">Careers</a></li>
                                                 </ul>
@@ -210,12 +208,6 @@ $leaders = get_published_leaders();
                                             <a href="<?= e($url) ?>" class="mail-link d-flex flex-column align-items-center justify-content-center rounded-circle transition" aria-label="View <?= e($leader['name']) ?>'s profile"><i class="ri-arrow-right-up-line"></i></a>
                                         </div>
                                     </div>
-                                    <h6 class="fs-18 font-primary fw-normal text-title mb-15">AREAS OF EXPERTISE</h6>
-                                    <ul class="skill-list list-unstyled mb-0">
-                                        <?php foreach ($leader['expertise'] as $skill): ?>
-                                        <li class="fs-xxl-18 d-inline-block"><a href="<?= e($url) ?>"><?= e($skill) ?></a></li>
-                                        <?php endforeach; ?>
-                                    </ul>
                                 </div>
                             </div>
                             <?php endforeach; ?>
@@ -311,17 +303,6 @@ $leaders = get_published_leaders();
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="footer-links">
-                            <ul class="footer-bottom-menu list-unstyled text-center mb-0">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="services.html">Solutions</a></li>
-                                <li><a href="distribution.html">Distribution</a></li>
-                                <li><a href="partners.html">Our Partners</a></li>
-                                <li><a href="careers.html">Careers</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
                         </div>
                         <div class="footer-bottom">
                             <div class="row align-items-center g-2">

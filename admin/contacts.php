@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
 $statuses = contact_statuses();
 $total = load_contacts();
 $q = admin_search_query();
-$all = admin_search_filter($total, $q, ['name', 'email', 'phone', 'message', 'source', 'interest', 'notes']);
+$all = admin_search_filter($total, $q, ['name', 'organization', 'email', 'phone', 'message', 'source', 'interest', 'notes']);
 $counts = count_contacts_by_status($all);
 
 $statusFilter = (string)($_GET['status'] ?? '');
@@ -48,7 +48,7 @@ require __DIR__ . '/includes/layout-top.php';
         <div class="alert alert-error"><?= e($error) ?></div>
     <?php endif; ?>
 
-    <?php render_admin_search($q, ['status' => $statusFilter], 'Search by name, email, phone, message or page…'); ?>
+    <?php render_admin_search($q, ['status' => $statusFilter], 'Search by name, organization, email, phone, message or page…'); ?>
     <?php if ($q !== ''): ?>
         <p class="search-note"><?= count($all) ?> result<?= count($all) === 1 ? '' : 's' ?> for “<?= e($q) ?>”</p>
     <?php endif; ?>
@@ -75,6 +75,7 @@ require __DIR__ . '/includes/layout-top.php';
                 <p class="item-sub" style="color:var(--titleColor)"><?= e(mb_strimwidth($c['message'], 0, 160, '…')) ?></p>
             <?php endif; ?>
             <div class="item-meta">
+                <?php if (($c['organization'] ?? '') !== ''): ?><span><i class="ri-building-line"></i><?= e($c['organization']) ?></span><?php endif; ?>
                 <span><i class="ri-mail-line"></i><?= e($c['email']) ?></span>
                 <span><i class="ri-phone-line"></i><?= e($c['phone']) ?></span>
                 <span><i class="ri-calendar-line"></i><?= e(format_contact_date($c['created_at'] ?? '')) ?></span>
