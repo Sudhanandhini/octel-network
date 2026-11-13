@@ -28,6 +28,14 @@
             {
                 "name": "Blute Technologies",
                 "image": "assets/img/clients/all/blute.png"
+            },
+             {
+                "name": "L&T Construction Smart World",
+                "image": "assets/img/clients/top/lnt.png"
+            },
+              {
+                "name": "ETC Management Services",
+                "image": "assets/img/clients/top/etg.webp"
             }
         ]
     },
@@ -103,30 +111,7 @@
             }
         ]
     },
-    {
-        "slug": "energy-power",
-        "published": true,
-        "nav_name": "Energy & Power",
-        "short_name": "Energy & Power",
-        "clients": [
-            {
-                "name": "Kohima-Mariani Transmission",
-                "image": ""
-            },
-            {
-                "name": "SKM Powertech",
-                "image": ""
-            },
-            {
-                "name": "Sunleo Power Networks",
-                "image": ""
-            },
-            {
-                "name": "Aban Offshore",
-                "image": "assets/img/clients/all/aban-offshore.png"
-            }
-        ]
-    },
+   
     {
         "slug": "government-defence",
         "published": true,
@@ -162,13 +147,10 @@
                 "image": "assets/img/clients/top/cmp-records.png"
             },
             {
-                "name": "DIAT",
-                "image": "assets/img/clients/all/diat-emblem.png"
+                "name": "DRDO",
+                "image": "assets/img/clients/top/drdo.png"
             },
-            {
-                "name": "BEML",
-                "image": "assets/img/clients/all/beml.png"
-            },
+          
             {
                 "name": "C-DAC",
                 "image": "assets/img/clients/all/cdac.png"
@@ -197,13 +179,10 @@
                 "name": "Tata Institute for Genetics and Society",
                 "image": "assets/img/clients/all/tigs.png"
             },
-            {
-                "name": "Sreenidhi Institute",
-                "image": "assets/img/clients/all/sreenidhi-snist.jpg"
-            },
+          
             {
                 "name": "Ramakrishna Mission Vidyapith",
-                "image": "assets/img/clients/all/rkm-vidyapith.svg"
+                "image": "assets/img/clients/all/rkmvc.png"
             }
         ]
     },
@@ -217,26 +196,12 @@
                 "name": "Al Ansari",
                 "image": "assets/img/clients/all/al-ansari.png"
             },
-            {
-                "name": "BFC Forex",
-                "image": "assets/img/clients/all/bfc-forex.svg"
-            },
+          
             {
                 "name": "Repco Home Finance",
                 "image": "assets/img/clients/all/repco.png"
-            },
-            {
-                "name": "Can Fin Homes",
-                "image": "assets/img/clients/all/canfin-homes.jpg"
-            },
-            {
-                "name": "IDFC First Bank",
-                "image": "assets/img/clients/all/idfc-first-bank.svg"
-            },
-            {
-                "name": "Jupiter Capital",
-                "image": ""
             }
+          
         ]
     },
     {
@@ -248,29 +213,11 @@
             {
                 "name": "JioStar",
                 "image": "assets/img/clients/top/jiostar.png"
-            },
-            {
-                "name": "Star India",
-                "image": "assets/img/clients/all/star-india.svg"
             }
+           
         ]
     },
-    {
-        "slug": "bpo-staffing",
-        "published": true,
-        "nav_name": "BPO, Call Centres & Staffing",
-        "short_name": "BPO & Staffing",
-        "clients": [
-            {
-                "name": "Expert Callers",
-                "image": "assets/img/clients/all/expert-callers.webp"
-            },
-            {
-                "name": "ETC Management Services",
-                "image": ""
-            }
-        ]
-    },
+   
     {
         "slug": "ecommerce-logistics",
         "published": true,
@@ -286,49 +233,7 @@
                 "image": "assets/img/clients/all/flipkart.svg"
             }
         ]
-    },
-    {
-        "slug": "construction-real-estate",
-        "published": true,
-        "nav_name": "Construction, Real Estate & Interiors",
-        "short_name": "Construction & Real Estate",
-        "clients": [
-            {
-                "name": "Deepam Constructions",
-                "image": ""
-            },
-            {
-                "name": "Nirmaan (Stratos Infra)",
-                "image": ""
-            },
-            {
-                "name": "L&T Construction Smart World",
-                "image": "assets/img/clients/top/lnt.png"
-            },
-            {
-                "name": "Nexus Shantiniketan",
-                "image": "assets/img/clients/all/nexus.png"
-            },
-            {
-                "name": "Kolab Interiors",
-                "image": "assets/img/clients/all/kolab-interiors.png"
-            },
-            {
-                "name": "Sai Interiors",
-                "image": ""
-            }
-        ]
-    },
-    {
-        "slug": "hospitality",
-        "published": true,
-        "nav_name": "Hospitality & Clubs",
-        "short_name": "Hospitality",
-        "clients": [
-            {
-                "name": "Domlur Club",
-                "image": "assets/img/clients/all/domlur-club.png"
-            }
-        ]
     }
+   
+   
 ]

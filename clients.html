@@ -225,6 +225,10 @@ $clientSectors = array_values(array_filter(get_published_client_sectors(), funct
                                 <div class="col-lg-7 mb-md-30 client-intro">
                                     <h2 class="section-title style-one fw-semibold title-anim mb-20">
                                         <small class="fs-18 fw-normal d-inline-block">OUR ESTEEMED CLIENTS</small>
+                                       
+                                    </h2>
+                                     <h2 class="section-title style-one fw-semibold title-anim mb-20">
+                                     
                                         Trusted by organisations that can't afford downtime
                                     </h2>
                                     <p class="mb-0">From defence establishments and high courts to hospitals, universities and global enterprises, Octel Networks designs, builds and supports the IT and network infrastructure our clients rely on every day.</p>
@@ -240,7 +244,7 @@ $clientSectors = array_values(array_filter(get_published_client_sectors(), funct
                             <div class="client-filter mb-40" role="group" aria-label="Filter clients by sector">
                                 <button type="button" class="active" data-filter="all" aria-pressed="true">All Sectors</button>
                                 <?php foreach ($clientSectors as $sector): ?>
-                                <button type="button" data-filter="<?= e($sector['slug']) ?>" aria-pressed="false"><?= e($sector['short_name'] ?: $sector['nav_name']) ?> <em><?= count($sector['clients'] ?? []) ?></em></button>
+                                <button type="button" data-filter="<?= e($sector['slug']) ?>" aria-pressed="false"><?= e($sector['short_name'] ?: $sector['nav_name']) ?> </button>
                                 <?php endforeach; ?>
                             </div>
                             <div id="clientGroups">
@@ -248,7 +252,7 @@ $clientSectors = array_values(array_filter(get_published_client_sectors(), funct
                                 <section class="client-group" data-cat="<?= e($sector['slug']) ?>">
                                     <div class="client-group-head">
                                         <h3><?= e($sector['nav_name']) ?></h3>
-                                        <span><?= $count ?> <?= $count === 1 ? 'client' : 'clients' ?></span>
+                                        <!-- <span><?= $count ?> <?= $count === 1 ? 'client' : 'clients' ?></span>  -->
                                         <?php if ($isAdmin): ?>
                                         <a href="admin/client-edit.php?slug=<?= e($sector['slug']) ?>" class="admin-edit-badge" target="_blank" rel="noopener" title="Edit in admin panel"><i class="ri-pencil-line"></i></a>
                                         <?php endif; ?>

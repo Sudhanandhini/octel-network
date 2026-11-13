@@ -270,6 +270,7 @@ function send_contact_email(array $c): bool {
     $subject = "New $desk Enquiry – " . $c['name'];
     // Name is already validated; strip line breaks so it can't inject headers.
     $replyTo = str_replace(["\r", "\n"], '', $c['email']);
+    if (!filter_var($replyTo, FILTER_VALIDATE_EMAIL)) $replyTo = '';   // chat leads may give only a mobile
     return send_mail($to, $subject, $html, $text, $replyTo);
 }
 

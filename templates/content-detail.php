@@ -41,6 +41,15 @@ $defaultBanner = 'assets/img/uploads/block-bmto1e60f0idhx5-1788591945.jpg';
 $itemBanner = ($item['banner_image'] ?? '') ?: ($item['hero_image'] ?? '');
 $useItemBanner = $itemBanner !== '';
 $bannerImage = $useItemBanner ? $itemBanner : $defaultBanner;
+// Distributor detail pages reuse the Distribution page's hero-slider banner (.webp + .jpg) when one exists.
+$bannerBase = null;
+if ($breadcrumbParentHref === 'distribution.html') {
+    $base = 'assets/img/distributors/banners/' . basename($item['slug']) . '-banner';
+    if (is_file(__DIR__ . '/../' . $base . '.jpg')) {
+        $bannerBase = $base;
+        $useItemBanner = true;
+    }
+}
 
 // Sidebar enquiry form ("Submit").
 require_once __DIR__ . '/../includes/contacts.php';
@@ -1089,7 +1098,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                     <!-- Breadcrumb Area Start -->
                     <div class="breadcrumb-area style-one position-relative z-1">
                         <div class="br-bg img-container position-absolute top-0 start-0 w-100">
+                            <?php if ($bannerBase): ?>
+                            <picture class="d-block w-100 h-100">
+                                <source srcset="<?= e($bannerBase) ?>.webp" type="image/webp">
+                                <img src="<?= e($bannerBase) ?>.jpg" alt="<?= e($item['nav_name']) ?>" class="w-100 h-100 object-fit-cover">
+                            </picture>
+                            <?php else: ?>
                             <img src="<?= e($bannerImage) ?>" alt="<?= e($item['nav_name']) ?>" class="w-100 h-100 object-fit-cover">
+                            <?php endif; ?>
                             <?php if ($useItemBanner): ?>
                             <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(90deg, rgba(2,10,20,.88) 0%, rgba(2,10,20,.7) 50%, rgba(2,10,20,.45) 100%);"></div>
                             <?php endif; ?>

@@ -897,7 +897,8 @@
                                 <div class="col-12">
                                     <h2 class="section-title style-one fw-semibold text-center title-anim mb-35">
                                         <small class="fs-18 fw-normal text-center d-block">ABOUT US</small>
-                                        Founded in 1999 by Vijaya Kumar Raju, Octel Networks began as a specialized network infrastructure provider serving businesses across Bengaluru. After recognizing that clients needed both technical depth and end-to-end accountability, we evolved into a full-service network and IT infrastructure partner.
+                                        <span class="d-block fs-24 text_secondary mb-15">Your end-to-end partner for enterprise network and IT infrastructure</span>
+                                        Octel Networks designs, deploys and manages the network and IT infrastructure that enterprises depend on. One partner is accountable for the whole lifecycle, from the first assessment to 24x7 operations, so every environment is delivered and run as one connected whole.
                                     </h2>
                                     <div class="text-center mb-60">
                                         <a href="about.html" class="btn style-one d-inline-flex align-items-center" data-cue="slideInUp" data-delay="300">
@@ -926,11 +927,14 @@
                                 </div>
                                 <div class="col-lg-7 ps-xl-5 mb-30">
                                     <div class="ai-content h-100 d-flex flex-column">
-                                        <span class="ai-label d-inline-flex align-items-center fs-14 fw-semibold mb-20 align-self-start"><i class="ri-building-4-line"></i>WHO WE ARE TODAY</span>
-                                        <p class="ai-lead text-title mb-25" data-cue="slideInUp" data-delay="100">Today, we serve 15,000+ clients across enterprise, retail, and mall environments with a team of network engineers, field technicians, and infrastructure specialists, delivering solutions across LAN/WAN, SD-WAN, cybersecurity (including air-gapped environments), data center and cloud infrastructure, network management and monitoring, surveillance, unified communications, and managed IT operations. From the first assessment to ongoing support, you get a single point of contact and 24x7 assistance, so every project is delivered and run as one connected environment.</p>
+                                        <span class="ai-label d-inline-flex align-items-center fs-14 fw-semibold mb-20 align-self-start"><i class="ri-building-4-line"></i>OUR HERITAGE</span>
+                                        <p class="ai-lead text-title mb-25" data-cue="slideInUp" data-delay="100">Vijaya Kumar Raju founded Octel Networks in 1999 as a specialist network infrastructure provider in Bengaluru. Our clients wanted deep technical expertise backed by complete accountability, so we grew into a full-service infrastructure partner. Today more than 15,000 clients across enterprise, retail and mall environments rely on us.</p>
                                         <div class="ai-reach d-flex align-items-start mb-30" data-cue="slideInUp" data-delay="200">
-                                            <span class="ai-reach-icon"><i class="ri-global-line"></i></span>
-                                            <p class="fs-xxl-18 mb-0">Our presence is global. Working with partners and customers across continents and countries, we support deployments end to end, spanning data center and networking infrastructure, cybersecurity, enterprise Wi-Fi and structured cabling for their projects.</p>
+                                            <span class="ai-reach-icon"><i class="ri-stack-line"></i></span>
+                                            <div>
+                                                <strong class="d-block fs-20 text-title mb-10">What we deliver</strong>
+                                                <p class="fs-xxl-18 mb-0">Our capabilities cover the full infrastructure stack. In networking, we deliver LAN/WAN, SD-WAN, enterprise Wi-Fi and structured cabling. Our cybersecurity practice extends to air-gapped environments for high-security operations. We also design and integrate data centre and cloud infrastructure, and we provide network management and monitoring for proactive visibility and performance control. Surveillance, unified communications and managed IT operations complete the portfolio, so clients can rely on a single partner from build through day-to-day operations.</p>
+                                            </div>
                                         </div>
                                         <div class="row gx-2 gx-sm-4 mt-auto">
                                             <div class="col-4">
@@ -1316,8 +1320,15 @@
                                 <div class="row align-items-center">
                                     <div class="col-xl-6 col-lg-5">
                                         <div class="case-img round-20 position-relative hover-text-target mb-md-25" data-cursor-text="View Details">
+                                            <?php $dBanner = 'assets/img/distributors/banners/' . basename($d['slug']) . '-banner'; ?>
+                                            <?php if (is_file(__DIR__ . '/' . $dBanner . '.jpg')): ?>
+                                            <picture class="d-block" data-cue="anim-left" data-duration="1000">
+                                                <source srcset="<?= e($dBanner) ?>.webp" type="image/webp">
+                                                <img src="<?= e($dBanner) ?>.jpg" alt="<?= e($d['nav_name']) ?>" class="round-20 w-100 object-fit-cover">
+                                            </picture>
+                                            <?php else: ?>
                                             <img src="<?= e(($d['banner_image'] ?? '') ?: $d['hero_image']) ?>" alt="<?= e($d['nav_name']) ?>" class="round-20 w-100 object-fit-cover" data-cue="anim-left" data-duration="1000">
-                                            <span class="case-counter font-secondary fw-semibold text-white position-absolute"><?= sprintf('%02d', $i + 1) ?></span>
+                                            <?php endif; ?>
                                             <a href="<?= e($dHref) ?>" class="position-absolute top-0 start-0 w-100 h-100" aria-label="<?= e($d['nav_name']) ?>"></a>
                                         </div>
                                     </div>

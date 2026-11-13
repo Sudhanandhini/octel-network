@@ -28,5 +28,61 @@
             "Product Management"
         ],
         "bio": "Rajeev leads business growth, client engagement and partner strategy at Octel Networks. He brings over 35 years of experience in enterprise networking, telecom and IT services.\n\nOver his career, Rajeev has built and scaled enterprise businesses in India. He has developed new market segments, set up channel and reseller networks across major cities, and run joint go-to-market programmes with large enterprise customers. At Cable & Wireless he grew the system integration business and led the company to Cisco Gold Partner status in India. At Pacnet he established the enterprise business in India from the ground up.\n\nClient experience has been central to his leadership. As Director, Service Delivery at Cable & Wireless, he was accountable for customer satisfaction across India and the SAARC region, leading presales, project, service and product management teams. He also served on the company’s India board.\n\nAt Octel, Rajeev focuses on building long-term client partnerships, expanding into new industries and markets, and strengthening alliances with leading technology partners. His approach combines business acumen with a strong customer-service culture."
+    },
+    {
+        "slug": "jaffar-sadiq",
+        "published": true,
+        "name": "Jaffar Sadiq",
+        "role": "Enterprise Sales",
+        "image": "assets/img/leaders/silhouette.svg",
+        "expertise": [
+            "Enterprise Sales",
+            "Strategic Account Management",
+            "Business Development",
+            "OEM Solutions"
+        ],
+        "bio": "Jaffar Sadiq heads Enterprise Sales at Octel Networks and has nearly two decades of experience in enterprise sales, strategic account management and business development. Over the past ten years he has helped build Octel’s enterprise business. He has developed long-term relationships with key customers and expanded the company’s presence in Chennai and Bangalore.\n\nBased in Chennai, he manages a portfolio of strategic enterprise accounts in telecommunications, healthcare and manufacturing. He understands how his customers operate and what they need, and he works with them to deliver networking, security and IT infrastructure solutions that support each organization’s business goals.\n\nHe combines commercial experience with hands-on knowledge on latest technologies with the preferred OEM's, which lets him match business needs to the right technology and preferred OEMs. His relationship-driven approach and commitment to customer success continue to strengthen client partnerships and drive sustainable growth at enterprise level for Octel Networks."
+    },
+    {
+        "slug": "ravichandran-shanmugam",
+        "published": true,
+        "name": "Ravichandran Shanmugam",
+        "role": "Head of Distribution",
+        "image": "assets/img/leaders/silhouette.svg",
+        "expertise": [
+            "Distribution",
+            "Channel Partnerships",
+            "Regional Operations",
+            "Supply Chain"
+        ],
+        "bio": "Ravi Chandran is Head of Distribution at Octel Networks and has been with the organization for more than 18 years. He leads the Chennai branch, Octel’s base for the Tamil Nadu region, and is responsible for the company’s Matrix distribution business. Through strong channel-partner relationships and deep regional market knowledge, he helps Octel respond quickly to changing customer demand across the state.\n\nRavi also oversees the Bangalore distribution team. He leads a cross-functional group covering sales, technical support and operations, so partners get the right products, informed guidance and reliable after-sales service. His hands-on leadership and long experience with Octel’s operations keep the supply chain efficient and the customer experience consistent, making quality technology readily available to enterprises of all sizes."
+    },
+    {
+        "slug": "narendra-chandra-r",
+        "published": true,
+        "name": "Narendra Chandra R",
+        "role": "Service Delivery Head",
+        "image": "assets/img/leaders/silhouette.svg",
+        "expertise": [
+            "Service Delivery",
+            "Project Management",
+            "Managed Services",
+            "Project Governance"
+        ],
+        "bio": "Narendra Chandra R is Head of Service Delivery at Octel Networks. He oversees the delivery and ongoing support of the company’s network, security and IT infrastructure solutions for enterprise clients across sectors.\n\nHe has more than 18 years of experience in project management and service delivery, and has a proven record of leading large, complex service operations. His disciplined, client-centric approach helps Octel complete projects on schedule and maintain consistently high standards in its managed services after deployment.\n\nNarendra combines deep technical expertise in networking with rigorous project governance. This ensures that every solution is implemented as designed and supported with clear ownership and accountability. He places strong emphasis on structured processes, measurable service quality and transparent communication. Customers gain confidence from project initiation onward, and that confidence holds through the full lifecycle of their infrastructure.\n\nUnder his leadership, the Service Delivery function reinforces Octel Networks’ commitment to “Simplify Your IT Needs” and its vision of secure, future-ready infrastructure for every enterprise."
+    },
+    {
+        "slug": "vaman-sriraman",
+        "published": true,
+        "name": "Vaman Sriraman",
+        "role": "Solution Head",
+        "image": "assets/img/leaders/silhouette.svg",
+        "expertise": [
+            "Cybersecurity",
+            "Cloud Transformation",
+            "IT Governance & Risk",
+            "Regulatory Compliance"
+        ],
+        "bio": "Vaman Sriraman is Solution Head at Octel Networks. He leads the design of security and infrastructure solutions for enterprise clients across industries.\n\nHe has more than 28 years of experience spanning cybersecurity, IT operations, cloud transformation and regulatory compliance. His long career gives him strategic insight and practical depth, and he brings both to every client engagement. He has managed large enterprise IT environments, so the solutions he designs are built for real-world operating conditions. His experience in cloud migration, security operations and business continuity directly shapes Octel’s cybersecurity, cloud and managed services portfolio.\n\nAt Octel, Vaman turns complex security and compliance requirements into clear, practical solutions that organizations can adopt with confidence. His expertise in IT governance, risk management and data privacy helps clients meet audit and regulatory obligations while strengthening their overall security posture.\n\nUnder his leadership, Octel’s solutions rest on a strong foundation of trust and compliance. This reinforces the company’s vision of secure, future-ready infrastructure for every enterprise."
     }
 ]

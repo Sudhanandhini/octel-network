@@ -85,7 +85,8 @@ function otp_rate_check(string $email): string {
 
     // Forget anything older than an hour.
     foreach ($data as $k => $times) {
-        $data[$k] = array_values(array_filter((array) $times, fn($t) => $t > $now - 3600));
+        // Plain closure, not fn(): the live server runs PHP 7.2 (arrow functions need 7.4).
+        $data[$k] = array_values(array_filter((array) $times, function ($t) use ($now) { return $t > $now - 3600; }));
         if (!$data[$k]) unset($data[$k]);
     }
 

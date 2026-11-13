@@ -56,6 +56,49 @@ $leaders = get_published_leaders();
                 inset: 0;
                 background: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.45) 55%, rgba(0, 0, 0, 0.25) 100%);
             }
+            /* ---- Leaders layout ---- */
+            .ldr-feature {
+                display: flex; height: calc(100% - 30px); margin-bottom: 30px;
+                background: #fff; border: 1px solid rgba(0, 37, 44, 0.08); border-radius: 20px;
+                overflow: hidden; box-shadow: 0 10px 30px rgba(0, 37, 44, 0.06);
+                transition: transform .4s ease, box-shadow .4s ease;
+            }
+            .ldr-feature:hover { transform: translateY(-6px); box-shadow: 0 20px 45px rgba(0, 37, 44, 0.12); }
+            .ldr-feature-img { flex: 0 0 42%; position: relative; background: var(--primaryColor); overflow: hidden; }
+            .ldr-feature-img img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; transition: transform .6s ease; }
+            .ldr-feature:hover .ldr-feature-img img { transform: scale(1.05); }
+            .ldr-feature-body { flex: 1; padding: 36px 32px; display: flex; flex-direction: column; justify-content: center; border-left: 4px solid var(--secondaryColor); }
+            .ldr-role { display: block; color: var(--secondaryColor); font-size: 14px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; line-height: 1.4; }
+            .ldr-name { font-size: 26px; font-weight: 700; margin: 10px 0 18px; color: var(--primaryColor); transition: color .3s ease; }
+            .ldr-name a { color: inherit; }
+            .ldr-name a:hover { color: var(--secondaryColor); }
+            .ldr-tags { list-style: none; padding: 0; margin: 0 0 24px; display: flex; flex-wrap: wrap; gap: 8px; }
+            .ldr-tags li { font-size: 13px; padding: 6px 12px; border-radius: 30px; background: var(--ashColor); color: var(--titleColor); }
+            .ldr-link { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--primaryColor); border-bottom: 2px solid var(--secondaryColor); padding-bottom: 2px; }
+            .ldr-link:hover { color: var(--secondaryColor); }
+
+            .ldr-card { display: block; margin-bottom: 30px; background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid rgba(0, 37, 44, 0.08); transition: transform .4s ease, box-shadow .4s ease; }
+            .ldr-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0, 37, 44, 0.12); }
+            .ldr-card-img { position: relative; aspect-ratio: 1 / 1; background: var(--primaryColor); overflow: hidden; }
+            .ldr-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+            .ldr-card:hover .ldr-card-img img { transform: scale(1.06); }
+            .ldr-card-arrow { position: absolute; right: 16px; bottom: 16px; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--secondaryColor); color: #fff; font-size: 20px; transform: scale(0); transition: transform .4s ease; }
+            .ldr-card:hover .ldr-card-arrow { transform: scale(1); }
+            .ldr-card-body { padding: 22px 22px 24px; border-top: 3px solid var(--secondaryColor); }
+            .ldr-card .ldr-name { font-size: 20px; margin: 0 0 8px; }
+            .ldr-card .ldr-role { font-size: 13px; }
+            .ldr-card:hover .ldr-name { color: var(--secondaryColor); }
+
+            .theme-dark .ldr-feature, .theme-dark .ldr-card { background: var(--aztechColor); border-color: var(--borderColor); }
+            .theme-dark .ldr-name, .theme-dark .ldr-link { color: #fff; }
+            .theme-dark .ldr-tags li { background: var(--charcoalColor); color: var(--darkParaColor); }
+
+            @media (max-width: 575px) {
+                .ldr-feature { flex-direction: column; height: auto; }
+                .ldr-feature-img img { min-height: 260px; }
+                .ldr-feature-body { border-left: 0; border-top: 4px solid var(--secondaryColor); padding: 26px 22px; }
+                .ldr-name { font-size: 22px; }
+            }
         </style>
     </head>
     <body>
@@ -194,21 +237,45 @@ $leaders = get_published_leaders();
                                 </h2>
                             </div>
                         </div>
+                        <?php $featured = array_slice($leaders, 0, 2); $others = array_slice($leaders, 2); ?>
+                        <!-- Row 1: Featured leaders -->
                         <div class="row justify-content-center">
-                            <?php foreach ($leaders as $i => $leader): $url = leader_url($leader); ?>
-                            <div class="col-xl-4 col-md-6">
-                                <div class="team-card style-one img-hover-zoom position-relative mb-30" data-cue="<?= $i % 2 ? 'anim-right' : 'anim-left' ?>" data-delay="<?= 200 + 100 * $i ?>">
-                                    <div class="team-img img-zoom position-relative z-1 overflow-hidden round-20">
-                                        <a href="<?= e($url) ?>"><img src="<?= e($leader['image']) ?>" alt="<?= e($leader['name']) ?>" class="transition round-20"></a>
-                                        <div class="team-info d-flex flex-wrap align-items-center justify-content-between">
-                                            <div>
-                                                <h3 class="fs-20 fw-bold mb-10"><a href="<?= e($url) ?>" class="text-white link-hover-white transition"><?= e($leader['name']) ?></a></h3>
-                                                <span class="fs-xxl-18 text-gray d-block lh-1"><?= e($leader['role']) ?></span>
-                                            </div>
-                                            <a href="<?= e($url) ?>" class="mail-link d-flex flex-column align-items-center justify-content-center rounded-circle transition" aria-label="View <?= e($leader['name']) ?>'s profile"><i class="ri-arrow-right-up-line"></i></a>
-                                        </div>
+                            <?php foreach ($featured as $i => $leader): $url = leader_url($leader); ?>
+                            <div class="col-lg-6">
+                                <div class="ldr-feature" data-cue="<?= $i ? 'slideInRight' : 'slideInLeft' ?>" data-delay="<?= 200 + 100 * $i ?>">
+                                    <a href="<?= e($url) ?>" class="ldr-feature-img">
+                                        <img src="<?= e($leader['image']) ?>" alt="<?= e($leader['name']) ?>">
+                                    </a>
+                                    <div class="ldr-feature-body">
+                                        <span class="ldr-role"><?= e($leader['role']) ?></span>
+                                        <h3 class="ldr-name"><a href="<?= e($url) ?>"><?= e($leader['name']) ?></a></h3>
+                                        <?php if (!empty($leader['expertise'])): ?>
+                                        <ul class="ldr-tags">
+                                            <?php foreach (array_slice($leader['expertise'], 0, 4) as $tag): ?>
+                                            <li><?= e($tag) ?></li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                        <?php endif; ?>
+                                        <a href="<?= e($url) ?>" class="ldr-link">View Profile <i class="ri-arrow-right-up-line"></i></a>
                                     </div>
                                 </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <!-- Row 2: Leadership team -->
+                        <div class="row justify-content-center">
+                            <?php foreach ($others as $i => $leader): $url = leader_url($leader); ?>
+                            <div class="col-xl-3 col-md-6">
+                                <a href="<?= e($url) ?>" class="ldr-card" data-cue="slideInUp" data-delay="<?= 200 + 100 * $i ?>" aria-label="View <?= e($leader['name']) ?>'s profile">
+                                    <div class="ldr-card-img">
+                                        <img src="<?= e($leader['image']) ?>" alt="<?= e($leader['name']) ?>">
+                                        <span class="ldr-card-arrow"><i class="ri-arrow-right-up-line"></i></span>
+                                    </div>
+                                    <div class="ldr-card-body">
+                                        <h3 class="ldr-name"><?= e($leader['name']) ?></h3>
+                                        <span class="ldr-role"><?= e($leader['role']) ?></span>
+                                    </div>
+                                </a>
                             </div>
                             <?php endforeach; ?>
                         </div>
