@@ -4,7 +4,7 @@
         "published": true,
         "name": "VK Raju",
         "role": "Founder, Managing Director & CEO",
-        "image": "assets/img/leaders/silhouette.svg",
+        "image": "assets/img/leaders/vk-raju.jpg",
         "expertise": [
             "Strategic Planning",
             "Network Architecture",
@@ -18,7 +18,7 @@
         "published": true,
         "name": "Rajeev Pillai",
         "role": "Chief Operating Officer (COO)",
-        "image": "assets/img/leaders/silhouette.svg",
+        "image": "assets/img/leaders/rajeev-pillai.jpg",
         "expertise": [
             "Business Growth",
             "Client Engagement",
@@ -62,7 +62,7 @@
         "published": true,
         "name": "Narendra Chandra R",
         "role": "Service Delivery Head",
-        "image": "assets/img/leaders/silhouette.svg",
+        "image": "assets/img/leaders/narendra-chandra-r.jpg",
         "expertise": [
             "Service Delivery",
             "Project Management",
@@ -76,7 +76,7 @@
         "published": true,
         "name": "Vaman Sriraman",
         "role": "Solution Head",
-        "image": "assets/img/leaders/silhouette.svg",
+        "image": "assets/img/leaders/vaman-sriraman.jpg",
         "expertise": [
             "Cybersecurity",
             "Cloud Transformation",

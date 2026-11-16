@@ -483,7 +483,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                                                 <div class="form-group email-verify mb-45<?= $emailVerified ? ' is-verified' : '' ?>" id="emailVerify">
                                                     <div class="ev-field">
                                                         <input type="email" name="email" id="cfEmail" value="<?= e($contactOld['email']) ?>" maxlength="190" class="w-100 bg-transparent fs-xxl-18 text-title outline-0" placeholder="Business Email*" autocomplete="email" required<?= $emailVerified ? ' readonly' : '' ?>>
-                                                        <button type="button" class="ev-btn" id="evSend">Send OTP</button>
+                                                        <!-- <button type="button" class="ev-btn" id="evSend">Send OTP</button> -->
                                                         <span class="ev-badge"><i class="ri-checkbox-circle-fill"></i> Verified</span>
                                                         <button type="button" class="ev-change" id="evChange" aria-label="Change email address">Change</button>
                                                     </div>
