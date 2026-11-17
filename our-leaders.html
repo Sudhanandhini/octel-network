@@ -238,33 +238,10 @@ $leaders = get_published_leaders();
                             </div>
                         </div>
                         <?php $featured = array_slice($leaders, 0, 2); $others = array_slice($leaders, 2); ?>
-                        <!-- Row 1: Featured leaders -->
+                        <?php foreach ([$featured, $others] as $rowLeaders): ?>
+                        <!-- Row 1: 2 featured leaders; Row 2: leadership team (same card style) -->
                         <div class="row justify-content-center">
-                            <?php foreach ($featured as $i => $leader): $url = leader_url($leader); ?>
-                            <div class="col-lg-6">
-                                <div class="ldr-feature" data-cue="<?= $i ? 'slideInRight' : 'slideInLeft' ?>" data-delay="<?= 200 + 100 * $i ?>">
-                                    <a href="<?= e($url) ?>" class="ldr-feature-img">
-                                        <img src="<?= e($leader['image']) ?>" alt="<?= e($leader['name']) ?>">
-                                    </a>
-                                    <div class="ldr-feature-body">
-                                        <span class="ldr-role"><?= e($leader['role']) ?></span>
-                                        <h3 class="ldr-name"><a href="<?= e($url) ?>"><?= e($leader['name']) ?></a></h3>
-                                        <?php if (!empty($leader['expertise'])): ?>
-                                        <ul class="ldr-tags">
-                                            <?php foreach (array_slice($leader['expertise'], 0, 4) as $tag): ?>
-                                            <li><?= e($tag) ?></li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                        <?php endif; ?>
-                                        <a href="<?= e($url) ?>" class="ldr-link">View Profile <i class="ri-arrow-right-up-line"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endforeach; ?>
-                        </div>
-                        <!-- Row 2: Leadership team -->
-                        <div class="row justify-content-center">
-                            <?php foreach ($others as $i => $leader): $url = leader_url($leader); ?>
+                            <?php foreach ($rowLeaders as $i => $leader): $url = leader_url($leader); ?>
                             <div class="col-xl-3 col-md-6">
                                 <a href="<?= e($url) ?>" class="ldr-card" data-cue="slideInUp" data-delay="<?= 200 + 100 * $i ?>" aria-label="View <?= e($leader['name']) ?>'s profile">
                                     <div class="ldr-card-img">
@@ -279,6 +256,7 @@ $leaders = get_published_leaders();
                             </div>
                             <?php endforeach; ?>
                         </div>
+                        <?php endforeach; ?>
                     </div>
                     <!-- Team Section End -->
                     <div class="funfact-area style-two pb-120">
@@ -317,9 +295,9 @@ $leaders = get_published_leaders();
                                         </a>
                                         <p class="footer-about mb-25">Building the IT, network and security infrastructure businesses rely on, since 1999.</p>
                                         <ul class="social-profile style-one list-unstyled mb-0">
-                                            <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
-                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
                                             <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
+                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
+                                            <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>

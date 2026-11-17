@@ -36,16 +36,8 @@
               {
                 "name": "ETC Management Services",
                 "image": "assets/img/clients/top/etg.webp"
-            }
-        ]
-    },
-    {
-        "slug": "tech-telecom",
-        "published": true,
-        "nav_name": "Global Tech & Telecom",
-        "short_name": "Tech & Telecom",
-        "clients": [
-            {
+            },
+               {
                 "name": "Google",
                 "image": "assets/img/clients/all/google.svg"
             },
@@ -59,6 +51,7 @@
             }
         ]
     },
+   
     {
         "slug": "healthcare",
         "published": true,

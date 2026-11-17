@@ -15,9 +15,9 @@ function renderTopBar() {
         <li class="d-none d-md-flex"><i class="ri-map-pin-fill"></i> Chicago, IL, USA</li>
       </ul>
       <ul class="top-social">
-        <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="ri-facebook-fill"></i></a></li>
-        <li><a href="https://x.com/" target="_blank" rel="noopener"><i class="ri-twitter-x-line"></i></a></li>
         <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener"><i class="ri-linkedin-fill"></i></a></li>
+        <li><a href="https://x.com/" target="_blank" rel="noopener"><i class="ri-twitter-x-line"></i></a></li>
+        <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="ri-facebook-fill"></i></a></li>
         <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="ri-instagram-line"></i></a></li>
       </ul>
     </div>
@@ -182,9 +182,9 @@ function renderFooter() {
             <div class="footer-widget">
               <p>Exrox is a trusted accounting and management consulting firm helping businesses grow with clarity and control.</p>
               <ul class="social-profile style-one">
-                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="ri-facebook-fill"></i></a></li>
-                <li><a href="https://x.com/" target="_blank" rel="noopener"><i class="ri-twitter-x-line"></i></a></li>
                 <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener"><i class="ri-linkedin-fill"></i></a></li>
+                <li><a href="https://x.com/" target="_blank" rel="noopener"><i class="ri-twitter-x-line"></i></a></li>
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="ri-facebook-fill"></i></a></li>
                 <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="ri-instagram-line"></i></a></li>
               </ul>
             </div>

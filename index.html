@@ -253,6 +253,10 @@
             }
             .about-intro .founders-box .ceo-img img {
                 border: 3px solid rgba(255, 255, 255, 0.6);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center 15%;
             }
             .theme-dark .ai-reach,
             .theme-dark .ai-stat,
@@ -586,6 +590,12 @@
                 position: absolute;
                 inset: 0;
                 content: "";
+            }
+            /* Per-slide overlay: slide 1 none, slide 2 half, slide 3 full */
+            .hero-slider-one .hero-bg.overlay-half::after {
+                background: linear-gradient(90deg, rgba(0, 0, 0, 0.39) 0%, rgba(0, 0, 0, 0.28) 45%, rgba(0, 0, 0, 0.08) 100%);
+            }
+            .hero-slider-one .hero-bg.overlay-full::after {
                 background: linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0.15) 100%);
             }
         </style>
@@ -770,7 +780,7 @@
                                 
                                 <div class="swiper-slide">
                                     <div class="hero-slide-item style-one position-relative z-1">
-                                        <div class="hero-bg img-container position-absolute top-0 start-0 w-100 h-100">
+                                        <div class="hero-bg overlay-none img-container position-absolute top-0 start-0 w-100 h-100">
                                             <img src="assets/img/home/hero-2.jpg" alt="Network switch with patch cables" class="w-100 h-100 object-fit-cover">
                                         </div>
                                         <div class="container style-two">
@@ -801,7 +811,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="hero-slide-item style-one position-relative z-1">
-                                        <div class="hero-bg img-container position-absolute top-0 start-0 w-100 h-100">
+                                        <div class="hero-bg overlay-half img-container position-absolute top-0 start-0 w-100 h-100">
                                             <picture class="d-block w-100 h-100">
                                                 <source srcset="assets/img/home/hero-datacenter.webp" type="image/webp">
                                                 <img src="assets/img/home/hero-datacenter.jpg" alt="Data center server racks beside a network control room" class="w-100 h-100 object-fit-cover" width="1672" height="941">
@@ -835,7 +845,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="hero-slide-item style-one position-relative z-1">
-                                        <div class="hero-bg img-container position-absolute top-0 start-0 w-100 h-100">
+                                        <div class="hero-bg overlay-full img-container position-absolute top-0 start-0 w-100 h-100">
                                             <img src="assets/img/home/hero-office.jpg" alt="Modern corporate office interior" class="w-100 h-100 object-fit-cover">
                                         </div>
                                         <div class="container style-two">
@@ -941,7 +951,7 @@
                                                 <div class="ai-stat h-100 text-center" data-cue="slideInUp" data-delay="300">
                                                     <i class="ri-medal-line"></i>
                                                     <h4 class="fw-bold mb-6"><span class="counter">75</span>%</h4>
-                                                    <span class="d-block">Certified Network Engineers</span>
+                                                    <span class="d-block">Certified Engineers</span>
                                                 </div>
                                             </div>
                                             <!-- Add once the figure is confirmed: [X]+ Infrastructure Projects Delivered
@@ -1006,7 +1016,7 @@
                                         </div>
                                         <div class="ceo-info-wrap d-flex flex-wrap align-items-center">
                                             <div class="ceo-img rounded-circle">
-                                                <img src="assets/img/ceo.jpg" alt="Vijaya Kumar Raju" class="rounded-circle">
+                                                <img src="assets/img/leaders/vk-raju.jpg" alt="Vijaya Kumar Raju" class="rounded-circle">
                                             </div>
                                             <div class="ceo-info">
                                                 <h5 class="fs-20 fw-bold mb-6" style="color:white">Vijaya Kumar Raju</h5>
@@ -1353,7 +1363,12 @@
                                                     <?php foreach ($dBullets as $j => $bullet): ?>
                                                     <div class="col-md-4">
                                                         <div class="<?= $dBoxStyles[$j][0] ?> round-10 mb-sm-20 h-100">
+                                                            <?php $bParts = explode(':', $bullet, 2); ?>
+                                                            <?php if (count($bParts) === 2): ?>
+                                                            <p class="<?= $dBoxStyles[$j][1] ?>"><strong><?= e(trim($bParts[0])) ?>:</strong><br><?= e(trim($bParts[1])) ?></p>
+                                                            <?php else: ?>
                                                             <p class="<?= $dBoxStyles[$j][1] ?>"><?= e($bullet) ?></p>
+                                                            <?php endif; ?>
                                                         </div>
                                                     </div>
                                                     <?php endforeach; ?>
@@ -1655,7 +1670,7 @@
                             <div class="row">
                                 <div class="col-xl-5 offset-xl-7">
                                     <div class="promo-box position-relative z-2 ms-md-auto"  data-cue="anim-left" data-duration="700">
-                                        <h2 class="section-title style-two text-white pe-xxl-5 me-xxl-4 fw-semibold mb-25">Why Trust Octel?</h2>
+                                        <h2 class="section-title style-two text-whiteCertified Engineersold mb-25">Why Trust Octel?</h2>
                                         <ul class="promo-list list-unstyled">
                                             <li>
                                                 <h6 class="fs-24 fw-semibold text-white mb-6">75%</h6>
@@ -1810,9 +1825,9 @@
                                         </a>
                                         <p class="footer-about mb-25">Building the IT, network and security infrastructure businesses rely on, since 1999.</p>
                                         <ul class="social-profile style-one list-unstyled mb-0">
-                                            <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
-                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
                                             <li><a href="https://www.linkedin.com/company/octel-networks-pvt-ltd/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-linkedin-fill"></i></a></li>
+                                            <li><a href="https://x.com/?lang=en" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-twitter-x-line"></i></a></li>
+                                            <li><a href="https://www.facebook.com/p/Octel-Networks-100057436510684/" target="_blank" class="d-flex flex-column align-items-center justify-content-center rounded-circle"><i class="ri-facebook-fill"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
